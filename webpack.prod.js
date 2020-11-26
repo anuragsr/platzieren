@@ -11,7 +11,7 @@ const buildPath = path.resolve(__dirname, 'dist');
 
 module.exports = {
     devtool: 'source-map',
-    entry: './src/index.js',
+    entry: './src/app.js',
     output: {
         filename: '[name].[hash:20].js',
         path: buildPath
@@ -84,46 +84,27 @@ module.exports = {
                     }
                 ]
             }
+            ,
+            {
+                // HTML LOADER
+                // Reference: https://github.com/webpack/raw-loader
+                // Allow loading html through js
+                test: /\.html$/,
+                loader: 'raw-loader'
+            }
         ]
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './index.html',
+            template: './public/index.html',
             // Inject the js bundle at the end of the body of the given template
             inject: 'body',
         }),
         new CleanWebpackPlugin(buildPath),
-        // new FaviconsWebpackPlugin({
-            // Your source logo
-        //     logo: './src/assets/icon.png',
-            // The prefix for all image files (might be a folder or a name)
-        //     prefix: 'icons-[hash]/',
-            // Generate a cache file with control hashes and
-            // don't rebuild the favicons until those hashes change
-        //     persistentCache: true,
-            // Inject the html into the html-webpack-plugin
-        //     inject: true,
-        //     // favicon background color (see https://github.com/haydenbleasel/favicons#usage)
-        //     background: '#fff',
-        //     // favicon app title (see https://github.com/haydenbleasel/favicons#usage)
-        //     title: 'threejs-starter',
-
-        //     // which icons should be generated (see https://github.com/haydenbleasel/favicons#usage)
-        //     icons: {
-        //         android: true,
-        //         appleIcon: true,
-        //         appleStartup: true,
-        //         coast: false,
-        //         favicons: true,
-        //         firefox: true,
-        //         opengraph: false,
-        //         twitter: false,
-        //         yandex: false,
-        //         windows: false
-        //     }
         new CopyWebpackPlugin({
             patterns: [
-                { from: './src/assets', to: 'assets' }
+              // { from: './src/assets', to: 'assets' },
+              {from: __dirname + '/public'}
             ]
         }),
         new MiniCssExtractPlugin({

@@ -1,11 +1,16 @@
-html, body, #three-ctn{
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+html, body{
   height: 100%;
 	width: 100%;
 }
 
+$w: #fff;
+$bg: rgb(36, 41, 46);
+
 body {
-  font-family: 'Courier New', Courier, monospace;
-  background: rgb(36, 41, 46);
-  color: #fff;
+  font-family: 'Roboto', Courier, monospace;
+  background: $bg;
+  color: $w;
   text-align: center;
 }

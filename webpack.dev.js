@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     devtool: 'eval-cheap-module-source-map',
-    entry: './src/index.js',
+    entry: './src/app.js',
     devServer: {
         disableHostCheck: true,
         port: 8080,
@@ -79,21 +79,26 @@ module.exports = {
                     }
                 ]
             }
-            // ,
-            // {
-            //   test: /\.(obj|mtl|fbx)$/,
-            //   loader: 'file-loader'
-            // },
+            ,
+            {
+                // HTML LOADER
+                // Reference: https://github.com/webpack/raw-loader
+                // Allow loading html through js
+                test: /\.html$/,
+                loader: 'raw-loader'
+            }
         ],
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './index.html',
-            inject: true
+            template: './public/index.html',
+            // Inject the js bundle at the end of the body of the given template
+            inject: 'body',
         }),
         new CopyWebpackPlugin({
             patterns: [
-                { from: './src/assets', to: 'assets' }
+                // { from: './src/assets', to: 'assets' },
+              {from: __dirname + '/public'}
             ]
         })
     ]
