@@ -1,7 +1,7 @@
 {
-  "name": "angularjs-webpack-starter",
+  "name": "platzieren",
   "version": "1.0.0",
-  "description": "A starter project for AngularJS v1.x with webpack",
+  "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --config webpack.dev.js --mode development",

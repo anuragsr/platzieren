@@ -16,7 +16,7 @@ let app = () => {
 class AppCtrl {
   constructor() {
     this.url = 'http://envisagecyberart.in';
-    this.title = 'Webpack with AngularJS / Bootstrap / SASS';
+    this.title = 'Platzieren';
   }
 }
 
