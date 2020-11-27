@@ -1,0 +1,46 @@
+header{
+  @extend %fw;
+  background: $w;
+  position: fixed;
+  z-index: 2;
+  @include media("<=tablet") {
+    position: relative;
+  }
+  .navbar{
+    //padding: 0 50px;
+    height: $headHeight;
+    //box-shadow: 0 0 5px 0 rgba($color: $b, $alpha: .1);
+    box-shadow: 0 4px 4px 4px rgba(31, 68, 84, 0.02);
+    background-color: #fdfdfd;
+    font-size: 20px;
+    @include media("<=tablet") {
+      padding: 10px;
+      height: unset;
+    }
+    .navbar-brand{
+      font-family: $os;
+      font-weight: 700;
+      font-size: 25px;
+    }
+    .nav-item{
+      padding: 0 10px;
+      .nav-link{
+        color: $b !important;
+        display: flex;
+        align-items: center;
+        img{
+          height: 32px;
+        }
+        span{
+          font-size: 14px;
+          padding-right: 15px;
+        }
+      }
+      &.rating{
+        @include media("<=lp") {
+          display: none;
+        }
+      }
+    }
+  }
+}

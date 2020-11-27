@@ -1,0 +1,100 @@
+footer{
+  position: relative;
+  //padding: 30px;
+  padding-top: 50px;
+  background: $w;
+  box-shadow: 0 -6px 5px 0px rgba($color: $b, $alpha: .05);
+  @include media("<=tablet") {
+    padding: 10px;
+    padding-top: 50px;
+  }
+  h3{
+    font-family: $ex;
+    font-weight: 700;
+    font-size: 19px;
+  }
+  h4{
+    font-family: $ex;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .ctn-rev{
+    @extend %j-c;
+    transform: scale(0.7);
+    flex-wrap: wrap;
+    @include media("<=tablet") {
+      transform: scale(1);
+      margin-top: 50px;
+    }
+    .ctn-rev-single{
+      padding: 0 10px;
+      text-align: center;
+      border-right: 2px solid rgba($color: $b, $alpha: .1);
+      @include media("<=tablet") {
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+      &:nth-of-type(even){
+        @include media("<=tablet") {
+          border:none;
+        }
+      }
+      &:last-of-type{
+        border: none;
+      }
+      img.main{
+        height: 100px;
+        @include media("<=tablet") {
+          height: 50px;
+        }
+      }
+      .ctn-rating{
+        font-size: 22px;
+        @include media("<=tablet") {
+          font-size: 14px;
+        }
+      }
+      .ctn-stars{
+        img{
+          height: 20px;
+          @include media("<=tablet") {
+            height: 12px;
+          }
+        }
+      }
+    }
+  }
+  .ctn-bottom{
+    @extend %j-s-b;
+    font-family: $ex;
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: 60px;
+    @include media("<=tablet") {
+      text-align: center;
+      flex-direction: column-reverse;
+      margin-top: 30px;
+    }
+    div{
+      color: fade-out($color: $b, $amount: 0.5);
+      a{
+        padding: 0 15px;
+        color: fade-out($color: $b, $amount: 0.5);
+        @include media("<=tablet") {
+          padding: 0 25px;
+        }
+      }
+      img{
+        padding-left: 25px;
+        height: 30px;
+      }
+      &.foot-info{
+        text-align: left;
+        @include media("<=tablet") {
+          margin: 25px 0;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

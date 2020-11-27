@@ -1,11 +1,151 @@
-<main>
-  <h1 class="title">{{homeCtrl.title}}</h1>
+<h></h>
+<main class="ctn-home">
+  <div class="sub-header">
+    <div class="container">
+      <div class="inner">
+        <div class="s-item">
+          <div class="box no-mobile" ng-click="new(pages[0])">
+            <img src="/assets/new-icon.png" alt=""/>
+            <div>Neu</div>
+          </div>
+          <div class="box no-mobile">
+            <img src="/assets/paste-icon.png" alt=""/>
+            <div>Einfügen</div>
+          </div>
+          <!--<div class="box ib">
+            <div class="inner">
+              <img ng-click="focus('prev')" src="/assets/arrow-left.png" class="inv"/>
+              <div class="text">{{filledFields}} / {{totalFields}}</div>
+              <img ng-click="focus('next')" src="/assets/arrow-right.png" class="inv"/>
+            </div>
+            <div class="desc no-mobile">Pflichtfelder<br/>befüllt</div>
+          </div>-->
+        </div>
+        <div class="s-item no-mobile">
+          <div class="box cb">
+            <div ng-repeat="p in pages track by $index" ng-click="new(p)" ng-class="{'active': $index === idx}">
+              <img src="/assets/content.png" alt=""/>
+              <div>{{ p.title }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="s-item">
+          <div class="box ib no-mobile">
+            <div class="inner link" ng-click="save(true)" data-clipboard-text="{{ shareLink }}" title="{{ shareLink }}">
+              <i class="fa fa-link"></i>
+              <div class="text">{{ shareLink }}</div>
+            </div>
+            <div class="desc">Dein Link<br/>(Klicken Sie, um zu kopieren)</div>
+          </div>
+          <div class="box no-mobile" ng-click="save()">
+            <img src="/assets/save-icon.png" alt=""/>
+            <div>Speichem</div>
+          </div>
+          <div class="box dl-btn" ng-click="save()">
+            <img class="no-mobile" src="/assets/download-icon.png" alt=""/>
+            <div>Herunterladen</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <!-- Images (and assets) are parsed and loaded from within the public directory -->
-  <img src="/assets/logo.png" height="200" class="my-4"/><br/>
-  <span>{{ homeCtrl.invokeMethod() }}</span>,
-  <input type="text" ng-model="homeCtrl.title"/>
+  <div class="ctn-main">
+    <div class="container">
+      <div class="ctn-page">
+        <ng-include src="page.tpl"></ng-include>
+      </div>
+
+      <div class="ctn-btn">
+        <button ng-click="download()" class="btn btn-success">
+          <img src="/assets/download-icon.png" alt="">
+          <div>Als PDF Speichern</div>
+        </button>
+      </div>
+
+      <div class="ctn-link no-desktop">
+        <div>Als Link</div>
+        <div class="inner">
+          <i class="fa fa-link"></i>
+          <input id="cp" type="text" class="form-control" value="{{shareLink}}" />
+        </div>
+        <button class="btn btn-sm btn-default desc" ng-click="save(true)" data-clipboard-target="#cp">Kopieren</button>
+      </div>
+
+    </div>
+    <div class="ctn-float-box no-mobile">
+      <div class="inner">
+        <div class="bar" ng-style="{'width': filledFields * 100 / totalFields + '%'}"></div>
+        <div class="b-item">
+          <span>{{ (filledFields * 100 / totalFields).toFixed(0)}}<sup>%</sup></span>
+          <div>geschafft</div>
+        </div>
+        <div class="b-item">
+          <div class="inner">
+            <img ng-click="focus('prev')" src="/assets/arrow-left.png" class="inv"/>
+            <div class="text">{{filledFields}} / {{totalFields}}</div>
+            <img ng-click="focus('next')" src="/assets/arrow-right.png" class="inv"/>
+          </div>
+          <div class="desc">Pflichtfelder<br/>befüllt</div>
+        </div>
+        <div class="b-item o hov" ng-click="add()">
+          Textblock Hinzufügen
+        </div>
+        <div class="b-item o">
+          {{(zoom * 100).toFixed(0)}}%&nbsp;&nbsp;&nbsp;&nbsp;
+          <div class="hov" ng-click="zoomFn('-')"><i class="fa fa-minus"></i></div>
+          <div class="hov" ng-click="zoomFn('+')"><i class="fa fa-plus"></i></div>
+        </div>
+        <div class="b-item b">
+          <button ng-click="save()" class="btn btn-success btn-block">
+            <img src="/assets/download-icon.png" alt="">
+            <div>Als PDF<br/>Speichern</div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade dl-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          Click <a target="_blank" href="{{dlPath}}">here</a> to download the PDF
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade dl-modal-2" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h2>Dein Vertrag ist fertiggestellt.</h2>
+          <p>Du kannst deinen Vertrag direkt runterladen oder einfach als Link verschicken.</p>
+          <div class="copy-box">
+            <div class="label">DEIN PERSONALIERTER LINK</div>
+            <input type="text" ng-model="shareLink" readonly />
+            <div class="copy-btn" data-clipboard-text="{{ shareLink }}">{{ copyText }}</div>
+          </div>
+          <div class="or-box">
+            <div class="dash"></div>
+            <div>ODER</div>
+            <div class="dash"></div>
+          </div>
+          <button ng-click="download()" class="btn btn-success">PDF SPEICHERN</button>
+          <img src="/assets/batch.png" alt="" />
+          <span>434 Bewertungen</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
-<footer>
-  <a target="_blank" ng-href="{{homeCtrl.url}}">Link to website: {{homeCtrl.url}}</a>
-</footer>
+<f></f>

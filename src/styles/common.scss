@@ -1,0 +1,33 @@
+html, body{
+  @extend %fhw;
+}
+
+body {
+  font-family: 'Roboto', Courier, monospace;
+  //background: $bg;
+  //color: $w;
+  text-align: center;
+}
+
+.ctn-link{
+  @include pf("", 0, 0, "");
+  z-index: 2;
+}
+
+div[ui-view]{
+  @extend %fh;
+  position: relative;
+  z-index: 1;
+}
+
+.no-mobile{
+  @include media("<=tablet") {
+    display: none !important;
+  }
+}
+
+.no-desktop{
+  @include media(">tablet") {
+    display: none !important;
+  }
+}

@@ -22,7 +22,8 @@
     "angular": "^1.8.2",
     "angular-ui-router": "^1.0.28",
     "bootstrap": "^4.5.3",
-    "jquery": "^3.5.0"
+    "jquery": "^3.5.0",
+    "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^1.1.0",

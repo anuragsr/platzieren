@@ -1,17 +1,7 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
-
-html, body{
-  height: 100%;
-	width: 100%;
-}
-
-$w: #fff;
-$bg: rgb(36, 41, 46);
-//$bg: rgb(136, 241, 46);
-
-body {
-  font-family: 'Roboto', Courier, monospace;
-  background: $bg;
-  color: $w;
-  text-align: center;
-}
+@import 'vars.scss';
+@import 'include-media.scss';
+@import 'common.scss';
+@import 'header.scss';
+@import 'home.scss';
+@import 'footer.scss';
