@@ -22,9 +22,10 @@ class AppCtrl {
 
 const MODULE_NAME = 'app';
 
-angular.module(MODULE_NAME, [])
-  .directive('app', app)
-  .controller('AppCtrl', AppCtrl);
+angular
+.module(MODULE_NAME, [])
+.directive('app', app)
+.controller('AppCtrl', AppCtrl);
 
 export default MODULE_NAME;
 
