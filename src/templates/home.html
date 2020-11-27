@@ -1,0 +1,11 @@
+<main>
+  <h1 class="title">{{homeCtrl.title}}</h1>
+
+  <!-- Images (and assets) are parsed and loaded from within the public directory -->
+  <img src="/assets/logo.png" height="200" class="my-4"/><br/>
+  <span>{{ homeCtrl.invokeMethod() }}</span>,
+  <input type="text" ng-model="homeCtrl.title"/>
+</main>
+<footer>
+  <a target="_blank" ng-href="{{homeCtrl.url}}">Link to website: {{homeCtrl.url}}</a>
+</footer>
