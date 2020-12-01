@@ -7,6 +7,9 @@ import HomeCtrl from './controllers/Home'
 import LoadCtrl from './controllers/Load'
 import Header from './directives/Header'
 import Footer from "./directives/Footer"
+import coffeeTpl from './templates/coffee.html'
+import japaneseTpl from './templates/japanese.html'
+import pizzaTpl from './templates/pizza.html'
 
 import Utils from "./utils/utils"
 import { l, cl } from './utils/helpers'
@@ -16,9 +19,7 @@ import './styles/index.scss'
 l('jQuery Version:', $().jquery)
 
 WebFont.load({
-  google: {
-    families: ['Exo 2:400,700', 'Open Sans:400,700']
-  }
+  google: { families: ['Exo 2:400,700', 'Open Sans:400,700'] }
   , active: function() {
     l("Webfonts loaded")
     // $(".preload").fadeOut()
@@ -28,6 +29,9 @@ WebFont.load({
 angular
   .module('app', [uiRouter])
   .factory('utils', Utils)
+  .component('coffeeTpl', { template: coffeeTpl })
+  .component('japaneseTpl', { template: japaneseTpl })
+  .component('pizzaTpl', { template: pizzaTpl })
   .controller('HomeCtrl', HomeCtrl)
   .controller('LoadCtrl', LoadCtrl)
   .config(function($stateProvider, $urlRouterProvider, $locationProvider) {

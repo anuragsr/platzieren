@@ -4,12 +4,11 @@ html, body{
 
 body {
   font-family: 'Roboto', Courier, monospace;
-  //background: $bg;
-  //color: $w;
   text-align: center;
 }
 
 .ctn-link{
+  mix-blend-mode: difference;
   @include pf("", 0, 0, "");
   z-index: 2;
 }
