@@ -1,8 +1,8 @@
 header{
   @extend %fw;
   background: $w;
-  position: fixed;
-  z-index: 2;
+  //position: fixed;
+  //z-index: 2;
   @include media("<=tablet") {
     position: relative;
   }

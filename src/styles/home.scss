@@ -1,14 +1,15 @@
 .ctn-home{
-  overflow: scroll;
+  //overflow: scroll;
   @include media("<=tablet") {
     overflow: hidden;
   }
 
   .sub-header{
-    position: fixed;
-    z-index: 1;
-    top: $headHeight;
-    height: $subHeadHeight;
+    @extend %j-c;
+    //position: fixed;
+    //z-index: 1;
+    //top: $headHeight;
+    //height: $subHeadHeight;
     @extend %fw;
     padding: 20px 0;
     background: $w;
@@ -161,11 +162,22 @@
   .ctn-main{
     position: relative;
     z-index: 0;
-    padding-top: $headHeight + $subHeadHeight + 80;
-    padding-bottom: 80px;
+    //padding-top: $headHeight + $subHeadHeight;
+    //padding-top: $headHeight + $subHeadHeight + 80;
+    //padding-bottom: 80px;
     @include media("<=tablet") {
       // padding-top: 20 + $subHeadHeight + 80;
       padding-top: 80px;
+    }
+
+    .ctn-menu-bg{
+      @extend %fw;
+      position: relative;
+      .ctn-menu-outer{
+        @extend %fw;
+        .ctn-menu-inner{}
+      }
+      .ctn-clip{ @extend %fw; }
     }
 
     .ctn-page{

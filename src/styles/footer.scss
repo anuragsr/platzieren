@@ -2,6 +2,7 @@ footer{
   position: relative;
   //padding: 30px;
   padding-top: 50px;
+  padding-bottom: 80px;
   background: $w;
   box-shadow: 0 -6px 5px 0px rgba($color: $b, $alpha: .05);
   @include media("<=tablet") {
