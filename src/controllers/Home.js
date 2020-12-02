@@ -5,14 +5,17 @@ export default class HomeCtrl {
   constructor($scope, utils) {
     this.url = 'http://envisagecyberart.in'
     this.title = 'Platzieren'
+    this.toggle = { switch: false }
     this.pages = [
       {
-        title: 'Coffee',
+        title: 'Allge.',
+        img: "/assets/coffee.png",
         // tpl: 'templates/coffee.html',
         fields: []
       },
       {
         title: 'Sushi',
+        img: "/assets/sushi.png",
         // tpl: '../templates/japanese.html',
         // tpl: require('../templates/japanese.html').default,
         fields: [
@@ -57,6 +60,7 @@ export default class HomeCtrl {
       },
       {
         title: 'Pizza',
+        img: "/assets/pizza.png",
         // tpl: 'templates/pizza.html',
         fields: []
       },
