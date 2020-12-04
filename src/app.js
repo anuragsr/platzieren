@@ -1,6 +1,9 @@
 import $ from 'jquery'
 import angular from 'angular'
 import uiRouter from 'angular-ui-router'
+// import carousel from 'angular-ui-bootstrap/src/carousel'
+// import uiBootstrap from 'angular-ui-bootstrap'
+import 'angular-ui-carousel/dist/ui-carousel.min'
 import WebFont from 'webfontloader'
 
 import HomeCtrl from './controllers/Home'
@@ -15,6 +18,7 @@ import Utils from "./utils/utils"
 import { l, cl } from './utils/helpers'
 
 import './styles/index.scss'
+import 'angular-ui-carousel/dist/ui-carousel.min.css'
 
 l('jQuery Version:', $().jquery)
 
@@ -27,16 +31,37 @@ WebFont.load({
 })
 
 angular
-  .module('app', [uiRouter])
-  .factory('utils', Utils)
-  .component('coffeeTpl', { template: coffeeTpl })
-  .component('japaneseTpl', { template: japaneseTpl })
-  .component('pizzaTpl', { template: pizzaTpl })
-  .controller('HomeCtrl', HomeCtrl)
-  .controller('LoadCtrl', LoadCtrl)
-  .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
-    // $locationProvider.html5Mode(true);
+  .module('app', [uiRouter, 'ui.carousel'])
+  .factory('utils', ['$q', '$filter', '$rootScope', Utils])
+  .component('coffeeTpl', {
+    template: coffeeTpl,
+    controller: function () {
+      this.$onInit = () => {
+        l("init coffeeTpl")
+      }
+    }
+  })
+  .component('japaneseTpl', {
+    template: japaneseTpl,
+    controller: function () {
+      this.$onInit = () => {
+        l("init japaneseTpl")
+      }
+    }
+  })
+  .component('pizzaTpl', {
+    template: pizzaTpl,
+    controller: function () {
+      this.$onInit = () => {
+        l("init pizzaTpl")
+      }
+    }
+  })
+  .controller('HomeCtrl', ['$scope', 'utils', HomeCtrl])
+  .controller('LoadCtrl', ['$scope', 'utils', LoadCtrl])
+  .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/home");
+    // $urlRouterProvider.otherwise("/l/2");
 
     $stateProvider
     .state('home', {
@@ -52,6 +77,6 @@ angular
       controllerAs: 'loadCtrl'
     })
     // Add more states here
-  })
+  }])
   .directive('h', Header)
   .directive('f', Footer)

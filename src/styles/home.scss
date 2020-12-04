@@ -1,302 +1,315 @@
 .ctn-home{
-  //overflow: scroll;
   @include media("<=tablet") {
     overflow: hidden;
   }
-
-  .sub-header{
-    //position: fixed;
-    //z-index: 1;
-    //top: $headHeight;
-    //height: $subHeadHeight;
-    //box-shadow: 0 6px 5px 0px rgba($b, .05);
-    @extend %j-c;
-    @extend %fw;
-    font-family: $ex;
+  section{
+    color: $pr;
+    font-family: $os;
     font-weight: 400;
-    padding: 20px 0;
-    background: $w;
-    box-shadow: 0 4px 4px 4px rgba(31, 68, 84, 0.02);
-    @include media("<=lp") { padding: 20px 10px; }
-    @include media("<=tablet") {
-      position: relative;
-      top: 0;
-      height: unset;
-    }
-    .inner{
-      @extend %fh;
-      @extend %j-s-b;
-      font-size: 14px;
-      .s-item{
-        display: flex;
-        button{
-          height: 36px;
-          font-size: 15px;
-          padding: 5px 25px;
-        }
-      }
-      .box{
-        @extend %fh;
-        @extend %j-c;
-        padding: 0 15px;
-        transition: all .3s;
-        border-radius: 2px;
-        border: solid 1px $pr;
-        height: 64px;
-        min-width: 66px;
-        @include media("<=tablet") {
-          margin: 0;
-          padding: 0;
-        }
-        &.ctn-new{
-          cursor: pointer;
-          flex-direction: column;
-          img{
-            height: 25px;
-            margin-bottom: 5px;
-          }
-          &:hover{ background: rgba($l, 1); }
-        }
-        &.ctn-menu-opts{
-          @extend %j-c;
-          position: relative;
-          padding: 0 20px;
-          .menu-opt{
-            opacity: .5;
-            cursor: pointer;
-            border-radius: 5px;
-            border: solid 1px $pr;
-            width: 60px;
-            height: 55px;
-            margin: 0 5px;
-            flex-direction: column;
-            transition: opacity .3s;
-            &:hover{ opacity: 1; }
-            img{ height: 27px; }
-          }
-          .arr{
-            position: absolute;
-            top: 27%;
-            cursor: pointer;
-            &.arr-lt{ padding-left: 5px; left: 0; }
-            &.arr-rt{ padding-right: 5px; right: 0; }
-            img{ height: 15px; }
-          }
-        }
-      }
-      .ctn-switch{
-        .btn-switch {
-          position: relative;
-          width: 52px;
-          height: 27px;
-          cursor: pointer;
-          background-color: $l;
-          border-radius: 40px;
-          box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.05);
-          border: solid 1px rgba(37, 58, 65, 0.1);
-          transition: all .3s;
-          margin: 0 10px;
-          .btn-switch-circle {
-            transition: left .3s;
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 25px;
-            width: 25px;
-            background-color: #fff;
-            border-radius: inherit;
-          }
-        }
-        .btn-switch--on {
-          background-color: $pr;
-          .btn-switch-circle--on { left: 25px; }
-        }
-      }
-      .ctn-copy-link{
-        @extend %j-f-s;
-        flex-direction: column;
-        .inner{
-          @extend %j-c;
-          width: 140px;
-          height: 50px;
-          padding: 5px 10px;
-          margin-bottom: 10px;
-          background: $pr;
-          @include media("<=tablet") {
-            margin-bottom: 0;
-            width: 45vw;
-          }
-          img{
-            cursor: pointer;
-            height: 20px;
-            margin-bottom: 0;
-          }
-          &.link{
-            width: 200px;
-            cursor: pointer;
-            background: $l;
-            @include media("<=lp") {
-              width: 140px;
-            }
-            .text{
-              overflow: hidden;
-              text-overflow: ellipsis;
-            }
-            i{
-              margin-right: 10px;
-              transform: scaleX(-1);
-            }
-          }
-        }
-        .desc{
-          font-size: 14px;
-          text-align: center;
-          @include media("<=lp") {
-            font-size: 12px;
-          }
-        }
-      }
-    }
-  }
-
-  .ctn-main{
     position: relative;
-    z-index: 0;
-    @include media("<=tablet") {
-      // padding-top: 20 + $subHeadHeight + 80;
-      padding-top: 80px;
+    .pre-title{
+      font-size: 25px;
+      font-weight: 700;
     }
-
-    .ctn-menu-bg{
+    .title{
+      font-size: 40px;
+      font-weight: 700;
+    }
+    &.section0{
+      //position: fixed;
+      //z-index: 1;
+      //top: $headHeight;
+      //height: $subHeadHeight;
+      //box-shadow: 0 6px 5px 0px rgba($b, .05);
+      @extend %j-c;
       @extend %fw;
-      position: relative;
-      .ctn-menu-outer{
-        @extend %fw;
-        .ctn-menu-inner{
-          .ctn-btn{
-            @extend %fw;
-            position: absolute;
-            bottom: -250px; left: 0;
-            text-align: center;
-            .btn{
-              @extend %j-s-a;
-              background: $sc;
-              border-color: $sc;
-              font-size: 22px;
-              margin: 0 auto;
-              //margin-top: 50px;
-              padding: 10px 20px;
-              img{
-                height: 35px;
-                filter: invert(100%);
-                margin-right: 10px;
-              }
-              &:hover{
-                background: fade-out($color: $sc, $amount: .1);
-              }
-            }
-          }
-        }
-      }
-      .ctn-clip{ @extend %fw; }
-    }
-
-    .ctn-float-box{
-      position: absolute;
-      top: $headHeight + $subHeadHeight + 80;
-      right: 125px;
+      font-family: $ex;
+      font-weight: 400;
+      padding: 20px 0;
       background: $w;
-      box-shadow: $sh;
-      width: 225px;
-      transition: right .3s;
-      @include media("<=sld") {
-        right: 25px;
-      }
-      > .inner{
-        @extend %fhw;
-        @extend %j-c;
-        flex-direction: column;
-        text-align: center;
+      box-shadow: 0 4px 4px 4px rgba(31, 68, 84, 0.02);
+      @include media("<=lp") { padding: 20px 10px; }
+      @include media("<=tablet") {
         position: relative;
-        padding: 20px;
-        .bar{
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 50%;
-          height: 10px;
-          background: $sc;
+        top: 0;
+        height: unset;
+      }
+      .inner{
+        @extend %fh;
+        @extend %j-s-b;
+        font-size: 14px;
+        .s-item{
+          display: flex;
+          button{
+            height: 36px;
+            font-size: 15px;
+            padding: 5px 25px;
+          }
         }
-        .b-item{
-          margin: 10px auto;
-          &.o{
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            font-size: 16px;
-            padding: 10px 5px;
-            @extend %fw;
-            outline: 1px solid rgba($color: $b, $alpha: .2);
-            &.hov, & .hov{
-              cursor: pointer;
-              transition: all .2s;
-            }
-            &.hov:hover, & .hov:hover{
-              background: $l;
-            }
-            div{
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              width: 40px;
+        .box{
+          @extend %fh;
+          @extend %j-c;
+          padding: 0 15px;
+          transition: all .3s;
+          border-radius: 2px;
+          border: solid 1px $pr;
+          height: 64px;
+          min-width: 66px;
+          @include media("<=tablet") {
+            margin: 0;
+            padding: 0;
+          }
+          &.ctn-new{
+            cursor: pointer;
+            flex-direction: column;
+            img{
               height: 25px;
-              outline: 1px solid rgba($color: $b, $alpha: .2);
-              font-size: 16px;
+              margin-bottom: 5px;
             }
+            &:hover{ background: rgba($l, 1); }
           }
-          &.b{
-            width: 110%;
+          &.ctn-menu-opts{
+            @extend %j-c;
             position: relative;
-            left: -5%;
-            .btn{
-              @extend %j-s-a;
-              background: $sc;
-              border-color: $sc;
-              font-size: 18px;
-              font-weight: bold;
-              img{
-                height: 27px;
-                filter: invert(100%);
-                margin-right: 5px;
-              }
-              &:hover{
-                background: fade-out($color: $sc, $amount: .1);
-              }
+            padding: 0 20px;
+            .menu-opt{
+              opacity: .5;
+              cursor: pointer;
+              border-radius: 5px;
+              border: solid 1px $pr;
+              width: 60px;
+              height: 55px;
+              margin: 0 5px;
+              flex-direction: column;
+              transition: opacity .3s;
+              &:hover{ opacity: 1; }
+              img{ height: 27px; }
+            }
+            .arr{
+              position: absolute;
+              top: 27%;
+              cursor: pointer;
+              &.arr-lt{ padding-left: 5px; left: 0; }
+              &.arr-rt{ padding-right: 5px; right: 0; }
+              img{ height: 15px; }
             }
           }
-          span{
-            font-size: 36px;
-            sup{
-              font-size: 24px;
+        }
+        .ctn-switch{
+          .btn-switch {
+            position: relative;
+            width: 52px;
+            height: 27px;
+            cursor: pointer;
+            background-color: $l;
+            border-radius: 40px;
+            box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.05);
+            border: solid 1px rgba(37, 58, 65, 0.1);
+            transition: all .3s;
+            margin: 0 10px;
+            .btn-switch-circle {
+              transition: left .3s;
+              position: absolute;
+              top: 0;
+              left: 0;
+              height: 25px;
+              width: 25px;
+              background-color: #fff;
+              border: inherit;
+              border-radius: inherit;
             }
           }
+          .btn-switch--on {
+            background-color: $pr;
+            .btn-switch-circle--on { left: 25px; }
+          }
+        }
+        .ctn-copy-link{
+          @extend %j-f-s;
+          flex-direction: column;
           .inner{
             @extend %j-c;
-            width: 175px;
+            width: 140px;
             height: 50px;
-            padding: 5px 15px;
+            padding: 5px 10px;
             margin-bottom: 10px;
             background: $pr;
-            .text{
-              margin: 0 20px;
+            @include media("<=tablet") {
+              margin-bottom: 0;
+              width: 45vw;
             }
             img{
               cursor: pointer;
               height: 20px;
               margin-bottom: 0;
-              &:hover{
-                filter: invert(100%);
+            }
+            &.link{
+              width: 200px;
+              cursor: pointer;
+              background: $l;
+              @include media("<=lp") {
+                width: 140px;
+              }
+              .text{
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+              i{
+                margin-right: 10px;
+                transform: scaleX(-1);
+              }
+            }
+          }
+          .desc{
+            font-size: 14px;
+            text-align: center;
+            @include media("<=lp") {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+
+    &.section1{
+      position: relative;
+      z-index: 0;
+      @include media("<=tablet") {
+        // padding-top: 20 + $subHeadHeight + 80;
+        padding-top: 80px;
+      }
+
+      .ctn-menu-bg{
+        @extend %fw;
+        position: relative;
+        .ctn-menu-outer{
+          @extend %fw;
+          .ctn-menu-inner{
+            .ctn-btn{
+              @extend %fw;
+              position: absolute;
+              bottom: -250px; left: 0;
+              text-align: center;
+              .btn{
+                @extend %j-s-a;
+                background: $sc;
+                border-color: $sc;
+                font-size: 22px;
+                margin: 0 auto;
+                //margin-top: 50px;
+                padding: 10px 20px;
+                img{
+                  height: 35px;
+                  filter: invert(100%);
+                  margin-right: 10px;
+                }
+                &:hover{
+                  background: fade-out($color: $sc, $amount: .1);
+                }
+              }
+            }
+          }
+        }
+        .ctn-clip{ @extend %fw; }
+      }
+
+      .ctn-float-box{
+        position: absolute;
+        top: $headHeight + $subHeadHeight + 80;
+        right: 125px;
+        background: $w;
+        box-shadow: $sh;
+        width: 225px;
+        transition: right .3s;
+        @include media("<=sld") {
+          right: 25px;
+        }
+        > .inner{
+          @extend %fhw;
+          @extend %j-c;
+          flex-direction: column;
+          text-align: center;
+          position: relative;
+          padding: 20px;
+          .bar{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 10px;
+            background: $sc;
+          }
+          .b-item{
+            margin: 10px auto;
+            &.o{
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
+              font-size: 16px;
+              padding: 10px 5px;
+              @extend %fw;
+              outline: 1px solid rgba($color: $b, $alpha: .2);
+              &.hov, & .hov{
+                cursor: pointer;
+                transition: all .2s;
+              }
+              &.hov:hover, & .hov:hover{
+                background: $l;
+              }
+              div{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 25px;
+                outline: 1px solid rgba($color: $b, $alpha: .2);
+                font-size: 16px;
+              }
+            }
+            &.b{
+              width: 110%;
+              position: relative;
+              left: -5%;
+              .btn{
+                @extend %j-s-a;
+                background: $sc;
+                border-color: $sc;
+                font-size: 18px;
+                font-weight: bold;
+                img{
+                  height: 27px;
+                  filter: invert(100%);
+                  margin-right: 5px;
+                }
+                &:hover{
+                  background: fade-out($color: $sc, $amount: .1);
+                }
+              }
+            }
+            span{
+              font-size: 36px;
+              sup{
+                font-size: 24px;
+              }
+            }
+            .inner{
+              @extend %j-c;
+              width: 175px;
+              height: 50px;
+              padding: 5px 15px;
+              margin-bottom: 10px;
+              background: $pr;
+              .text{
+                margin: 0 20px;
+              }
+              img{
+                cursor: pointer;
+                height: 20px;
+                margin-bottom: 0;
+                &:hover{
+                  filter: invert(100%);
+                }
               }
             }
           }
@@ -304,154 +317,120 @@
       }
     }
 
-    //.ctn-page{
-    //  margin: 0 auto;
-    //  width: 240mm * .9;
-    //  @include media("<=ld") {
-    //    margin: 0;
-    //  }
-    //  @include media("<=tablet") {
-    //    width: 100%;
-    //  }
-    //  .page{
-    //    @extend %fw;
-    //    @extend %no-select;
-    //    padding: 60px;
-    //    background: $w;
-    //    margin-bottom: 50px;
-    //    min-height: 297mm;
-    //    box-shadow: $sh;
-    //    @include media("<=tablet") {
-    //      padding: 40px 20px;
-    //      min-height: 297mm*.8;
-    //    }
-    //    h4{
-    //      @include media("<=tablet") {
-    //        font-size: 16px;
-    //      }
-    //    }
-    //    &:last-of-type{
-    //      margin-bottom: 0;
-    //    }
-    //    .section{
-    //      position: relative;
-    //      font-size: 16px;
-    //      margin: 15px 0;
-    //      border: 1px solid rgba($color: $b, $alpha: 0);
-    //      border-radius: 5px;
-    //      border-top-right-radius: 0;
-    //      transition: all .2s;
-    //      @include media("<=tablet") {
-    //        font-size: 14px;
-    //        border-top-right-radius: 5px;
-    //      }
-    //      &:hover{
-    //        border: 1px solid rgba($color: $b, $alpha: .5);
-    //      }
-    //      .ctn-action{
-    //        transition: all .2s;
-    //        border-top-right-radius: 5px;
-    //        border-bottom-right-radius: 5px;
-    //        visibility: hidden;
-    //        opacity: 0;
-    //        padding: 0 10px;
-    //        font-size: 14px;
-    //        border: 1px solid rgba($color: $b, $alpha: 0);
-    //        z-index: 1;
-    //        cursor: pointer;
-    //        position: absolute;
-    //        right: -33px;
-    //        top: -1px;
-    //        background: $w;
-    //        @include media("<=tablet") {
-    //          height: 100%;
-    //          right: -1px;
-    //          top: 0px;
-    //          display: flex;
-    //          flex-direction: column;
-    //          align-items: center;
-    //          justify-content: center;
-    //        }
-    //        &:hover{
-    //          background: $l;
-    //        }
-    //      }
-    //      &:hover .ctn-action{
-    //        border: 1px solid rgba($color: $b, $alpha: .5);
-    //        opacity: 1;
-    //        visibility: visible;
-    //      }
-    //      .edit{
-    //        border-radius: 5px;
-    //        outline: none;
-    //        display: inline-block;
-    //        white-space: pre-wrap;
-    //        cursor: text;
-    //        // width: fit-content;
-    //        padding: 5px;
-    //        background: $pr;
-    //        -webkit-user-select: text;
-    //        -webkit-user-modify: read-write;
-    //        user-select: text;
-    //        // line-height: 2;
-    //        &[placeholder]:empty:before {
-    //          content: attr(placeholder);
-    //        }
-    //        // &[placeholder]:empty:focus:before {
-    //        //   content: "";
-    //        // }
-    //      }
-    //      &.heading{
-    //        margin: 30px 0;
-    //      }
-    //    }
-    //  }
-    //}
-    //
-    //&.load{
-    //  padding-top: $headHeight + 100;
-    //
-    //  .ctn-page{
-    //    .page{
-    //      .section{
-    //        &:hover{
-    //          border: 1px solid rgba($color: $b, $alpha: 0);
-    //        }
-    //        .edit{
-    //          padding: 0;
-    //          background: none;
-    //        }
-    //      }
-    //    }
-    //  }
-    //}
-    //
-    //.ctn-link{
-    //  text-align: center;
-    //  box-shadow: $sh;
-    //  background: $w;
-    //  margin-top: 60px;
-    //  padding: 20px;
-    //  .inner{
-    //    display: flex;
-    //    align-items: center;
-    //    justify-content: center;
-    //    background: $l;
-    //    padding: 15px 0;
-    //    margin: 10px 0;
-    //    #cp{
-    //      width: unset;
-    //    }
-    //    .text{
-    //      overflow: hidden;
-    //      text-overflow: ellipsis;
-    //    }
-    //    i{
-    //      margin-right: 10px;
-    //      transform: scaleX(-1);
-    //    }
-    //  }
-    //}
+    &.section2{
+      background: $pr;
+      color: $w;
+      padding: 2vh 0;
+      //p{ font-family: $os-r; }
+      .points{
+        @extend %j-s-b;
+        align-items: flex-start;
+        @include media("<tablet"){
+          flex-direction: column;
+          align-items: center;
+        }
+        margin-top: 100px;
+        .ctn-point{
+          @include media("<tablet"){
+            width: 100%;
+          }
+          img{
+            height: 60px;
+          }
+          h4{
+            margin-top: 25px;
+            margin-bottom: 25px;
+            font-size: 25px;
+            font-weight: 700;
+            @include media("<tablet"){
+              font-size: 20px;
+              margin: 0;
+            }
+          }
+          p{ width: 16vw; margin: 0 auto; }
+        }
+      }
+      p.tnc{
+        margin-top: 50px;
+        font-size: 15px;
+        a{ color: $w; font-weight: 700; }
+      }
+    }
+
+    &.section3{
+      @extend %j-f-s;
+      height: 621px;
+      color: $pr;
+      .bg{
+        @extend %fh;
+        @include pa(0, "", "", 0);
+        width: 50%;
+        background: url(/assets/bg.png) no-repeat;
+        background-size: cover;
+        background-position: 50% 50%;
+        clip-path: polygon(0% 0%, 15% 100%, 100% 100%, 100% 0%);
+      }
+      .ctn-qr{
+        height: 90px;
+        width: 90px;
+        border-radius: 50%;
+        background-image: url(/assets/s2.png);
+        background-color: $pr;
+        background-size: 55%;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .title{
+        margin: 25px 0;
+        line-height: 1.25;
+      }
+      .sub-title{
+        font-size: 25px;
+        margin: 25px 0;
+      }
+      a{
+        color: #2c9cdb;
+        font-size: 25px;
+        font-weight: 700;
+      }
+    }
+
+    &.section4{
+      padding-top: 5vh;
+      background: rgba(196, 196, 196, 0.19);
+      .title{ margin-bottom: 5vh; }
+      .cost{
+        margin: 30px 0;
+        font-family: $ex;
+        font-weight: 700;
+      }
+      .carousel-item{ display: inline-block; }
+      .row-wt{
+        background: $w;
+        padding-top: 35px;
+        padding-bottom: 35px;
+        .ctn-size{
+          @extend %j-f-s;
+          color: $pr;
+          font-family: $ex;
+          font-size: 20px;
+          font-weight: 700;
+          margin-bottom: 50px;
+          div{
+            cursor: pointer;
+            padding: 10px 20px;
+            border-bottom: 5px solid transparent;
+            &:hover, &.active{
+              border-color: $pr;
+            }
+          }
+        }
+        button{
+          font-size: 20px;
+          font-weight: 700;
+        }
+      }
+    }
   }
 }
 

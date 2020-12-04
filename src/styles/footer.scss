@@ -4,7 +4,8 @@ footer{
   padding-top: 50px;
   padding-bottom: 80px;
   background: $w;
-  box-shadow: 0 -6px 5px 0px rgba($color: $b, $alpha: .05);
+  //box-shadow: 0 -6px 5px 0px rgba($color: $b, $alpha: .05);
+  box-shadow: 0 -2px 3px 0 rgba(179, 179, 179, 0.08);
   @include media("<=tablet") {
     padding: 10px;
     padding-top: 50px;

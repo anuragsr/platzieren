@@ -3,7 +3,6 @@ html, body{
 }
 
 body {
-  font-family: 'Roboto', Courier, monospace;
   text-align: center;
 }
 
@@ -19,13 +18,13 @@ div[ui-view]{
   z-index: 1;
 }
 
-.no-mobile{
+.no-mobile, .desktop-only{
   @include media("<=tablet") {
     display: none !important;
   }
 }
 
-.no-desktop{
+.no-desktop, .mobile-only{
   @include media(">tablet") {
     display: none !important;
   }

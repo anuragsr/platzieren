@@ -1,6 +1,6 @@
 <h></h>
 <main class="ctn-home">
-  <div class="sub-header">
+  <section class="section0">
     <div class="container">
       <div class="inner">
         <div class="s-item box ctn-new" ng-click="homeCtrl.new(homeCtrl.pages[0])">
@@ -45,14 +45,14 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="ctn-main">
-    <coffee-tpl ng-if="homeCtrl.page.title === 'Allge.'"></coffee-tpl>
-    <japanese-tpl ng-if="homeCtrl.page.title === 'Sushi'"></japanese-tpl>
-    <pizza-tpl ng-if="homeCtrl.page.title === 'Pizza'"></pizza-tpl>
+  <section class="section1">
+    <coffee-tpl ng-init="console.log('wa')" ng-if="homeCtrl.page.title === 'Allge.'"></coffee-tpl>
+    <japanese-tpl ng-init="console.log('wa')" ng-if="homeCtrl.page.title === 'Sushi'"></japanese-tpl>
+    <pizza-tpl ng-init="console.log('wa')" ng-if="homeCtrl.page.title === 'Pizza'"></pizza-tpl>
 
-    <div class="ctn-float-box no-mobile">
+    <div class="ctn-float-box">
       <div class="inner">
         <div class="bar" ng-style="{'width': filledFields * 100 / totalFields + '%'}"></div>
         <div class="b-item">
@@ -61,9 +61,9 @@
         </div>
         <div class="b-item">
           <div class="inner">
-            <img ng-click="focus('prev')" src="/assets/arrow-left.png" class="inv"/>
+            <img ng-click="focus('prev')" src="/assets/arr-l.png" class="inv"/>
             <div class="text">{{filledFields}} / {{totalFields}}</div>
-            <img ng-click="focus('next')" src="/assets/arrow-right.png" class="inv"/>
+            <img ng-click="focus('next')" src="/assets/arr-r.png" class="inv"/>
           </div>
           <div class="desc">Pflichtfelder<br/>befüllt</div>
         </div>
@@ -77,13 +77,191 @@
         </div>
         <div class="b-item b">
           <button ng-click="save()" class="btn btn-success btn-block">
-            <img src="/assets/download-icon.png" alt="">
+            <img src="/assets/s2.png" alt="">
             <div>Als PDF<br/>Speichern</div>
           </button>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <section class="section2">
+    <div class="container">
+      <div class="pre-title">Procedure</div>
+      <div class="title">Three Simple Steps</div>
+      <div class="points">
+        <div class="ctn-point">
+          <div class="desktop-only">
+            <img src="/assets/s1.png" alt=""/>
+            <h4>1. Online ausfüllen</h4>
+            <p>
+              In a few clicks you can fill out the questionnaire on our site.
+            </p>
+          </div>
+          <div class="mobile-only row">
+            <div class="col-2 num dashed">1</div>
+            <div class="col-10 text-left">
+              <h4>Finden Sie ein Termin</h4>
+              <p>
+                Reservieren Sie einen Termin, um mit unseren Experten über ihr Anliegen zu sprechen.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="ctn-point">
+          <div class="desktop-only">
+            <img src="/assets/s2.png" alt=""/>
+            <h4>2. QR Code erstellen</h4>
+            <p>
+              We will look at your answers and then see which package suits you best.
+            </p>
+          </div>
+          <div class="mobile-only row">
+            <div class="col-2 num dashed">2</div>
+            <div class="col-10 text-left">
+              <h4>Wir melden uns bei Ihnen</h4>
+              <p>
+                Ein Experte von Cloudbasiert wird sich in weniger als 24 Stunden mit Ihnen in Verbindung setzen
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="ctn-point">
+          <div class="desktop-only">
+            <img src="/assets/s3.png" alt=""/>
+            <h4>3. Aufsteller plazieren</h4>
+            <p>
+              After that you can decide if you agree to the package and then you can conclude your contract.
+            </p>
+          </div>
+          <div class="mobile-only row">
+            <div class="col-2 num">3</div>
+            <div class="col-10 text-left">
+              <h4>Kostenfreier Workshop</h4>
+              <p>
+                Ein Experte von Cloudbasiert führt für ihr Unternehmen einen Workshop durch
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="desktop-only tnc">
+        Erfahren Sie mehr über die Funktionsweise. <a href="#">Bedingungen und Konditionen.</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section3 text-left">
+    <div class="bg"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-5">
+          <div class="ctn-qr"></div>
+          <div class="title">
+            Codes erstellen &<br/>Aufsteller platzieren
+          </div>
+          <div class="sub-title">
+            Gewünschtes Layout auswählen, Kombipaket buchen und die Aufsteller, Sticker bequem platzieren.
+          </div>
+          <a href="#">Mehr erfahren ></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section4">
+    <div class="container">
+      <div class="title">Buche das <br/>rundumsorglos Paket</div>
+      <div class="row">
+        <div class="col-8">
+<!--          <div class="carousel slide" active="homeCtrl.active" interval="homeCtrl.myInterval" no-wrap="homeCtrl.noWrapSlides">-->
+          <!--<div class="carousel slide"  data-ride="carousel">
+            <div class="carousel-inner">
+              <div ng-repeat="slide in homeCtrl.slides track by slide.id" index="slide.id" class="carousel-item">
+                <img ng-src="{{slide.image}}" style="margin:auto;">
+                <div class="carousel-caption">
+                  <h4>Slide {{slide.id}}</h4>
+                  <p>{{slide.text}}</p>
+                </div>
+              </div>
+            </div>
+          </div>-->
+<!--          <div >-->
+<!--            <div uib-carousel active="homeCtrl.active" interval="homeCtrl.myInterval" no-wrap="homeCtrl.noWrapSlides">-->
+<!--              <div uib-slide ng-repeat="slide in homeCtrl.slides track by slide.id" index="slide.id">-->
+<!--                <img ng-src="{{slide.image}}" style="margin:auto;">-->
+<!--                <div class="carousel-caption">-->
+<!--                  <h4>Slide {{slide.id}}</h4>-->
+<!--                  <p>{{slide.text}}</p>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+          <ui-carousel
+            slides="homeCtrl.slides"
+            slides-to-show="1"
+            slides-to-scroll="1"
+            initial-slide="1"
+            autoplay="false"
+            autoplay-speed="2000"
+            dots="false">
+
+            <carousel-item>
+              <img src="{{item.image}}" ng-src="{{item.image}}"/>
+              <!--
+              <h3>{{ item + 1 }}</h3>-->
+<!--              <pre>{{ item | json }}</pre>-->
+            </carousel-item>
+          </ui-carousel>
+          <!--<carousel interval="myInterval">
+            <slide ng-repeat="slide in slides" active="slide.active">
+              <img ng-src="{{slide.image}}">
+              <div class="carousel-caption">
+                <h4>Slide {{$index+1}}</h4>
+              </div>
+            </slide>
+          </carousel>-->
+        </div>
+        <div class="col-4 text-left">
+          <div class="pre-title">
+            Passender Aufsteller <br/>dazu buchen
+          </div>
+          <div class="sub-title">
+            After that you can decide if you agree to the package and then you can conclude your contract.
+          </div>
+          <div class="pre-title cost">14,99 EUR</div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row row-wt">
+        <div class="col-12">
+          <div class="container">
+            <div class="row">
+              <div class="col-8"></div>
+              <div class="col-4 text-left">
+                <div class="ctn-size">
+                  <div
+                    ng-click="homeCtrl.activeSize = 'S'"
+                    ng-class="{'active': homeCtrl.activeSize === 'S'}"
+                    >S</div>
+                  <div
+                    ng-click="homeCtrl.activeSize = 'M'"
+                    ng-class="{'active': homeCtrl.activeSize === 'M'}"
+                    >M</div>
+                  <div
+                    ng-click="homeCtrl.activeSize = 'L'"
+                    ng-class="{'active': homeCtrl.activeSize === 'L'}"
+                    >L</div>
+                </div>
+                <button class="btn btn-pr">Jetz kaufen</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <div class="modal fade dl-modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -97,8 +275,7 @@
       </div>
     </div>
   </div>
-
-  <div class="modal fade dl-modal-2" tabindex="-1" role="dialog">
+  <!--  <div class="modal fade dl-modal-2" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -125,6 +302,6 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
 </main>
 <f></f>

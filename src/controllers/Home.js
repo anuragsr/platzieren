@@ -6,18 +6,16 @@ export default class HomeCtrl {
     this.url = 'http://envisagecyberart.in'
     this.title = 'Platzieren'
     this.toggle = { switch: false }
+    this.activeSize = 'S'
     this.pages = [
       {
         title: 'Allge.',
         img: "/assets/coffee.png",
-        // tpl: 'templates/coffee.html',
         fields: []
       },
       {
         title: 'Sushi',
         img: "/assets/sushi.png",
-        // tpl: '../templates/japanese.html',
-        // tpl: require('../templates/japanese.html').default,
         fields: [
           // { r: 0, p: 'Viola Vorlage,', v: '', id:'f0' },
           // { r: 0, p: 'Beispiel-Allee 11,', v: '', id:'f1' },
@@ -61,15 +59,36 @@ export default class HomeCtrl {
       {
         title: 'Pizza',
         img: "/assets/pizza.png",
-        // tpl: 'templates/pizza.html',
         fields: []
       },
     ]
     this.page = {}
     this.init()
-    $scope.$on('$viewContentLoaded', function(){
-      l("===> Called on View Load")
-    })
+
+    this.myInterval = 5000;
+    this.noWrapSlides = false;
+    this.active = 0;
+    var slides = this.slides = [];
+    var currIndex = 0;
+
+    // $scope.$on('$viewContentLoaded', function(){
+    //   l("===> Called on View Load")
+    // })
+    // l(carousel)
+    $scope.addSlide = function() {
+      var newWidth = 600 + slides.length + 1;
+      slides.push({
+        image: '//unsplash.it/' + newWidth + '/300',
+        // image: 'https://picsum.photos/600/300',
+        // image: 'https://i.picsum.photos/id/889/600/300.jpg?hmac=XtM2WRv-fmyQYqujxsNQuGE0rugr4bnAp-PIYz3zKHs',
+        text: ['Nice image','Awesome photograph','That is so cool','I love that'][slides.length % 4],
+        id: currIndex++
+      });
+    };
+     for (var i = 0; i < 4; i++) {
+      $scope.addSlide();
+    }
+
   }
   init(){
     const { pages } = this
