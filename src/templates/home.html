@@ -174,53 +174,38 @@
       <div class="title">Buche das <br/>rundumsorglos Paket</div>
       <div class="row">
         <div class="col-8">
-<!--          <div class="carousel slide" active="homeCtrl.active" interval="homeCtrl.myInterval" no-wrap="homeCtrl.noWrapSlides">-->
-          <!--<div class="carousel slide"  data-ride="carousel">
-            <div class="carousel-inner">
-              <div ng-repeat="slide in homeCtrl.slides track by slide.id" index="slide.id" class="carousel-item">
-                <img ng-src="{{slide.image}}" style="margin:auto;">
-                <div class="carousel-caption">
-                  <h4>Slide {{slide.id}}</h4>
-                  <p>{{slide.text}}</p>
-                </div>
-              </div>
-            </div>
-          </div>-->
-<!--          <div >-->
-<!--            <div uib-carousel active="homeCtrl.active" interval="homeCtrl.myInterval" no-wrap="homeCtrl.noWrapSlides">-->
-<!--              <div uib-slide ng-repeat="slide in homeCtrl.slides track by slide.id" index="slide.id">-->
-<!--                <img ng-src="{{slide.image}}" style="margin:auto;">-->
-<!--                <div class="carousel-caption">-->
-<!--                  <h4>Slide {{slide.id}}</h4>-->
-<!--                  <p>{{slide.text}}</p>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-          <ui-carousel
-            slides="homeCtrl.slides"
-            slides-to-show="1"
-            slides-to-scroll="1"
-            initial-slide="1"
-            autoplay="false"
-            autoplay-speed="2000"
-            dots="false">
+          <div class="ctn-carousel">
+            <ui-carousel
+              slides="homeCtrl.slides"
+              slides-to-show="1"
+              slides-to-scroll="1"
+              initial-slide="1"
+              autoplay="false"
+              autoplay-speed="2000"
+              dots="false">
 
-            <carousel-item>
-              <img src="{{item.image}}" ng-src="{{item.image}}"/>
-              <!--
-              <h3>{{ item + 1 }}</h3>-->
-<!--              <pre>{{ item | json }}</pre>-->
-            </carousel-item>
-          </ui-carousel>
-          <!--<carousel interval="myInterval">
-            <slide ng-repeat="slide in slides" active="slide.active">
-              <img ng-src="{{slide.image}}">
-              <div class="carousel-caption">
-                <h4>Slide {{$index+1}}</h4>
-              </div>
-            </slide>
-          </carousel>-->
+              <carousel-item>
+                <div style="
+                  background: url({{item.image}}) no-repeat center;
+                  background-size: cover;
+                  height: 400px;
+                "></div>
+              </carousel-item>
+
+              <carousel-prev>
+                <button class="carousel-btn">
+                  <img src="/assets/sl-l.png" alt="">
+                </button>
+              </carousel-prev>
+
+              <carousel-next>
+                <button class="carousel-btn">
+                  <img src="/assets/sl-r.png" alt="">
+                </button>
+              </carousel-next>
+
+            </ui-carousel>
+          </div>
         </div>
         <div class="col-4 text-left">
           <div class="pre-title">

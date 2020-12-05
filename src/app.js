@@ -1,22 +1,27 @@
 import $ from 'jquery'
 import angular from 'angular'
 import uiRouter from 'angular-ui-router'
-// import carousel from 'angular-ui-bootstrap/src/carousel'
-// import uiBootstrap from 'angular-ui-bootstrap'
 import 'angular-ui-carousel/dist/ui-carousel.min'
 import WebFont from 'webfontloader'
 
+// Controllers & Directives
 import HomeCtrl from './controllers/Home'
 import LoadCtrl from './controllers/Load'
 import Header from './directives/Header'
 import Footer from "./directives/Footer"
+
+// Templates
+import homeTpl from './templates/home.html'
+import loadTpl from './templates/load.html'
 import coffeeTpl from './templates/coffee.html'
 import japaneseTpl from './templates/japanese.html'
 import pizzaTpl from './templates/pizza.html'
 
+// Custom JS
 import Utils from "./utils/utils"
 import { l, cl } from './utils/helpers'
 
+// CSS
 import './styles/index.scss'
 import 'angular-ui-carousel/dist/ui-carousel.min.css'
 
@@ -66,13 +71,15 @@ angular
     $stateProvider
     .state('home', {
       url: '/home',
-      template: require('./templates/home.html').default,
+      // template: require('./templates/home.html').default,
+      template: homeTpl,
       controller: 'HomeCtrl',
       controllerAs: 'homeCtrl'
     })
     .state('load', {
       url: '/l/:lId',
-      template: require('./templates/load.html').default,
+      // template: require('./templates/load.html').default,
+      template: loadTpl,
       controller: 'LoadCtrl',
       controllerAs: 'loadCtrl'
     })

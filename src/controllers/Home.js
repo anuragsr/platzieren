@@ -1,5 +1,5 @@
-import $ from 'jquery'
-import {l} from "../utils/helpers";
+// import $ from 'jquery'
+import {l} from "../utils/helpers"
 
 export default class HomeCtrl {
   constructor($scope, utils) {
@@ -78,17 +78,17 @@ export default class HomeCtrl {
     $scope.addSlide = function() {
       var newWidth = 600 + slides.length + 1;
       slides.push({
-        image: '//unsplash.it/' + newWidth + '/300',
+        // image: '//unsplash.it/' + newWidth + '/300',
+        image: '/assets/sl1.png',
         // image: 'https://picsum.photos/600/300',
         // image: 'https://i.picsum.photos/id/889/600/300.jpg?hmac=XtM2WRv-fmyQYqujxsNQuGE0rugr4bnAp-PIYz3zKHs',
         text: ['Nice image','Awesome photograph','That is so cool','I love that'][slides.length % 4],
         id: currIndex++
       });
     };
-     for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 4; i++) {
       $scope.addSlide();
     }
-
   }
   init(){
     const { pages } = this

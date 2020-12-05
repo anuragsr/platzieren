@@ -404,7 +404,26 @@
         font-family: $ex;
         font-weight: 700;
       }
-      .carousel-item{ display: inline-block; }
+      .ctn-carousel{
+        position: relative;
+        .ui-carousel{
+          position: absolute;
+          top:0; left: 0;
+          width: 80%;
+          height: 400px;
+          .carousel-btn{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            box-shadow: 0 4px 4px 0 rgba($b, 0.15);
+            background-color: $w;
+            img{ height: 15px; }
+          }
+          .carousel-prev .carousel-btn{ left: -60px; }
+          .carousel-next .carousel-btn{ right: -60px; }
+          .carousel-item{ display: inline-block; }
+        }
+      }
       .row-wt{
         background: $w;
         padding-top: 35px;
