@@ -38,32 +38,40 @@ WebFont.load({
 angular
   .module('app', [uiRouter, 'ui.carousel'])
   .factory('utils', ['$q', '$filter', '$rootScope', Utils])
-  .component('coffeeTpl', {
+  .controller('HomeCtrl', ['$scope', 'utils', HomeCtrl])
+  .controller('LoadCtrl', ['$scope', 'utils', LoadCtrl])
+  .component('home', {
+    template: homeTpl,
+    controller: 'HomeCtrl',
+    controllerAs: 'homeCtrl'
+  })
+  .component('coffee', {
+    bindings: { currPage: '<', },
     template: coffeeTpl,
     controller: function () {
       this.$onInit = () => {
-        l("init coffeeTpl")
+        l("init coffeeTpl", this.currPage)
       }
     }
   })
-  .component('japaneseTpl', {
+  .component('japanese', {
+    bindings: { currPage: '<', },
     template: japaneseTpl,
     controller: function () {
       this.$onInit = () => {
-        l("init japaneseTpl")
+        l("init japaneseTpl", this.currPage)
       }
     }
   })
-  .component('pizzaTpl', {
+  .component('pizza', {
+    bindings: { currPage: '<', },
     template: pizzaTpl,
     controller: function () {
       this.$onInit = () => {
-        l("init pizzaTpl")
+        l("init pizzaTpl", this.currPage)
       }
     }
   })
-  .controller('HomeCtrl', ['$scope', 'utils', HomeCtrl])
-  .controller('LoadCtrl', ['$scope', 'utils', LoadCtrl])
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/home");
     // $urlRouterProvider.otherwise("/l/2");
@@ -71,10 +79,9 @@ angular
     $stateProvider
     .state('home', {
       url: '/home',
+      component: 'home'
       // template: require('./templates/home.html').default,
-      template: homeTpl,
-      controller: 'HomeCtrl',
-      controllerAs: 'homeCtrl'
+      // template: '<home></home>',
     })
     .state('load', {
       url: '/l/:lId',

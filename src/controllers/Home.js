@@ -1,12 +1,11 @@
-// import $ from 'jquery'
 import {l} from "../utils/helpers"
-
 export default class HomeCtrl {
   constructor($scope, utils) {
     this.url = 'http://envisagecyberart.in'
     this.title = 'Platzieren'
     this.toggle = { switch: false }
     this.activeSize = 'S'
+    this.idx = 0
     this.pages = [
       {
         title: 'Allge.',
@@ -17,43 +16,90 @@ export default class HomeCtrl {
         title: 'Sushi',
         img: "/assets/sushi.png",
         fields: [
-          // { r: 0, p: 'Viola Vorlage,', v: '', id:'f0' },
-          // { r: 0, p: 'Beispiel-Allee 11,', v: '', id:'f1' },
-          // { r: 0, p: '12345 Musterdorf', v: '', id:'f2' },
-          // { r: 0, p: 'Vorname Nachname,', v: '', id:'f3' },
-          // { r: 0, p: 'Beispiel Strasse X,', v: '', id:'f4' },
-          // { r: 0, p: '12345 Musterdorf', v: '', id:'f5' },
-          // { r: 0, p: 'Beispiel-Allee 11', v: '', id:'f6' },
-          // { r: 0, p: '12345 Musterdorf', v: '', id:'f7' },
-          // { r: 0, p: '[EINGABEN EINFÜGEN]', v: '', id:'f8' },
-          // { r: 0, p: '3 Zimmern, einer Küche, einem Bad mt WC und Dusche sowie einem Abstellraum', v: '', id:'f9' },
-          // {
-          //   r: 0, p: '-' + utils.space(3) + 'Küche\x0a-'
-          //          + utils.space(3) + 'Bad\x0a-'
-          //          + utils.space(3) + 'Abstellraum',
-          //   v: '', id:'f10'
-          // },
-          // { r: 0, p: '[EINGABEN EINFÜGEN]', v: '', id:'f11' },
-          // {
-          //   r: 0, p: '-' + utils.space(3) + 'ein Wohnungsschlüssel\x0a-'
-          //          + utils.space(3) + 'ein Schlüssel für die untere Eingangstür',
-          //   v: '', id:'f12'
-          // },
-          // { r: 0, p: '[DATUM]', v: '', id:'f13' },
-          // { r: 0, p: '[DATUM]', v: '', id:'f14' },
-          // { r: 0, p: '[BETRAG]', v: '', id:'f15' },
-          // { r: 0, p: '[BETRAG]', v: '', id:'f16' },
-          // { r: 0, p: '[BETRAG]', v: '', id:'f17' },
-          // { r: 0, p: 'Viola Vorlage', v: '', id:'f18' },
-          // { r: 0, p: 'Musterdorfer Bank', v: '', id:'f19' },
-          // { r: 0, p: 'IBAN: 1234567', v: '', id:'f20' },
-          // { r: 0, p: 'BIC: MUSTERBANK', v: '', id:'f21' },
-          // { r: 0, p: '[BETRAG]', v: '', id:'f22' },
-          // { r: 0, p: '[EINGABEN EINFÜGEN]', v: '', id:'f23' },
-          // { r: 0, p: 'Musterdorf', v: '', id:'f24' },
-          // { r: 0, p: '[DATUM]', v: '', id:'f25' },
-          // { r: 0, p: '[VORNAME NACHNAME]', v: '', id:'f26' },
-          // { r: 0, p: '[VORNAME NACHNAME]', v: '', id:'f27' },
+          {
+            id:'f0',
+            pos: { top: 360, left: 30 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id:'f1',
+            pos: { top: 415, left: 30 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id:'f2',
+            pos: { top: 465, left: 30 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id:'f3',
+            pos: { top: 330, left: 490 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id:'f4',
+            pos: { top: 385, left: 490 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id:'f5',
+            pos: { top: 650, left: 30 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id:'f6',
+            pos: { top: 705, left: 30 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id:'f7',
+            pos: { top: 760, left: 30 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id:'f8',
+            pos: { top: 815, left: 30 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id:'f9',
+            pos: { top: 605, left: 250 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id:'f10',
+            pos: { top: 745, left: 470 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id:'f11',
+            pos: { top: 800, left: 470 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          }
         ]
       },
       {
@@ -64,44 +110,25 @@ export default class HomeCtrl {
     ]
     this.page = {}
     this.init()
-
-    this.myInterval = 5000;
-    this.noWrapSlides = false;
-    this.active = 0;
-    var slides = this.slides = [];
-    var currIndex = 0;
-
-    // $scope.$on('$viewContentLoaded', function(){
-    //   l("===> Called on View Load")
-    // })
-    // l(carousel)
-    $scope.addSlide = function() {
-      var newWidth = 600 + slides.length + 1;
-      slides.push({
-        // image: '//unsplash.it/' + newWidth + '/300',
-        image: '/assets/sl1.png',
-        // image: 'https://picsum.photos/600/300',
-        // image: 'https://i.picsum.photos/id/889/600/300.jpg?hmac=XtM2WRv-fmyQYqujxsNQuGE0rugr4bnAp-PIYz3zKHs',
-        text: ['Nice image','Awesome photograph','That is so cool','I love that'][slides.length % 4],
-        id: currIndex++
-      });
-    };
-    for (var i = 0; i < 4; i++) {
-      $scope.addSlide();
-    }
   }
   init(){
+    l("init Home")
+
     const { pages } = this
-    this.doNew(pages[0])
-    // this.doNew(pages[1])
+    this.doNew(pages[1])
+    this.createSlider()
+  }
+  createSlider(){
+    let slides = this.slides = [], currIndex = 0
+    for (var i = 0; i < 3; i++) {
+      slides.push({ image: '/assets/sl1.png' })
+    }
   }
   new(p){
     if(confirm('Möchten Sie wirklich ein neues Dokument erstellen?')) this.doNew(p)
   }
   doNew(page){
+    this.idx = this.pages.indexOf(page)
     this.page = angular.copy(page)
-  }
-  invokeMethod(){
-    return "Hello";
   }
 }

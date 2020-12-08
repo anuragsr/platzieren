@@ -11,7 +11,7 @@
           <div class="menu-opt"
             ng-repeat="p in homeCtrl.pages track by $index"
             ng-click="homeCtrl.new(p)"
-            ng-class="{'active': $index === idx}
+            ng-class="{'active': $index === homeCtrl.idx}
             ">
             <img ng-src="{{ p.img }}" alt=""/>
             <div>{{ p.title }}</div>
@@ -47,10 +47,10 @@
     </div>
   </section>
 
-  <section class="section1">
-    <coffee-tpl ng-init="console.log('wa')" ng-if="homeCtrl.page.title === 'Allge.'"></coffee-tpl>
-    <japanese-tpl ng-init="console.log('wa')" ng-if="homeCtrl.page.title === 'Sushi'"></japanese-tpl>
-    <pizza-tpl ng-init="console.log('wa')" ng-if="homeCtrl.page.title === 'Pizza'"></pizza-tpl>
+  <section class="section1" ng-class="{ 'dark': homeCtrl.toggle.switch }">
+    <coffee ng-if="homeCtrl.page.title === 'Allge.'" curr-page="homeCtrl.page"></coffee>
+    <japanese ng-if="homeCtrl.page.title === 'Sushi'" curr-page="homeCtrl.page"></japanese>
+    <pizza ng-if="homeCtrl.page.title === 'Pizza'" curr-page="homeCtrl.page"></pizza>
 
     <div class="ctn-float-box">
       <div class="inner">

@@ -44,6 +44,18 @@
   <div class="ctn-menu-outer">
     <div class="ctn-menu-inner">
       <div class="ctn-menu">
+        <div class="input-gr"
+          ng-repeat="gr in $ctrl.currPage.fields track by $index"
+          ng-style="{ top: gr.pos.top + 'px', left: gr.pos.left + 'px' }"
+          >
+          <div class="text-left">
+            <input class="name" type="text" ng-model="gr.name.v" placeholder="{{gr.name.p}}"/><br/>
+            <input class="desc" type="text" ng-model="gr.desc.v" placeholder="{{gr.desc.p}}"/>
+          </div>
+          <div class="text-right">
+            <input class="price" type="text" ng-model="gr.price.v" placeholder="{{gr.price.p}}"/>
+          </div>
+        </div>
       </div>
       <div class="ctn-btn">
         <button ng-click="download()" class="btn btn-success">
@@ -51,6 +63,7 @@
           <div>Als PDF Speichern</div>
         </button>
       </div>
+      <pre style="text-align: left; color: #fff;">{{ $ctrl.myPage.fields | json }}</pre>
     </div>
   </div>
   <div class="ctn-clip"></div>

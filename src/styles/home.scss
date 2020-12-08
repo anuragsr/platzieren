@@ -82,7 +82,7 @@
               margin: 0 5px;
               flex-direction: column;
               transition: opacity .3s;
-              &:hover{ opacity: 1; }
+              &:hover, &.active{ opacity: 1; }
               img{ height: 27px; }
             }
             .arr{
@@ -200,7 +200,7 @@
                 padding: 10px 20px;
                 img{
                   height: 35px;
-                  filter: invert(100%);
+                  //filter: invert(100%);
                   margin-right: 10px;
                 }
                 &:hover{
@@ -209,8 +209,38 @@
               }
             }
           }
+          .ctn-menu{
+            position: relative;
+            .input-gr{
+              @extend %j-s-b;
+              align-items: flex-start;
+              position: absolute;
+              width: 190px;
+              input{
+                @include plh($b);
+                font-family: $ex;
+                font-size: 16px;
+                font-weight: 700;
+                background: none;
+                border: none;
+                text-overflow: ellipsis;
+                &.name{ width: 140px; }
+                &.desc{
+                  font-size: 12px;
+                  font-weight: 400;
+                  position: relative;
+                  top: -8px;
+                }
+                &.price{ width: 50px; }
+              }
+            }
+          }
         }
         .ctn-clip{ @extend %fw; }
+      }
+      &.dark .ctn-menu-bg .ctn-menu-outer .ctn-menu input{
+        color:$w;
+        @include plh($w);
       }
 
       .ctn-float-box{
@@ -279,7 +309,7 @@
                 font-weight: bold;
                 img{
                   height: 27px;
-                  filter: invert(100%);
+                  //filter: invert(100%);
                   margin-right: 5px;
                 }
                 &:hover{
