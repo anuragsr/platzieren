@@ -247,10 +247,13 @@
         position: absolute;
         top: $headHeight + $subHeadHeight + 80;
         right: 125px;
-        background: $w;
-        box-shadow: $sh;
+        background: $pr;
         width: 225px;
         transition: right .3s;
+        border-radius: 5px;
+        padding: 25px 15px;
+        color: $w;
+        font-family: $ex;
         @include media("<=sld") {
           right: 25px;
         }
@@ -260,7 +263,7 @@
           flex-direction: column;
           text-align: center;
           position: relative;
-          padding: 20px;
+          //padding: 20px;
           .bar{
             position: absolute;
             top: 0;
@@ -270,78 +273,102 @@
             background: $sc;
           }
           .b-item{
-            margin: 10px auto;
-            &.o{
-              display: flex;
-              flex-direction: row;
-              justify-content: center;
-              align-items: center;
-              font-size: 16px;
-              padding: 10px 5px;
-              @extend %fw;
-              outline: 1px solid rgba($color: $b, $alpha: .2);
-              &.hov, & .hov{
-                cursor: pointer;
-                transition: all .2s;
-              }
-              &.hov:hover, & .hov:hover{
-                background: $l;
-              }
-              div{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 40px;
-                height: 25px;
-                outline: 1px solid rgba($color: $b, $alpha: .2);
-                font-size: 16px;
-              }
-            }
-            &.b{
-              width: 110%;
-              position: relative;
-              left: -5%;
-              .btn{
-                @extend %j-s-a;
-                background: $sc;
-                border-color: $sc;
-                font-size: 18px;
-                font-weight: bold;
-                img{
-                  height: 27px;
-                  //filter: invert(100%);
-                  margin-right: 5px;
-                }
-                &:hover{
-                  background: fade-out($color: $sc, $amount: .1);
-                }
-              }
-            }
-            span{
-              font-size: 36px;
+            @extend %fw;
+            margin: 10px 0;
+            span{ font-size: 15px; }
+            &.perc{
+              div{ position: relative; font-size: 50px; }
+              //span{ font-size: 50px; }
               sup{
+                @include pa(24, 115);
                 font-size: 24px;
               }
             }
-            .inner{
-              @extend %j-c;
-              width: 175px;
-              height: 50px;
-              padding: 5px 15px;
-              margin-bottom: 10px;
-              background: $pr;
-              .text{
-                margin: 0 20px;
-              }
-              img{
-                cursor: pointer;
-                height: 20px;
-                margin-bottom: 0;
-                &:hover{
-                  filter: invert(100%);
+            &.no-fields{
+              .num{
+                padding: 15px 25px;
+                @extend %j-s-b;
+                color: $w;
+                border-radius: 2px;
+                background-color: rgba(#fdfdfd, .5);
+                margin-bottom: 10px;
+                img{
+                  @extend  %cp;
+                  &:hover{ filter: invert(100%); }
                 }
               }
             }
+            //&.o{
+            //  display: flex;
+            //  flex-direction: row;
+            //  justify-content: center;
+            //  align-items: center;
+            //  font-size: 16px;
+            //  padding: 10px 5px;
+            //  @extend %fw;
+            //  outline: 1px solid rgba($color: $b, $alpha: .2);
+            //  &.hov, & .hov{
+            //    cursor: pointer;
+            //    transition: all .2s;
+            //  }
+            //  &.hov:hover, & .hov:hover{
+            //    background: $l;
+            //  }
+            //  div{
+            //    display: flex;
+            //    align-items: center;
+            //    justify-content: center;
+            //    width: 40px;
+            //    height: 25px;
+            //    outline: 1px solid rgba($color: $b, $alpha: .2);
+            //    font-size: 16px;
+            //  }
+            //}
+            //&.b{
+            //  width: 110%;
+            //  position: relative;
+            //  left: -5%;
+            //  .btn{
+            //    @extend %j-s-a;
+            //    background: $sc;
+            //    border-color: $sc;
+            //    font-size: 18px;
+            //    font-weight: bold;
+            //    img{
+            //      height: 27px;
+            //      //filter: invert(100%);
+            //      margin-right: 5px;
+            //    }
+            //    &:hover{
+            //      background: fade-out($color: $sc, $amount: .1);
+            //    }
+            //  }
+            //}
+            //span{
+            //  font-size: 36px;
+            //  sup{
+            //    font-size: 24px;
+            //  }
+            //}
+            //.inner{
+            //  @extend %j-c;
+            //  width: 100%;
+            //  height: 50px;
+            //  padding: 5px 15px;
+            //  margin-bottom: 10px;
+            //  background: $pr;
+            //  .text{
+            //    margin: 0 20px;
+            //  }
+            //  img{
+            //    cursor: pointer;
+            //    height: 20px;
+            //    margin-bottom: 0;
+            //    &:hover{
+            //      filter: invert(100%);
+            //    }
+            //  }
+            //}
           }
         }
       }
@@ -483,130 +510,130 @@
   }
 }
 
-.modal-open .dl-modal-2{
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-  // @include media(">=tablet") {
-  // }
-}
-.dl-modal-2{
-  .modal-dialog{
-    @include media(">=tablet") {
-      margin: 0;
-      max-width: 50vw;
-      width: 50vw;
-    }
-    .modal-content{
-      border: none;
-    }
-    .modal-header{
-      border-bottom: none;
-    }
-    .modal-body{
-      @include media("<=tablet") {
-        padding-top:0;
-      }
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      padding-bottom: 50px;
-      h2 {
-        color: $b; font-weight: bold; margin-bottom: 25px;
-        @include media("<=tablet") {
-          font-size: 20px;
-        }
-      }
-      p {
-        font-size: 18px; width: 50%;
-        @include media("<=tablet") {
-          font-size: 16px;
-          width: 100%;
-        }
-      }
-      .copy-box{
-        @include media("<=tablet") {
-          width: 100%;
-          margin-top: 15px;
-          padding: 25px 15px;
-        }
-        position: relative;
-        margin-top: 30px;
-        padding: 25px;
-        width: 400px;
-        border: 1px solid rgba($b, .2);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .label{
-          font-weight: bold;
-          font-size: 12px;
-          background: $w;
-          color: rgba($b, .2);
-          position: absolute;
-          top: -10px;
-          left: 10px;
-          padding: 0 10px;
-        }
-        input{
-          @include media("<=tablet") {
-            width: 60%;
-          }
-          width: 250px;
-          // text-overflow: ellipsis;
-          border: none;
-          color: rgba($b, .8);
-          &:focus {
-            outline: none;
-            box-shadow: none;
-          }
-        }
-        .copy-btn{
-          color: $sc;
-          font-weight: bold;
-          cursor: pointer;
-        }
-      }
-      .or-box{
-        @include media("<=tablet") {
-          margin-top: 15px;
-          width: 100%;
-        }
-        margin-top: 30px;
-        padding: 25px 0;
-        width: 400px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-weight: bold;
-        color: rgba($b, .2);
-        .dash{
-          height: 1px;
-          width: 120px;
-          background: rgba($b, .2);
-        }
-      }
-      button{
-        @include media("<=tablet") {
-          margin-top: 15px;
-          width: 100%;
-        }
-        background: $sc;
-        border-color: $sc;
-        font-size: 16px;
-        font-weight: bold;
-        width: 400px;
-        padding: 25px;
-        margin-top: 30px;
-      }
-      img{ height: 35px; margin: 10px 0; }
-      span { color: rgba($b, .7); font-size: 14px; }
-    }
-  }
-}
-
-.modal-backdrop {
-  background: rgba($sc, 0.6)
-}
+//.modal-open .dl-modal-2{
+//  display: flex !important;
+//  justify-content: center;
+//  align-items: center;
+//  // @include media(">=tablet") {
+//  // }
+//}
+//.dl-modal-2{
+//  .modal-dialog{
+//    @include media(">=tablet") {
+//      margin: 0;
+//      max-width: 50vw;
+//      width: 50vw;
+//    }
+//    .modal-content{
+//      border: none;
+//    }
+//    .modal-header{
+//      border-bottom: none;
+//    }
+//    .modal-body{
+//      @include media("<=tablet") {
+//        padding-top:0;
+//      }
+//      display: flex;
+//      justify-content: center;
+//      align-items: center;
+//      flex-direction: column;
+//      text-align: center;
+//      padding-bottom: 50px;
+//      h2 {
+//        color: $b; font-weight: bold; margin-bottom: 25px;
+//        @include media("<=tablet") {
+//          font-size: 20px;
+//        }
+//      }
+//      p {
+//        font-size: 18px; width: 50%;
+//        @include media("<=tablet") {
+//          font-size: 16px;
+//          width: 100%;
+//        }
+//      }
+//      .copy-box{
+//        @include media("<=tablet") {
+//          width: 100%;
+//          margin-top: 15px;
+//          padding: 25px 15px;
+//        }
+//        position: relative;
+//        margin-top: 30px;
+//        padding: 25px;
+//        width: 400px;
+//        border: 1px solid rgba($b, .2);
+//        display: flex;
+//        justify-content: space-between;
+//        align-items: center;
+//        .label{
+//          font-weight: bold;
+//          font-size: 12px;
+//          background: $w;
+//          color: rgba($b, .2);
+//          position: absolute;
+//          top: -10px;
+//          left: 10px;
+//          padding: 0 10px;
+//        }
+//        input{
+//          @include media("<=tablet") {
+//            width: 60%;
+//          }
+//          width: 250px;
+//          // text-overflow: ellipsis;
+//          border: none;
+//          color: rgba($b, .8);
+//          &:focus {
+//            outline: none;
+//            box-shadow: none;
+//          }
+//        }
+//        .copy-btn{
+//          color: $sc;
+//          font-weight: bold;
+//          cursor: pointer;
+//        }
+//      }
+//      .or-box{
+//        @include media("<=tablet") {
+//          margin-top: 15px;
+//          width: 100%;
+//        }
+//        margin-top: 30px;
+//        padding: 25px 0;
+//        width: 400px;
+//        display: flex;
+//        justify-content: space-between;
+//        align-items: center;
+//        font-weight: bold;
+//        color: rgba($b, .2);
+//        .dash{
+//          height: 1px;
+//          width: 120px;
+//          background: rgba($b, .2);
+//        }
+//      }
+//      button{
+//        @include media("<=tablet") {
+//          margin-top: 15px;
+//          width: 100%;
+//        }
+//        background: $sc;
+//        border-color: $sc;
+//        font-size: 16px;
+//        font-weight: bold;
+//        width: 400px;
+//        padding: 25px;
+//        margin-top: 30px;
+//      }
+//      img{ height: 35px; margin: 10px 0; }
+//      span { color: rgba($b, .7); font-size: 14px; }
+//    }
+//  }
+//}
+//
+//.modal-backdrop {
+//  background: rgba($sc, 0.6)
+//}

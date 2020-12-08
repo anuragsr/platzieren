@@ -115,7 +115,7 @@ export default class HomeCtrl {
     l("init Home")
 
     const { pages } = this
-    this.doNew(pages[1])
+    this.createMenu(pages[1])
     this.createSlider()
   }
   createSlider(){
@@ -125,10 +125,16 @@ export default class HomeCtrl {
     }
   }
   new(p){
-    if(confirm('Möchten Sie wirklich ein neues Dokument erstellen?')) this.doNew(p)
+    if(confirm('Möchten Sie wirklich ein neues Dokument erstellen?')) this.createMenu(p)
   }
-  doNew(page){
+  createMenu(page){
     this.idx = this.pages.indexOf(page)
     this.page = angular.copy(page)
+    this.filledFields = 0
+    this.totalFields = this.page.fields.length ? this.page.fields.length : 1
+    this.zoom = 1
+  }
+  addMenuPage() {
+    l("add page")
   }
 }

@@ -54,22 +54,20 @@
 
     <div class="ctn-float-box">
       <div class="inner">
-        <div class="bar" ng-style="{'width': filledFields * 100 / totalFields + '%'}"></div>
-        <div class="b-item">
-          <span>{{ (filledFields * 100 / totalFields).toFixed(0)}}<sup>%</sup></span>
-          <div>geschafft</div>
+        <!--<div class="bar" ng-style="{'width': filledFields * 100 / totalFields + '%'}"></div>-->
+        <div class="b-item perc">
+          <div>{{ (homeCtrl.filledFields * 100 / homeCtrl.totalFields).toFixed(0)}}<sup>%</sup></div>
+          <span>geschafft</span>
         </div>
-        <div class="b-item">
-          <div class="inner">
+        <div class="b-item no-fields">
+          <div class="num">
             <img ng-click="focus('prev')" src="/assets/arr-l.png" class="inv"/>
-            <div class="text">{{filledFields}} / {{totalFields}}</div>
+            <div>{{homeCtrl.filledFields}} / {{homeCtrl.totalFields}}</div>
             <img ng-click="focus('next')" src="/assets/arr-r.png" class="inv"/>
           </div>
-          <div class="desc">Pflichtfelder<br/>befüllt</div>
+          <span>Pflichtfelder<br/>befüllt</span>
         </div>
-        <div class="b-item o hov" ng-click="add()">
-          Textblock Hinzufügen
-        </div>
+        <!--<div class="b-item o hov" ng-click="homeCtrl.addMenuPage()">Seite Hinzufügen</div>
         <div class="b-item o">
           {{(zoom * 100).toFixed(0)}}%&nbsp;&nbsp;&nbsp;&nbsp;
           <div class="hov" ng-click="zoomFn('-')"><i class="fa fa-minus"></i></div>
@@ -80,7 +78,7 @@
             <img src="/assets/s2.png" alt="">
             <div>Als PDF<br/>Speichern</div>
           </button>
-        </div>
+        </div>-->
       </div>
     </div>
   </section>
