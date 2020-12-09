@@ -6,6 +6,7 @@ import WebFont from 'webfontloader'
 
 // Controllers & Directives
 import HomeCtrl from './controllers/Home'
+import JapCtrl from './controllers/JapCtrl'
 import LoadCtrl from './controllers/Load'
 import Header from './directives/Header'
 import Footer from "./directives/Footer"
@@ -38,8 +39,9 @@ WebFont.load({
 
 angular
   .module('app', [uiRouter, 'ui.carousel'])
-  .factory('utils', ['$q', '$filter', '$rootScope', Utils])
+  .service('utils', ['$q', '$filter', '$rootScope', Utils])
   .controller('HomeCtrl', ['$scope', 'utils', HomeCtrl])
+  .controller('JapCtrl', ['$scope', 'utils', JapCtrl])
   .controller('LoadCtrl', ['$scope', 'utils', LoadCtrl])
   .component('home', {
     template: homeTpl,
@@ -63,24 +65,7 @@ angular
   .component('japanese', {
     bindings: { currMenu: '<' },
     template: japaneseTpl,
-    controller: ['$scope', function ($scope) {
-      // l($scope)
-      this.$onInit = () => {
-        l("init japaneseTpl")
-      }
-
-      this.pageFn = opts => {
-        switch (opts.type) {
-          case 'next': if(this.currMenu.activePage < this.currMenu.pages.length - 1) this.currMenu.activePage++; break;
-          case 'prev': if(this.currMenu.activePage > 0) this.currMenu.activePage--; break;
-          case 'number': this.currMenu.activePage = opts.page; break;
-        }
-      }
-
-      $scope.$watch('$ctrl.currMenu.pages', (newVal, oldVal) => {
-        l(newVal, oldVal)
-      }, true);
-    }]
+    controller: 'JapCtrl'
   })
   .component('pizza', {
     bindings: { currMenu: '<', pageFn: '<' },

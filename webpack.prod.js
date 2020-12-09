@@ -5,6 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin'); //installed via npm
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const buildPath = path.resolve(__dirname, 'dist');
 
@@ -29,7 +30,14 @@ module.exports = {
         }
       },
       {
-        test: /\.(scss|css|sass)$/,
+        test: /\.(css)$/,
+        use: ExtractTextPlugin.extract({
+          use: [ 'css-loader' ]
+        })
+      },
+      {
+        test: /\.(scss|sass)$/,
+        // test: /\.(scss|css|sass)$/, // Moved css above
         use: [
           {
             loader: MiniCssExtractPlugin.loader
@@ -108,6 +116,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'styles.[contenthash].css'
     }),
+    new ExtractTextPlugin('carousel.css'),
     new OptimizeCssAssetsPlugin({
       cssProcessor: require('cssnano'),
       cssProcessorOptions: {
