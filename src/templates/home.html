@@ -3,13 +3,13 @@
   <section class="section0">
     <div class="container">
       <div class="inner">
-        <div class="s-item box ctn-new" ng-click="homeCtrl.new(homeCtrl.pages[0])">
+        <div class="s-item box ctn-new" ng-click="homeCtrl.new(homeCtrl.menus[0])">
           <img src="/assets/new-icon.png" alt=""/>
           <div>Neu</div>
         </div>
         <div class="s-item box ctn-menu-opts">
           <div class="menu-opt"
-            ng-repeat="p in homeCtrl.pages track by $index"
+            ng-repeat="p in homeCtrl.menus track by $index"
             ng-click="homeCtrl.new(p)"
             ng-class="{'active': $index === homeCtrl.idx}
             ">
@@ -48,9 +48,9 @@
   </section>
 
   <section class="section1" ng-class="{ 'dark': homeCtrl.toggle.switch }">
-    <coffee ng-if="homeCtrl.page.title === 'Allge.'" curr-page="homeCtrl.page"></coffee>
-    <japanese ng-if="homeCtrl.page.title === 'Sushi'" curr-page="homeCtrl.page"></japanese>
-    <pizza ng-if="homeCtrl.page.title === 'Pizza'" curr-page="homeCtrl.page"></pizza>
+    <coffee ng-if="homeCtrl.menu.title === 'Allge.'" curr-menu="homeCtrl.menu" page-fn="homeCtrl.pageFn"></coffee>
+    <japanese ng-if="homeCtrl.menu.title === 'Sushi'" curr-menu="homeCtrl.menu"></japanese>
+    <pizza ng-if="homeCtrl.menu.title === 'Pizza'" curr-menu="homeCtrl.menu" page-fn="homeCtrl.pageFn"></pizza>
 
     <div class="ctn-float-box">
       <div class="inner">
@@ -67,18 +67,24 @@
           </div>
           <span>Pflichtfelder<br/>befüllt</span>
         </div>
-        <!--<div class="b-item o hov" ng-click="homeCtrl.addMenuPage()">Seite Hinzufügen</div>
-        <div class="b-item o">
-          {{(zoom * 100).toFixed(0)}}%&nbsp;&nbsp;&nbsp;&nbsp;
-          <div class="hov" ng-click="zoomFn('-')"><i class="fa fa-minus"></i></div>
-          <div class="hov" ng-click="zoomFn('+')"><i class="fa fa-plus"></i></div>
+        <div class="b-item outlined hov" ng-click="homeCtrl.addMenuPage()">Seite Hinzufügen</div>
+        <div class="b-item outlined zoom">
+          <span>{{(homeCtrl.zoom * 100).toFixed(0)}}%</span>
+          <div class="btn-group">
+            <button type="button" ng-click="homeCtrl.zoomFn('-')" class="btn btn-sm btn-light">-</button>
+            <button type="button" ng-click="homeCtrl.zoomFn('+')" class="btn btn-sm btn-light">+</button>
+          </div>
         </div>
-        <div class="b-item b">
-          <button ng-click="save()" class="btn btn-success btn-block">
-            <img src="/assets/s2.png" alt="">
-            <div>Als PDF<br/>Speichern</div>
+        <div class="b-item veg">
+          <div><img src="/assets/plant 1.png" alt="" />Vegan</div>
+          <div><img src="/assets/herb 1.png" alt="" />Vegetarian</div>
+        </div>
+        <div class="b-item qr-btn">
+          <button ng-click="save()" class="btn btn-light btn-block">
+            <img src="/assets/qr-dark.png" alt="">
+            <div>QR Code<br/>erstellen</div>
           </button>
-        </div>-->
+        </div>
       </div>
     </div>
   </section>

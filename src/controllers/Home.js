@@ -6,11 +6,13 @@ export default class HomeCtrl {
     this.toggle = { switch: false }
     this.activeSize = 'S'
     this.idx = 0
-    this.pages = [
+    this.menus = [
       {
         title: 'Allge.',
         img: "/assets/coffee.png",
-        fields: []
+        fields: [],
+        pages: [],
+        activePage: 0
       },
       {
         title: 'Sushi',
@@ -100,22 +102,26 @@ export default class HomeCtrl {
             desc: { p: 'Tuna, Rice, Avocado', v: '' },
             price: { p: 'X,XX', v: '' },
           }
-        ]
+        ],
+        pages: [],
+        activePage: 0
       },
       {
         title: 'Pizza',
         img: "/assets/pizza.png",
-        fields: []
+        fields: [],
+        pages: [],
+        activePage: 0
       },
     ]
-    this.page = {}
+    this.menu = {}
     this.init()
   }
   init(){
     l("init Home")
 
-    const { pages } = this
-    this.createMenu(pages[1])
+    const { menus } = this
+    this.createMenu(menus[1])
     this.createSlider()
   }
   createSlider(){
@@ -127,14 +133,22 @@ export default class HomeCtrl {
   new(p){
     if(confirm('Möchten Sie wirklich ein neues Dokument erstellen?')) this.createMenu(p)
   }
-  createMenu(page){
-    this.idx = this.pages.indexOf(page)
-    this.page = angular.copy(page)
+  createMenu(menu){
+    this.idx = this.menus.indexOf(menu)
+    this.menu = angular.copy(menu)
     this.filledFields = 0
-    this.totalFields = this.page.fields.length ? this.page.fields.length : 1
     this.zoom = 1
+    this.addMenuPage()
   }
   addMenuPage() {
     l("add page")
+    this.menu.pages.push(angular.copy(this.menu.fields))
+    this.menu.activePage = this.menu.pages.length - 1
+    this.totalFields = this.menu.pages.reduce((prev, curr) => prev + curr.length, 0)
+  }
+  zoomFn(dir){
+    // s.zoom = utils.zoom(s.zoom, dir)
+    l(dir)
+    this.zoom = 1
   }
 }

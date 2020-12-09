@@ -15,10 +15,10 @@
     left: -5px;
     width: 192mm;
     height: 935px;
-    background: url(/assets/japanese/menu-bg.jpg);
-    background-size: 100%;
     margin: 0 auto;
     padding: 20px;
+    background: url(/assets/japanese/menu-bg.jpg);
+    background-size: 100%;
   }
   .ctn-menu{
     background: url(/assets/japanese/menu.jpg) no-repeat;
@@ -39,32 +39,72 @@
     background-position: 50% 0%;
     height: 260px;
   }
+  .ctn-btn{
+    position: absolute;
+    bottom: -250px; left: 0;
+  }
 </style>
 <div class="ctn-menu-bg">
   <div class="ctn-menu-outer">
     <div class="ctn-menu-inner">
-      <div class="ctn-menu">
-        <div class="input-gr"
-          ng-repeat="gr in $ctrl.currPage.fields track by $index"
-          ng-style="{ top: gr.pos.top + 'px', left: gr.pos.left + 'px' }"
-          >
-          <div class="text-left">
-            <input class="name" type="text" ng-model="gr.name.v" placeholder="{{gr.name.p}}"/><br/>
-            <input class="desc" type="text" ng-model="gr.desc.v" placeholder="{{gr.desc.p}}"/>
-          </div>
-          <div class="text-right">
-            <input class="price" type="text" ng-model="gr.price.v" placeholder="{{gr.price.p}}"/>
+      <div class="ctn-menu-page"
+        ng-repeat="currPage in $ctrl.currMenu.pages track by $index"
+        ng-class="{'active': $ctrl.currMenu.activePage === $index}"
+        >
+        <div class="ctn-menu">
+          <div class="input-gr"
+            ng-repeat="gr in currPage track by $index"
+            ng-style="{ top: gr.pos.top + 'px', left: gr.pos.left + 'px' }"
+            >
+            <div class="text-left">
+              <input class="name" type="text" ng-model="gr.name.v" placeholder="{{gr.name.p}}"/><br/>
+              <input class="desc" type="text" ng-model="gr.desc.v" placeholder="{{gr.desc.p}}"/>
+            </div>
+            <div class="text-right">
+              <input class="price" type="text" ng-model="gr.price.v" placeholder="{{gr.price.p}}"/>
+            </div>
           </div>
         </div>
       </div>
-      <div class="ctn-btn">
-        <button ng-click="download()" class="btn btn-success">
-          <img src="/assets/s2.png" alt="">
-          <div>Als PDF Speichern</div>
-        </button>
-      </div>
-      <!--<pre style="text-align: left; color: #fff;">{{ $ctrl.myPage.fields | json }}</pre>-->
+    </div>
+    <div class="ctn-btn">
+      <nav>
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+            <a href
+              class="page-link"
+              ng-click="$ctrl.pageFn({ type: 'prev' })">
+              &laquo;
+            </a>
+          </li>
+
+          <li
+            class="page-item"
+            ng-repeat="page in $ctrl.currMenu.pages track by $index"
+            ng-class="{'active': $ctrl.currMenu.activePage === $index}"
+            >
+            <a href
+              class="page-link"
+              ng-click="$ctrl.pageFn({ type: 'number', page: $index })">
+              {{ $index + 1 }}
+            </a>
+          </li>
+
+          <li class="page-item">
+            <a href
+              class="page-link"
+              ng-click="$ctrl.pageFn({ type: 'next' })">
+              &raquo;
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <button ng-click="download()" class="btn btn-pr">
+        <img src="/assets/s2.png" alt="">
+        <div>QR Code<br/>erstellen</div>
+      </button>
     </div>
   </div>
   <div class="ctn-clip"></div>
 </div>
+<pre class="deb-obj">{{ $ctrl.currMenu.pages | json }}</pre>
