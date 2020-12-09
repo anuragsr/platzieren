@@ -57,7 +57,11 @@
             ng-style="{ top: gr.pos.top + 'px', left: gr.pos.left + 'px' }"
             >
             <div class="text-left">
-              <input class="name" type="text" ng-model="gr.name.v" placeholder="{{gr.name.p}}"/><br/>
+              <input
+                class="name" type="text"
+                focus-on="{ page: $parent.$index, field: gr.id }"
+                ng-model="gr.name.v" placeholder="{{gr.name.p}}"
+              /><br/>
               <input class="desc" type="text" ng-model="gr.desc.v" placeholder="{{gr.desc.p}}"/>
             </div>
             <div class="text-right">
@@ -107,4 +111,7 @@
   </div>
   <div class="ctn-clip"></div>
 </div>
-<pre class="deb-obj">{{ $ctrl.currMenu.pages | json }}</pre>
+<pre class="deb-obj">
+  {{ $ctrl.focusedEl | json }}
+  {{ $ctrl.currMenu.pages | json }}
+</pre>

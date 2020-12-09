@@ -1,11 +1,15 @@
 import {l} from "../utils/helpers"
 export default class HomeCtrl {
-  constructor($scope, utils) {
-    this.url = 'http://envisagecyberart.in'
-    this.title = 'Platzieren'
+  constructor($scope, $timeout, utils) {
+    this.utils = utils
+    // this.url = 'http://envisagecyberart.in'
     this.toggle = { switch: false }
     this.activeSize = 'S'
+    this.filledFields = 0
+    this.zoom = 1
     this.idx = 0
+    this.focusedEl = null
+
     this.menus = [
       {
         title: 'Allge.',
@@ -115,7 +119,12 @@ export default class HomeCtrl {
       },
     ]
     this.menu = {}
+
     this.init()
+    $scope.$on('elFocused', (name, val) => {
+      l(this.focusedEl, val)
+      this.focusedEl = val
+    })
   }
   init(){
     l("init Home")
@@ -136,8 +145,6 @@ export default class HomeCtrl {
   createMenu(menu){
     this.idx = this.menus.indexOf(menu)
     this.menu = angular.copy(menu)
-    this.filledFields = 0
-    this.zoom = 1
     this.addMenuPage()
   }
   addMenuPage() {
@@ -150,5 +157,14 @@ export default class HomeCtrl {
     // s.zoom = utils.zoom(s.zoom, dir)
     l(dir)
     this.zoom = 1
+  }
+  getQR(){
+    l(this.focusedEl)
+  }
+  focus(dir){
+    // this.utils.focus(dir, this.menu)
+    // this.utils.focus("focusMePlease")
+    l(dir, this.focusedEl)
+    this.utils.focus(dir, this.focusedEl, this.menu)
   }
 }

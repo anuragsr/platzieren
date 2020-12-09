@@ -1,13 +1,14 @@
 import { l } from "../utils/helpers"
 export default class JapCtrl {
   constructor($scope, utils) {
-    // l($scope)
+    l(this)
     this.$onInit = () => {
       l("init japaneseTpl")
     }
 
     $scope.$watch('$ctrl.currMenu.pages', (newVal, oldVal) => {
-      l(newVal, oldVal)
+      // l(newVal, oldVal)
+      this.filledFields = utils.getFilledFields(newVal)
     }, true);
   }
   pageFn(opts){

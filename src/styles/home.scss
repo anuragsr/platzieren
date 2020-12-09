@@ -306,7 +306,8 @@
             &.perc{
               div{ position: relative; font-size: 50px; }
               sup{
-                @include pa(24, 115);
+                position: relative;
+                left: 5px; top: -20px;
                 font-size: 24px;
               }
             }

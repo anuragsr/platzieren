@@ -1,4 +1,3 @@
-import $ from 'jquery'
 import angular from 'angular'
 import uiRouter from 'angular-ui-router'
 import 'angular-ui-carousel/dist/ui-carousel.min'
@@ -26,7 +25,6 @@ import { l, cl } from './utils/helpers'
 import './styles/index.scss'
 import 'angular-ui-carousel/dist/ui-carousel.min.css'
 
-l('jQuery Version:', $().jquery)
 // template: require('./templates/home.html').default,
 
 WebFont.load({
@@ -39,8 +37,8 @@ WebFont.load({
 
 angular
   .module('app', [uiRouter, 'ui.carousel'])
-  .service('utils', ['$q', '$filter', '$rootScope', Utils])
-  .controller('HomeCtrl', ['$scope', 'utils', HomeCtrl])
+  .service('utils', ['$q', '$filter', '$rootScope', '$timeout', Utils])
+  .controller('HomeCtrl', ['$scope', '$timeout', 'utils', HomeCtrl])
   .controller('JapCtrl', ['$scope', 'utils', JapCtrl])
   .controller('LoadCtrl', ['$scope', 'utils', LoadCtrl])
   .component('home', {
@@ -54,7 +52,7 @@ angular
     controllerAs: 'loadCtrl'
   })
   .component('coffee', {
-    bindings: { currMenu: '<', pageFn: '<' },
+    bindings: { currMenu: '<' },
     template: coffeeTpl,
     controller: function () {
       this.$onInit = () => {
@@ -63,7 +61,9 @@ angular
     }
   })
   .component('japanese', {
-    bindings: { currMenu: '<' },
+    bindings: {
+      currMenu: '=', filledFields: '=', focusedEl: "="
+    },
     template: japaneseTpl,
     controller: 'JapCtrl'
   })
@@ -93,3 +93,18 @@ angular
   }])
   .directive('h', Header)
   .directive('f', Footer)
+  .directive('focusOn', ['$rootScope', function($rootScope) {
+     return {
+       scope: { focusOn: "=" },
+       link: function(scope, elem, attrs) {
+         // l(attrs.focusOn)
+         l(scope.focusOn)
+          scope.$on('focusOn', (e, fieldData) => {
+            if(angular.equals(fieldData, scope.focusOn)) elem[0].focus()
+          })
+
+          elem.bind('focus', e => $rootScope.$broadcast('elFocused', scope.focusOn))
+          // elem.bind('blur', e => $rootScope.$broadcast('elFocused',null))
+       }
+     }
+  }])

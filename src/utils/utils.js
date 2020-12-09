@@ -1,7 +1,13 @@
-import {l} from "./helpers"
+import $ from 'jquery'
+import { l } from "./helpers"
+
+l('jQuery Version:', $().jquery)
+
 export default class Utils {
-  constructor($q, $filter, $rootScope){
+  constructor($q, $filter, $rootScope, $timeout){
     // l($q, $filter, $rootScope)
+    this.$timeout = $timeout
+    this.$rootScope = $rootScope
     this.def = ''
     this.host = 'local'
 
@@ -106,31 +112,57 @@ export default class Utils {
       document.body.removeChild(link)
     }
   }
-  focus(id, dir, arr){
-    // l(dir)
-    var curr = this.fl('filter', arr, {id: id})[0]
-    , idx = arr.indexOf(curr)
+  // focus(id, dir, arr){
+  //   // l(dir)
+  //   const curr = this.fl('filter', arr, {id: id})[0]
+  //   let idx = arr.indexOf(curr)
+  //
+  //   switch(dir){
+  //     case 'prev':
+  //       if(idx == 0){
+  //         idx = arr.length - 1
+  //       }else{
+  //         idx--
+  //       }
+  //     break;
+  //
+  //     case 'next':
+  //       if(idx == arr.length - 1){
+  //         idx = 0
+  //       }else{
+  //         idx++
+  //       }
+  //     break;
+  //   }
+  //   const el = $('#' + arr[idx].id)
+  //   el.focus()
+  //   $(window).scrollTop(el.offset().top - 260 - 50)
+  // }
+  focus(dir, focusedEl, menu){
+    // l(dir, focusedEl, menu)
+    const { $timeout, $rootScope } = this
+    , fieldData = {}
 
-    switch(dir){
-      case 'prev':
-        if(idx == 0){
-          idx = arr.length - 1
-        }else{
-          idx--
-        }
-      break;
+    // 1. check if any field has focus already
+    if(!focusedEl){
+      // 2. if no, identify first field and focus
+      fieldData.page  = menu.activePage
+      fieldData.field = menu.pages[menu.activePage][0].id
+    } else {
+      // 3. if yes, identify next field and focus
 
-      case 'next':
-        if(idx == arr.length - 1){
-          idx = 0
-        }else{
-          idx++
-        }
-      break;
+      const currPage = menu.pages[menu.activePage]
+      , fieldIdx = currPage.findIndex(gr => gr.id === focusedEl.field)
+
+      l(fieldIdx)
+      // if(fieldIdx === 0){}
+      // else if(fieldIdx === currPage.length - 1){}
+      // else {}
+      //
+      // fieldData.page  = focusedEl.page
+      // fieldData.field =
     }
-    var el = $('#' + arr[idx].id)
-    el.focus()
-    $(window).scrollTop(el.offset().top - 260 - 50)
+    $timeout($rootScope.$broadcast('focusOn', fieldData))
   }
   zoom(level, dir){
     if(dir == "+"){
@@ -223,12 +255,13 @@ export default class Utils {
     })
     return def2.promise
   }
-  getFilledFields(arr){
-    var filled = 0
-    arr.forEach(function(obj){
-      if(!angular.isUndefined(obj.v) && obj.v !== '' && !obj.r){
-        filled++
-      }
+  getFilledFields(pages){
+    let filled = 0
+    pages.forEach(page => {
+      page.forEach(obj => {
+        if(!angular.isUndefined(obj.name.v) && obj.name.v !== '')
+          filled++
+      })
     })
     return filled
   }

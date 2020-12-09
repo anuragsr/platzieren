@@ -48,9 +48,24 @@
   </section>
 
   <section class="section1" ng-class="{ 'dark': homeCtrl.toggle.switch }">
-    <coffee ng-if="homeCtrl.menu.title === 'Allge.'" curr-menu="homeCtrl.menu" page-fn="homeCtrl.pageFn"></coffee>
-    <japanese ng-if="homeCtrl.menu.title === 'Sushi'" curr-menu="homeCtrl.menu"></japanese>
-    <pizza ng-if="homeCtrl.menu.title === 'Pizza'" curr-menu="homeCtrl.menu" page-fn="homeCtrl.pageFn"></pizza>
+    <coffee
+      ng-if="homeCtrl.menu.title === 'Allge.'"
+      curr-menu="homeCtrl.menu"
+      filled-fields="homeCtrl.filledFields"
+      focused-el="homeCtrl.focusedEl"
+    ></coffee>
+    <japanese
+      ng-if="homeCtrl.menu.title === 'Sushi'"
+      curr-menu="homeCtrl.menu"
+      filled-fields="homeCtrl.filledFields"
+      focused-el="homeCtrl.focusedEl"
+    ></japanese>
+    <pizza
+      ng-if="homeCtrl.menu.title === 'Pizza'"
+      curr-menu="homeCtrl.menu"
+      filled-fields="homeCtrl.filledFields"
+      focused-el="homeCtrl.focusedEl"
+    ></pizza>
 
     <div class="ctn-float-box">
       <div class="inner">
@@ -61,9 +76,9 @@
         </div>
         <div class="b-item no-fields">
           <div class="num">
-            <img ng-click="focus('prev')" src="/assets/arr-l.png" class="inv"/>
+            <img ng-click="homeCtrl.focus('prev')" src="/assets/arr-l.png" class="inv"/>
             <div>{{homeCtrl.filledFields}} / {{homeCtrl.totalFields}}</div>
-            <img ng-click="focus('next')" src="/assets/arr-r.png" class="inv"/>
+            <img ng-click="homeCtrl.focus('next')" src="/assets/arr-r.png" class="inv"/>
           </div>
           <span>Pflichtfelder<br/>befüllt</span>
         </div>
@@ -80,7 +95,7 @@
           <div><img src="/assets/herb 1.png" alt="" />Vegetarian</div>
         </div>
         <div class="b-item qr-btn">
-          <button ng-click="save()" class="btn btn-light btn-block">
+          <button ng-click="homeCtrl.getQR()" class="btn btn-light btn-block">
             <img src="/assets/qr-dark.png" alt="">
             <div>QR Code<br/>erstellen</div>
           </button>
