@@ -1,4 +1,6 @@
-import {l} from "../utils/helpers"
+import ClipboardJS from 'clipboard/dist/clipboard.min'
+import {l} from '../utils/helpers'
+
 export default class HomeCtrl {
   constructor($scope, $timeout, utils) {
     this.utils = utils
@@ -143,9 +145,19 @@ export default class HomeCtrl {
     if(confirm('Möchten Sie wirklich ein neues Dokument erstellen?')) this.createMenu(p)
   }
   createMenu(menu){
+    this.shareLink = this.utils.createLink()
     this.idx = this.menus.indexOf(menu)
     this.menu = angular.copy(menu)
     this.addMenuPage()
+
+    const clipboard = new ClipboardJS('.ctn-link .desc, .inner.link')
+    clipboard.on('success', function(e) {
+      e.clearSelection()
+      alert('In die Zwischenablage kopiert - ' + e.text)
+    })
+    clipboard.on('error', function(e) {
+      alert('Beim Kopieren ist ein Fehler aufgetreten, bitte manuell kopieren.')
+    })
   }
   addMenuPage() {
     l("add page")

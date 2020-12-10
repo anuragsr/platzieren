@@ -42,7 +42,7 @@ angular
 .service('utils', ['$q', '$filter', '$rootScope', '$timeout', 'ENV', Utils])
 .controller('HomeCtrl', ['$scope', '$timeout', 'utils', HomeCtrl])
 .controller('JapCtrl', ['$scope', 'utils', JapCtrl])
-.controller('LoadCtrl', ['$scope', 'utils', LoadCtrl])
+.controller('LoadCtrl', ['$scope', '$stateParams', 'utils', LoadCtrl])
 .directive('h', Header)
 .directive('f', Footer)
 .directive('focusOn', ['$rootScope', FocusOn])
@@ -66,9 +66,7 @@ angular
   }
 })
 .component('japanese', {
-  bindings: {
-    currMenu: '=', filledFields: '=', zoom: '='
-  },
+  bindings: { currMenu: '=', filledFields: '=', zoom: '=' },
   template: japaneseTpl,
   controller: 'JapCtrl'
 })
@@ -83,7 +81,6 @@ angular
 })
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/home");
-  // $urlRouterProvider.otherwise("/l/2");
 
   $stateProvider
   .state('home', {

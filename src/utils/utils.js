@@ -1,6 +1,5 @@
 import $ from 'jquery'
 import { l } from "./helpers"
-
 l('jQuery Version:', $().jquery)
 
 export default class Utils {
@@ -8,14 +7,11 @@ export default class Utils {
     // l($q, $filter, $rootScope)
     this.$timeout = $timeout
     this.$rootScope = $rootScope
-    this.ENV = ENV[ENV.CURR]
-    this.def = ''
-    // l(this.ENV)
+    this.$q = $q
 
-    // this.host = 'local'
-    // , host = "http://localhost/contract/"
-    // , host = ""
-    // , host = "https://www.untermietvertrag.com/"
+    this.FE_URL = ENV[ENV.CURR].FE_URL
+    this.API_URL = ENV[ENV.CURR].API_URL
+    this.def = ''
   }
   isMobile(){
     if(    navigator.userAgent.match(/Android/i)
@@ -32,9 +28,16 @@ export default class Utils {
       return false
     }
   }
-  fl(fil, arr, condition){
-    return $filter(fil)(arr, condition)
+  generateId(length){
+    let chars = 'M30Z1xA0Nu5Pn8Yo2pXqB5Rly9Gz3vWOj1Hm46IeCfgSrTs7Q9aJb8F6DcE7d2twkUhKiL4V'
+    , charLength = chars.length
+    , randomStr = ''
+    for (let i = 0; i < length; i++) {
+      randomStr+= chars[Math.floor(Math.random() * (charLength - 1)) + 0]
+    }
+    return randomStr
   }
+  createLink(){ return `${this.FE_URL}${this.generateId(6)}` }
   focus(dir, focusedEl, menu){
     // l(dir, focusedEl, menu)
     const { $timeout, $rootScope } = this
@@ -264,6 +267,9 @@ export default class Utils {
   // }
 }
 
+// fl(fil, arr, condition){
+//   return $filter(fil)(arr, condition)
+// }
 // focus(id, dir, arr){
 //   // l(dir)
 //   const curr = this.fl('filter', arr, {id: id})[0]

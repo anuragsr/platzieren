@@ -1,4 +1,4 @@
-const FocusOn = ($rootScope) => ({
+const FocusOn = $rootScope => ({
   scope: { focusOn: "=" },
   link: function(scope, elem, attrs) {
     // l(attrs.focusOn)
