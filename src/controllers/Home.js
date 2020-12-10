@@ -122,7 +122,7 @@ export default class HomeCtrl {
 
     this.init()
     $scope.$on('elFocused', (name, val) => {
-      l(this.focusedEl, val)
+      // l(this.focusedEl, val)
       this.focusedEl = val
     })
   }
@@ -154,18 +154,9 @@ export default class HomeCtrl {
     this.menu.activePage = this.menu.pages.length - 1
     this.totalFields = this.menu.pages.reduce((prev, curr) => prev + curr.length, 0)
   }
-  zoomFn(dir){
-    // s.zoom = utils.zoom(s.zoom, dir)
-    l(dir)
-    this.zoom = 1
-  }
+  zoomFn(dir){ this.zoom = this.utils.zoom(this.zoom, dir) }
+  focus(dir){ this.utils.focus(dir, this.focusedEl, this.menu) }
   getQR(){
     l(this.focusedEl)
-  }
-  focus(dir){
-    // this.utils.focus(dir, this.menu)
-    // this.utils.focus("focusMePlease")
-    l(dir, this.focusedEl)
-    this.utils.focus(dir, this.focusedEl, this.menu)
   }
 }

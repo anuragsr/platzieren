@@ -44,7 +44,11 @@
     bottom: -250px; left: 0;
   }
 </style>
-<div class="ctn-menu-bg">
+<div class="ctn-menu-bg" ng-style="{
+  transformOrigin: 'top',
+  transform: 'scale('+ $ctrl.zoom +')',
+  paddingBottom: ($ctrl.zoom * 100) + 'px'
+}">
   <div class="ctn-menu-outer">
     <div class="ctn-menu-inner">
       <div class="ctn-menu-page"
@@ -112,6 +116,5 @@
   <div class="ctn-clip"></div>
 </div>
 <pre class="deb-obj">
-  {{ $ctrl.focusedEl | json }}
   {{ $ctrl.currMenu.pages | json }}
 </pre>

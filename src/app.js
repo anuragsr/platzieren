@@ -43,6 +43,9 @@ angular
 .controller('HomeCtrl', ['$scope', '$timeout', 'utils', HomeCtrl])
 .controller('JapCtrl', ['$scope', 'utils', JapCtrl])
 .controller('LoadCtrl', ['$scope', 'utils', LoadCtrl])
+.directive('h', Header)
+.directive('f', Footer)
+.directive('focusOn', ['$rootScope', FocusOn])
 .component('home', {
   template: homeTpl,
   controller: 'HomeCtrl',
@@ -64,7 +67,7 @@ angular
 })
 .component('japanese', {
   bindings: {
-    currMenu: '=', filledFields: '=', focusedEl: "="
+    currMenu: '=', filledFields: '=', zoom: '='
   },
   template: japaneseTpl,
   controller: 'JapCtrl'
@@ -93,6 +96,3 @@ angular
   })
   // Add more states here
 }])
-.directive('h', Header)
-.directive('f', Footer)
-.directive('focusOn', ['$rootScope', FocusOn])
