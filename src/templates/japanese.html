@@ -59,7 +59,7 @@
             <div class="text-left">
               <input
                 class="name" type="text"
-                focus-on="{ page: $parent.$index, field: gr.id }"
+                focus-on="{ page: $parent.$index, field: $index }"
                 ng-model="gr.name.v" placeholder="{{gr.name.p}}"
               /><br/>
               <input class="desc" type="text" ng-model="gr.desc.v" placeholder="{{gr.desc.p}}"/>

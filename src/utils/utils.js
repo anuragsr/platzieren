@@ -4,13 +4,15 @@ import { l } from "./helpers"
 l('jQuery Version:', $().jquery)
 
 export default class Utils {
-  constructor($q, $filter, $rootScope, $timeout){
+  constructor($q, $filter, $rootScope, $timeout, ENV){
     // l($q, $filter, $rootScope)
     this.$timeout = $timeout
     this.$rootScope = $rootScope
+    this.ENV = ENV[ENV.CURR]
     this.def = ''
-    this.host = 'local'
+    // l(this.ENV)
 
+    // this.host = 'local'
     // , host = "http://localhost/contract/"
     // , host = ""
     // , host = "https://www.untermietvertrag.com/"
@@ -112,32 +114,6 @@ export default class Utils {
       document.body.removeChild(link)
     }
   }
-  // focus(id, dir, arr){
-  //   // l(dir)
-  //   const curr = this.fl('filter', arr, {id: id})[0]
-  //   let idx = arr.indexOf(curr)
-  //
-  //   switch(dir){
-  //     case 'prev':
-  //       if(idx == 0){
-  //         idx = arr.length - 1
-  //       }else{
-  //         idx--
-  //       }
-  //     break;
-  //
-  //     case 'next':
-  //       if(idx == arr.length - 1){
-  //         idx = 0
-  //       }else{
-  //         idx++
-  //       }
-  //     break;
-  //   }
-  //   const el = $('#' + arr[idx].id)
-  //   el.focus()
-  //   $(window).scrollTop(el.offset().top - 260 - 50)
-  // }
   focus(dir, focusedEl, menu){
     // l(dir, focusedEl, menu)
     const { $timeout, $rootScope } = this
@@ -150,18 +126,25 @@ export default class Utils {
       fieldData.field = menu.pages[menu.activePage][0].id
     } else {
       // 3. if yes, identify next field and focus
-
       const currPage = menu.pages[menu.activePage]
-      , fieldIdx = currPage.findIndex(gr => gr.id === focusedEl.field)
+      let fieldIdx = currPage.findIndex(gr => gr.id === focusedEl.field)
 
-      l(fieldIdx)
-      // if(fieldIdx === 0){}
-      // else if(fieldIdx === currPage.length - 1){}
-      // else {}
-      //
-      // fieldData.page  = focusedEl.page
-      // fieldData.field =
+      // l(fieldIdx)
+      switch(dir){
+        case 'prev':
+          if(fieldIdx === 0){ fieldIdx = currPage.length - 1 }
+          else { fieldIdx-- }
+        break;
+
+        default:
+          if(fieldIdx === currPage.length - 1){ fieldIdx = 0 }
+          else { fieldIdx++ }
+        break;
+      }
+      fieldData.page  = focusedEl.page
+      fieldData.field = fieldIdx
     }
+
     $timeout($rootScope.$broadcast('focusOn', fieldData))
   }
   zoom(level, dir){
@@ -292,3 +275,30 @@ export default class Utils {
     return def2.promise
   }
 }
+
+// focus(id, dir, arr){
+//   // l(dir)
+//   const curr = this.fl('filter', arr, {id: id})[0]
+//   let idx = arr.indexOf(curr)
+//
+//   switch(dir){
+//     case 'prev':
+//       if(idx == 0){
+//         idx = arr.length - 1
+//       }else{
+//         idx--
+//       }
+//     break;
+//
+//     case 'next':
+//       if(idx == arr.length - 1){
+//         idx = 0
+//       }else{
+//         idx++
+//       }
+//     break;
+//   }
+//   const el = $('#' + arr[idx].id)
+//   el.focus()
+//   $(window).scrollTop(el.offset().top - 260 - 50)
+// }

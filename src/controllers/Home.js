@@ -8,7 +8,7 @@ export default class HomeCtrl {
     this.filledFields = 0
     this.zoom = 1
     this.idx = 0
-    this.focusedEl = null
+    // this.focusedEl = null
 
     this.menus = [
       {
@@ -23,84 +23,84 @@ export default class HomeCtrl {
         img: "/assets/sushi.png",
         fields: [
           {
-            id:'f0',
+            id:0,
             pos: { top: 360, left: 30 },
             name: { p: 'SPICY TUNA', v: '' },
             desc: { p: 'Tuna, Rice, Avocado', v: '' },
             price: { p: 'X,XX', v: '' },
           },
           {
-            id:'f1',
+            id:1,
             pos: { top: 415, left: 30 },
             name: { p: 'SPICY TUNA', v: '' },
             desc: { p: 'Tuna, Rice, Avocado', v: '' },
             price: { p: 'X,XX', v: '' },
           },
           {
-            id:'f2',
+            id:2,
             pos: { top: 465, left: 30 },
             name: { p: 'SPICY TUNA', v: '' },
             desc: { p: 'Tuna, Rice, Avocado', v: '' },
             price: { p: 'X,XX', v: '' },
           },
           {
-            id:'f3',
+            id:3,
             pos: { top: 330, left: 490 },
             name: { p: 'SPICY TUNA', v: '' },
             desc: { p: 'Tuna, Rice, Avocado', v: '' },
             price: { p: 'X,XX', v: '' },
           },
           {
-            id:'f4',
+            id:4,
             pos: { top: 385, left: 490 },
             name: { p: 'SPICY TUNA', v: '' },
             desc: { p: 'Tuna, Rice, Avocado', v: '' },
             price: { p: 'X,XX', v: '' },
           },
           {
-            id:'f5',
+            id:5,
             pos: { top: 650, left: 30 },
             name: { p: 'SPICY TUNA', v: '' },
             desc: { p: 'Tuna, Rice, Avocado', v: '' },
             price: { p: 'X,XX', v: '' },
           },
           {
-            id:'f6',
+            id:6,
             pos: { top: 705, left: 30 },
             name: { p: 'SPICY TUNA', v: '' },
             desc: { p: 'Tuna, Rice, Avocado', v: '' },
             price: { p: 'X,XX', v: '' },
           },
           {
-            id:'f7',
+            id:7,
             pos: { top: 760, left: 30 },
             name: { p: 'SPICY TUNA', v: '' },
             desc: { p: 'Tuna, Rice, Avocado', v: '' },
             price: { p: 'X,XX', v: '' },
           },
           {
-            id:'f8',
+            id:8,
             pos: { top: 815, left: 30 },
             name: { p: 'SPICY TUNA', v: '' },
             desc: { p: 'Tuna, Rice, Avocado', v: '' },
             price: { p: 'X,XX', v: '' },
           },
           {
-            id:'f9',
+            id:9,
             pos: { top: 605, left: 250 },
             name: { p: 'SPICY TUNA', v: '' },
             desc: { p: 'Tuna, Rice, Avocado', v: '' },
             price: { p: 'X,XX', v: '' },
           },
           {
-            id:'f10',
+            id:10,
             pos: { top: 745, left: 470 },
             name: { p: 'SPICY TUNA', v: '' },
             desc: { p: 'Tuna, Rice, Avocado', v: '' },
             price: { p: 'X,XX', v: '' },
           },
           {
-            id:'f11',
+            id:11,
             pos: { top: 800, left: 470 },
             name: { p: 'SPICY TUNA', v: '' },
             desc: { p: 'Tuna, Rice, Avocado', v: '' },
@@ -149,6 +149,7 @@ export default class HomeCtrl {
   }
   addMenuPage() {
     l("add page")
+    this.focusedEl = null
     this.menu.pages.push(angular.copy(this.menu.fields))
     this.menu.activePage = this.menu.pages.length - 1
     this.totalFields = this.menu.pages.reduce((prev, curr) => prev + curr.length, 0)

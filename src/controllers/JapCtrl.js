@@ -1,7 +1,7 @@
 import { l } from "../utils/helpers"
 export default class JapCtrl {
   constructor($scope, utils) {
-    l(this)
+    // l(this)
     this.$onInit = () => {
       l("init japaneseTpl")
     }
