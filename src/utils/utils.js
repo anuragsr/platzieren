@@ -135,14 +135,26 @@ export default class Utils {
 
     return this.def.promise
   }
+  getMenu(id){
+    const { $q } = this
+    this.def = $q.defer()
+
+    this.post(`${this.API_URL}process.php`, {
+      t: "get", d: id
+    }).then(res => {
+      if(res.result) this.def.resolve(res)
+      else alert(res.message)
+    })
+
+    return this.def.promise
+  }
   save(menu){
     const { id, title, pages } = menu
     , formData = { id, title, pages }
 
     const def = this.$q.defer()
     this.post(`${this.API_URL}process.php`, {
-      t: "save",
-      d: formData
+      t: "save", d: formData
     })
     .then(res => def.resolve(res))
 
@@ -276,21 +288,6 @@ export default class Utils {
 //     // l(html)
 //   }
 //   return html
-// }
-// getContents(id){
-//   def2 = $q.defer()
-//   this.post(host + "backend/contract.php", {
-//     t: "get",
-//     d: {
-//       id: id
-//     }
-//   }).then(function(res){
-//     if(res.result)
-//       def2.resolve(res)
-//     else
-//       alert(res.message)
-//   })
-//   return def2.promise
 // }
 // createPdf(id, title, sections){
 //   var def2 = $q.defer()

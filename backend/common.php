@@ -15,6 +15,7 @@
 
   // Reading the input
   $data = $_REQUEST;
+  $params = json_decode($_REQUEST["params"], true); 
   // $data["files"] = Common::normalizeFiles($_FILES);
   // $data = json_decode(file_get_contents('php://input'), true);
 ?>
