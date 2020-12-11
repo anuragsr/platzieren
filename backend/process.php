@@ -96,6 +96,7 @@
           $data = $dbResult["data"];
           $output = array(
             "menu" => array(
+              "activePage" => 0,
               "title" => $data[0]["x_type"],
               "pages" => array()
             ),

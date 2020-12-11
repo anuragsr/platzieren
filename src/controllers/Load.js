@@ -11,6 +11,7 @@ export default class LoadCtrl {
     .getMenu(this.menuId)
     .then(res => {
       l(res)
+      this.menu = res.data.menu
     })
   }
 }

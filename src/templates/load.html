@@ -1,3 +1,123 @@
-<main>
-  <h1 class="title">LoadCtrl: {{loadCtrl.menuId}}</h1>
+<h></h>
+<main class="ctn-load">
+  <section class="sub-header">
+    <div class="container">
+      <div class="inner">
+        <div class="s-item box ctn-new" ng-click="homeCtrl.save()">
+          <img src="/assets/save-icon.png" alt=""/>
+          <div>Speichem</div>
+        </div>
+        <!--<div class="s-item box ctn-menu-opts">
+          <div class="menu-opt"
+            ng-repeat="p in homeCtrl.menus track by $index"
+            ng-click="homeCtrl.new(p)"
+            ng-class="{'active': $index === homeCtrl.idx}
+            ">
+            <img ng-src="{{ p.img }}" alt=""/>
+            <div>{{ p.title }}</div>
+          </div>
+          <div class="arr arr-lt">
+            <img src="/assets/arr-l.png" alt="">
+          </div>
+          <div class="arr arr-rt">
+            <img src="/assets/arr-r.png" alt="">
+          </div>
+        </div>-->
+        <div class="s-item ctn-switch">
+          Tag Modus
+          <div class="btn-switch"
+            ng-class="{'btn-switch--on':homeCtrl.toggle.switch}"
+            ng-model="homeCtrl.toggle.switch"
+            ng-click="homeCtrl.toggle.switch = !homeCtrl.toggle.switch">
+            <div class="btn-switch-circle" ng-class="{'btn-switch-circle--on':homeCtrl.toggle.switch}"></div>
+          </div>
+          Nacht Modus
+        </div>
+        <!--<div class="s-item ctn-copy-link">
+          <div class="inner link" ng-click="homeCtrl.save()" data-clipboard-text="{{ homeCtrl.shareLink }}" title="{{ homeCtrl.shareLink }}">
+            <i class="fa fa-link"></i>
+            <div class="text">{{ homeCtrl.shareLink }}</div>
+          </div>
+          <div class="desc">Dein Link<br/>(Klicken Sie, um zu kopieren)</div>
+        </div>-->
+        <div class="s-item">
+          <button class="btn btn-pr" ng-click="qr()">Vorschau QR Menu</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section1" ng-class="{ 'dark': homeCtrl.toggle.switch }">
+    <coffee
+      ng-if="loadCtrl.menu.title === 'Allge.'"
+      curr-menu="loadCtrl.menu"
+      filled-fields="homeCtrl.filledFields"
+      focused-el="homeCtrl.focusedEl"
+      zoom="homeCtrl.zoom"
+    ></coffee>
+    <japanese
+      ng-if="loadCtrl.menu.title === 'Sushi'"
+      curr-menu="loadCtrl.menu"
+      filled-fields="homeCtrl.filledFields"
+      focused-el="homeCtrl.focusedEl"
+      zoom="homeCtrl.zoom"
+    ></japanese>
+    <pizza
+      ng-if="loadCtrl.menu.title === 'Pizza'"
+      curr-menu="loadCtrl.menu"
+      filled-fields="homeCtrl.filledFields"
+      focused-el="homeCtrl.focusedEl"
+      zoom="homeCtrl.zoom"
+    ></pizza>
+
+    <div class="ctn-float-box">
+      <div class="inner">
+        <div class="b-item perc">
+          <div>{{ (homeCtrl.filledFields * 100 / homeCtrl.totalFields).toFixed(0)}}<sup>%</sup></div>
+          <span>geschafft</span>
+        </div>
+        <div class="b-item no-fields">
+          <div class="num">
+            <img ng-click="homeCtrl.focus('prev')" src="/assets/arr-l.png" class="inv"/>
+            <div>{{homeCtrl.filledFields}} / {{homeCtrl.totalFields}}</div>
+            <img ng-click="homeCtrl.focus('next')" src="/assets/arr-r.png" class="inv"/>
+          </div>
+          <span>Pflichtfelder<br/>befüllt</span>
+        </div>
+        <div class="b-item outlined hov" ng-click="homeCtrl.addMenuPage()">Seite Hinzufügen</div>
+        <div class="b-item outlined zoom">
+          <span>{{(homeCtrl.zoom * 100).toFixed(0)}}%</span>
+          <div class="btn-group">
+            <button type="button" ng-click="homeCtrl.zoomFn('-')" class="btn btn-sm btn-light">-</button>
+            <button type="button" ng-click="homeCtrl.zoomFn('+')" class="btn btn-sm btn-light">+</button>
+          </div>
+        </div>
+        <div class="b-item veg">
+          <div><img src="/assets/plant 1.png" alt="" />Vegan</div>
+          <div><img src="/assets/herb 1.png" alt="" />Vegetarian</div>
+        </div>
+        <div class="b-item qr-btn">
+          <button ng-click="homeCtrl.getQR()" class="btn btn-light btn-block">
+            <img src="/assets/qr-dark.png" alt="">
+            <div>QR Code<br/>erstellen</div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal fade dl-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          Click <a target="_blank" href="{{dlPath}}">here</a> to download the PDF
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
+<f></f>
+

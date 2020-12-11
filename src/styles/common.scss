@@ -53,3 +53,154 @@ button.btn-pr{
 }
 
 .ctn-link, .deb-obj{ display: none; }
+
+.sub-header{
+  @extend %j-c;
+  @extend %fw;
+  font-family: $ex;
+  font-weight: 400;
+  padding: 20px 0;
+  background: $w;
+  box-shadow: 0 4px 4px 4px rgba(31, 68, 84, 0.02);
+  @include media("<=lp") { padding: 20px 10px; }
+  @include media("<=tablet") {
+    position: relative;
+    top: 0;
+    height: unset;
+  }
+  .inner{
+    @extend %fh;
+    @extend %j-s-b;
+    font-size: 14px;
+    .s-item{
+      display: flex;
+      button{
+        height: 36px;
+        font-size: 15px;
+        padding: 5px 25px;
+      }
+    }
+    .box{
+      @extend %fh;
+      @extend %j-c;
+      padding: 0 15px;
+      transition: all .3s;
+      border-radius: 2px;
+      border: solid 1px $pr;
+      height: 64px;
+      min-width: 66px;
+      @include media("<=tablet") {
+        margin: 0;
+        padding: 0;
+      }
+      &.ctn-new{
+        cursor: pointer;
+        flex-direction: column;
+        img{
+          height: 25px;
+          margin-bottom: 5px;
+        }
+        &:hover{ background: rgba($l, 1); }
+      }
+      &.ctn-menu-opts{
+        @extend %j-c;
+        position: relative;
+        padding: 0 20px;
+        .menu-opt{
+          opacity: .5;
+          cursor: pointer;
+          border-radius: 5px;
+          border: solid 1px $pr;
+          width: 60px;
+          height: 55px;
+          margin: 0 5px;
+          flex-direction: column;
+          transition: opacity .3s;
+          &:hover, &.active{ opacity: 1; }
+          img{ height: 27px; }
+        }
+        .arr{
+          position: absolute;
+          top: 27%;
+          cursor: pointer;
+          &.arr-lt{ padding-left: 5px; left: 0; }
+          &.arr-rt{ padding-right: 5px; right: 0; }
+          img{ height: 15px; }
+        }
+      }
+    }
+    .ctn-switch{
+      .btn-switch {
+        position: relative;
+        width: 52px;
+        height: 27px;
+        cursor: pointer;
+        background-color: $l;
+        border-radius: 40px;
+        box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.05);
+        border: solid 1px rgba(37, 58, 65, 0.1);
+        transition: all .3s;
+        margin: 0 10px;
+        .btn-switch-circle {
+          transition: left .3s;
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 25px;
+          width: 25px;
+          background-color: #fff;
+          border: inherit;
+          border-radius: inherit;
+        }
+      }
+      .btn-switch--on {
+        background-color: $pr;
+        .btn-switch-circle--on { left: 25px; }
+      }
+    }
+    .ctn-copy-link{
+      @extend %j-f-s;
+      flex-direction: column;
+      .inner{
+        @extend %j-c;
+        width: 140px;
+        height: 50px;
+        padding: 5px 10px;
+        margin-bottom: 10px;
+        background: $pr;
+        @include media("<=tablet") {
+          margin-bottom: 0;
+          width: 45vw;
+        }
+        img{
+          cursor: pointer;
+          height: 20px;
+          margin-bottom: 0;
+        }
+        &.link{
+          width: 200px;
+          cursor: pointer;
+          background: $l;
+          @include media("<=lp") {
+            width: 140px;
+          }
+          .text{
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          i{
+            margin-right: 10px;
+            transform: scaleX(-1);
+          }
+        }
+      }
+      .desc{
+        font-size: 14px;
+        text-align: center;
+        @include media("<=lp") {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
