@@ -127,6 +127,7 @@ export default class HomeCtrl {
       // l(this.focusedEl, val)
       this.focusedEl = val
     })
+    $scope.$on('progress', (e, prog) => l(prog))
   }
   init(){
     l("init Home")
@@ -145,9 +146,12 @@ export default class HomeCtrl {
     if(confirm('Möchten Sie wirklich ein neues Dokument erstellen?')) this.createMenu(p)
   }
   createMenu(menu){
-    this.shareLink = this.utils.createLink()
+    const linkData = this.utils.createLink()
+    this.shareLink = linkData.link
+
     this.idx = this.menus.indexOf(menu)
     this.menu = angular.copy(menu)
+    this.menu.id = linkData.id
     this.addMenuPage()
 
     const clipboard = new ClipboardJS('.ctn-link .desc, .inner.link')
@@ -168,6 +172,22 @@ export default class HomeCtrl {
   }
   zoomFn(dir){ this.zoom = this.utils.zoom(this.zoom, dir) }
   focus(dir){ this.utils.focus(dir, this.focusedEl, this.menu) }
+  save(isAuto){
+    // l(this.menu.id , this.menu.pages)
+    this.showLoader = true
+    this.utils
+    .save(this.menu)
+    .then(res => {
+      l(res)
+      this.showLoader = false
+      // if(!isAuto){
+      //   // Alert of saved successfully
+      //   // alert(res.message)
+      //   this.copyText = "KOPIEREN"
+      //   this.showPopup()
+      // }
+    })
+  }
   getQR(){
     l(this.focusedEl)
   }

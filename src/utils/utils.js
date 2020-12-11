@@ -11,7 +11,7 @@ export default class Utils {
 
     this.FE_URL = ENV[ENV.CURR].FE_URL
     this.API_URL = ENV[ENV.CURR].API_URL
-    this.def = ''
+    // this.def = $q.defer()
   }
   isMobile(){
     if(    navigator.userAgent.match(/Android/i)
@@ -37,7 +37,10 @@ export default class Utils {
     }
     return randomStr
   }
-  createLink(){ return `${this.FE_URL}${this.generateId(6)}` }
+  createLink(){
+    const id = this.generateId(6)
+    return { id, link:`${this.FE_URL}${id}` }
+  }
   focus(dir, focusedEl, menu){
     // l(dir, focusedEl, menu)
     const { $timeout, $rootScope } = this
@@ -89,184 +92,219 @@ export default class Utils {
     })
     return filled
   }
-  // failed(e) {
-  //   // l(e)
-  //   l("There was an error attempting to send data.")
-  // }
-  // canceled(e) {
-  //   // l(e)
-  //   l("The upload has been canceled by the user or the browser dropped the connection.")
-  // }
-  // progress(evt){
-  //   if(evt.lengthComputable){
-  //     var prog = Math.round(evt.loaded * 100 / evt.total)
-  //     $rootScope.$broadcast("progress", { prog: prog })
-  //   }else{
-  //     $rootScope.$broadcast("progress", { prog: 0 })
-  //   }
-  // }
-  // done(evt){
-  //   try{
-  //     var res = JSON.parse(evt.target.response)
-  //     def.resolve(res)
-  //   }catch(err){
-  //     l(evt.target.response)
-  //   }
-  // }
-  // post(url, data, files){
-  //   def = $q.defer()
-  //   var fd = new FormData()
-  //   var xhr = new XMLHttpRequest()
-  //
-  //   fd.append("params", angular.toJson(data))
-  //   if(files){
-  //     var paths = []
-  //     files.forEach(function(x){
-  //       fd.append("files[]", x.value)
-  //       paths.push(x.upPath)
-  //     })
-  //     fd.append("paths", angular.toJson(paths))
-  //   }
-  //
-  //   xhr.upload.addEventListener("progress", this.progress, false)
-  //   xhr.addEventListener("load", this.done, false)
-  //   xhr.addEventListener("error", this.failed, false)
-  //   xhr.addEventListener("abort", this.canceled, false)
-  //   xhr.open("POST", url)
-  //   xhr.send(fd)
-  //   return def.promise
-  // }
-  // getId(length){
-  //   var chars = 'M30Z1xA0Nu5Pn8Yo2pXqB5Rly9Gz3vWOj1Hm46IeCfgSrTs7Q9aJb8F6DcE7d2twkUhKiL4V'
-  //   , charLength = chars.length
-  //   , randomStr = ''
-  //   for (var i = 0; i < length; i++) {
-  //     randomStr+= chars[Math.floor(Math.random() * (charLength - 1)) + 0]
-  //   }
-  //   return randomStr
-  // }
-  // space(c){
-  //   return String.fromCharCode(160).repeat(c)
-  // }
-  // download(path, name, s){
-  //   if(  navigator.userAgent.match(/iPhone/i)
-  //     || navigator.userAgent.match(/iPad/i)
-  //     || navigator.userAgent.match(/iPod/i)
-  //   ){
-  //     // If apple, let user click a link
-  //     s.dlPath = host + path
-  //     $(".dl-modal-2").modal('hide')
-  //     $(".dl-modal").modal('show')
-  //   } else {
-  //     // Else, download it
-  //     var link = document.createElement("a")
-  //     document.body.appendChild(link)
-  //     link.href = host + path
-  //     link.target = '_blank'
-  //     link.download = name
-  //     link.click()
-  //     document.body.removeChild(link)
-  //   }
-  // }
-  // scroll(amount){
-  //   $('html, body').animate({ scrollTop: amount }, 500)
-  // }
-  // resizeFields(spans, arr) {
-  //   spans.forEach(function(sp, idx){
-  //     var mh = $(sp).height() + 10
-  //     , mw = $(sp).width() + 10
-  //
-  //     arr[idx].mh = mh
-  //     arr[idx].mw = mw
-  //
-  //     $(sp).css({
-  //       minHeight : mh,
-  //       minWidth : mw,
-  //     })
-  //   })
-  // }
-  // getHTML(type, data){
-  //   var html = ""
-  //   if(type == "pdf"){
-  //     var s = angular.copy(data.sec)
-  //     var t = angular.copy(data.t)
-  //     t.css({ textAlign: "center" })
-  //     t.append("<br>")
-  //     t.removeAttr("class")
-  //     html+= t.get(0).outerHTML
-  //     s.forEach(function(obj){
-  //       var jqObj = $(obj)
-  //       jqObj.find(".ctn-action").remove()
-  //       jqObj.css("margin", "20px 0")
-  //       if(jqObj.hasClass("heading")){
-  //         jqObj.css("margin", "40px 0")
-  //       }
-  //       jqObj.removeAttr("class ng-click")
-  //
-  //       var spans = jqObj.find("span.edit")
-  //       if(spans.length){
-  //         spans.replaceWith(function(){
-  //           return $("<b />", { html: $(this).text().replace(/\n/g, "<br>") })
-  //         })
-  //       }
-  //       html+= jqObj.get(0).outerHTML
-  //     })
-  //     // l(html)
-  //   }else{
-  //     // l(data.h)
-  //     html = $(data.h)
-  //     html.find(".ctn-action").remove()
-  //     html.find("span").replaceWith(function(){
-  //       return $("<b />", { html: $(this).text().replace(/\n/g, "<br>") })
-  //     })
-  //     html = $(html[1]).html()
-  //     // l(html)
-  //   }
-  //   return html
-  // }
-  // getContents(id){
-  //   def2 = $q.defer()
-  //   this.post(host + "backend/contract.php", {
-  //     t: "get",
-  //     d: {
-  //       id: id
-  //     }
-  //   }).then(function(res){
-  //     if(res.result)
-  //       def2.resolve(res)
-  //     else
-  //       alert(res.message)
-  //   })
-  //   return def2.promise
-  // }
-  // save(id, html){
-  //   var def2 = $q.defer()
-  //   this.post(host + "backend/contract.php", {
-  //     t: "save",
-  //     d: {
-  //       id: id,
-  //       html: this.getHTML("html", { h: html })
-  //     }
-  //   }).then(function(res){
-  //     def2.resolve(res)
-  //   })
-  //   return def2.promise
-  // }
-  // createPdf(id, title, sections){
-  //   var def2 = $q.defer()
-  //   this.post(host + "backend/contract.php", {
-  //     t: "pdf",
-  //     d: {
-  //       id: id,
-  //       html: this.getHTML("pdf", {t: title, sec: sections})
-  //     }
-  //   }).then(function(res){
-  //     def2.resolve(res)
-  //   })
-  //   return def2.promise
-  // }
+  post(url, data, files){
+    const { $q, $rootScope } = this
+    this.def = $q.defer()
+
+    const failed = e => l("There was an error attempting to send data.", e)
+    , canceled = e => l("The upload has been canceled by the user or the browser dropped the connection.", e)
+    , progress = evt => {
+      if(evt.lengthComputable){
+        $rootScope.$broadcast("progress", Math.round(evt.loaded * 100 / evt.total))
+      }else{
+        $rootScope.$broadcast("progress", 0)
+      }
+    }
+    , done = evt =>{
+      try{
+        const res = JSON.parse(evt.target.response)
+        this.def.resolve(res)
+      }catch(err){
+        l(evt.target.response)
+      }
+    }
+
+    const fd = new FormData(), xhr = new XMLHttpRequest()
+
+    fd.append("params", angular.toJson(data))
+    if(files){
+      var paths = []
+      files.forEach(function(x){
+        fd.append("files[]", x.value)
+        paths.push(x.upPath)
+      })
+      fd.append("paths", angular.toJson(paths))
+    }
+
+    xhr.upload.addEventListener("progress", progress, false)
+    xhr.addEventListener("load", done, false)
+    xhr.addEventListener("error", failed, false)
+    xhr.addEventListener("abort", canceled, false)
+    xhr.open("POST", url)
+    xhr.send(fd)
+
+    return this.def.promise
+  }
+  save(menu){
+    const { id, title, pages } = menu
+    , formData = { id, title, pages }
+
+    const def = this.$q.defer()
+    this.post(`${this.API_URL}process.php`, {
+      t: "save",
+      d: formData
+    })
+    .then(res => def.resolve(res))
+
+    return def.promise
+  }
 }
 
+// getHTML(type, data){
+//   var html = ""
+//   // if(type == "pdf"){
+//   //   var s = angular.copy(data.sec)
+//   //   var t = angular.copy(data.t)
+//   //   t.css({ textAlign: "center" })
+//   //   t.append("<br>")
+//   //   t.removeAttr("class")
+//   //   html+= t.get(0).outerHTML
+//   //   s.forEach(function(obj){
+//   //     var jqObj = $(obj)
+//   //     jqObj.find(".ctn-action").remove()
+//   //     jqObj.css("margin", "20px 0")
+//   //     if(jqObj.hasClass("heading")){
+//   //       jqObj.css("margin", "40px 0")
+//   //     }
+//   //     jqObj.removeAttr("class ng-click")
+//   //
+//   //     var spans = jqObj.find("span.edit")
+//   //     if(spans.length){
+//   //       spans.replaceWith(function(){
+//   //         return $("<b />", { html: $(this).text().replace(/\n/g, "<br>") })
+//   //       })
+//   //     }
+//   //     html+= jqObj.get(0).outerHTML
+//   //   })
+//   //   // l(html)
+//   // }else{
+//   //   // l(data.h)
+//   //   html = $(data.h)
+//   //   html.find(".ctn-action").remove()
+//   //   html.find("span").replaceWith(function(){
+//   //     return $("<b />", { html: $(this).text().replace(/\n/g, "<br>") })
+//   //   })
+//   //   html = $(html[1]).html()
+//   //   // l(html)
+//   // }
+//   return html
+// }
+// getId(length){
+//   var chars = 'M30Z1xA0Nu5Pn8Yo2pXqB5Rly9Gz3vWOj1Hm46IeCfgSrTs7Q9aJb8F6DcE7d2twkUhKiL4V'
+//   , charLength = chars.length
+//   , randomStr = ''
+//   for (var i = 0; i < length; i++) {
+//     randomStr+= chars[Math.floor(Math.random() * (charLength - 1)) + 0]
+//   }
+//   return randomStr
+// }
+// space(c){
+//   return String.fromCharCode(160).repeat(c)
+// }
+// download(path, name, s){
+//   if(  navigator.userAgent.match(/iPhone/i)
+//     || navigator.userAgent.match(/iPad/i)
+//     || navigator.userAgent.match(/iPod/i)
+//   ){
+//     // If apple, let user click a link
+//     s.dlPath = host + path
+//     $(".dl-modal-2").modal('hide')
+//     $(".dl-modal").modal('show')
+//   } else {
+//     // Else, download it
+//     var link = document.createElement("a")
+//     document.body.appendChild(link)
+//     link.href = host + path
+//     link.target = '_blank'
+//     link.download = name
+//     link.click()
+//     document.body.removeChild(link)
+//   }
+// }
+// scroll(amount){
+//   $('html, body').animate({ scrollTop: amount }, 500)
+// }
+// resizeFields(spans, arr) {
+//   spans.forEach(function(sp, idx){
+//     var mh = $(sp).height() + 10
+//     , mw = $(sp).width() + 10
+//
+//     arr[idx].mh = mh
+//     arr[idx].mw = mw
+//
+//     $(sp).css({
+//       minHeight : mh,
+//       minWidth : mw,
+//     })
+//   })
+// }
+// getHTML(type, data){
+//   var html = ""
+//   if(type == "pdf"){
+//     var s = angular.copy(data.sec)
+//     var t = angular.copy(data.t)
+//     t.css({ textAlign: "center" })
+//     t.append("<br>")
+//     t.removeAttr("class")
+//     html+= t.get(0).outerHTML
+//     s.forEach(function(obj){
+//       var jqObj = $(obj)
+//       jqObj.find(".ctn-action").remove()
+//       jqObj.css("margin", "20px 0")
+//       if(jqObj.hasClass("heading")){
+//         jqObj.css("margin", "40px 0")
+//       }
+//       jqObj.removeAttr("class ng-click")
+//
+//       var spans = jqObj.find("span.edit")
+//       if(spans.length){
+//         spans.replaceWith(function(){
+//           return $("<b />", { html: $(this).text().replace(/\n/g, "<br>") })
+//         })
+//       }
+//       html+= jqObj.get(0).outerHTML
+//     })
+//     // l(html)
+//   }else{
+//     // l(data.h)
+//     html = $(data.h)
+//     html.find(".ctn-action").remove()
+//     html.find("span").replaceWith(function(){
+//       return $("<b />", { html: $(this).text().replace(/\n/g, "<br>") })
+//     })
+//     html = $(html[1]).html()
+//     // l(html)
+//   }
+//   return html
+// }
+// getContents(id){
+//   def2 = $q.defer()
+//   this.post(host + "backend/contract.php", {
+//     t: "get",
+//     d: {
+//       id: id
+//     }
+//   }).then(function(res){
+//     if(res.result)
+//       def2.resolve(res)
+//     else
+//       alert(res.message)
+//   })
+//   return def2.promise
+// }
+// createPdf(id, title, sections){
+//   var def2 = $q.defer()
+//   this.post(host + "backend/contract.php", {
+//     t: "pdf",
+//     d: {
+//       id: id,
+//       html: this.getHTML("pdf", {t: title, sec: sections})
+//     }
+//   }).then(function(res){
+//     def2.resolve(res)
+//   })
+//   return def2.promise
+// }
 // fl(fil, arr, condition){
 //   return $filter(fil)(arr, condition)
 // }

@@ -3,7 +3,7 @@
   <section class="section0">
     <div class="container">
       <div class="inner">
-        <div class="s-item box ctn-new" ng-click="homeCtrl.new(homeCtrl.menus[0])">
+        <div class="s-item box ctn-new" ng-click="homeCtrl.save()">
           <img src="/assets/save-icon.png" alt=""/>
           <div>Speichem</div>
         </div>
@@ -34,7 +34,7 @@
           Nacht Modus
         </div>
         <div class="s-item ctn-copy-link">
-          <div class="inner link" ng-click="save(true)" data-clipboard-text="{{ homeCtrl.shareLink }}" title="{{ homeCtrl.shareLink }}">
+          <div class="inner link" ng-click="homeCtrl.save(true)" data-clipboard-text="{{ homeCtrl.shareLink }}" title="{{ homeCtrl.shareLink }}">
             <i class="fa fa-link"></i>
             <div class="text">{{ homeCtrl.shareLink }}</div>
           </div>

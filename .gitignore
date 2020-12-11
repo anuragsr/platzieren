@@ -1,4 +1,5 @@
 .idea
 /node_modules
-dist
-extra
+/dist
+/extra
+/backend/*.dat

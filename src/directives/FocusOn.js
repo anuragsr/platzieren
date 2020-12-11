@@ -1,8 +1,6 @@
 const FocusOn = $rootScope => ({
   scope: { focusOn: "=" },
-  link: function(scope, elem, attrs) {
-    // l(attrs.focusOn)
-    // l(scope.focusOn)
+  link: function(scope, elem) {
     scope.$on('focusOn', (e, fieldData) => {
      if(angular.equals(fieldData, scope.focusOn)) elem[0].focus()
     })
