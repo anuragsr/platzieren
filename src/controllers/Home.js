@@ -180,7 +180,4 @@ export default class HomeCtrl {
       alert(res.message)
     })
   }
-  getQR(){
-    l("QR")
-  }
 }

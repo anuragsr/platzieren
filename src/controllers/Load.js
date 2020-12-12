@@ -155,7 +155,4 @@ export default class LoadCtrl {
       alert(res.message)
     })
   }
-  getQR(){
-    l("QR")
-  }
 }

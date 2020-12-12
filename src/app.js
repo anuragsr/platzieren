@@ -1,6 +1,7 @@
 import angular from 'angular'
 import uiRouter from 'angular-ui-router'
 import 'angular-ui-carousel/dist/ui-carousel.min'
+import 'bootstrap/dist/js/bootstrap.bundle.min'
 import qrcode from 'qrcode-generator'
 import qrcode_UTF8 from 'qrcode-generator/qrcode_UTF8'
 import ngQrcode from 'angular-qrcode'
@@ -22,7 +23,8 @@ import japaneseTpl from './templates/japanese.html'
 import pizzaTpl from './templates/pizza.html'
 
 // Custom JS
-import Utils from "./utils/utils"
+import Utils from './utils/utils'
+import './utils/portal'
 import {l, cl, env} from './utils/helpers'
 
 // CSS
@@ -39,7 +41,7 @@ WebFont.load({
 })
 
 angular
-.module('app', [uiRouter, 'ui.carousel', ngQrcode])
+.module('app', [uiRouter, 'ui.carousel', 'portal', ngQrcode])
 .constant('ENV', env)
 .service('utils', ['$q', '$filter', '$rootScope', '$timeout', 'ENV', Utils])
 .controller('HomeCtrl', ['$scope', '$timeout', 'utils', HomeCtrl])

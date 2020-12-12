@@ -1,5 +1,4 @@
 <h></h>
-<!--<qrcode data="http://example.com" href="http://example.com" size="200"></qrcode>-->
 <main class="ctn-load">
   <section class="sub-header">
     <div class="container">
@@ -19,7 +18,7 @@
           Nacht Modus
         </div>
         <div class="s-item">
-          <button class="btn btn-pr" ng-click="loadCtrl.getQR()">Vorschau QR Menu</button>
+          <button class="btn btn-pr" data-toggle="modal" data-target="#qrModal">Vorschau QR Menu</button>
         </div>
       </div>
     </div>
@@ -78,7 +77,11 @@
           <div><img src="/assets/herb 1.png" alt="" />Vegetarian</div>
         </div>
         <div class="b-item qr-btn">
-          <button ng-click="loadCtrl.getQR()" class="btn btn-light btn-block">
+<!--            ng-click="loadCtrl.getQR()" -->
+          <button
+            class="btn btn-light btn-block"
+            data-toggle="modal" data-target="#qrModal"
+          >
             <img src="/assets/qr-dark.png" alt="">
             <div>QR Code<br/>erstellen</div>
           </button>
@@ -86,19 +89,21 @@
       </div>
     </div>
   </section>
-
-  <div class="modal fade qr-modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          Click <a target="_blank" href="{{dlPath}}">here</a> to download the PDF
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+  <portal>
+     <!-- your component scope is available here -->
+    <div class="modal fade qr-modal" tabindex="-1" role="dialog" id="qrModal">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <qrcode data="http://example.com" href="http://example.com" size="200"></qrcode>
+            <h5 class="mt-3">Scan the QR code for a link to your created menu.</h5>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-pr" data-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </portal>
 </main>
 <f></f>
-
