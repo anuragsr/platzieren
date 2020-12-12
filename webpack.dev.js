@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack = require('webpack');
 
 module.exports = {
   devtool: 'eval-cheap-module-source-map',
@@ -85,6 +86,9 @@ module.exports = {
         // { from: './src/assets', to: 'assets' },
         {from: __dirname + '/public'}
       ]
+    }),
+    new webpack.ProvidePlugin({
+      qrcode: 'qrcode-generator',
     })
   ]
 };

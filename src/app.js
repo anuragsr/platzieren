@@ -1,6 +1,9 @@
 import angular from 'angular'
 import uiRouter from 'angular-ui-router'
 import 'angular-ui-carousel/dist/ui-carousel.min'
+import qrcode from 'qrcode-generator'
+import qrcode_UTF8 from 'qrcode-generator/qrcode_UTF8'
+import ngQrcode from 'angular-qrcode'
 import WebFont from 'webfontloader'
 
 // Controllers & Directives
@@ -27,7 +30,6 @@ import './styles/index.scss'
 import 'angular-ui-carousel/dist/ui-carousel.min.css'
 
 // template: require('./templates/home.html').default,
-
 WebFont.load({
   google: { families: ['Exo 2:400,700', 'Open Sans:400,700'] }
   , active: function() {
@@ -37,7 +39,7 @@ WebFont.load({
 })
 
 angular
-.module('app', [uiRouter, 'ui.carousel'])
+.module('app', [uiRouter, 'ui.carousel', ngQrcode])
 .constant('ENV', env)
 .service('utils', ['$q', '$filter', '$rootScope', '$timeout', 'ENV', Utils])
 .controller('HomeCtrl', ['$scope', '$timeout', 'utils', HomeCtrl])
