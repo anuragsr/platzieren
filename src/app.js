@@ -1,16 +1,19 @@
 import angular from 'angular'
 import uiRouter from 'angular-ui-router'
-import 'angular-ui-carousel/dist/ui-carousel.min'
-import 'bootstrap/dist/js/bootstrap.bundle.min'
 import qrcode from 'qrcode-generator'
 import qrcode_UTF8 from 'qrcode-generator/qrcode_UTF8'
 import ngQrcode from 'angular-qrcode'
 import WebFont from 'webfontloader'
 
+import 'angular-ui-carousel/dist/ui-carousel.min'
+import 'bootstrap/dist/js/bootstrap.bundle.min'
+import './utils/portal'
+
 // Controllers & Directives
 import HomeCtrl from './controllers/Home'
-import JapCtrl from './controllers/JapCtrl'
 import LoadCtrl from './controllers/Load'
+import ImgCtrl from './controllers/Img'
+import JapCtrl from './controllers/JapCtrl'
 import Header from './directives/Header'
 import Footer from "./directives/Footer"
 import FocusOn from "./directives/FocusOn"
@@ -18,13 +21,13 @@ import FocusOn from "./directives/FocusOn"
 // Templates
 import homeTpl from './templates/home.html'
 import loadTpl from './templates/load.html'
+import imgTpl from './templates/img.html'
 import coffeeTpl from './templates/coffee.html'
 import japaneseTpl from './templates/japanese.html'
 import pizzaTpl from './templates/pizza.html'
 
 // Custom JS
 import Utils from './utils/utils'
-import './utils/portal'
 import {l, cl, env} from './utils/helpers'
 
 // CSS
@@ -46,6 +49,7 @@ angular
 .service('utils', ['$q', '$filter', '$rootScope', '$timeout', 'ENV', Utils])
 .controller('HomeCtrl', ['$scope', '$timeout', 'utils', HomeCtrl])
 .controller('LoadCtrl', ['$scope', '$stateParams', 'utils', LoadCtrl])
+.controller('ImgCtrl', ['$scope', '$stateParams', 'utils', ImgCtrl])
 .controller('JapCtrl', ['$scope', 'utils', JapCtrl])
 .directive('h', Header)
 .directive('f', Footer)
@@ -60,10 +64,14 @@ angular
   controller: 'LoadCtrl',
   controllerAs: 'loadCtrl'
 })
+.component('menuImg', {
+  template: imgTpl,
+  controller: 'ImgCtrl',
+  controllerAs: 'imgCtrl'
+})
 .component('coffee', {
   bindings: {
-    currMenu: '=', filledFields: '=',
-    zoom: '=', getQr: "="
+    currMenu: '=', filledFields: '=', zoom: '='
   },
   template: coffeeTpl,
   controller: function () {
@@ -74,16 +82,14 @@ angular
 })
 .component('japanese', {
   bindings: {
-    currMenu: '=', filledFields: '=',
-    zoom: '=', getQr: "="
+    currMenu: '=', filledFields: '=', zoom: '='
   },
   template: japaneseTpl,
   controller: 'JapCtrl'
 })
 .component('pizza', {
   bindings: {
-    currMenu: '=', filledFields: '=',
-    zoom: '=', getQr: "="
+    currMenu: '=', filledFields: '=', zoom: '='
   },
   template: pizzaTpl,
   controller: function () {
@@ -103,6 +109,10 @@ angular
   .state('load', {
     url: '/l/:lId',
     component: 'load'
+  })
+  .state('menuImg', {
+    url: '/i/:iId',
+    component: 'menuImg'
   })
   // Add more states here
 }])

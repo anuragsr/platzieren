@@ -7,14 +7,17 @@ export const env = {
   // CURR: "PROD",
   LOCAL: {
     FE_URL: "http://127.0.0.1:8080/#!/l/",
+    IMG_URL: "http://127.0.0.1:8080/#!/i/",
     API_URL: "http://localhost/platzieren-be/backend/",
   },
   ECA: {
     FE_URL: "http://eca.in",
+    IMG_URL: "http://eca.in",
     API_URL: "http://eca.in",
   },
   PROD: {
     FE_URL: "https://untermietvertrag.com/#!/l/",
+    IMG_URL: "https://untermietvertrag.com/#!/i/",
     API_URL: "https://untermietvertrag.com/backend/",
   }
 }

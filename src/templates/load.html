@@ -24,14 +24,13 @@
     </div>
   </section>
 
-  <section class="section1" ng-class="{ 'dark': loadCtrl.menu.isDark }">
+  <section class="menu-editor" ng-class="{ 'dark': loadCtrl.menu.isDark }">
     <coffee
       ng-if="loadCtrl.menu.title === 'Allge.'"
       curr-menu="loadCtrl.menu"
       filled-fields="loadCtrl.filledFields"
       focused-el="loadCtrl.focusedEl"
       zoom="loadCtrl.zoom"
-      get-qr="loadCtrl.getQR"
     ></coffee>
     <japanese
       ng-if="loadCtrl.menu.title === 'Sushi'"
@@ -39,7 +38,6 @@
       filled-fields="loadCtrl.filledFields"
       focused-el="loadCtrl.focusedEl"
       zoom="loadCtrl.zoom"
-      get-qr="loadCtrl.getQR"
     ></japanese>
     <pizza
       ng-if="loadCtrl.menu.title === 'Pizza'"
@@ -47,7 +45,6 @@
       filled-fields="loadCtrl.filledFields"
       focused-el="loadCtrl.focusedEl"
       zoom="loadCtrl.zoom"
-      get-qr="loadCtrl.getQR"
     ></pizza>
 
     <div class="ctn-float-box">

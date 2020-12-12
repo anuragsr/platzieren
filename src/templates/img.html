@@ -1,0 +1,27 @@
+<h></h>
+<main class="ctn-img">
+  <section class="menu-editor" ng-class="{ 'dark': imgCtrl.menu.isDark }">
+    <coffee
+      ng-if="imgCtrl.menu.title === 'Allge.'"
+      curr-menu="imgCtrl.menu"
+      filled-fields="imgCtrl.filledFields"
+      focused-el="imgCtrl.focusedEl"
+      zoom="imgCtrl.zoom"
+    ></coffee>
+    <japanese
+      ng-if="imgCtrl.menu.title === 'Sushi'"
+      curr-menu="imgCtrl.menu"
+      filled-fields="imgCtrl.filledFields"
+      focused-el="imgCtrl.focusedEl"
+      zoom="imgCtrl.zoom"
+    ></japanese>
+    <pizza
+      ng-if="imgCtrl.menu.title === 'Pizza'"
+      curr-menu="imgCtrl.menu"
+      filled-fields="imgCtrl.filledFields"
+      focused-el="imgCtrl.focusedEl"
+      zoom="imgCtrl.zoom"
+    ></pizza>
+  </section>
+</main>
+<f></f>

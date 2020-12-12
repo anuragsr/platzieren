@@ -9,7 +9,7 @@
       class: '<',
       elementClass: '@'
     },
-    controller: function($scope, $element) {
+    controller: ['$scope', '$element', function($scope, $element) {
       var $ctrl = this;
       var contentElm = $element[0].querySelector('.detach__container');
 
@@ -35,6 +35,6 @@
         contentElm.remove();
         contentElm = null;
       });
-    }
+    }]
   });
 })(window.angular);
