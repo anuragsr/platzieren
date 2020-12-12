@@ -26,10 +26,10 @@
         <div class="s-item ctn-switch">
           Tag Modus
           <div class="btn-switch"
-            ng-class="{'btn-switch--on':homeCtrl.toggle.switch}"
-            ng-model="homeCtrl.toggle.switch"
-            ng-click="homeCtrl.toggle.switch = !homeCtrl.toggle.switch">
-            <div class="btn-switch-circle" ng-class="{'btn-switch-circle--on':homeCtrl.toggle.switch}"></div>
+            ng-class="{'btn-switch--on':homeCtrl.menu.isDark}"
+            ng-model="homeCtrl.menu.isDark"
+            ng-click="homeCtrl.menu.isDark = !homeCtrl.menu.isDark">
+            <div class="btn-switch-circle" ng-class="{'btn-switch-circle--on':homeCtrl.menu.isDark}"></div>
           </div>
           Nacht Modus
         </div>
@@ -41,13 +41,13 @@
           <div class="desc">Dein Link<br/>(Klicken Sie, um zu kopieren)</div>
         </div>
         <div class="s-item">
-          <button class="btn btn-pr" ng-click="qr()">Vorschau QR Menu</button>
+          <button class="btn btn-pr" ng-click="homeCtrl.getQR()">Vorschau QR Menu</button>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section1" ng-class="{ 'dark': homeCtrl.toggle.switch }">
+  <section class="section1" ng-class="{ 'dark': homeCtrl.menu.isDark }">
     <coffee
       ng-if="homeCtrl.menu.title === 'Allge.'"
       curr-menu="homeCtrl.menu"
@@ -79,9 +79,9 @@
         </div>
         <div class="b-item no-fields">
           <div class="num">
-            <img ng-click="homeCtrl.focus('prev')" src="/assets/arr-l.png" class="inv"/>
+            <img ng-click="homeCtrl.focusFn('prev')" src="/assets/arr-l.png" class="inv"/>
             <div>{{homeCtrl.filledFields}} / {{homeCtrl.totalFields}}</div>
-            <img ng-click="homeCtrl.focus('next')" src="/assets/arr-r.png" class="inv"/>
+            <img ng-click="homeCtrl.focusFn('next')" src="/assets/arr-r.png" class="inv"/>
           </div>
           <span>Pflichtfelder<br/>befüllt</span>
         </div>

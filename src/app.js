@@ -57,7 +57,10 @@ angular
   controllerAs: 'loadCtrl'
 })
 .component('coffee', {
-  bindings: { currMenu: '<' },
+  bindings: {
+    currMenu: '=', filledFields: '=',
+    zoom: '=', getQr: "="
+  },
   template: coffeeTpl,
   controller: function () {
     this.$onInit = () => {
@@ -66,12 +69,18 @@ angular
   }
 })
 .component('japanese', {
-  bindings: { currMenu: '=', filledFields: '=', zoom: '=' },
+  bindings: {
+    currMenu: '=', filledFields: '=',
+    zoom: '=', getQr: "="
+  },
   template: japaneseTpl,
   controller: 'JapCtrl'
 })
 .component('pizza', {
-  bindings: { currMenu: '<', pageFn: '<' },
+  bindings: {
+    currMenu: '=', filledFields: '=',
+    zoom: '=', getQr: "="
+  },
   template: pizzaTpl,
   controller: function () {
     this.$onInit = () => {

@@ -4,13 +4,10 @@ import {l} from '../utils/helpers'
 export default class HomeCtrl {
   constructor($scope, $timeout, utils) {
     this.utils = utils
-    // this.url = 'http://envisagecyberart.in'
-    this.toggle = { switch: false }
     this.activeSize = 'S'
     this.filledFields = 0
     this.zoom = 1
     this.idx = 0
-    // this.focusedEl = null
 
     this.menus = [
       {
@@ -152,6 +149,7 @@ export default class HomeCtrl {
     this.idx = this.menus.indexOf(menu)
     this.menu = angular.copy(menu)
     this.menu.id = linkData.id
+    this.menu.isDark = false
     this.addMenuPage()
 
     const clipboard = new ClipboardJS('.ctn-link .desc, .inner.link')
@@ -171,24 +169,18 @@ export default class HomeCtrl {
     this.totalFields = this.menu.pages.reduce((prev, curr) => prev + curr.length, 0)
   }
   zoomFn(dir){ this.zoom = this.utils.zoom(this.zoom, dir) }
-  focus(dir){ this.utils.focus(dir, this.focusedEl, this.menu) }
-  save(isAuto){
-    // l(this.menu.id , this.menu.pages)
+  focusFn(dir){ this.utils.focus(dir, this.focusedEl, this.menu) }
+  save(){
     this.showLoader = true
     this.utils
     .save(this.menu)
     .then(res => {
       l(res)
       this.showLoader = false
-      // if(!isAuto){
-      //   // Alert of saved successfully
-      //   // alert(res.message)
-      //   this.copyText = "KOPIEREN"
-      //   this.showPopup()
-      // }
+      alert(res.message)
     })
   }
   getQR(){
-    l(this.focusedEl)
+    l("QR")
   }
 }

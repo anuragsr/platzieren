@@ -5,9 +5,10 @@ l('jQuery Version:', $().jquery)
 export default class Utils {
   constructor($q, $filter, $rootScope, $timeout, ENV){
     // l($q, $filter, $rootScope)
-    this.$timeout = $timeout
-    this.$rootScope = $rootScope
     this.$q = $q
+    this.$filter = $filter
+    this.$rootScope = $rootScope
+    this.$timeout = $timeout
 
     this.FE_URL = ENV[ENV.CURR].FE_URL
     this.API_URL = ENV[ENV.CURR].API_URL
@@ -27,6 +28,9 @@ export default class Utils {
     else {
       return false
     }
+  }
+  fl(fil, arr, condition){
+    return this.$filter(fil)(arr, condition)
   }
   generateId(length){
     let chars = 'M30Z1xA0Nu5Pn8Yo2pXqB5Rly9Gz3vWOj1Hm46IeCfgSrTs7Q9aJb8F6DcE7d2twkUhKiL4V'
@@ -149,8 +153,8 @@ export default class Utils {
     return this.def.promise
   }
   save(menu){
-    const { id, title, pages } = menu
-    , formData = { id, title, pages }
+    const { id, title, pages, isDark } = menu
+    , formData = { id, title, pages, isDark }
 
     const def = this.$q.defer()
     this.post(`${this.API_URL}process.php`, {
