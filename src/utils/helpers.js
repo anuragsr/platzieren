@@ -6,8 +6,8 @@ export const env = {
   // CURR: "ECA",
   // CURR: "PROD",
   LOCAL: {
-    FE_URL: "http://127.0.0.1:8080/#!/l/",
-    IMG_URL: "http://127.0.0.1:8080/#!/i/",
+    FE_URL: "http://localhost:8080/#!/l/",
+    IMG_URL: "http://localhost:8080/#!/i/",
     API_URL: "http://localhost/platzieren-be/backend/",
   },
   ECA: {

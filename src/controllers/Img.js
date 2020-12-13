@@ -1,4 +1,5 @@
 import {l} from '../utils/helpers'
+import html2canvas from 'html2canvas'
 
 export default class ImgCtrl {
   constructor($scope, $stateParams, utils) {
@@ -14,8 +15,23 @@ export default class ImgCtrl {
     .then(res => {
       l(res)
       this.menu = res.data.menu
-      // this.menu.fields = this.utils.fl('filter', this.menus, { title: this.menu.title})[0].fields
-      // this.totalFields = this.menu.pages.reduce((prev, curr) => prev + curr.length, 0)
     })
+  }
+  download(){
+    l("DL")
+    // let count = 0
+    // try{
+    //   [...document.querySelectorAll('.ctn-menu-inner')]
+    //   .forEach(menu => {
+    //     html2canvas(menu)
+    //     .then(canvas => {
+    //       l("canvas created", canvas)
+    //       canvas.setAttribute("id", "id" + count)
+    //       document.body.appendChild(canvas)
+    //       count++
+    //     })
+    //   })
+    // }
+    // catch(e){ l(e) }
   }
 }

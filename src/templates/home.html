@@ -34,14 +34,14 @@
           Nacht Modus
         </div>
         <div class="s-item ctn-copy-link">
-          <div class="inner link" ng-click="homeCtrl.save()" data-clipboard-text="{{ homeCtrl.shareLink }}" title="{{ homeCtrl.shareLink }}">
+          <div class="inner link" ng-click="homeCtrl.save(true)" data-clipboard-text="{{ homeCtrl.shareLink }}" title="{{ homeCtrl.shareLink }}">
             <i class="fa fa-link"></i>
             <div class="text">{{ homeCtrl.shareLink }}</div>
           </div>
           <div class="desc">Dein Link<br/>(Klicken Sie, um zu kopieren)</div>
         </div>
         <div class="s-item">
-          <button class="btn btn-pr" ng-click="homeCtrl.getQR()">Vorschau QR Menu</button>
+          <button class="btn btn-pr" data-toggle="modal" data-target="#qrModal">Vorschau QR Menu</button>
         </div>
       </div>
     </div>
@@ -50,24 +50,27 @@
   <section class="menu-editor" ng-class="{ 'dark': homeCtrl.menu.isDark }">
     <coffee
       ng-if="homeCtrl.menu.title === 'Allge.'"
-      curr-menu="homeCtrl.menu"
+      menu="homeCtrl.menu"
       filled-fields="homeCtrl.filledFields"
-      focused-el="homeCtrl.focusedEl"
       zoom="homeCtrl.zoom"
+      show-loader="homeCtrl.showLoader"
+      focused-el="homeCtrl.focusedEl"
     ></coffee>
     <japanese
       ng-if="homeCtrl.menu.title === 'Sushi'"
-      curr-menu="homeCtrl.menu"
+      menu="homeCtrl.menu"
       filled-fields="homeCtrl.filledFields"
-      focused-el="homeCtrl.focusedEl"
       zoom="homeCtrl.zoom"
+      show-loader="homeCtrl.showLoader"
+      focused-el="homeCtrl.focusedEl"
     ></japanese>
     <pizza
       ng-if="homeCtrl.menu.title === 'Pizza'"
-      curr-menu="homeCtrl.menu"
+      menu="homeCtrl.menu"
       filled-fields="homeCtrl.filledFields"
-      focused-el="homeCtrl.focusedEl"
       zoom="homeCtrl.zoom"
+      show-loader="homeCtrl.showLoader"
+      focused-el="homeCtrl.focusedEl"
     ></pizza>
 
     <div class="ctn-float-box">
@@ -98,7 +101,10 @@
           <div><img src="/assets/herb 1.png" alt="" />Vegetarian</div>
         </div>
         <div class="b-item qr-btn">
-          <button ng-click="homeCtrl.getQR()" class="btn btn-light btn-block">
+          <button
+            class="btn btn-light btn-block"
+            data-toggle="modal" data-target="#qrModal"
+            >
             <img src="/assets/qr-dark.png" alt="">
             <div>QR Code<br/>erstellen</div>
           </button>
@@ -270,45 +276,22 @@
     </div>
   </section>
 
-  <div class="modal fade dl-modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          Click <a target="_blank" href="{{dlPath}}">here</a> to download the PDF
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+  <portal>
+     <!-- your component scope is available here -->
+    <div class="modal fade qr-modal" tabindex="-1" role="dialog" id="qrModal">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <qrcode data="http://example.com" href="http://example.com" size="200"></qrcode>
+            <h5 class="mt-3">Scan the QR code for a link to your created menu.</h5>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-pr" data-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <!--  <div class="modal fade dl-modal-2" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <h2>Dein Vertrag ist fertiggestellt.</h2>
-          <p>Du kannst deinen Vertrag direkt runterladen oder einfach als Link verschicken.</p>
-          <div class="copy-box">
-            <div class="label">DEIN PERSONALIERTER LINK</div>
-            <input type="text" ng-model="shareLink" readonly />
-            <div class="copy-btn" data-clipboard-text="{{ shareLink }}">{{ copyText }}</div>
-          </div>
-          <div class="or-box">
-            <div class="dash"></div>
-            <div>ODER</div>
-            <div class="dash"></div>
-          </div>
-          <button ng-click="download()" class="btn btn-success">PDF SPEICHERN</button>
-          <img src="/assets/batch.png" alt="" />
-          <span>434 Bewertungen</span>
-        </div>
-      </div>
-    </div>
-  </div>-->
+  </portal>
 </main>
 <f></f>
+<l ng-show="homeCtrl.showLoader"/>

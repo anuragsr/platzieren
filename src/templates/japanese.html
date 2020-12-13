@@ -44,16 +44,12 @@
     bottom: -250px; left: 0;
   }
 </style>
-<div class="ctn-menu-bg" ng-style="{
-  transformOrigin: 'top',
-  transform: 'scale('+ $ctrl.zoom +')',
-  paddingBottom: ($ctrl.zoom * 100) + 'px'
-}">
+<div class="ctn-menu-bg menu-edit" ng-style="{ transformOrigin: 'top', transform: 'scale('+ $ctrl.zoom +')', paddingBottom: ($ctrl.zoom * 100) + 'px' }">
   <div class="ctn-menu-outer">
     <div class="ctn-menu-inner">
       <div class="ctn-menu-page"
-        ng-repeat="currPage in $ctrl.currMenu.pages track by $index"
-        ng-class="{'active': $ctrl.currMenu.activePage === $index}"
+        ng-repeat="currPage in $ctrl.menu.pages track by $index"
+        ng-class="{'active': $ctrl.menu.activePage === $index}"
         >
         <div class="ctn-menu">
           <div class="input-gr"
@@ -88,8 +84,8 @@
 
           <li
             class="page-item"
-            ng-repeat="page in $ctrl.currMenu.pages track by $index"
-            ng-class="{'active': $ctrl.currMenu.activePage === $index}"
+            ng-repeat="page in $ctrl.menu.pages track by $index"
+            ng-class="{'active': $ctrl.menu.activePage === $index}"
             >
             <a href
               class="page-link"
@@ -115,6 +111,34 @@
   </div>
   <div class="ctn-clip"></div>
 </div>
+<div class="ctn-menu-bg menu-download">
+  <div class="ctn-menu-outer">
+    <div class="ctn-menu-inner" ng-repeat="currPage in $ctrl.menu.pages track by $index">
+      <div class="ctn-menu-page">
+        <div class="ctn-menu">
+          <div class="input-gr"
+            ng-repeat="gr in currPage track by $index"
+            ng-style="{ top: gr.pos.top + 'px', left: gr.pos.left + 'px' }"
+            >
+            <div class="text-left">
+              <input
+                class="name" type="text"
+                focus-on="{ page: $parent.$index, field: $index }"
+                ng-model="gr.name.v" placeholder="{{gr.name.p}}"
+              /><br/>
+              <input class="desc" type="text" ng-model="gr.desc.v" placeholder="{{gr.desc.p}}"/>
+            </div>
+            <div class="text-right">
+              <input class="price" type="text" ng-model="gr.price.v" placeholder="{{gr.price.p}}"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  <button ng-click="$ctrl.download()">Download</button>-->
 <pre class="deb-obj">
-  {{ $ctrl.currMenu.pages | json }}
+  {{  $ctrl.showLoader | json }}
+  {{ $ctrl.menu.pages | json }}
 </pre>

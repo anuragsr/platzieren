@@ -4,6 +4,8 @@ import {l} from '../utils/helpers'
 export default class HomeCtrl {
   constructor($scope, $timeout, utils) {
     this.utils = utils
+
+    this.showLoader = true
     this.activeSize = 'S'
     this.filledFields = 0
     this.zoom = 1
@@ -143,6 +145,8 @@ export default class HomeCtrl {
     if(confirm('Möchten Sie wirklich ein neues Dokument erstellen?')) this.createMenu(p)
   }
   createMenu(menu){
+    this.showLoader = true
+
     const linkData = this.utils.createLink()
     this.shareLink = linkData.link
 
@@ -170,14 +174,14 @@ export default class HomeCtrl {
   }
   zoomFn(dir){ this.zoom = this.utils.zoom(this.zoom, dir) }
   focusFn(dir){ this.utils.focus(dir, this.focusedEl, this.menu) }
-  save(){
+  save(isAuto){
     this.showLoader = true
     this.utils
     .save(this.menu)
     .then(res => {
       l(res)
       this.showLoader = false
-      alert(res.message)
+      if(!isAuto) alert(res.message)
     })
   }
 }

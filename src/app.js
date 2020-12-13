@@ -13,10 +13,10 @@ import './utils/portal'
 import HomeCtrl from './controllers/Home'
 import LoadCtrl from './controllers/Load'
 import ImgCtrl from './controllers/Img'
-import JapCtrl from './controllers/JapCtrl'
-import Header from './directives/Header'
-import Footer from "./directives/Footer"
-import FocusOn from "./directives/FocusOn"
+import { MenuCtrl } from './controllers/Menus'
+// import JapCtrl from './controllers/JapCtrl'
+import { Header, Footer, Loader } from './directives/Partials'
+import FocusOn from './directives/FocusOn'
 
 // Templates
 import homeTpl from './templates/home.html'
@@ -49,10 +49,11 @@ angular
 .service('utils', ['$q', '$filter', '$rootScope', '$timeout', 'ENV', Utils])
 .controller('HomeCtrl', ['$scope', '$timeout', 'utils', HomeCtrl])
 .controller('LoadCtrl', ['$scope', '$stateParams', 'utils', LoadCtrl])
-.controller('ImgCtrl', ['$scope', '$stateParams', 'utils', ImgCtrl])
-.controller('JapCtrl', ['$scope', 'utils', JapCtrl])
+.controller('ImgCtrl',  ['$scope', '$stateParams', 'utils', ImgCtrl])
+.controller('MenuCtrl',  ['$scope', '$timeout', 'utils', MenuCtrl])
 .directive('h', Header)
 .directive('f', Footer)
+.directive('l', Loader)
 .directive('focusOn', ['$rootScope', FocusOn])
 .component('home', {
   template: homeTpl,
@@ -71,32 +72,27 @@ angular
 })
 .component('coffee', {
   bindings: {
-    currMenu: '=', filledFields: '=', zoom: '='
+    menu: '=', filledFields: '=', zoom: '=',
+    download: "=", showLoader: '='
   },
   template: coffeeTpl,
-  controller: function () {
-    this.$onInit = () => {
-      l("init coffeeTpl", this.currMenu)
-    }
-  }
+  controller: 'MenuCtrl'
 })
 .component('japanese', {
   bindings: {
-    currMenu: '=', filledFields: '=', zoom: '='
+    menu: '=', filledFields: '=', zoom: '=',
+    download: "=", showLoader: '='
   },
   template: japaneseTpl,
-  controller: 'JapCtrl'
+  controller: 'MenuCtrl'
 })
 .component('pizza', {
   bindings: {
-    currMenu: '=', filledFields: '=', zoom: '='
+    menu: '=', filledFields: '=', zoom: '=',
+    download: "=", showLoader: '='
   },
   template: pizzaTpl,
-  controller: function () {
-    this.$onInit = () => {
-      l("init pizzaTpl", this.currMenu)
-    }
-  }
+  controller: 'MenuCtrl'
 })
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/home");
@@ -116,3 +112,4 @@ angular
   })
   // Add more states here
 }])
+

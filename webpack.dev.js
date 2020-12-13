@@ -10,6 +10,7 @@ module.exports = {
   devServer: {
     disableHostCheck: true,
     port: 8080,
+    open: true,
     contentBase: path.join(__dirname, "dist"),
     publicPath: '/'
   },

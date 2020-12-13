@@ -1,6 +1,3 @@
-// import $ from 'jquery'
-// l('jQuery Version:', $().jquery)
-
 import { l } from "./helpers"
 
 export default class Utils {
