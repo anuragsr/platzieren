@@ -15,7 +15,29 @@ export default class HomeCtrl {
       {
         title: 'Allge.',
         img: "/assets/coffee.png",
-        fields: [],
+        fields: [
+          {
+            id:0,
+            pos: { top: 360, left: 30 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id:1,
+            pos: { top: 415, left: 30 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id:2,
+            pos: { top: 465, left: 30 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+        ],
         pages: [],
         activePage: 0
       },
@@ -132,7 +154,7 @@ export default class HomeCtrl {
     l("init Home")
 
     const { menus } = this
-    this.createMenu(menus[1])
+    this.createMenu(menus[0])
     this.createSlider()
   }
   createSlider(){

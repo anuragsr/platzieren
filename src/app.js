@@ -14,7 +14,6 @@ import HomeCtrl from './controllers/Home'
 import LoadCtrl from './controllers/Load'
 import ImgCtrl from './controllers/Img'
 import { MenuCtrl } from './controllers/Menus'
-// import JapCtrl from './controllers/JapCtrl'
 import { Header, Footer, Loader } from './directives/Partials'
 import FocusOn from './directives/FocusOn'
 
@@ -34,12 +33,13 @@ import {l, cl, env} from './utils/helpers'
 import './styles/index.scss'
 import 'angular-ui-carousel/dist/ui-carousel.min.css'
 
+// import JapCtrl from './controllers/JapCtrl'
 // template: require('./templates/home.html').default,
+
 WebFont.load({
   google: { families: ['Exo 2:400,700', 'Open Sans:400,700'] }
   , active: function() {
     l("Webfonts loaded")
-    // $(".preload").fadeOut()
   }
 })
 
