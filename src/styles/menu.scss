@@ -21,7 +21,11 @@
         @include pa(0,0);
         padding: 20px;
         z-index: 0;
-        &.active{ z-index: 1; }
+        opacity: 0;
+        &.active{
+          z-index: 1;
+          opacity: 1;
+        }
       }
       .ctn-menu{
         position: relative;
@@ -348,6 +352,7 @@
     .ctn-menu-outer{
       top: 50px;
       background: $pr;
+      .ctn-menu-page{ opacity: 1; }
     }
     .ctn-menu-inner{
       margin: 40px auto;

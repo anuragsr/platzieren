@@ -11,6 +11,7 @@ export default class LoadCtrl {
 
     this.menus = this.utils.menus
     this.menu = {}
+    this.viewLink = `${this.utils.IMG_URL}${this.menuId}`
 
     this.init()
     $scope.$on('elFocused', (name, val) => {
