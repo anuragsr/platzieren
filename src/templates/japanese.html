@@ -1,50 +1,4 @@
-<style>
-  .ctn-menu-bg{
-    background: url(/assets/japanese/base.jpg);
-    background-size: 1840px 1985px;
-    background-position: 50% 0%;
-    height: 1980px;
-  }
-  .ctn-menu-outer{
-    position: absolute;
-    top: 240px; left: 0;
-  }
-  .ctn-menu-inner {
-    position: relative;
-    top: -9px;
-    left: -5px;
-    width: 192mm;
-    height: 935px;
-    margin: 0 auto;
-    padding: 20px;
-    background: url(/assets/japanese/menu-bg.jpg);
-    background-size: 100%;
-  }
-  .ctn-menu{
-    background: url(/assets/japanese/menu.jpg) no-repeat;
-    background-size: 100% 100%;
-    height: 100%;
-  }
-  .dark .ctn-menu{
-    background: url(/assets/japanese/menu-dark.jpg) no-repeat;
-    background-size: 100% 100%;
-  }
-
-  .ctn-clip{
-    background: url(/assets/japanese/clip.png);
-    position: absolute;
-    top: 6px;
-    left: -8px;
-    background-size: 1870px 280px;
-    background-position: 50% 0%;
-    height: 260px;
-  }
-  .ctn-btn{
-    position: absolute;
-    bottom: -250px; left: 0;
-  }
-</style>
-<div class="ctn-menu-bg menu-edit" ng-style="{ transformOrigin: 'top', transform: 'scale('+ $ctrl.zoom +')', paddingBottom: ($ctrl.zoom * 100) + 'px' }">
+<div class="ctn-menu-bg menu-jap menu-edit" ng-style="{ transformOrigin: 'top', transform: 'scale('+ $ctrl.zoom +')', paddingBottom: ($ctrl.zoom * 100) + 'px' }">
   <div class="ctn-menu-outer">
     <div class="ctn-menu-inner">
       <div class="ctn-menu-page"
@@ -111,7 +65,7 @@
   </div>
   <div class="ctn-clip"></div>
 </div>
-<div class="ctn-menu-bg menu-download">
+<div class="ctn-menu-bg menu-jap menu-download">
   <div class="ctn-menu-outer">
     <div class="ctn-menu-inner" ng-repeat="currPage in $ctrl.menu.pages track by $index">
       <div class="ctn-menu-page">
@@ -137,8 +91,8 @@
     </div>
   </div>
 </div>
-<!--  <button ng-click="$ctrl.download()">Download</button>-->
+<!--<button ng-click="$ctrl.download()">Download</button>-->
 <pre class="deb-obj">
-  {{  $ctrl.showLoader | json }}
+  {{$ctrl.showLoader | json }}
   {{ $ctrl.menu.pages | json }}
 </pre>

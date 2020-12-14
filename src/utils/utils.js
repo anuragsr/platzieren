@@ -10,7 +10,171 @@ export default class Utils {
 
     this.FE_URL = ENV[ENV.CURR].FE_URL
     this.API_URL = ENV[ENV.CURR].API_URL
-    // this.def = $q.defer()
+
+    this.menus = [
+      {
+        title: 'Allge.',
+        img: "/assets/coffee.png",
+        fields: [
+          {
+            id:0,
+            name: { p: 'AMERICANO', v: '' },
+            price: { p: '2,99', v: '' },
+          },
+          {
+            id:1,
+            name: { p: 'CAPPUCCINO', v: '' },
+            price: { p: '2,99', v: '' },
+          },
+          {
+            id:2,
+            name: { p: 'LATTE', v: '' },
+            price: { p: '2,99', v: '' },
+          },
+          {
+            id:3,
+            name: { p: 'MOCHA', v: '' },
+            price: { p: '2,99', v: '' },
+          },
+          {
+            id:4,
+            name: { p: 'ESPRESSO', v: '' },
+            price: { p: '2,99', v: '' },
+          },
+          {
+            id:5,
+            name: { p: 'TEA', v: '' },
+            price: { p: '2,99', v: '' },
+          },
+          {
+            id:6,
+            name: { p: 'HERBAL TEA', v: '' },
+            price: { p: '2,99', v: '' },
+          },
+          {
+            id:7,
+            name: { p: 'WATER', v: '' },
+            price: { p: '2,99', v: '' },
+          },
+          {
+            id:8,
+            name: { p: 'SCONE WITH HAM & CHEESE', v: '' },
+            price: { p: '2,99', v: '' },
+          },
+          {
+            id:9,
+            name: { p: 'AMERICANO WITH HAM, BUTTER & CHEESE', v: '' },
+            price: { p: '2,99', v: '' },
+          },
+          {
+            id:10,
+            name: { p: 'AMERICANO WITH HAM,BUTTER & CHEESE', v: '' },
+            price: { p: '2,99', v: '' },
+          },
+        ],
+        pages: [],
+        activePage: 0
+      },
+      {
+        title: 'Sushi',
+        img: "/assets/sushi.png",
+        fields: [
+          {
+            id:0,
+            pos: { top: 360, left: 30 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id:1,
+            pos: { top: 415, left: 30 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id:2,
+            pos: { top: 465, left: 30 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id:3,
+            pos: { top: 330, left: 490 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id:4,
+            pos: { top: 385, left: 490 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id:5,
+            pos: { top: 650, left: 30 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id:6,
+            pos: { top: 705, left: 30 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id:7,
+            pos: { top: 760, left: 30 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id:8,
+            pos: { top: 815, left: 30 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id:9,
+            pos: { top: 605, left: 250 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id:10,
+            pos: { top: 745, left: 470 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id:11,
+            pos: { top: 800, left: 470 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'Tuna, Rice, Avocado', v: '' },
+            price: { p: 'X,XX', v: '' },
+          }
+        ],
+        pages: [],
+        activePage: 0
+      },
+      {
+        title: 'Pizza',
+        img: "/assets/pizza.png",
+        fields: [],
+        pages: [],
+        activePage: 0
+      },
+    ]
   }
   isMobile(){
     if(    navigator.userAgent.match(/Android/i)

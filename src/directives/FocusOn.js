@@ -1,6 +1,8 @@
+import {l} from '../utils/helpers'
 const FocusOn = $rootScope => ({
   scope: { focusOn: "=" },
   link: function(scope, elem) {
+    // l(scope.focusOn, elem[0])
     scope.$on('focusOn', (e, fieldData) => {
      if(angular.equals(fieldData, scope.focusOn)) elem[0].focus()
     })
