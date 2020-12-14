@@ -54,6 +54,7 @@ button.btn-pr{
   padding: 20px 0;
   background: $w;
   box-shadow: 0 4px 4px 4px rgba(31, 68, 84, 0.02);
+  z-index: 1!important;
   @include media("<=lp") { padding: 20px 10px; }
   @include media("<=tablet") {
     position: relative;

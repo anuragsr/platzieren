@@ -8,8 +8,10 @@ export default class Utils {
     this.$rootScope = $rootScope
     this.$timeout = $timeout
 
-    this.FE_URL = ENV[ENV.CURR].FE_URL
-    this.API_URL = ENV[ENV.CURR].API_URL
+    const envObj = ENV[ENV.CURR]
+    this.FE_URL  = envObj.FE_URL
+    this.IMG_URL = envObj.IMG_URL
+    this.API_URL = envObj.API_URL
 
     this.menus = [
       {
@@ -205,7 +207,11 @@ export default class Utils {
   }
   createLink(){
     const id = this.generateId(6)
-    return { id, link:`${this.FE_URL}${id}` }
+    return {
+      id,
+      editLink:`${this.FE_URL}${id}`,
+      viewLink:`${this.IMG_URL}${id}`
+    }
   }
   focus(dir, focusedEl, menu){
     // l(dir, focusedEl, menu)

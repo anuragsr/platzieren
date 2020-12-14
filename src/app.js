@@ -73,7 +73,7 @@ angular
 .component('coffee', {
   bindings: {
     menu: '=', filledFields: '=', zoom: '=',
-    download: "=", showLoader: '='
+    download: "=", showLoader: "="
   },
   template: coffeeTpl,
   controller: 'MenuCtrl'
@@ -81,7 +81,7 @@ angular
 .component('japanese', {
   bindings: {
     menu: '=', filledFields: '=', zoom: '=',
-    download: "=", showLoader: '='
+    download: "=", showLoader: "="
   },
   template: japaneseTpl,
   controller: 'MenuCtrl'
@@ -89,7 +89,7 @@ angular
 .component('pizza', {
   bindings: {
     menu: '=', filledFields: '=', zoom: '=',
-    download: "=", showLoader: '='
+    download: "=", showLoader: "="
   },
   template: pizzaTpl,
   controller: 'MenuCtrl'
@@ -100,16 +100,19 @@ angular
   $stateProvider
   .state('home', {
     url: '/home',
-    component: 'home'
+    component: 'home',
+    data : { pageTitle: 'Platzieren | Home' }
   })
   .state('load', {
     url: '/l/:lId',
-    component: 'load'
+    component: 'load',
+    data : { pageTitle: 'Platzieren | Edit Menu' }
   })
   .state('menuImg', {
     url: '/i/:iId',
-    component: 'menuImg'
+    component: 'menuImg',
+    data : { pageTitle: 'Platzieren | View Menu' }
   })
   // Add more states here
 }])
-
+.run(['$rootScope', '$state', function ($rootScope, $state) { $rootScope.$state = $state }])

@@ -223,10 +223,9 @@
     h1{ color: $w; }
   }
   &.dark .ctn-menu-bg .ctn-menu-outer .ctn-menu{
+    color: $w;
     .input-gr{
-      color: $w;
-      input,
-      textarea{
+      input, textarea{
         color: $w;
         @include plh($w);
       }
@@ -354,6 +353,8 @@
       margin: 40px auto;
     }
     input{ pointer-events: none; }
+
+    &.menu-coffee{ height: unset; }
   }
   .ctn-clip{
     background: none;

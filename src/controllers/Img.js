@@ -14,6 +14,7 @@ export default class ImgCtrl {
     .getMenu(this.menuId)
     .then(res => {
       l(res)
+      this.showLoader = false
       this.menu = res.data.menu
     })
   }

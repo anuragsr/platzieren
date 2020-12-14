@@ -96,11 +96,11 @@
               "pages" => array()
             ),
           );
+
           foreach ($data as $page) {
             $output["menu"]["pages"][] = json_decode($page["x_data"]);
           }
 
-          // Common::respond(array($output, $isDark), "Menu fetched successfully.", true);
           Common::respond($output, "Menu fetched successfully.", true);
         }
       } catch (Exception $e) {
@@ -112,16 +112,8 @@
 
   $m = new PLMenu($db);
   switch ($params["t"]) {
-    case 'save':
-      $m->addMenu($params["d"]);
-      // Common::respond($params["d"], "Test", true);
-    break;
-    
-    case 'get':
-      $m->getMenu($params["d"]);
-    break;
-
-    default: // qr
-    break;
+    case 'save': $m->addMenu($params["d"]); break;    
+    case 'get': $m->getMenu($params["d"]); break;
+    default: break;
   }
 ?>

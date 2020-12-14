@@ -42,7 +42,8 @@ export default class HomeCtrl {
 
     const linkData = this.utils.createLink()
 
-    this.shareLink = linkData.link
+    this.editLink = linkData.editLink
+    this.viewLink = linkData.viewLink
 
     this.idx = this.menus.indexOf(menu)
     this.menu = angular.copy(menu)
