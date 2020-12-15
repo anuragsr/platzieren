@@ -5,15 +5,14 @@ class MenuCtrl {
     // l(this)
     this.$onInit = () => {
       l("init menu", this.menu.title)
-      $timeout(() => {
-        this.showLoader = false
-      }, 1000)
+      $timeout(() => this.showLoader = false, 1000)
     }
 
+    this.utils = utils
     $scope.$watch('$ctrl.menu.pages', (newVal, oldVal) => {
       // l(newVal, oldVal)
       this.filledFields = utils.getFilledFields(newVal)
-    }, true);
+    }, true)
   }
   pageFn(opts){
     switch (opts.type) {

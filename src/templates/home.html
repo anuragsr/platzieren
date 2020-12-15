@@ -54,6 +54,7 @@
       filled-fields="homeCtrl.filledFields"
       zoom="homeCtrl.zoom"
       show-loader="homeCtrl.showLoader"
+      save="homeCtrl.save"
       focused-el="homeCtrl.focusedEl"
     ></coffee>
     <japanese
@@ -62,6 +63,7 @@
       filled-fields="homeCtrl.filledFields"
       zoom="homeCtrl.zoom"
       show-loader="homeCtrl.showLoader"
+      zoom="homeCtrl.save"
       focused-el="homeCtrl.focusedEl"
     ></japanese>
     <pizza
@@ -70,6 +72,7 @@
       filled-fields="homeCtrl.filledFields"
       zoom="homeCtrl.zoom"
       show-loader="homeCtrl.showLoader"
+      zoom="homeCtrl.save"
       focused-el="homeCtrl.focusedEl"
     ></pizza>
 
@@ -277,13 +280,15 @@
   </section>
 
   <portal>
-     <!-- your component scope is available here -->
     <div class="modal fade qr-modal" tabindex="-1" role="dialog" id="qrModal">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-body">
             <qrcode data="{{ homeCtrl.viewLink }}" size="200"></qrcode>
-            <h5 class="mt-3">Scan the QR code for a link to your created menu.</h5>
+            <h5 class="mt-3">
+              Scan the QR code for a link to your created menu.<br/>
+              Or click <a target="_blank" href="{{ homeCtrl.viewLink }}">here</a> to view
+            </h5>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-sm btn-pr" data-dismiss="modal">Close</button>

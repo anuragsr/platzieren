@@ -29,25 +29,28 @@
       ng-if="loadCtrl.menu.title === 'Allge.'"
       menu="loadCtrl.menu"
       filled-fields="loadCtrl.filledFields"
-      focused-el="loadCtrl.focusedEl"
       zoom="loadCtrl.zoom"
+      save="loadCtrl.save"
       show-loader="loadCtrl.showLoader"
+      focused-el="loadCtrl.focusedEl"
     ></coffee>
     <japanese
       ng-if="loadCtrl.menu.title === 'Sushi'"
       menu="loadCtrl.menu"
       filled-fields="loadCtrl.filledFields"
-      focused-el="loadCtrl.focusedEl"
       zoom="loadCtrl.zoom"
+      save="loadCtrl.save"
       show-loader="loadCtrl.showLoader"
+      focused-el="loadCtrl.focusedEl"
     ></japanese>
     <pizza
       ng-if="loadCtrl.menu.title === 'Pizza'"
       menu="loadCtrl.menu"
       filled-fields="loadCtrl.filledFields"
-      focused-el="loadCtrl.focusedEl"
       zoom="loadCtrl.zoom"
+      save="loadCtrl.save"
       show-loader="loadCtrl.showLoader"
+      focused-el="loadCtrl.focusedEl"
     ></pizza>
 
     <div class="ctn-float-box">
@@ -77,11 +80,11 @@
           <div><img src="/assets/herb 1.png" alt="" />Vegetarian</div>
         </div>
         <div class="b-item qr-btn">
-<!--            ng-click="loadCtrl.getQR()" -->
           <button
             class="btn btn-light btn-block"
+            ng-click="loadCtrl.save(true)"
             data-toggle="modal" data-target="#qrModal"
-          >
+            >
             <img src="/assets/qr-dark.png" alt="">
             <div>QR Code<br/>erstellen</div>
           </button>
@@ -90,13 +93,15 @@
     </div>
   </section>
   <portal>
-     <!-- your component scope is available here -->
     <div class="modal fade qr-modal" tabindex="-1" role="dialog" id="qrModal">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-body">
             <qrcode data="{{ loadCtrl.viewLink }}" size="200"></qrcode>
-            <h5 class="mt-3">Scan the QR code for a link to your created menu.</h5>
+            <h5 class="mt-3">
+              Scan the QR code for a link to your created menu.<br/>
+              Or click <a target="_blank" href="{{ loadCtrl.viewLink }}">here</a> to view
+            </h5>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-sm btn-pr" data-dismiss="modal">Close</button>
@@ -107,3 +112,4 @@
   </portal>
 </main>
 <f></f>
+<l ng-show="loadCtrl.showLoader"/>

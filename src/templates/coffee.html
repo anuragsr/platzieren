@@ -71,7 +71,11 @@
           </li>
         </ul>
       </nav>
-      <button data-toggle="modal" data-target="#qrModal" class="btn btn-pr">
+      <button
+        class="btn btn-pr"
+        ng-click="$ctrl.save(true)"
+        data-toggle="modal" data-target="#qrModal"
+        >
         <img src="/assets/s2.png" alt="">
         <div>QR Code<br/>erstellen</div>
       </button>
@@ -116,7 +120,7 @@
     </div>
   </div>
 </div>
-<!--<pre class="deb-obj">
-  {{  $ctrl.showLoader | json }}
+<pre class="deb-obj">
+  {{ $ctrl.showLoader | json }}
   {{ $ctrl.menu.pages | json }}
-</pre>-->
+</pre>

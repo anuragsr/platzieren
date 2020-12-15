@@ -73,7 +73,7 @@ angular
 .component('coffee', {
   bindings: {
     menu: '=', filledFields: '=', zoom: '=',
-    download: "=", showLoader: "="
+    save: "<", showLoader: "="
   },
   template: coffeeTpl,
   controller: 'MenuCtrl'
@@ -81,7 +81,7 @@ angular
 .component('japanese', {
   bindings: {
     menu: '=', filledFields: '=', zoom: '=',
-    download: "=", showLoader: "="
+    save: "<", showLoader: "="
   },
   template: japaneseTpl,
   controller: 'MenuCtrl'
@@ -89,7 +89,7 @@ angular
 .component('pizza', {
   bindings: {
     menu: '=', filledFields: '=', zoom: '=',
-    download: "=", showLoader: "="
+    save: "<", showLoader: "="
   },
   template: pizzaTpl,
   controller: 'MenuCtrl'

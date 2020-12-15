@@ -70,7 +70,8 @@ export default class HomeCtrl {
   zoomFn(dir){ this.zoom = this.utils.zoom(this.zoom, dir) }
   focusFn(dir){ this.utils.focus(dir, this.focusedEl, this.menu) }
   save(isAuto){
-    this.showLoader = true
+    if(!isAuto) this.showLoader = true
+
     this.utils
     .save(this.menu)
     .then(res => {

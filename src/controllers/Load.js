@@ -39,14 +39,15 @@ export default class LoadCtrl {
   }
   zoomFn(dir){ this.zoom = this.utils.zoom(this.zoom, dir) }
   focusFn(dir){ this.utils.focus(dir, this.focusedEl, this.menu) }
-  save(){
-    this.showLoader = true
+  save(isAuto){
+    if(!isAuto) this.showLoader = true
+
     this.utils
     .save(this.menu)
     .then(res => {
       l(res)
       this.showLoader = false
-      alert(res.message)
+      if(!isAuto) alert(res.message)
     })
   }
 }
