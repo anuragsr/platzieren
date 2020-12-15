@@ -1,7 +1,6 @@
 <?php
   include('common.php');
   include('db.php');
-  // include('emails.php');
 
   class PLMenu{
     protected $db;
@@ -107,13 +106,11 @@
         Common::respond($e, "There was an error fetching from DB, please try again.", false);
       }
     }
-
   }
 
   $m = new PLMenu($db);
   switch ($params["t"]) {
     case 'save': $m->addMenu($params["d"]); break;    
-    case 'get': $m->getMenu($params["d"]); break;
-    default: break;
+    default: $m->getMenu($params["d"]); break; // 'get'
   }
 ?>
