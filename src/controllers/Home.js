@@ -25,7 +25,7 @@ export default class HomeCtrl {
     l("init Home")
 
     const { menus } = this.utils
-    this.createMenu(menus[0])
+    this.createMenu(menus[2])
     this.createSlider()
   }
   createSlider(){

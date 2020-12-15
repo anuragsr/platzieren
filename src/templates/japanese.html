@@ -2,14 +2,14 @@
   <div class="ctn-menu-outer">
     <div class="ctn-menu-inner">
       <div class="ctn-menu-page"
-        ng-repeat="currPage in $ctrl.menu.pages track by $index"
-        ng-class="{'active': $ctrl.menu.activePage === $index}"
-        >
+           ng-repeat="currPage in $ctrl.menu.pages track by $index"
+           ng-class="{'active': $ctrl.menu.activePage === $index}"
+      >
         <div class="ctn-menu">
           <div class="input-gr"
-            ng-repeat="gr in currPage track by $index"
-            ng-style="{ top: gr.pos.top + 'px', left: gr.pos.left + 'px' }"
-            >
+               ng-repeat="gr in currPage track by $index"
+               ng-style="{ top: gr.pos.top + 'px', left: gr.pos.left + 'px' }"
+          >
             <div class="text-left">
               <input
                 class="name" type="text"
@@ -30,8 +30,8 @@
         <ul class="pagination justify-content-center">
           <li class="page-item">
             <a href
-              class="page-link"
-              ng-click="$ctrl.pageFn({ type: 'prev' })">
+               class="page-link"
+               ng-click="$ctrl.pageFn({ type: 'prev' })">
               &laquo;
             </a>
           </li>
@@ -40,18 +40,18 @@
             class="page-item"
             ng-repeat="page in $ctrl.menu.pages track by $index"
             ng-class="{'active': $ctrl.menu.activePage === $index}"
-            >
+          >
             <a href
-              class="page-link"
-              ng-click="$ctrl.pageFn({ type: 'number', page: $index })">
+               class="page-link"
+               ng-click="$ctrl.pageFn({ type: 'number', page: $index })">
               {{ $index + 1 }}
             </a>
           </li>
 
           <li class="page-item">
             <a href
-              class="page-link"
-              ng-click="$ctrl.pageFn({ type: 'next' })">
+               class="page-link"
+               ng-click="$ctrl.pageFn({ type: 'next' })">
               &raquo;
             </a>
           </li>
@@ -61,7 +61,7 @@
         class="btn btn-pr"
         ng-click="$ctrl.save(true)"
         data-toggle="modal" data-target="#qrModal"
-        >
+      >
         <img src="/assets/s2.png" alt="">
         <div>QR Code<br/>erstellen</div>
       </button>
@@ -75,9 +75,9 @@
       <div class="ctn-menu-page">
         <div class="ctn-menu">
           <div class="input-gr"
-            ng-repeat="gr in currPage track by $index"
-            ng-style="{ top: gr.pos.top + 'px', left: gr.pos.left + 'px' }"
-            >
+               ng-repeat="gr in currPage track by $index"
+               ng-style="{ top: gr.pos.top + 'px', left: gr.pos.left + 'px' }"
+          >
             <div class="text-left">
               <input
                 class="name" type="text"
