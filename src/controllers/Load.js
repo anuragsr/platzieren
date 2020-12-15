@@ -34,7 +34,7 @@ export default class LoadCtrl {
     l("add page")
     this.focusedEl = null
     this.menu.pages.push(angular.copy(this.menu.fields))
-    this.menu.activePage = this.menu.activePage - 1
+    this.menu.activePage = this.menu.pages.length - 1
     this.totalFields = this.menu.pages.reduce((prev, curr) => prev + curr.length, 0)
   }
   zoomFn(dir){ this.zoom = this.utils.zoom(this.zoom, dir) }

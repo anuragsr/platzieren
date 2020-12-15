@@ -186,6 +186,7 @@
           .input-gr textarea{
             width: 100%;
             text-align: left;
+            letter-spacing: 3px;
             &::-webkit-input-placeholder {
               letter-spacing: 3px;
             }
@@ -347,6 +348,8 @@
 .ctn-img .menu-editor{
   .ctn-menu-bg{
     background: none;
+    height: unset;
+
     &.menu-edit{ display: none; }
     &.menu-download{ display: block; }
     .ctn-menu-outer{
@@ -359,7 +362,9 @@
     }
     input{ pointer-events: none; }
 
-    &.menu-coffee{ height: unset; }
+    &.menu-coffee{
+      .price, .name{ letter-spacing: 3px; }
+    }
   }
   .ctn-clip{
     background: none;

@@ -2,9 +2,9 @@ const wc = window.console
 export const l = console.log.bind(wc)
 export const cl = console.clear.bind(wc)
 export const env = {
-  // CURR: "LOCAL",
+  CURR: "LOCAL",
   // CURR: "ECA",
-  CURR: "PROD",
+  // CURR: "PROD",
   LOCAL: {
     FE_URL: "http://localhost:8080/#!/l/",
     IMG_URL: "http://localhost:8080/#!/i/",

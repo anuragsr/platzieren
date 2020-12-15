@@ -84,17 +84,15 @@
       <div class="ctn-menu-page">
         <div class="ctn-menu">
           <h1>COFFEE MENU</h1>
-          <div
-            class="row input-gr"
+          <div class="row input-gr"
             ng-repeat="gr in currPage.slice(0, 7) track by $index"
+            ng-hide="gr.name.v === ''"
             >
             <div class="col text-right pr-0">
-              <input
-                class="name" type="text"
-                ng-model="gr.name.v" placeholder="{{gr.name.p}}" />
+              <div class="name">{{gr.name.v}}</div>
             </div>
             <div class="col text-left">
-              &euro;&nbsp;<input class="price" type="text" ng-model="gr.price.v" placeholder="{{gr.price.p}}"/>
+              <div class="price">&euro;&nbsp;{{gr.price.v}}</div>
             </div>
           </div>
           <div class="offers">
@@ -102,25 +100,23 @@
             <div
               class="row input-gr"
               ng-repeat="gr in currPage.slice(8, currPage.length) track by $index"
+              ng-hide="gr.name.v === ''"
               >
-              <div class="col-9">
-                <textarea
-                  class="name" type="text" resizable="false"
-                  ng-model="gr.name.v" placeholder="{{gr.name.p}}"
-                ></textarea>
+              <div class="col-9 text-left">
+                <div class="name">{{gr.name.v}}</div>
               </div>
               <div class="col-3 text-left d-flex align-items-start">
-                &euro;&nbsp;<input class="price" type="text" ng-model="gr.price.v" placeholder="{{gr.price.p}}"/>
+                <div class="price">&euro;&nbsp;{{gr.price.v}}</div>
               </div>
             </div>
           </div>
+          <div class="vegan"><img src="/assets/plant 1.png" alt="" />Vegan</div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<!--<button ng-click="$ctrl.download()">Download</button>-->
-<pre class="deb-obj">
+<!--<pre class="deb-obj">
   {{  $ctrl.showLoader | json }}
   {{ $ctrl.menu.pages | json }}
-</pre>
+</pre>-->
