@@ -43,6 +43,11 @@ WebFont.load({
   }
 })
 
+const bindings = {
+  menu: '=', filledFields: '=',
+  zoom: '=', save: '<', showLoader: '='
+}
+
 angular
 .module('app', [uiRouter, 'ui.carousel', 'portal', ngQrcode])
 .constant('ENV', env)
@@ -71,32 +76,24 @@ angular
   controllerAs: 'imgCtrl'
 })
 .component('coffee', {
-  bindings: {
-    menu: '=', filledFields: '=', zoom: '=',
-    save: "<", showLoader: "="
-  },
+  bindings,
   template: coffeeTpl,
   controller: 'MenuCtrl'
 })
 .component('japanese', {
-  bindings: {
-    menu: '=', filledFields: '=', zoom: '=',
-    save: "<", showLoader: "="
-  },
+  bindings,
   template: japaneseTpl,
   controller: 'MenuCtrl'
 })
 .component('pizza', {
-  bindings: {
-    menu: '=', filledFields: '=', zoom: '=',
-    save: "<", showLoader: "="
-  },
+  bindings,
   template: pizzaTpl,
   controller: 'MenuCtrl'
 })
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise("/home");
+  $urlRouterProvider.otherwise("/home")
 
+  // Adding states here
   $stateProvider
   .state('home', {
     url: '/home',
@@ -113,6 +110,5 @@ angular
     component: 'menuImg',
     data : { pageTitle: 'Platzieren | View Menu' }
   })
-  // Add more states here
 }])
 .run(['$rootScope', '$state', function ($rootScope, $state) { $rootScope.$state = $state }])

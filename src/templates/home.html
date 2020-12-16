@@ -63,7 +63,7 @@
       filled-fields="homeCtrl.filledFields"
       zoom="homeCtrl.zoom"
       show-loader="homeCtrl.showLoader"
-      zoom="homeCtrl.save"
+      save="homeCtrl.save"
       focused-el="homeCtrl.focusedEl"
     ></japanese>
     <pizza
@@ -72,7 +72,7 @@
       filled-fields="homeCtrl.filledFields"
       zoom="homeCtrl.zoom"
       show-loader="homeCtrl.showLoader"
-      zoom="homeCtrl.save"
+      save="homeCtrl.save"
       focused-el="homeCtrl.focusedEl"
     ></pizza>
 
@@ -107,6 +107,7 @@
           <button
             class="btn btn-light btn-block"
             data-toggle="modal" data-target="#qrModal"
+            ng-click="homeCtrl.save(true)"
             >
             <img src="/assets/qr-dark.png" alt="">
             <div>QR Code<br/>erstellen</div>

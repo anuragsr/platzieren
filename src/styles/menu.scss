@@ -243,7 +243,10 @@
           @extend %j-s-b;
           align-items: flex-start;
           position: absolute;
-          width: 190px;
+          width: 200px;
+          input{
+            &.desc{ font-size: 9px; width: 100%; }
+          }
         }
       }
       .ctn-clip{
@@ -272,6 +275,9 @@
     background-repeat: repeat-y;
     background-size: contain;
     h1{ color: $w; }
+  }
+  &.dark .menu-pizza .ctn-menu{
+    background-image: url(/assets/pizza/menu-dark.jpg);
   }
   &.dark .ctn-menu-bg .ctn-menu-outer .ctn-menu{
     color: $w;
