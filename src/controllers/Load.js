@@ -1,4 +1,4 @@
-import {l} from '../utils/helpers'
+import { l } from '../utils/helpers'
 
 export default class LoadCtrl {
   constructor($scope, $stateParams, utils) {

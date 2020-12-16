@@ -1,6 +1,11 @@
 .modal{
   font-family: $ex;
   a{ color: $pr; text-decoration: underline; }
+  button{ height: unset; }
+  form{
+    font-weight: 700;
+    input{ font-weight: 700; }
+  }
 }
 .modal-backdrop {
   opacity: 1;

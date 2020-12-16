@@ -1,5 +1,5 @@
 import ClipboardJS from 'clipboard/dist/clipboard.min'
-import {l} from '../utils/helpers'
+import { l } from '../utils/helpers'
 
 export default class HomeCtrl {
   constructor($scope, $timeout, utils) {
@@ -27,6 +27,78 @@ export default class HomeCtrl {
     const { menus } = this.utils
     this.createMenu(menus[2])
     this.createSlider()
+    this.initPaypal()
+  }
+  initPaypal(){
+    paypal.Buttons({
+      // onInit is called when the button first renders
+      onInit: function(data, actions) {
+        l(data, actions)
+        // Disable the buttons
+        actions.disable();
+
+        // // Listen for changes to the checkbox
+        // document
+        // .querySelector('#check')
+        // .addEventListener('change', function(event) {
+        //
+        //   // Enable or disable the button when it is checked or unchecked
+        //   if (event.target.checked) {
+        //     actions.enable();
+        //   } else {
+        //     actions.disable();
+        //   }
+        // });
+      },
+      // onClick is called when the button is clicked
+      onClick: function() {
+
+        // // Show a validation error if the checkbox is not checked
+        // if (!document.querySelector('#check').checked) {
+        //   document.querySelector('#error').classList.remove('hidden');
+        // }
+      },
+      style: {
+        layout: 'horizontal',
+        color:  'blue',
+        tagline: false,
+        height: 53,
+        // shape:  'pill',
+        // label:  'pay',
+      },
+      // Set up the transaction
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: '14.99'
+            }
+          }]
+        });
+      },
+      // Finalize the transaction
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          // Show a success message to the buyer
+          l('Transaction completed', details);
+          // if(details.status === "COMPLETED"){
+          //   $scope.goToPaymentResponse("success")
+          // } else{
+          //   $scope.goToPaymentResponse("failure")
+          // }
+        });
+      },
+      onError: function (err) {
+        // Show an error page here, when an error occurs
+        l('Error', err);
+        // $scope.goToPaymentResponse("failure")
+      },
+      onCancel: function(data){
+        l('Cancelled', data);
+        // $scope.goToPaymentResponse("failure")
+      }
+
+    }).render('#ctn-pp-btn');
   }
   createSlider(){
     let slides = this.slides = [], currIndex = 0
