@@ -11,6 +11,13 @@ export default class HomeCtrl {
     this.zoom = 1
     this.idx = 0
 
+    this.formData = {
+      f: '', n: '',
+      em: '', ph: '',
+      add1: '', add2: '',
+      c: '', p: ''
+    }
+
     this.menus = this.utils.menus
     this.menu = {}
 
@@ -20,6 +27,10 @@ export default class HomeCtrl {
       this.focusedEl = val
     })
     $scope.$on('progress', (e, prog) => l(prog))
+    $scope.$watch(() => this.formData, (newVal, oldVal) => {
+      l(newVal, oldVal)
+      // this.filledFields = utils.getFilledFields(newVal)
+    }, true)
   }
   init(){
     l("init Home")
@@ -60,10 +71,10 @@ export default class HomeCtrl {
       },
       style: {
         layout: 'horizontal',
-        color:  'blue',
         tagline: false,
-        height: 53,
-        // shape:  'pill',
+        height: 45,
+        shape:  'pill',
+        // color:  'blue',
         // label:  'pay',
       },
       // Set up the transaction
