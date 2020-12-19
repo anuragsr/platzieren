@@ -1,4 +1,5 @@
 import ClipboardJS from 'clipboard/dist/clipboard.min'
+import $ from 'jquery'
 import { l } from '../utils/helpers'
 
 export default class HomeCtrl {
@@ -7,13 +8,13 @@ export default class HomeCtrl {
     this.$scope = $scope
 
     this.showLoader = true
-    this.activeSize = 'S'
     this.filledFields = 0
     this.zoom = 1
     this.idx = 0
 
     this.formData = {
-      f: '', n: '',
+      sz: 'S',
+      f: '', l: '',
       em: '', ph: '',
       add1: '', add2: '',
       c: '', p: ''
@@ -28,12 +29,6 @@ export default class HomeCtrl {
       this.focusedEl = val
     })
     $scope.$on('progress', (e, prog) => l(prog))
-    // $scope.$watch(() => this.formData, (newVal, oldVal) => {
-    //   l(newVal, oldVal)
-    // }, true)
-    // $scope.$watch(() => this.payForm.$valid, (newVal, oldVal) => {
-    //   l(newVal, oldVal)
-    // }, true)
   }
   init(){
     l("init Home")
@@ -45,10 +40,9 @@ export default class HomeCtrl {
   }
   initPaypal(){
     paypal.Buttons({
-      // onInit is called when the button first renders
       onInit: (data, actions) => {
         l(data, actions)
-        
+
         // Disable the buttons by default
         actions.disable()
 
@@ -57,27 +51,13 @@ export default class HomeCtrl {
           if(newVal) actions.enable()
           else actions.disable()
         })
-
-        // // Listen for changes to the checkbox
-        // document
-        // .querySelector('#check')
-        // .addEventListener('change', function(event) {
-        //
-        //   // Enable or disable the button when it is checked or unchecked
-        //   if (event.target.checked) {
-        //     actions.enable();
-        //   } else {
-        //     actions.disable();
-        //   }
-        // });
       },
-      // onClick is called when the button is clicked
-      onClick: function() {
-
-        // // Show a validation error if the checkbox is not checked
-        // if (!document.querySelector('#check').checked) {
-        //   document.querySelector('#error').classList.remove('hidden');
-        // }
+      onClick: () => {
+        if(!this.payForm.$valid) alert('Please fill in all fields!')
+        else {
+          this.showLoader = true
+          this.$scope.$apply()
+        }
       },
       style: {
         layout: 'horizontal',
@@ -87,37 +67,21 @@ export default class HomeCtrl {
         // color:  'blue',
         // label:  'pay',
       },
-      // Set up the transaction
-      createOrder: function(data, actions) {
-        return actions.order.create({
-          purchase_units: [{
-            amount: {
-              value: '14.99'
-            }
-          }]
-        });
-      },
-      // Finalize the transaction
-      onApprove: function(data, actions) {
-        return actions.order.capture().then(function(details) {
-          // Show a success message to the buyer
-          l('Transaction completed', details);
-          // if(details.status === "COMPLETED"){
-          //   $scope.goToPaymentResponse("success")
-          // } else{
-          //   $scope.goToPaymentResponse("failure")
-          // }
-        });
-      },
-      onError: function (err) {
-        // Show an error page here, when an error occurs
-        l('Error', err);
-        // $scope.goToPaymentResponse("failure")
-      },
-      onCancel: function(data){
-        l('Cancelled', data);
-        // $scope.goToPaymentResponse("failure")
-      }
+      createOrder: (data, actions) => actions.order.create({
+        purchase_units: [{
+          amount: { value: '14.99' }
+        }]
+      }),
+      onApprove: (data, actions) => actions.order.capture().then(details => {
+        // Show a success message to the buyer
+        l('Transaction completed', details)
+        if(details.status === "COMPLETED"){
+          $('#buyModal').modal('hide')
+          this.saveOrder(details)
+        } else alert('Something went wrong, please try again!')
+      }),
+      onError: err => { l('Error', err); alert('Something went wrong, please try again!') },
+      onCancel: data => l('Cancelled', data)
     })
     .render('#ctn-pp-btn')
   }
@@ -153,7 +117,7 @@ export default class HomeCtrl {
       alert('Beim Kopieren ist ein Fehler aufgetreten, bitte manuell kopieren.')
     })
   }
-  addMenuPage() {
+  addMenuPage(){
     l("add page")
     this.focusedEl = null
     this.menu.pages.push(angular.copy(this.menu.fields))
@@ -166,11 +130,22 @@ export default class HomeCtrl {
     if(!isAuto) this.showLoader = true
 
     this.utils
-    .save(this.menu)
+    .saveMenu(this.menu)
     .then(res => {
       l(res)
       this.showLoader = false
       if(!isAuto) alert(res.message)
+    })
+  }
+  saveOrder(details){
+    l(this.formData, details)
+
+    this.utils
+    .saveOrder( { ...this.formData, ...details })
+    .then(res => {
+      l(res)
+      this.showLoader = false
+      alert(res.message)
     })
   }
 }

@@ -405,13 +405,22 @@ export default class Utils {
 
     return this.def.promise
   }
-  save(menu){
+  saveMenu(menu){
     const { id, title, pages, isDark } = menu
     , formData = { id, title, pages, isDark }
 
     const def = this.$q.defer()
     this.post(`${this.API_URL}process.php`, {
       t: "save", d: formData
+    })
+    .then(res => def.resolve(res))
+
+    return def.promise
+  }
+  saveOrder(order){
+    const def = this.$q.defer()
+    this.post(`${this.API_URL}process.php`, {
+      t: "order", d: order
     })
     .then(res => def.resolve(res))
 

@@ -43,7 +43,7 @@ export default class LoadCtrl {
     if(!isAuto) this.showLoader = true
 
     this.utils
-    .save(this.menu)
+    .saveMenu(this.menu)
     .then(res => {
       l(res)
       this.showLoader = false

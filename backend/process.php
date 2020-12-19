@@ -106,11 +106,35 @@
         Common::respond($e, "There was an error fetching from DB, please try again.", false);
       }
     }
+
+    public function addOrder($data){
+
+      $err = false;
+      try {
+        // Add to purchase table
+        $this->db->save("x_platz_purc87134", array(
+          "x_trans_id" => $data["id"],
+          "x_size"     => $data["sz"],
+          "x_fname"    => $data["f"],
+          "x_lname"    => $data["l"],
+          "x_email"    => $data["em"],
+          "x_phone"    => $data["ph"],
+          "x_addr"     => $data["add1"].", ".$data["add2"].", ".$data["c"].", ".$data["p"]
+        ));
+      } catch (Exception $e) {
+        $err = true;
+        Common::respond($e, "There was an error inserting in DB, please try again.", false);
+      }
+
+      !$err && Common::respond($data, "Thanks for the order, our team will get in touch shortly.", true);
+    }
+
   }
 
   $m = new PLMenu($db);
   switch ($params["t"]) {
-    case 'save': $m->addMenu($params["d"]); break;    
-    default: $m->getMenu($params["d"]); break; // 'get'
+    case 'save': $m->addMenu($params["d"]); break;
+    case 'get': $m->getMenu($params["d"]); break;
+    default: $m->addOrder($params["d"]); break; // 'payment details'
   }
 ?>
