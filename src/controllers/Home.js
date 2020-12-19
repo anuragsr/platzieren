@@ -4,6 +4,7 @@ import { l } from '../utils/helpers'
 export default class HomeCtrl {
   constructor($scope, $timeout, utils) {
     this.utils = utils
+    this.$scope = $scope
 
     this.showLoader = true
     this.activeSize = 'S'
@@ -27,10 +28,12 @@ export default class HomeCtrl {
       this.focusedEl = val
     })
     $scope.$on('progress', (e, prog) => l(prog))
-    $scope.$watch(() => this.formData, (newVal, oldVal) => {
-      l(newVal, oldVal)
-      // this.filledFields = utils.getFilledFields(newVal)
-    }, true)
+    // $scope.$watch(() => this.formData, (newVal, oldVal) => {
+    //   l(newVal, oldVal)
+    // }, true)
+    // $scope.$watch(() => this.payForm.$valid, (newVal, oldVal) => {
+    //   l(newVal, oldVal)
+    // }, true)
   }
   init(){
     l("init Home")
@@ -43,10 +46,17 @@ export default class HomeCtrl {
   initPaypal(){
     paypal.Buttons({
       // onInit is called when the button first renders
-      onInit: function(data, actions) {
+      onInit: (data, actions) => {
         l(data, actions)
-        // Disable the buttons
-        actions.disable();
+        
+        // Disable the buttons by default
+        actions.disable()
+
+        this.$scope.$watch(() => this.payForm.$valid, (newVal, oldVal) => {
+          l(newVal, oldVal)
+          if(newVal) actions.enable()
+          else actions.disable()
+        })
 
         // // Listen for changes to the checkbox
         // document
@@ -73,7 +83,7 @@ export default class HomeCtrl {
         layout: 'horizontal',
         tagline: false,
         height: 45,
-        shape:  'pill',
+        // shape:  'pill',
         // color:  'blue',
         // label:  'pay',
       },
@@ -108,12 +118,12 @@ export default class HomeCtrl {
         l('Cancelled', data);
         // $scope.goToPaymentResponse("failure")
       }
-
-    }).render('#ctn-pp-btn');
+    })
+    .render('#ctn-pp-btn')
   }
   createSlider(){
-    let slides = this.slides = [], currIndex = 0
-    for (var i = 0; i < 3; i++) {
+    let slides = this.slides = []
+    for (let i = 0; i < 3; i++) {
       slides.push({ image: '/assets/sl1.png' })
     }
   }

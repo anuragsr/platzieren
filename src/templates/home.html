@@ -306,21 +306,21 @@
             <h5 class="mt-3">
               Please enter your details below
             </h5><br/>
-            <form class="text-left">
+            <form class="text-left" name="homeCtrl.payForm">
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <input type="text" class="form-control" ng-model="homeCtrl.formData.f" placeholder="Vorname" />
+                  <input type="text" class="form-control" ng-model="homeCtrl.formData.f" placeholder="Vorname" required/>
                 </div>
                 <div class="form-group col-md-6">
-                  <input type="text" class="form-control" ng-model="homeCtrl.formData.n" placeholder="Nachname" />
+                  <input type="text" class="form-control" ng-model="homeCtrl.formData.n" placeholder="Nachname" required/>
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <input type="email" class="form-control" ng-model="homeCtrl.formData.em" placeholder="Email" />
+                  <input type="email" class="form-control" ng-model="homeCtrl.formData.em" placeholder="Email" required/>
                 </div>
                 <div class="form-group col-md-6">
-                  <input type="text" class="form-control" ng-model="homeCtrl.formData.ph" placeholder="Phone" />
+                  <input type="text" class="form-control" ng-model="homeCtrl.formData.ph" placeholder="Phone" required/>
                 </div>
               </div>
               <div class="form-group">
@@ -347,7 +347,7 @@
               </div>
               <div id="ctn-pp-btn"></div>
             </form>
-            <!--<pre>{{ homeCtrl.formData | json }}</pre>-->
+            <!--<pre>{{ homeCtrl.payForm | json }}</pre>-->
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-sm btn-pr" data-dismiss="modal">Close</button>
