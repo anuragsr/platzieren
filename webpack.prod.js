@@ -30,7 +30,8 @@ module.exports = {
           presets: ['@babel/preset-env'],
           plugins: ['@babel/plugin-proposal-object-rest-spread']
         }
-      },
+      }
+      ,
       {
         test: /\.(css)$/,
         use: ExtractTextPlugin.extract({
@@ -39,7 +40,6 @@ module.exports = {
       },
       {
         test: /\.(scss|sass)$/,
-        // test: /\.(scss|css|sass)$/, // Moved css above
         use: [
           {
             loader: MiniCssExtractPlugin.loader
@@ -68,7 +68,8 @@ module.exports = {
             }
           }
         ]
-      },
+      }
+      ,
       {
         // Load all images as base64 encoding if they are smaller than 8192 bytes
         test: /\.(png|jpg|gif)$/,
@@ -111,7 +112,6 @@ module.exports = {
     new CleanWebpackPlugin(buildPath),
     new CopyWebpackPlugin({
       patterns: [
-        // { from: './src/assets', to: 'assets' },
         {from: __dirname + '/public'}
       ]
     }),

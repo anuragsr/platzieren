@@ -27,13 +27,15 @@ module.exports = {
           presets: ['@babel/preset-env'],
           plugins: ['@babel/plugin-proposal-object-rest-spread']
         }
-      },
+      }
+      ,
       {
         test: /\.(css)$/,
         use: ExtractTextPlugin.extract({
           use: [ 'css-loader' ]
         })
-      },
+      }
+      ,
       {
         test: /\.(scss)$/,
         use: ExtractTextPlugin.extract({
@@ -85,7 +87,6 @@ module.exports = {
     new ExtractTextPlugin("styles.css"),
     new CopyWebpackPlugin({
       patterns: [
-        // { from: './src/assets', to: 'assets' },
         {from: __dirname + '/public'}
       ]
     }),
