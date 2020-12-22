@@ -74,6 +74,10 @@ export default class Utils {
             price: { p: '2,99', v: '' },
           },
         ],
+        titles: [
+          { id:0, v: 'COFFEE MENU' },
+          { id:1, v: 'OFFERS' },
+        ],
         pages: [],
         activePage: 0
       },
@@ -166,6 +170,14 @@ export default class Utils {
             price: { p: 'X,XX', v: '' },
           }
         ],
+        titles: [
+          { id:0, v: 'JAPANESE\nMENU', main: true, left: 53, top: 130 },
+          { id:1, v: 'maki', left: 30, top: 290 },
+          { id:3, v: '  gyoza', left: 30, top: 540 },
+          { id:4, v: 'nigiri', left: 505, top: 245 },
+          { id:5, v: 'sushi set', left: 265, top: 540 },
+          { id:6, v: 'ramen', left: 485, top: 670 },
+        ],
         pages: [],
         activePage: 0
       },
@@ -251,21 +263,21 @@ export default class Utils {
             price: { p: 'X,XX', v: '' },
           },
           {
-            id: 12,
+            id: 11,
             pos: { top: 540, left: 900 },
             name: { p: 'TIRAMISU', v: '' },
             desc: { p: 'EXERCITATION DOLOR AUTE AON', v: '' },
             price: { p: 'X,XX', v: '' },
           },
           {
-            id: 13,
+            id: 12,
             pos: { top: 600, left: 900 },
             name: { p: 'CANNOLI', v: '' },
             desc: { p: 'EXERCITATION DOLOR AUTE AON', v: '' },
             price: { p: 'X,XX', v: '' },
           },
           {
-            id: 14,
+            id: 13,
             pos: { top: 660, left: 900 },
             name: { p: 'PANNACOTTA', v: '' },
             desc: { p: 'EXERCITATION DOLOR AUTE AON', v: '' },
@@ -328,21 +340,21 @@ export default class Utils {
     if(!focusedEl){
       // 2. if no, identify first field and focus
       fieldData.page  = menu.activePage
-      fieldData.field = menu.pages[menu.activePage][0].id
+      fieldData.field = menu.pages[menu.activePage].fields[0].id
     } else {
       // 3. if yes, identify next field and focus
       const currPage = menu.pages[menu.activePage]
-      let fieldIdx = currPage.findIndex(gr => gr.id === focusedEl.field)
+      let fieldIdx = currPage.fields.findIndex(gr => gr.id === focusedEl.field)
 
       // l(fieldIdx)
       switch(dir){
         case 'prev':
-          if(fieldIdx === 0){ fieldIdx = currPage.length - 1 }
+          if(fieldIdx === 0){ fieldIdx = currPage.fields.length - 1 }
           else { fieldIdx-- }
         break;
 
         default:
-          if(fieldIdx === currPage.length - 1){ fieldIdx = 0 }
+          if(fieldIdx === currPage.fields.length - 1){ fieldIdx = 0 }
           else { fieldIdx++ }
         break;
       }

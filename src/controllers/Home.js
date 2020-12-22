@@ -34,15 +34,13 @@ export default class HomeCtrl {
     l("init Home")
 
     const { menus } = this.utils
-    this.createMenu(menus[2])
+    this.createMenu(menus[0])
     this.createSlider()
     this.initPaypal()
   }
   initPaypal(){
     paypal.Buttons({
       onInit: (data, actions) => {
-        l(data, actions)
-
         // Disable the buttons by default
         actions.disable()
 
@@ -126,8 +124,7 @@ export default class HomeCtrl {
       titles: angular.copy(this.menu.titles),
     })
     this.menu.activePage = this.menu.pages.length - 1
-    l(this.menu)
-    this.totalFields = this.menu.pages[0].fields.reduce((prev, curr) => prev + curr.length, 0)
+    this.totalFields = this.menu.pages.reduce((prev, curr) => prev + curr.fields.length, 0)
   }
   zoomFn(dir){ this.zoom = this.utils.zoom(this.zoom, dir) }
   focusFn(dir){ this.utils.focus(dir, this.focusedEl, this.menu) }

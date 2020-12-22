@@ -26,14 +26,19 @@ export default class ImgCtrl {
   generatePDF(){
     this.showLoader = true
 
-    const doc = new jsPDF()
+    let orn = 'p'
+    if(this.menu.title === 'Pizza') orn = 'l'
+
+    const doc = new jsPDF({ orientation: orn })
     , pages = [...document.querySelectorAll('.ctn-menu-inner')]
+    , xOff = orn === 'p' ? 8 : 9
+    l(xOff)
 
     pages.forEach((menu, idx) => {
       const bb = menu.querySelector(".ctn-menu-page").getBoundingClientRect()
 
       html2canvas(menu, {
-        x: bb.left + 8, y: bb.top,
+        x: bb.left + xOff, y: bb.top,
         backgroundColor: null
       })
       .then(canvas => {

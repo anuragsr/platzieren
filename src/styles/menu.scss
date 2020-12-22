@@ -29,45 +29,55 @@
       }
       .ctn-menu{
         position: relative;
-        input.title-gr{
+        .title-gr{
           font-family: $ru;
           font-size: 70px;
-          color: $t;
           width: 250px;
           text-align: center;
           line-height: 1;
           background: $tr;
           //&:focus{ outline: none; }
           border: none;
+          z-index: 0;
           &.title-main{
             font-size: 100px;
           }
         }
-        .input-gr input{
-          @include plh($b);
-          font-family: $ex;
-          font-size: 16px;
-          font-weight: 700;
-          background: none;
-          border: none;
-          text-overflow: ellipsis;
-          &.name{ width: 140px; }
-          &.desc{
-            font-size: 12px;
-            font-weight: 400;
-            position: relative;
-            top: -8px;
+        .input-gr{
+          z-index: 1;
+          input {
+            @include plh($b);
+            font-family: $ex;
+            font-size: 16px;
+            font-weight: 700;
+            background: none;
+            border: none;
+            text-overflow: ellipsis;
+
+            &.name {
+              width: 140px;
+            }
+
+            &.desc {
+              font-size: 12px;
+              font-weight: 400;
+              position: relative;
+              top: -8px;
+            }
+
+            &.price {
+              width: 50px;
+            }
           }
-          &.price{ width: 50px; }
-        }
-        .input-gr textarea{
-          @include plh($b);
-          font-family: $ex;
-          font-size: 16px;
-          font-weight: 700;
-          background: none;
-          border: none;
-          resize: none;
+          textarea{
+            @include plh($b);
+            font-family: $ex;
+            font-size: 16px;
+            font-weight: 700;
+            background: none;
+            border: none;
+            resize: none;
+          }
         }
       }
       .ctn-btn{
@@ -130,6 +140,19 @@
         background: url(/assets/japanese/menu.jpg) no-repeat;
         background-size: 100% 100%;
         height: 100%;
+        .title-gr{
+          position: absolute;
+          color: $t-j;
+          resize: none;
+          height: 90px;
+          text-align: left;
+          &.title-main{
+            text-align: center;
+            font-family: $ex;
+            font-size: 30px;
+            color: $w;
+          }
+        }
         .input-gr{
           @extend %j-s-b;
           align-items: flex-start;
@@ -175,13 +198,15 @@
         height: 100%;
         padding-top: 75px;
         font-family: $ex;
-        h1{
+        .title-gr{
           font-family: $ex;
           font-weight: 700;
           color: $b;
           font-size: 30px;
           letter-spacing: 6px;
+          margin: 0 auto;
           margin-bottom: 25px;
+          width: 300px;
         }
         .input-gr{
           margin-bottom: 15px;
@@ -250,8 +275,9 @@
         background: url(/assets/pizza/menu.jpg) no-repeat;
         background-size: 100% 100%;
         height: 100%;
-        input.title-gr{
+        .title-gr{
           position: absolute;
+          color: $t-p;
           &.title-main{
             width: 450px;
           }
@@ -262,7 +288,7 @@
           position: absolute;
           width: 200px;
           input{
-            &.desc{ font-size: 9px; width: 100%; }
+            &.desc{ font-size: 10px; width: 100%; }
           }
         }
       }
@@ -291,7 +317,7 @@
     background-color: transparent;
     background-repeat: repeat-y;
     background-size: contain;
-    h1{ color: $w; }
+    .title-gr{ color: $w; }
   }
   &.dark .menu-pizza .ctn-menu{
     background-image: url(/assets/pizza/menu-dark.jpg);
@@ -442,7 +468,7 @@
       .ctn-menu-inner{
         margin: 40px auto;
       }
-      input{ pointer-events: none; }
+      input, textarea{ pointer-events: none; }
 
       &.menu-coffee{
         .price, .name{ letter-spacing: 3px; }

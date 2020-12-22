@@ -26,16 +26,22 @@ export default class LoadCtrl {
     .then(res => {
       l(res)
       this.menu = res.data.menu
-      this.menu.fields = this.utils.fl('filter', this.menus, { title: this.menu.title})[0].fields
-      this.totalFields = this.menu.pages.reduce((prev, curr) => prev + curr.length, 0)
+      const menuData = this.utils.fl('filter', this.menus, { title: this.menu.title})[0]
+      this.menu.fields = menuData.fields
+      this.menu.titles = menuData.titles
+      this.totalFields = this.menu.pages.reduce((prev, curr) => prev + curr.fields.length, 0)
     })
   }
-  addMenuPage() {
+  addMenuPage(){
     l("add page")
     this.focusedEl = null
-    this.menu.pages.push(angular.copy(this.menu.fields))
+    // this.menu.pages.push(angular.copy(this.menu.fields))
+    this.menu.pages.push({
+      fields: angular.copy(this.menu.fields),
+      titles: angular.copy(this.menu.titles),
+    })
     this.menu.activePage = this.menu.pages.length - 1
-    this.totalFields = this.menu.pages.reduce((prev, curr) => prev + curr.length, 0)
+    this.totalFields = this.menu.pages.reduce((prev, curr) => prev + curr.fields.length, 0)
   }
   zoomFn(dir){ this.zoom = this.utils.zoom(this.zoom, dir) }
   focusFn(dir){ this.utils.focus(dir, this.focusedEl, this.menu) }

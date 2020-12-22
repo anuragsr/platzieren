@@ -6,9 +6,9 @@
          ng-class="{'active': $ctrl.menu.activePage === $index}"
         >
         <div class="ctn-menu">
-          <h1>COFFEE MENU</h1>
+          <input class="title-gr" ng-model="currPage.titles[0].v"/>
           <div class="row input-gr"
-            ng-repeat="gr in currPage.slice(0, 8) track by $index"
+            ng-repeat="gr in currPage.fields.slice(0, 8) track by $index"
             >
             <div class="col text-right pr-0">
               <input class="name" type="text"
@@ -20,12 +20,12 @@
             </div>
           </div>
           <div class="offers">
-            <h1>OFFERS</h1>
+            <input class="title-gr" ng-model="currPage.titles[1].v"/>
             <div class="row input-gr"
-              ng-repeat="gr in currPage.slice(8, currPage.length) track by $index"
+              ng-repeat="gr in currPage.fields.slice(8, currPage.length) track by $index"
               >
               <div class="col-9">
-                <textarea class="name" type="text" resizable="false"
+                <textarea class="name" type="text"
                   focus-on="{ page: $parent.$index, field: $index + 8 }"
                   ng-model="gr.name.v" placeholder="{{gr.name.p}}"
                   ></textarea>
@@ -87,9 +87,9 @@
     <div class="ctn-menu-inner" ng-repeat="currPage in $ctrl.menu.pages track by $index">
       <div class="ctn-menu-page">
         <div class="ctn-menu">
-          <h1>COFFEE MENU</h1>
+          <div class="title-gr">{{ currPage.titles[0].v }}</div>
           <div class="row input-gr"
-            ng-repeat="gr in currPage.slice(0, 7) track by $index"
+            ng-repeat="gr in currPage.fields.slice(0, 7) track by $index"
             ng-hide="gr.name.v === ''"
             >
             <div class="col text-right pr-0">
@@ -100,10 +100,10 @@
             </div>
           </div>
           <div class="offers">
-            <h1>OFFERS</h1>
+            <div class="title-gr">{{ currPage.titles[1].v }}</div>
             <div
               class="row input-gr"
-              ng-repeat="gr in currPage.slice(8, currPage.length) track by $index"
+              ng-repeat="gr in currPage.fields.slice(8, currPage.length) track by $index"
               ng-hide="gr.name.v === ''"
               >
               <div class="col-9 text-left">
