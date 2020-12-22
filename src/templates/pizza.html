@@ -7,7 +7,7 @@
         >
         <div class="ctn-menu">
           <div class="input-gr"
-             ng-repeat="gr in currPage track by $index"
+             ng-repeat="gr in currPage.fields track by $index"
              ng-style="{ top: gr.pos.top + 'px', left: gr.pos.left + 'px' }"
             >
             <div class="text-left">
@@ -22,6 +22,11 @@
               <input class="price" type="text" ng-model="gr.price.v" placeholder="{{gr.price.p}}"/>
             </div>
           </div>
+          <input class="title-gr"
+             ng-repeat="gr in currPage.titles track by $index"
+             ng-style="{ top: gr.top + 'px', left: gr.left + 'px' }"
+             ng-class="{ 'title-main': !!gr.main }"
+             ng-model="gr.v" />
         </div>
       </div>
     </div>

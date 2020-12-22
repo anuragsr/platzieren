@@ -29,6 +29,20 @@
       }
       .ctn-menu{
         position: relative;
+        input.title-gr{
+          font-family: $ru;
+          font-size: 70px;
+          color: $t;
+          width: 250px;
+          text-align: center;
+          line-height: 1;
+          background: $tr;
+          //&:focus{ outline: none; }
+          border: none;
+          &.title-main{
+            font-size: 100px;
+          }
+        }
         .input-gr input{
           @include plh($b);
           font-family: $ex;
@@ -221,16 +235,13 @@
       height: 1400px;
       .ctn-menu-outer{
         position: absolute;
-        top: 160px; left: 240px;
+        top: 150px; left: 240px;
       }
       .ctn-menu-inner {
         position: relative;
         width: 1145px;
-        height: 210mm;
+        height: 205mm;
         padding: 20px;
-        //margin: 0 auto;
-        //background: url(/assets/japanese/menu-bg.jpg);
-        //background-size: 100%;
       }
       .ctn-menu-page{
         padding: 0;
@@ -239,6 +250,12 @@
         background: url(/assets/pizza/menu.jpg) no-repeat;
         background-size: 100% 100%;
         height: 100%;
+        input.title-gr{
+          position: absolute;
+          &.title-main{
+            width: 450px;
+          }
+        }
         .input-gr{
           @extend %j-s-b;
           align-items: flex-start;

@@ -37,7 +37,7 @@ import 'angular-ui-carousel/dist/ui-carousel.min.css'
 // template: require('./templates/home.html').default,
 
 WebFont.load({
-  google: { families: ['Exo 2:400,700', 'Open Sans:400,700'] }
+  google: { families: ['Exo 2:400,700', 'Open Sans:400,700', 'Ruthie:400'] }
   , active: function() {
     l("Webfonts loaded")
   }

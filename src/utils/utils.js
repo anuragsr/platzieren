@@ -175,88 +175,109 @@ export default class Utils {
         fields: [
           {
             id: 0,
-            pos: { top: 240, left: 50 },
+            pos: { top: 240, left: 55 },
             name: { p: 'FETTUCINE', v: '' },
             desc: { p: 'EXERCITATION DOLOR AON', v: '' },
             price: { p: 'X,XX', v: '' },
           },
           {
             id: 1,
-            pos: { top: 290, left: 50 },
+            pos: { top: 300, left: 55 },
             name: { p: 'TAGLIOLINI', v: '' },
             desc: { p: 'EXERCITATION DOLOR AUTE AON', v: '' },
             price: { p: 'X,XX', v: '' },
           },
           {
             id: 2,
-            pos: { top: 340, left: 50 },
+            pos: { top: 360, left: 55 },
             name: { p: 'CARBONARA', v: '' },
             desc: { p: 'EXERCITATION DOLOR AON', v: '' },
             price: { p: 'X,XX', v: '' },
           },
           {
             id: 3,
-            pos: { top: 390, left: 50 },
+            pos: { top: 580, left: 55 },
             name: { p: 'RAVIOLI', v: '' },
             desc: { p: 'EXERCITATION DOLOR AUTE AON', v: '' },
             price: { p: 'X,XX', v: '' },
           },
           {
             id: 4,
-            pos: { top: 610, left: 50 },
+            pos: { top: 640, left: 55 },
             name: { p: 'PUMPKIN', v: '' },
             desc: { p: 'EXERCITATION DOLOR AON', v: '' },
             price: { p: 'X,XX', v: '' },
           },
           {
             id: 5,
-            pos: { top: 660, left: 50 },
+            pos: { top: 700, left: 55 },
             name: { p: 'MINNESTRONI', v: '' },
             desc: { p: 'EXERCITATION DOLOR AUTE AON', v: '' },
             price: { p: 'X,XX', v: '' },
           },
           {
             id: 6,
-            pos: { top: 550, left: 550 },
+            pos: { top: 460, left: 570 },
             name: { p: 'MARGARITA', v: '' },
             desc: { p: 'EXERCITATION DOLOR AON', v: '' },
             price: { p: 'X,XX', v: '' },
           },
           {
             id: 7,
-            pos: { top: 600, left: 550 },
+            pos: { top: 520, left: 570 },
             name: { p: 'PEPPERONI', v: '' },
             desc: { p: 'EXERCITATION DOLOR AUTE AON', v: '' },
             price: { p: 'X,XX', v: '' },
           },
           {
             id: 8,
-            pos: { top: 650, left: 550 },
+            pos: { top: 580, left: 570 },
             name: { p: 'VEGETARIAN', v: '' },
             desc: { p: 'EXERCITATION DOLOR AUTE AON', v: '' },
             price: { p: 'X,XX', v: '' },
           },
           {
             id: 9,
-            pos: { top: 550, left: 880 },
-            name: { p: 'TIRAMISU', v: '' },
+            pos: { top: 640, left: 570 },
+            name: { p: 'TONNO', v: '' },
             desc: { p: 'EXERCITATION DOLOR AON', v: '' },
             price: { p: 'X,XX', v: '' },
           },
           {
             id: 10,
-            pos: { top: 600, left: 880 },
+            pos: { top: 700, left: 570 },
+            name: { p: 'SPICY TUNA', v: '' },
+            desc: { p: 'EXERCITATION DOLOR AUTE AON', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id: 12,
+            pos: { top: 540, left: 900 },
+            name: { p: 'TIRAMISU', v: '' },
+            desc: { p: 'EXERCITATION DOLOR AUTE AON', v: '' },
+            price: { p: 'X,XX', v: '' },
+          },
+          {
+            id: 13,
+            pos: { top: 600, left: 900 },
             name: { p: 'CANNOLI', v: '' },
             desc: { p: 'EXERCITATION DOLOR AUTE AON', v: '' },
             price: { p: 'X,XX', v: '' },
           },
           {
-            id: 11,
-            pos: { top: 650, left: 880 },
+            id: 14,
+            pos: { top: 660, left: 900 },
             name: { p: 'PANNACOTTA', v: '' },
             desc: { p: 'EXERCITATION DOLOR AUTE AON', v: '' },
             price: { p: 'X,XX', v: '' },
           },
+        ],
+        titles: [
+          { id:0, v: 'Italian Menu', main: true, left: 640, top: 70 },
+          { id:1, v: 'Pasta', left: 30, top: 110 },
+          { id:3, v: 'Pizza', left: 30, top: 440 },
+          { id:4, v: 'Pizza', left: 550, top: 375 },
+          { id:5, v: 'Desserts', left: 870, top: 400 },
         ],
         pages: [],
         activePage: 0
@@ -342,7 +363,7 @@ export default class Utils {
   getFilledFields(pages){
     let filled = 0
     pages.forEach(page => {
-      page.forEach(obj => {
+      page.fields.forEach(obj => {
         if(!angular.isUndefined(obj.name.v) && obj.name.v !== '')
           filled++
       })

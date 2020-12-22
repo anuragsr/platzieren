@@ -120,9 +120,14 @@ export default class HomeCtrl {
   addMenuPage(){
     l("add page")
     this.focusedEl = null
-    this.menu.pages.push(angular.copy(this.menu.fields))
+    // this.menu.pages.push(angular.copy(this.menu.fields))
+    this.menu.pages.push({
+      fields: angular.copy(this.menu.fields),
+      titles: angular.copy(this.menu.titles),
+    })
     this.menu.activePage = this.menu.pages.length - 1
-    this.totalFields = this.menu.pages.reduce((prev, curr) => prev + curr.length, 0)
+    l(this.menu)
+    this.totalFields = this.menu.pages[0].fields.reduce((prev, curr) => prev + curr.length, 0)
   }
   zoomFn(dir){ this.zoom = this.utils.zoom(this.zoom, dir) }
   focusFn(dir){ this.utils.focus(dir, this.focusedEl, this.menu) }
