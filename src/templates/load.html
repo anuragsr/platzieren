@@ -18,7 +18,7 @@
           Nacht Modus
         </div>
         <div class="s-item">
-          <button class="btn btn-pr" data-toggle="modal" data-target="#qrModal">Vorschau QR Menu</button>
+          <button class="btn btn-pr" ng-click="loadCtrl.openPDF()">Vorschau QR Menu</button>
         </div>
       </div>
     </div>
@@ -97,7 +97,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-body">
-            <qrcode data="{{ loadCtrl.viewLink }}" size="200"></qrcode>
+            <img id="ctn-qr" />
             <h5 class="mt-3">
               Scan the QR code for a link to your created menu.<br/>
               Or click <a target="_blank" href="{{ loadCtrl.viewLink }}">here</a> to view

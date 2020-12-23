@@ -1,8 +1,5 @@
 import angular from 'angular'
 import uiRouter from 'angular-ui-router'
-import qrcode from 'qrcode-generator'
-import qrcode_UTF8 from 'qrcode-generator/qrcode_UTF8'
-import ngQrcode from 'angular-qrcode'
 import WebFont from 'webfontloader'
 
 import 'angular-ui-carousel/dist/ui-carousel.min'
@@ -49,9 +46,9 @@ const bindings = {
 }
 
 angular
-.module('app', [uiRouter, 'ui.carousel', 'portal', ngQrcode])
+.module('app', [uiRouter, 'ui.carousel', 'portal'])
 .constant('ENV', env)
-.service('utils', ['$q', '$filter', '$rootScope', '$timeout', 'ENV', Utils])
+.service('utils', ['$q', '$state', '$filter', '$rootScope', '$timeout', 'ENV', Utils])
 .controller('HomeCtrl', ['$scope', '$timeout', 'utils', HomeCtrl])
 .controller('LoadCtrl', ['$scope', '$stateParams', 'utils', LoadCtrl])
 .controller('ImgCtrl',  ['$scope', '$stateParams', '$timeout', 'utils', ImgCtrl])
@@ -101,12 +98,12 @@ angular
     data : { pageTitle: 'Platzieren | Home' }
   })
   .state('load', {
-    url: '/l/:lId',
+    url: '/{params:.*}/l/:lId',
     component: 'load',
     data : { pageTitle: 'Platzieren | Edit Menu' }
   })
   .state('menuImg', {
-    url: '/i/:iId',
+    url: '/{params:.*}/i/:iId',
     component: 'menuImg',
     data : { pageTitle: 'Platzieren | View Menu' }
   })

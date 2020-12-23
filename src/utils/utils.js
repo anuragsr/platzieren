@@ -1,12 +1,13 @@
 import { l } from "./helpers"
 
 export default class Utils {
-  constructor($q, $filter, $rootScope, $timeout, ENV){
+  constructor($q, $state, $filter, $rootScope, $timeout, ENV){
     // l($q, $filter, $rootScope)
     this.$q = $q
     this.$filter = $filter
     this.$rootScope = $rootScope
     this.$timeout = $timeout
+    this.$state = $state
 
     const envObj = ENV[ENV.CURR]
     this.FE_URL  = envObj.FE_URL
@@ -79,6 +80,7 @@ export default class Utils {
           { id:1, v: 'OFFERS' },
         ],
         pages: [],
+        uri: 'allgemein/',
         activePage: 0
       },
       {
@@ -179,6 +181,7 @@ export default class Utils {
           { id:6, v: 'ramen', left: 485, top: 670 },
         ],
         pages: [],
+        uri: 'sushi/',
         activePage: 0
       },
       {
@@ -292,6 +295,7 @@ export default class Utils {
           { id:5, v: 'Desserts', left: 870, top: 400 },
         ],
         pages: [],
+        uri: 'pizza/',
         activePage: 0
       },
     ]
@@ -323,12 +327,12 @@ export default class Utils {
     }
     return randomStr
   }
-  createLink(){
+  createLink(uri){
     const id = this.generateId(6)
     return {
       id,
-      editLink:`${this.FE_URL}${id}`,
-      viewLink:`${this.IMG_URL}${id}`
+      editLink:`${this.FE_URL}${uri}l/${id}`,
+      viewLink:`${this.IMG_URL}${uri}i/${id}`
     }
   }
   focus(dir, focusedEl, menu){

@@ -1,3 +1,5 @@
+import QrCodeWithLogo from 'qrcode-with-logos'
+import $ from 'jquery'
 import { l } from '../utils/helpers'
 
 export default class LoadCtrl {
@@ -7,11 +9,10 @@ export default class LoadCtrl {
     this.menuId = $stateParams.lId
 
     this.filledFields = 0
-    this.zoom = 1
+    this.zoom = .8
 
     this.menus = this.utils.menus
     this.menu = {}
-    this.viewLink = `${this.utils.IMG_URL}${this.menuId}`
 
     this.init()
     $scope.$on('elFocused', (name, val) => {
@@ -26,10 +27,24 @@ export default class LoadCtrl {
     .then(res => {
       l(res)
       this.menu = res.data.menu
+
       const menuData = this.utils.fl('filter', this.menus, { title: this.menu.title})[0]
+      this.viewLink = `${this.utils.IMG_URL}${menuData.uri}i/${this.menuId}`
+
       this.menu.fields = menuData.fields
       this.menu.titles = menuData.titles
       this.totalFields = this.menu.pages.reduce((prev, curr) => prev + curr.fields.length, 0)
+
+      $(() => {
+        new QrCodeWithLogo({
+          content: this.viewLink,
+          width: 380,
+          image: document.getElementById("ctn-qr"),
+          logo: {
+            src: "assets/qr-logo.png"
+          }
+        }).toImage()
+      })
     })
   }
   addMenuPage(){
@@ -54,6 +69,16 @@ export default class LoadCtrl {
       l(res)
       this.showLoader = false
       if(!isAuto) alert(res.message)
+    })
+  }
+  openPDF(){
+    this.showLoader = true
+    this.utils
+    .saveMenu(this.menu)
+    .then(res => {
+      l(res)
+      this.showLoader = false
+      window.open(this.viewLink,'_blank');
     })
   }
 }

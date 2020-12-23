@@ -1,6 +1,6 @@
-<div class="ctn-menu-bg menu-coffee menu-edit" ng-style="{ transformOrigin: 'top', transform: 'scale('+ $ctrl.zoom +')', paddingBottom: ($ctrl.zoom * 100) + 'px' }">
+<div class="ctn-menu-bg menu-coffee menu-edit">
   <div class="ctn-menu-outer">
-    <div class="ctn-menu-inner">
+    <div class="ctn-menu-inner" ng-style="{ transformOrigin: 'top', transform: 'scale('+ $ctrl.zoom +')', paddingBottom: ($ctrl.zoom * 100) + 'px' }">
       <div class="ctn-menu-page"
          ng-repeat="currPage in $ctrl.menu.pages track by $index"
          ng-class="{'active': $ctrl.menu.activePage === $index}"

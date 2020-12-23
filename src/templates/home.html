@@ -41,7 +41,7 @@
           <div class="desc">Dein Link<br/>(Klicken Sie, um zu kopieren)</div>
         </div>
         <div class="s-item">
-          <button class="btn btn-pr" data-toggle="modal" data-target="#qrModal" ng-click="homeCtrl.save(true)">Vorschau QR Menu</button>
+          <button class="btn btn-pr" ng-click="homeCtrl.openPDF()">Vorschau QR Menu</button>
         </div>
       </div>
     </div>
@@ -100,8 +100,8 @@
           </div>
         </div>
         <div class="b-item veg">
-          <div><img src="/assets/plant 1.png" alt="" />Vegan</div>
-          <div><img src="/assets/herb 1.png" alt="" />Vegetarian</div>
+          <div ng-click="homeCtrl.addSign('veg1')"><img src="/assets/plant 1.png" alt="" />Vegan</div>
+          <div ng-click="homeCtrl.addSign('veg2')"><img src="/assets/herb 1.png" alt="" />Vegetarian</div>
         </div>
         <div class="b-item qr-btn">
           <button
@@ -287,7 +287,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-body">
-            <qrcode data="{{ homeCtrl.viewLink }}" size="200"></qrcode>
+            <img id="ctn-qr" />
             <h5 class="mt-3">
               Scan the QR code for a link to your created menu.<br/>
               Or click <a target="_blank" href="{{ homeCtrl.viewLink }}">here</a> to view

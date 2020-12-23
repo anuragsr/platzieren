@@ -344,7 +344,8 @@
   }
   .ctn-float-box{
     position: absolute;
-    top: $headHeight + $subHeadHeight + 80;
+    //top: $headHeight + $subHeadHeight + 80;
+    top: 80px;
     right: 125px;
     background: $pr;
     width: 225px;
@@ -353,6 +354,7 @@
     padding: 25px 15px;
     color: $w;
     font-family: $ex;
+    z-index: 1;
     @include media("<=sld") {
       right: 25px;
     }
@@ -429,7 +431,14 @@
         }
         &.veg{
           text-align: left;
-          padding-left: 25%;
+          div{
+            padding: 5px;
+            padding-left: 25%;
+            @extend %cp;
+            border-radius: 2px;
+            border: solid 1px $tr;
+            &:hover{ border: solid 1px $sc; }
+          }
           img{
             margin-right: 10px;
             height: 22px;

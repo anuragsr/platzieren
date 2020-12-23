@@ -1,3 +1,4 @@
+import QrCodeWithLogo from 'qrcode-with-logos'
 import ClipboardJS from 'clipboard/dist/clipboard.min'
 import $ from 'jquery'
 import { l } from '../utils/helpers'
@@ -9,7 +10,7 @@ export default class HomeCtrl {
 
     this.showLoader = true
     this.filledFields = 0
-    this.zoom = 1
+    this.zoom = .8
     this.idx = 0
 
     this.formData = {
@@ -29,10 +30,12 @@ export default class HomeCtrl {
       this.focusedEl = val
     })
     $scope.$on('progress', (e, prog) => l(prog))
+
+    // this.$onInit = () => {
+    //   l("home init", document.getElementById("ctn-qr"))
+    // }
   }
   init(){
-    l("init Home")
-
     const { menus } = this.utils
     this.createMenu(menus[0])
     this.createSlider()
@@ -95,7 +98,7 @@ export default class HomeCtrl {
   createMenu(menu){
     this.showLoader = true
 
-    const linkData = this.utils.createLink()
+    const linkData = this.utils.createLink(menu.uri)
 
     this.editLink = linkData.editLink
     this.viewLink = linkData.viewLink
@@ -114,6 +117,17 @@ export default class HomeCtrl {
     clipboard.on('error', function(e) {
       alert('Beim Kopieren ist ein Fehler aufgetreten, bitte manuell kopieren.')
     })
+
+    $(() => {
+      new QrCodeWithLogo({
+        content: this.viewLink,
+        width: 380,
+        image: document.getElementById("ctn-qr"),
+        logo: {
+          src: "assets/qr-logo.png"
+        }
+      }).toImage()
+    })
   }
   addMenuPage(){
     l("add page")
@@ -128,6 +142,9 @@ export default class HomeCtrl {
   }
   zoomFn(dir){ this.zoom = this.utils.zoom(this.zoom, dir) }
   focusFn(dir){ this.utils.focus(dir, this.focusedEl, this.menu) }
+  addSign(type){
+    l(this.focusedEl, type)
+  }
   save(isAuto){
     if(!isAuto) this.showLoader = true
 
@@ -137,6 +154,16 @@ export default class HomeCtrl {
       l(res)
       this.showLoader = false
       if(!isAuto) alert(res.message)
+    })
+  }
+  openPDF(){
+    this.showLoader = true
+    this.utils
+    .saveMenu(this.menu)
+    .then(res => {
+      l(res)
+      this.showLoader = false
+      window.open(this.viewLink,'_blank');
     })
   }
   saveOrder(details){
