@@ -1,6 +1,7 @@
 <?php
   include('common.php');
   include('db.php');
+  include('emails.php');
 
   class PLMenu{
     protected $db;
@@ -112,6 +113,8 @@
       $err = false;
       try {
         // Add to purchase table
+        $data["full_addr"] = $data["add1"].", ".$data["add2"].", ".$data["c"].", ".$data["p"];
+
         $this->db->save("x_platz_purc87134", array(
           "x_trans_id" => $data["id"],
           "x_size"     => $data["sz"],
@@ -119,14 +122,14 @@
           "x_lname"    => $data["l"],
           "x_email"    => $data["em"],
           "x_phone"    => $data["ph"],
-          "x_addr"     => $data["add1"].", ".$data["add2"].", ".$data["c"].", ".$data["p"]
+          "x_addr"     => $data["full_addr"]
         ));
       } catch (Exception $e) {
         $err = true;
         Common::respond($e, "There was an error inserting in DB, please try again.", false);
       }
 
-      !$err && Common::respond($data, "Thanks for the order, our team will get in touch shortly.", true);
+      !$err && Common::respond(Common::sendEmail($data), "Thanks for the order, our team will get in touch shortly.", true);
     }
 
   }

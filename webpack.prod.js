@@ -10,7 +10,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const buildPath = path.resolve(__dirname, 'dist');
 
 module.exports = {
-  devtool: 'source-map',
+  // devtool: 'source-map',
   entry: './src/app.js',
   output: {
     filename: '[name].[hash:20].js',
@@ -47,14 +47,14 @@ module.exports = {
             // translates CSS into CommonJS
             loader: 'css-loader',
             options: {
-              sourceMap: true
+              sourceMap: false
             }
           },
           {
             // Runs compiled CSS through postcss for vendor prefixing
             loader: 'postcss-loader',
             options: {
-                sourceMap: true
+                sourceMap: false
             }
           },
           {
@@ -62,8 +62,7 @@ module.exports = {
             loader: 'sass-loader',
             options: {
               outputStyle: 'expanded',
-              sourceMap: true,
-              sourceMapContents: true
+              sourceMap: false,
             }
           }
         ]

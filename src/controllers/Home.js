@@ -37,7 +37,7 @@ export default class HomeCtrl {
   }
   init(){
     const { menus } = this.utils
-    this.createMenu(menus[1])
+    this.createMenu(menus[0])
     this.createSlider()
     this.initPaypal()
   }
