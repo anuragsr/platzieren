@@ -25,6 +25,12 @@
               ng-repeat="gr in currPage.fields.slice(8, currPage.length) track by $index"
               >
               <div class="col-9">
+                <div class="veg-ind veg1" ng-show="gr.vegType === 'veg1'">
+                  <img src="/assets/plant 1.png" alt=""/>
+                </div>
+                <div class="veg-ind veg2" ng-show="gr.vegType === 'veg2'">
+                  <img src="/assets/herb 1.png" alt=""/>
+                </div>
                 <textarea class="name" type="text"
                   focus-on="{ page: $parent.$index, field: $index + 8 }"
                   ng-model="gr.name.v" placeholder="{{gr.name.p}}"
@@ -35,7 +41,10 @@
               </div>
             </div>
           </div>
-          <div class="vegan"><img src="/assets/plant 1.png" alt="" />Vegan</div>
+          <div class="vegan">
+            <div><img src="/assets/plant 1.png" alt="" />Vegan</div>
+            <div><img src="/assets/herb 1.png" alt="" />Vegetarian</div>
+          </div>
         </div>
       </div>
     </div>
@@ -107,6 +116,12 @@
               ng-hide="gr.name.v === ''"
               >
               <div class="col-9 text-left">
+                <div class="veg-ind veg1" ng-show="gr.vegType === 'veg1'">
+                  <img src="/assets/plant 1.png" alt=""/>
+                </div>
+                <div class="veg-ind veg2" ng-show="gr.vegType === 'veg2'">
+                  <img src="/assets/herb 1.png" alt=""/>
+                </div>
                 <div class="name">{{gr.name.v}}</div>
               </div>
               <div class="col-3 text-left d-flex align-items-start">
@@ -114,7 +129,10 @@
               </div>
             </div>
           </div>
-          <div class="vegan"><img src="/assets/plant 1.png" alt="" />Vegan</div>
+          <div class="vegan">
+            <div><img src="/assets/plant 1.png" alt="" />Vegan</div>
+            <div><img src="/assets/herb 1.png" alt="" />Vegetarian</div>
+          </div>
         </div>
       </div>
     </div>

@@ -37,7 +37,7 @@ export default class HomeCtrl {
   }
   init(){
     const { menus } = this.utils
-    this.createMenu(menus[0])
+    this.createMenu(menus[1])
     this.createSlider()
     this.initPaypal()
   }
@@ -122,7 +122,7 @@ export default class HomeCtrl {
       new QrCodeWithLogo({
         content: this.viewLink,
         width: 380,
-        image: document.getElementById("ctn-qr"),
+        image: $("#ctn-qr")[0],
         logo: {
           src: "assets/qr-logo.png"
         }
@@ -132,7 +132,6 @@ export default class HomeCtrl {
   addMenuPage(){
     l("add page")
     this.focusedEl = null
-    // this.menu.pages.push(angular.copy(this.menu.fields))
     this.menu.pages.push({
       fields: angular.copy(this.menu.fields),
       titles: angular.copy(this.menu.titles),
@@ -142,8 +141,14 @@ export default class HomeCtrl {
   }
   zoomFn(dir){ this.zoom = this.utils.zoom(this.zoom, dir) }
   focusFn(dir){ this.utils.focus(dir, this.focusedEl, this.menu) }
-  addSign(type){
-    l(this.focusedEl, type)
+  toggleVeg(type){
+    // l(this.focusedEl, this.menu.fields, type)
+    if(!this.focusedEl) return
+    const el = this.focusedEl
+    , currField = this.menu.pages[el.page].fields[el.field]
+
+    if(currField.vegType === type) currField.vegType = null
+    else currField.vegType = type
   }
   save(isAuto){
     if(!isAuto) this.showLoader = true

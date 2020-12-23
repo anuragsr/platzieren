@@ -78,6 +78,19 @@
             border: none;
             resize: none;
           }
+          .veg-ind{
+            position: absolute;
+            top: 0; left: -10px;
+            img{ height: 20px; }
+          }
+        }
+        .vegan{
+          position: relative;
+          padding: 40px;
+          text-align: left;
+          font-family: $ex;
+          font-size: 15px;
+          img { height: 15px; margin-right: 5px; }
         }
       }
       .ctn-btn{
@@ -158,7 +171,9 @@
           align-items: flex-start;
           position: absolute;
           width: 190px;
+          .veg-ind{ left: -25px; }
         }
+        .vegan{ left: 38%; }
       }
       .ctn-clip{
         background: url(/assets/japanese/clip.png);
@@ -206,7 +221,7 @@
           letter-spacing: 6px;
           margin: 0 auto;
           margin-bottom: 25px;
-          width: 300px;
+          width: 100%;
         }
         .input-gr{
           margin-bottom: 15px;
@@ -239,12 +254,6 @@
               letter-spacing: 3px;
             }
           }
-        }
-        .vegan{
-          padding: 40px;
-          text-align: left;
-          font-size: 15px;
-          img { height: 15px; margin-right: 5px; }
         }
       }
 
@@ -290,7 +299,9 @@
           input{
             &.desc{ font-size: 10px; width: 100%; }
           }
+          .veg-ind{ left: -25px; }
         }
+        .vegan{ left: 42%; }
       }
       .ctn-clip{
         background: url(/assets/japanese/clip.png);
