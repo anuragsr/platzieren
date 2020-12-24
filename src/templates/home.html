@@ -155,9 +155,9 @@
           <div class="mobile-only row">
             <div class="col-2 num dashed">1</div>
             <div class="col-10 text-left">
-              <h4>Finden Sie ein Termin</h4>
+              <h4>Online ausfüllen</h4>
               <p>
-                Reservieren Sie einen Termin, um mit unseren Experten über ihr Anliegen zu sprechen.
+                In a few clicks you can fill out the questionnaire on our site.
               </p>
             </div>
           </div>
@@ -173,9 +173,9 @@
           <div class="mobile-only row">
             <div class="col-2 num dashed">2</div>
             <div class="col-10 text-left">
-              <h4>Wir melden uns bei Ihnen</h4>
+              <h4>QR Code erstellen</h4>
               <p>
-                Ein Experte von Cloudbasiert wird sich in weniger als 24 Stunden mit Ihnen in Verbindung setzen
+                We will look at your answers and then see which package suits you best.
               </p>
             </div>
           </div>
@@ -191,9 +191,9 @@
           <div class="mobile-only row">
             <div class="col-2 num">3</div>
             <div class="col-10 text-left">
-              <h4>Kostenfreier Workshop</h4>
+              <h4>Aufsteller plazieren</h4>
               <p>
-                Ein Experte von Cloudbasiert führt für ihr Unternehmen einen Workshop durch
+                After that you can decide if you agree to the package and then you can conclude your contract.
               </p>
             </div>
           </div>
@@ -209,7 +209,7 @@
     <div class="bg"></div>
     <div class="container">
       <div class="row">
-        <div class="col-5">
+        <div class="col-md-5">
           <div class="ctn-qr"></div>
           <div class="title">
             Codes erstellen &<br/>Aufsteller platzieren
@@ -227,7 +227,7 @@
     <div class="container">
       <div class="title">Buche das <br/>rundumsorglos Paket</div>
       <div class="row">
-        <div class="col-8">
+        <div class="col-md-8">
           <div class="ctn-carousel">
             <ui-carousel
               slides="homeCtrl.slides"
@@ -239,10 +239,9 @@
               dots="false">
 
               <carousel-item>
-                <div style="
+                <div class="ctn-inner" style="
                   background: url({{item.image}}) no-repeat center;
                   background-size: cover;
-                  height: 400px;
                 "></div>
               </carousel-item>
 
@@ -261,7 +260,7 @@
             </ui-carousel>
           </div>
         </div>
-        <div class="col-4 text-left">
+        <div class="col-md-4 text-left">
           <div class="pre-title">
             Passender Aufsteller <br/>dazu buchen
           </div>
@@ -277,8 +276,8 @@
         <div class="col-12">
           <div class="container">
             <div class="row">
-              <div class="col-8"></div>
-              <div class="col-4 text-left">
+              <div class="col-8 d-none d-md-flex"></div>
+              <div class="col-md-4 text-left">
                 <div class="ctn-size">
                   <div
                     ng-click="homeCtrl.formData.sz = 'S'"

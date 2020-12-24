@@ -27,13 +27,13 @@
       .points{
         @extend %j-s-b;
         align-items: flex-start;
-        @include media("<tab"){
+        @include media("<=tab"){
           flex-direction: column;
           align-items: center;
         }
         margin-top: 100px;
         .ctn-point{
-          @include media("<tab"){
+          @include media("<=tab"){
             width: 100%;
           }
           img{
@@ -44,12 +44,41 @@
             margin-bottom: 25px;
             font-size: 25px;
             font-weight: 700;
-            @include media("<tab"){
+            @include media("<=tab"){
               font-size: 20px;
               margin: 0;
             }
           }
           p{ width: 16vw; margin: 0 auto; }
+          .mobile-only{
+            .num{
+              line-height: 1;
+              font-size: 36px;
+              font-family: $os;
+              &.dashed:after{
+                transform: translate(-50%, -10%);
+                content: "";
+                height: 65%;
+                width: 1px;
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                background-image:
+                  linear-gradient(to right, rgba($sc, 1) 50%, transparent 50%),
+                  linear-gradient(to right, rgba($sc, 1) 50%, transparent 50%),
+                  linear-gradient(to bottom, rgba($sc, 1) 50%, transparent 50%),
+                  linear-gradient(to bottom, rgba($sc, 1) 50%, transparent 50%);
+                background-position: left top, left bottom, left top, right top;
+                background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+                background-size: 20px 3px, 20px 0px, 3px 20px, 3px 20px;
+              }
+            }
+            p{
+              width: 100%;
+              font-size: 14px;
+              margin-bottom: 85px;
+            }
+          }
         }
       }
       p.tnc{
@@ -63,6 +92,13 @@
       @extend %j-f-s;
       height: 621px;
       color: $pr;
+      @include media("<=tab"){
+        display: block;
+        height: auto;
+      }
+      .container{
+        @include media("<=tab"){ padding: 5vh; }
+      }
       .bg{
         @extend %fh;
         @include pa(0, "", "", 0);
@@ -71,6 +107,13 @@
         background-size: cover;
         background-position: 50% 50%;
         clip-path: polygon(0% 0%, 15% 100%, 100% 100%, 100% 0%);
+        @include media("<=tab"){
+          position: relative;
+          width: 100%;
+          height: 460px;
+          background-position: 80% 50%;
+          clip-path: unset;
+        }
       }
       .ctn-qr{
         height: 90px;
@@ -85,22 +128,30 @@
       .title{
         margin: 25px 0;
         line-height: 1.25;
+        @include media("<=tab"){ font-size: 32px; }
       }
       .sub-title{
-        //font-size: 25px;
         margin: 25px 0;
+        @include media("<=tab"){ font-size: 17px; }
       }
       a{
         color: #2c9cdb;
         font-size: 25px;
         font-weight: 700;
+        @include media("<=tab"){ font-size: 17px; }
       }
     }
 
     &.section4{
       padding-top: 5vh;
       background: rgba(196, 196, 196, 0.19);
-      .title{ margin-bottom: 5vh; }
+      .container{
+        @include media("<=tab"){ padding: 5vh; }
+      }
+      .title{
+        margin-bottom: 5vh;
+        @include media("<=tab"){ font-size: 35px; }
+      }
       .cost{
         margin: 30px 0;
         font-family: $ex;
@@ -108,11 +159,16 @@
       }
       .ctn-carousel{
         position: relative;
+        @include media("<=tab"){ height: 335px; }
         .ui-carousel{
           position: absolute;
           top:0; left: 0;
           width: 80%;
           height: 400px;
+          @include media("<=tab"){
+            width: 100%;
+            height: 350px;
+          }
           .carousel-btn{
             width: 40px;
             height: 40px;
@@ -121,9 +177,21 @@
             background-color: $w;
             img{ height: 15px; }
           }
-          .carousel-prev .carousel-btn{ left: -60px; }
-          .carousel-next .carousel-btn{ right: -60px; }
-          .carousel-item{ display: inline-block; }
+          .carousel-prev .carousel-btn{
+            left: -60px;
+            @include media("<=tab"){ left: -20px; }
+          }
+          .carousel-next .carousel-btn{
+            right: -60px;
+            @include media("<=tab"){ right: -20px; }
+          }
+          .carousel-item{
+            display: inline-block;
+            .ctn-inner{
+              height: 400px;
+              @include media("<=tab"){ height: 300px; }
+            }
+          }
         }
       }
       .row-wt{
