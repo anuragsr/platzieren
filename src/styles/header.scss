@@ -4,7 +4,7 @@ header{
   //box-shadow: 0 4px 4px 4px rgba(31, 68, 84, 0.02);
   //position: fixed;
   //z-index: 2;
-  @include media("<=tablet") {
+  @include media("<=tab") {
     position: relative;
   }
   .navbar{
@@ -12,7 +12,7 @@ header{
     height: $headHeight;
     //box-shadow: 0 0 5px 0 rgba($color: $b, $alpha: .1);
     font-size: 20px;
-    @include media("<=tablet") {
+    @include media("<=tab") {
       padding: 10px;
       height: unset;
     }

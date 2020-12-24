@@ -54,14 +54,13 @@ module.exports = {
             // Runs compiled CSS through postcss for vendor prefixing
             loader: 'postcss-loader',
             options: {
-                sourceMap: false
+              sourceMap: false
             }
           },
           {
             // compiles Sass to CSS
             loader: 'sass-loader',
             options: {
-              outputStyle: 'expanded',
               sourceMap: false,
             }
           }

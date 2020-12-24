@@ -41,8 +41,7 @@ module.exports = {
           use: [ 'css-loader', 'sass-loader' ]
         })
         // No postcss for dev
-      }
-      ,
+      },      
       {
         // Load all images as base64 encoding if they are smaller than 8192 bytes
         test: /\.(png|jpg|gif)$/,

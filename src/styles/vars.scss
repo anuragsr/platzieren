@@ -19,7 +19,8 @@ $headHeight: 53px;
 $subHeadHeight: 170px;
 $sh: 0 0 10px 2px rgba($b, .1);
 $breakpoints: (
-  'tablet': 1024px,
+  'mob': 380px,
+  'tab': 1024px,
   'md': 1280px,
   'lp': 1366px,
   'sld': 1500px,

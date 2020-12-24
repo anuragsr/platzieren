@@ -1,5 +1,5 @@
 .ctn-load{
-  @include media("<=tablet") {
+  @include media("<=tab") {
     overflow: hidden;
   }
   section{

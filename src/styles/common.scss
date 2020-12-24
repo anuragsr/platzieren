@@ -17,13 +17,13 @@ div[ui-view]{
 }
 
 .no-mobile, .desktop-only{
-  @include media("<=tablet") {
+  @include media("<=tab") {
     display: none !important;
   }
 }
 
 .no-desktop, .mobile-only{
-  @include media(">tablet") {
+  @include media(">tab") {
     display: none !important;
   }
 }
@@ -56,7 +56,7 @@ button.btn-pr{
   box-shadow: 0 4px 4px 4px rgba(31, 68, 84, 0.02);
   z-index: 1!important;
   @include media("<=lp") { padding: 20px 10px; }
-  @include media("<=tablet") {
+  @include media("<=tab") {
     position: relative;
     top: 0;
     height: unset;
@@ -65,6 +65,7 @@ button.btn-pr{
     @extend %fh;
     @extend %j-s-b;
     font-size: 14px;
+    @include media("<=tab") { justify-content: center; }
     .s-item{
       display: flex;
       button{
@@ -82,7 +83,7 @@ button.btn-pr{
       border: solid 1px $pr;
       height: 64px;
       min-width: 66px;
-      @include media("<=tablet") {
+      @include media("<=tab") {
         margin: 0;
         padding: 0;
       }
@@ -122,35 +123,6 @@ button.btn-pr{
         }
       }
     }
-    .ctn-switch{
-      .btn-switch {
-        position: relative;
-        width: 52px;
-        height: 27px;
-        cursor: pointer;
-        background-color: $l;
-        border-radius: 40px;
-        box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.05);
-        border: solid 1px rgba(37, 58, 65, 0.1);
-        transition: all .3s;
-        margin: 0 10px;
-        .btn-switch-circle {
-          transition: left .3s;
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: 25px;
-          width: 25px;
-          background-color: #fff;
-          border: inherit;
-          border-radius: inherit;
-        }
-      }
-      .btn-switch--on {
-        background-color: $pr;
-        .btn-switch-circle--on { left: 25px; }
-      }
-    }
     .ctn-copy-link{
       @extend %j-f-s;
       flex-direction: column;
@@ -161,7 +133,7 @@ button.btn-pr{
         padding: 5px 10px;
         margin-bottom: 10px;
         background: $pr;
-        @include media("<=tablet") {
+        @include media("<=tab") {
           margin-bottom: 0;
           width: 45vw;
         }
@@ -195,6 +167,60 @@ button.btn-pr{
           font-size: 12px;
         }
       }
+    }
+  }
+}
+
+// Dark / Light mode switch
+.ctn-switch{
+  @extend %j-c;
+  .btn-switch {
+    position: relative;
+    width: 52px;
+    height: 27px;
+    cursor: pointer;
+    background-color: $l;
+    border-radius: 40px;
+    box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.05);
+    border: solid 1px rgba(37, 58, 65, 0.1);
+    transition: all .3s;
+    margin: 0 10px;
+    .btn-switch-circle {
+      transition: left .3s;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 25px;
+      width: 25px;
+      background-color: #fff;
+      border: inherit;
+      border-radius: inherit;
+    }
+  }
+  .btn-switch--on {
+    background-color: $pr;
+    .btn-switch-circle--on { left: 25px; }
+  }
+}
+
+.ctn-btn{
+  padding: 5vh 0;
+  font-family: $ex;
+  color: $pr;
+  .btn-item{ margin-bottom: 20px; }
+  .ctn-add-page{ text-decoration: underline; }
+  button.btn-qr-main{
+    @extend %j-s-b;
+    height: auto;
+    color: $sc;
+    font-family: $ex;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: normal;
+    margin: 0 auto;
+    img{
+      height: 50px;
+      margin-right: 25px;
     }
   }
 }

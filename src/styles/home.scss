@@ -1,5 +1,5 @@
 .ctn-home{
-  @include media("<=tablet") {
+  @include media("<=tab") {
     overflow: hidden;
   }
   section{
@@ -27,13 +27,13 @@
       .points{
         @extend %j-s-b;
         align-items: flex-start;
-        @include media("<tablet"){
+        @include media("<tab"){
           flex-direction: column;
           align-items: center;
         }
         margin-top: 100px;
         .ctn-point{
-          @include media("<tablet"){
+          @include media("<tab"){
             width: 100%;
           }
           img{
@@ -44,7 +44,7 @@
             margin-bottom: 25px;
             font-size: 25px;
             font-weight: 700;
-            @include media("<tablet"){
+            @include media("<tab"){
               font-size: 20px;
               margin: 0;
             }

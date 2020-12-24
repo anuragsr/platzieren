@@ -3,7 +3,7 @@
   <section class="sub-header">
     <div class="container">
       <div class="inner">
-        <div class="s-item box ctn-new" ng-click="homeCtrl.save()">
+        <div class="s-item no-mobile box ctn-new" ng-click="homeCtrl.save()">
           <img src="/assets/save-icon.png" alt=""/>
           <div>Speichem</div>
         </div>
@@ -23,7 +23,7 @@
             <img src="/assets/arr-r.png" alt="">
           </div>
         </div>
-        <div class="s-item ctn-switch">
+        <div class="s-item no-mobile ctn-switch">
           Tag Modus
           <div class="btn-switch"
             ng-class="{'btn-switch--on':homeCtrl.menu.isDark}"
@@ -33,14 +33,14 @@
           </div>
           Nacht Modus
         </div>
-        <div class="s-item ctn-copy-link">
+        <div class="s-item no-mobile ctn-copy-link">
           <div class="inner link" ng-click="homeCtrl.save(true)" data-clipboard-text="{{ homeCtrl.editLink }}" title="{{ homeCtrl.editLink }}">
             <i class="fa fa-link"></i>
             <div class="text">{{ homeCtrl.editLink }}</div>
           </div>
           <div class="desc">Dein Link<br/>(Klicken Sie, um zu kopieren)</div>
         </div>
-        <div class="s-item">
+        <div class="s-item no-mobile">
           <button class="btn btn-pr" ng-click="homeCtrl.openPDF()">Vorschau QR Menu</button>
         </div>
       </div>
@@ -76,7 +76,7 @@
       focused-el="homeCtrl.focusedEl"
     ></pizza>
 
-    <div class="ctn-float-box">
+    <div class="ctn-float-box no-mobile">
       <div class="inner">
         <!--<div class="bar" ng-style="{'width': filledFields * 100 / totalFields + '%'}"></div>-->
         <div class="b-item perc">
@@ -114,6 +114,28 @@
           </button>
         </div>
       </div>
+    </div>
+
+    <div class="ctn-btn no-desktop">
+      <div class="btn-item ctn-add-page" ng-click="homeCtrl.addMenuPage()">+ Seite Hinzufügen</div>
+      <div class="btn-item ctn-switch">
+        Tag Modus
+        <div class="btn-switch"
+          ng-class="{'btn-switch--on':homeCtrl.menu.isDark}"
+          ng-model="homeCtrl.menu.isDark"
+          ng-click="homeCtrl.menu.isDark = !homeCtrl.menu.isDark">
+          <div class="btn-switch-circle" ng-class="{'btn-switch-circle--on':homeCtrl.menu.isDark}"></div>
+        </div>
+        Nacht Modus
+      </div>
+      <button
+        class="btn btn-pr btn-qr-main"
+        ng-click="homeCtrl.save(true)"
+        data-toggle="modal" data-target="#qrModal"
+        >
+        <img src="/assets/s2.png" alt="">
+        <div>QR Code<br/>erstellen</div>
+      </button>
     </div>
   </section>
 

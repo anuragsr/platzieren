@@ -1,12 +1,10 @@
 footer{
   position: relative;
-  //padding: 30px;
   padding-top: 50px;
   padding-bottom: 80px;
   background: $w;
-  //box-shadow: 0 -6px 5px 0px rgba($color: $b, $alpha: .05);
   box-shadow: 0 -2px 3px 0 rgba(179, 179, 179, 0.08);
-  @include media("<=tablet") {
+  @include media("<=tab") {
     padding: 10px;
     padding-top: 50px;
   }
@@ -24,20 +22,20 @@ footer{
     @extend %j-c;
     transform: scale(0.7);
     flex-wrap: wrap;
-    @include media("<=tablet") {
+    @include media("<=tab") {
       transform: scale(1);
       margin-top: 50px;
     }
     .ctn-rev-single{
       padding: 0 10px;
       text-align: center;
-      border-right: 2px solid rgba($color: $b, $alpha: .1);
-      @include media("<=tablet") {
+      border-right: 1px solid rgba($color: $b, $alpha: .1);
+      @include media("<=tab") {
         padding: 20px;
         margin-bottom: 30px;
       }
       &:nth-of-type(even){
-        @include media("<=tablet") {
+        @include media("<=tab") {
           border:none;
         }
       }
@@ -46,20 +44,20 @@ footer{
       }
       img.main{
         height: 100px;
-        @include media("<=tablet") {
+        @include media("<=tab") {
           height: 50px;
         }
       }
       .ctn-rating{
         font-size: 22px;
-        @include media("<=tablet") {
+        @include media("<=tab") {
           font-size: 14px;
         }
       }
       .ctn-stars{
         img{
           height: 20px;
-          @include media("<=tablet") {
+          @include media("<=tab") {
             height: 12px;
           }
         }
@@ -72,7 +70,7 @@ footer{
     font-weight: 700;
     font-size: 14px;
     margin-top: 60px;
-    @include media("<=tablet") {
+    @include media("<=tab") {
       text-align: center;
       flex-direction: column-reverse;
       margin-top: 30px;
@@ -82,8 +80,11 @@ footer{
       a{
         padding: 0 15px;
         color: fade-out($color: $b, $amount: 0.5);
-        @include media("<=tablet") {
+        @include media("<=tab") {
           padding: 0 25px;
+        }
+        @include media("<=mob") {
+          padding: 0 15px;
         }
       }
       img{
@@ -92,7 +93,7 @@ footer{
       }
       &.foot-info{
         text-align: left;
-        @include media("<=tablet") {
+        @include media("<=tab") {
           margin: 25px 0;
           font-size: 12px;
         }
