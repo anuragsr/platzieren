@@ -36,7 +36,7 @@ header{
         }
       }
       &.rating{
-        @include media("<=lp") {
+        @include media(">tab","<=lp") {
           display: none;
         }
       }

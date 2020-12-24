@@ -65,9 +65,10 @@ button.btn-pr{
     @extend %fh;
     @extend %j-s-b;
     font-size: 14px;
-    @include media("<=tab") { justify-content: center; }
+    //@include media("<=tab") { justify-content: center; }
     .s-item{
       display: flex;
+      font-family: $ex;
       button{
         height: 36px;
         font-size: 15px;
@@ -85,9 +86,9 @@ button.btn-pr{
       min-width: 66px;
       @include media("<=tab") {
         margin: 0;
-        padding: 0;
+        padding: 5px;
       }
-      &.ctn-new{
+      &.ctn-save{
         cursor: pointer;
         flex-direction: column;
         img{
