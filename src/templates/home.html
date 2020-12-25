@@ -128,6 +128,13 @@
         </div>
         Nacht Modus
       </div>
+      <div class="btn-item ctn-copy-link">
+        <div class="inner link" ng-click="homeCtrl.save(true)" data-clipboard-text="{{ homeCtrl.editLink }}" title="{{ homeCtrl.editLink }}">
+          <i class="fa fa-link"></i>
+          <div class="text">{{ homeCtrl.editLink }}</div>
+        </div>
+        <div class="desc">Dein Link<br/>(Klicken Sie, um zu kopieren)</div>
+      </div>
       <button class="btn-item btn btn-pr" ng-click="homeCtrl.openPDF()">Vorschau QR Menu</button>
       <!--<button
         class="btn btn-pr btn-qr-main"

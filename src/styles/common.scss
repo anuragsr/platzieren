@@ -124,50 +124,52 @@ button.btn-pr{
         }
       }
     }
-    .ctn-copy-link{
-      @extend %j-f-s;
-      flex-direction: column;
-      .inner{
-        @extend %j-c;
+  }
+}
+
+// Copy link
+.ctn-copy-link{
+  @extend %j-f-s;
+  flex-direction: column;
+  .inner{
+    @extend %j-c;
+    width: 140px;
+    height: 50px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    background: $pr;
+    @include media("<=tab") {
+      margin-bottom: 0;
+      width: 45vw;
+    }
+    img{
+      cursor: pointer;
+      height: 20px;
+      margin-bottom: 0;
+    }
+    &.link{
+      width: 200px;
+      cursor: pointer;
+      background: $l;
+      @include media("<=lp") {
         width: 140px;
-        height: 50px;
-        padding: 5px 10px;
-        margin-bottom: 10px;
-        background: $pr;
-        @include media("<=tab") {
-          margin-bottom: 0;
-          width: 45vw;
-        }
-        img{
-          cursor: pointer;
-          height: 20px;
-          margin-bottom: 0;
-        }
-        &.link{
-          width: 200px;
-          cursor: pointer;
-          background: $l;
-          @include media("<=lp") {
-            width: 140px;
-          }
-          .text{
-            overflow: hidden;
-            text-overflow: ellipsis;
-            direction: rtl;
-          }
-          i{
-            margin-right: 10px;
-            transform: scaleX(-1);
-          }
-        }
       }
-      .desc{
-        font-size: 14px;
-        text-align: center;
-        @include media("<=lp") {
-          font-size: 12px;
-        }
+      .text{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        direction: rtl;
       }
+      i{
+        margin-right: 10px;
+        transform: scaleX(-1);
+      }
+    }
+  }
+  .desc{
+    font-size: 14px;
+    text-align: center;
+    @include media("<=lp") {
+      font-size: 12px;
     }
   }
 }
@@ -223,6 +225,12 @@ button.btn-pr{
       height: 50px;
       margin-right: 25px;
     }
+  }
+}
+
+.ctn-copy-link .inner.link, button.btn-item{
+  @include media("<=tab"){
+    width: 70%;
   }
 }
 

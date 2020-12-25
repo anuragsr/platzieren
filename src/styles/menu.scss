@@ -126,16 +126,15 @@
       background-size: 1840px 1985px;
       background-position: 50% 0%;
       @include media("<=tab"){
-        background-size: cover;
-        height: 1180px;
+        background-size: 1010px 1160px;
+        height: 780px;
       }
       .ctn-menu-outer{
         position: absolute;
         top: 240px; left: 0;
         @include media("<=tab"){
-          top: 160px;
           width: 95%;
-          left: 2.5%;
+          top: 155px; left: 2.5%;
         }
       }
       .ctn-menu-inner {
@@ -170,7 +169,7 @@
         >div{
           height: 100%;
           @include media("<=tab") {
-            transform: scale(0.57);
+            transform: scale(0.57) translateX(-20px);
             transform-origin: top left;
           }
         }
@@ -192,9 +191,15 @@
           align-items: flex-start;
           position: absolute;
           width: 190px;
+          z-index: 1;
           .veg-ind{ left: -25px; }
         }
-        .vegan{ left: 38%; }
+        .vegan{
+          left: 38%;
+          @include media("<=tab") {
+            left: 70%;
+          }
+        }
       }
       .ctn-clip{
         background: url(/assets/japanese/clip.png);
@@ -533,6 +538,14 @@
       }
       input, textarea{ pointer-events: none; }
 
+      &.menu-jap{
+        .ctn-menu-outer{
+          @include media("<=tab"){
+            width: 100%; left: 0;
+            padding: 10px;
+          }
+        }
+      }
       &.menu-coffee{
         .price, .name{ letter-spacing: 3px; }
       }
