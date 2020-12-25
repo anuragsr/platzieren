@@ -45,9 +45,17 @@ export default class ImgCtrl {
         l("canvas created", canvas, idx) // TODO: if order incorrect use indices to store first
         // document.querySelector('.menu-download .ctn-menu-outer').appendChild(canvas)
         const imgData = canvas.toDataURL('image/jpg')
-        , imgProps= doc.getImageProperties(imgData)
-        , pdfWidth = doc.internal.pageSize.getWidth()
-        , pdfHeight = (imgProps.height * pdfWidth) / imgProps.width
+        , imgProps = doc.getImageProperties(imgData)
+
+        let pdfHeight, pdfWidth
+
+        if(this.utils.isMobile()){
+          pdfHeight = doc.internal.pageSize.getWidth()
+          , pdfWidth = (imgProps.width * pdfHeight) / imgProps.height
+        } else{
+          pdfWidth = doc.internal.pageSize.getWidth()
+          , pdfHeight = (imgProps.height * pdfWidth) / imgProps.width
+        }
 
         doc.addImage(imgData, 0, 0, pdfWidth, pdfHeight)
 

@@ -121,13 +121,22 @@
     }
 
     &.menu-jap{
+      height: 1980px;
       background: url(/assets/japanese/base.jpg);
       background-size: 1840px 1985px;
       background-position: 50% 0%;
-      height: 1980px;
+      @include media("<=tab"){
+        background-size: cover;
+        height: 1180px;
+      }
       .ctn-menu-outer{
         position: absolute;
         top: 240px; left: 0;
+        @include media("<=tab"){
+          top: 160px;
+          width: 95%;
+          left: 2.5%;
+        }
       }
       .ctn-menu-inner {
         position: relative;
@@ -139,11 +148,32 @@
         padding: 20px;
         background: url(/assets/japanese/menu-bg.jpg);
         background-size: 100%;
+        @include media("<=tab"){
+          transform: scale(1) !important;
+          transform-origin: center !important;
+          width: 100%;
+          left: 0;
+          top: 0;
+          height: 525px;
+          padding: 10px;
+        }
+      }
+      .ctn-menu-page{
+        @include media("<=tab") {
+          padding: 10px;
+        }
       }
       .ctn-menu{
         background: url(/assets/japanese/menu.jpg) no-repeat;
         background-size: 100% 100%;
         height: 100%;
+        >div{
+          height: 100%;
+          @include media("<=tab") {
+            transform: scale(0.57);
+            transform-origin: top left;
+          }
+        }
         .title-gr{
           position: absolute;
           color: $t-j;
@@ -176,7 +206,7 @@
         height: 260px;
       }
       .ctn-btn{
-        position: absolute;
+        //position: absolute;
         bottom: -250px; left: 0;
       }
     }
