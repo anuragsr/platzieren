@@ -1,10 +1,6 @@
 .menu-editor{
   position: relative;
   z-index: 0;
-  @include media("<=tab") {
-    // padding-top: 20 + $subHeadHeight + 80;
-    //padding-top: 80px;
-  }
 
   .ctn-menu-bg{
     @extend %fw;
@@ -315,15 +311,30 @@
       background-size: 1840px 1405px;
       background-position: 0% 0%;
       height: 1400px;
+      @include media("<=tab") {
+        background-size: 100% 385px;
+        background-position: 0% 0%;
+        height: 365px;
+      }
       .ctn-menu-outer{
         position: absolute;
         top: 150px; left: 240px;
+        @include media("<=tab") {
+          top: 15px; left: 2.5%;
+          transform: scale(0.9) translateX(-7%);
+        }
       }
       .ctn-menu-inner {
         position: relative;
         width: 1145px;
         height: 205mm;
         padding: 20px;
+        @include media("<=tab"){
+          transform: scale(1) !important;
+          padding: 10px;
+          width: 109%;
+          height: 310px;
+        }
       }
       .ctn-menu-page{
         padding: 0;
@@ -332,6 +343,13 @@
         background: url(/assets/pizza/menu.jpg) no-repeat;
         background-size: 100% 100%;
         height: 100%;
+        >div{
+          height: 100%;
+          @include media("<=tab") {
+            transform: scale(0.4) translateX(-20px);
+            transform-origin: top left;
+          }
+        }
         .title-gr{
           position: absolute;
           color: $t-p;
