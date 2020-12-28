@@ -1,5 +1,4 @@
 import QrCodeWithLogo from 'qrcode-with-logos'
-import ClipboardJS from 'clipboard/dist/clipboard.min'
 import $ from 'jquery'
 import { l } from '../utils/helpers'
 
@@ -31,18 +30,24 @@ export default class HomeCtrl {
       this.focusedEl = val
     })
     $scope.$on('progress', (e, prog) => l(prog))
-
   }
   init(){
-    l(this.$state.current.name)
+    // l(this.$state.current.name)
+    // const { menus } = this.utils
+    // this.createMenu(menus[0])
+
     const { menus } = this.utils
-    this.createMenu(menus[0])
+    , { name } = this.$state.current
+    , menu = this.utils.fl('filter', menus, { state: name })[0]
+
+    this.createMenu(menu)
     this.createSlider()
     $(() => this.initPaypal())
   }
   initPaypal(){
     paypal.Buttons({
       onInit: (data, actions) => {
+        l("Paypal Init")
         // Disable the buttons by default
         actions.disable()
 
@@ -108,7 +113,7 @@ export default class HomeCtrl {
   createMenu(menu){
     this.showLoader = true
 
-    const linkData = this.utils.createLink(menu.uri)
+    const linkData = this.utils.createLink(menu.state)
 
     this.editLink = linkData.editLink
     this.viewLink = linkData.viewLink
@@ -118,15 +123,6 @@ export default class HomeCtrl {
     this.menu.id = linkData.id
     this.menu.isDark = false
     this.addMenuPage()
-
-    const clipboard = new ClipboardJS('.ctn-link .desc, .inner.link')
-    clipboard.on('success', function(e) {
-      e.clearSelection()
-      alert('In die Zwischenablage kopiert - ' + e.text)
-    })
-    clipboard.on('error', function(e) {
-      alert('Beim Kopieren ist ein Fehler aufgetreten, bitte manuell kopieren.')
-    })
 
     $(() => {
       new QrCodeWithLogo({

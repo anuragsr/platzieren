@@ -530,6 +530,7 @@
     }
   }
   .menu-editor{
+     @extend %no-select;
     .ctn-menu-bg{
       background: none;
       height: unset;

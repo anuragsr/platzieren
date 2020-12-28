@@ -3,10 +3,11 @@ import { jsPDF } from 'jspdf'
 import { l } from '../utils/helpers'
 
 export default class ImgCtrl {
-  constructor($scope, $stateParams, $timeout, utils) {
+  constructor($scope, $state, $stateParams, $timeout, utils) {
     l($stateParams)
     this.$scope = $scope
     this.$timeout = $timeout
+    this.$state = $state
     this.utils = utils
 
     this.menuId = $stateParams.iId
@@ -19,8 +20,13 @@ export default class ImgCtrl {
     .getMenu(this.menuId)
     .then(res => {
       l(res)
-      this.showLoader = false
-      this.menu = res.data.menu
+      if(!res.result) {
+        alert(res.message); this.$state.go('allgemein')
+      }
+      else {
+        this.showLoader = false
+        this.menu = res.data.menu
+      }
     })
   }
   generatePDF(){

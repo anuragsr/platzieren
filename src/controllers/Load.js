@@ -3,10 +3,11 @@ import $ from 'jquery'
 import { l } from '../utils/helpers'
 
 export default class LoadCtrl {
-  constructor($scope, $stateParams, utils) {
+  constructor($scope, $state, $stateParams, utils) {
     // l($stateParams)
     this.utils = utils
     this.menuId = $stateParams.lId
+    this.$state = $state
 
     this.filledFields = 0
     this.zoom = 1
@@ -26,25 +27,30 @@ export default class LoadCtrl {
     .getMenu(this.menuId)
     .then(res => {
       l(res)
-      this.menu = res.data.menu
+      if(!res.result) {
+        alert(res.message); this.$state.go('allgemein')
+      }
+      else {
+        this.menu = res.data.menu
 
-      const menuData = this.utils.fl('filter', this.menus, { title: this.menu.title})[0]
-      this.viewLink = `${this.utils.IMG_URL}${menuData.uri}i/${this.menuId}`
+        const menuData = this.utils.fl('filter', this.menus, { title: this.menu.title})[0]
+        this.viewLink = `${this.utils.IMG_URL}${menuData.state}/view/${this.menuId}`
+        l(this.viewLink)
+        this.menu.fields = menuData.fields
+        this.menu.titles = menuData.titles
+        this.totalFields = this.menu.pages.reduce((prev, curr) => prev + curr.fields.length, 0)
 
-      this.menu.fields = menuData.fields
-      this.menu.titles = menuData.titles
-      this.totalFields = this.menu.pages.reduce((prev, curr) => prev + curr.fields.length, 0)
-
-      $(() => {
-        new QrCodeWithLogo({
-          content: this.viewLink,
-          width: 380,
-          image: document.getElementById("ctn-qr"),
-          logo: {
-            src: "assets/qr-logo.png"
-          }
-        }).toImage()
-      })
+        $(() => {
+          new QrCodeWithLogo({
+            content: this.viewLink,
+            width: 380,
+            image: document.getElementById("ctn-qr"),
+            logo: {
+              src: "assets/qr-logo.png"
+            }
+          }).toImage()
+        })
+      }
     })
   }
   addMenuPage(){

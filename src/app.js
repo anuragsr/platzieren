@@ -1,6 +1,7 @@
 import angular from 'angular'
 import uiRouter from 'angular-ui-router'
 import WebFont from 'webfontloader'
+import ClipboardJS from 'clipboard/dist/clipboard.min'
 
 import 'angular-ui-carousel/dist/ui-carousel.min'
 import 'bootstrap/dist/js/bootstrap.bundle.min'
@@ -45,13 +46,22 @@ const bindings = {
   zoom: '=', save: '<', showLoader: '='
 }
 
+const clipboard = new ClipboardJS('.ctn-link .desc, .inner.link')
+clipboard.on('success', function(e) {
+  e.clearSelection()
+  alert('In die Zwischenablage kopiert - ' + e.text)
+})
+clipboard.on('error', function(e) {
+  alert('Beim Kopieren ist ein Fehler aufgetreten, bitte manuell kopieren.')
+})
+
 angular
 .module('app', [uiRouter, 'ui.carousel', 'portal'])
 .constant('ENV', env)
 .service('utils', ['$q', '$state', '$filter', '$rootScope', '$timeout', 'ENV', Utils])
 .controller('HomeCtrl', ['$scope', '$state', '$timeout', 'utils', HomeCtrl])
-.controller('LoadCtrl', ['$scope', '$stateParams', 'utils', LoadCtrl])
-.controller('ImgCtrl',  ['$scope', '$stateParams', '$timeout', 'utils', ImgCtrl])
+.controller('LoadCtrl', ['$scope', '$state', '$stateParams', 'utils', LoadCtrl])
+.controller('ImgCtrl',  ['$scope', '$state', '$stateParams', '$timeout', 'utils', ImgCtrl])
 .controller('MenuCtrl', ['$scope', '$timeout', 'utils', MenuCtrl])
 .directive('h', Header)
 .directive('f', Footer)
@@ -67,7 +77,7 @@ angular
   controller: 'LoadCtrl',
   controllerAs: 'loadCtrl'
 })
-.component('menuImg', {
+.component('view', {
   template: imgTpl,
   controller: 'ImgCtrl',
   controllerAs: 'imgCtrl'
@@ -87,8 +97,9 @@ angular
   template: pizzaTpl,
   controller: 'MenuCtrl'
 })
-.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/allgemein')
+  $locationProvider.html5Mode(true)
 
   // Adding states here
   $stateProvider
@@ -108,14 +119,13 @@ angular
     data : { pageTitle: 'Platzieren | Pizza' }
   })
   .state('load', {
-    // url: '/{params:.*}/l/:lId',
     url: '/{params:.*}/:lId',
     component: 'load',
     data : { pageTitle: 'Platzieren | Edit Menu' }
   })
-  .state('menuImg', {
-    url: '/{params:.*}/i/:iId',
-    component: 'menuImg',
+  .state('view', {
+    url: '/{params:.*}/view/:iId',
+    component: 'view',
     data : { pageTitle: 'Platzieren | View Menu' }
   })
 }])

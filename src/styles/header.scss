@@ -1,22 +1,18 @@
 header{
   @extend %fw;
   background-color: #fdfdfd;
-  //box-shadow: 0 4px 4px 4px rgba(31, 68, 84, 0.02);
-  //position: fixed;
-  //z-index: 2;
   @include media("<=tab") {
     position: relative;
   }
   .navbar{
-    //padding: 0 50px;
     height: $headHeight;
-    //box-shadow: 0 0 5px 0 rgba($color: $b, $alpha: .1);
     font-size: 20px;
     @include media("<=tab") {
       padding: 10px;
       height: unset;
     }
     .navbar-brand{
+      @extend %cp;
       font-family: $os;
       font-weight: 700;
       font-size: 25px;

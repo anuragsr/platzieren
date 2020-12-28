@@ -1,13 +1,14 @@
 const wc = window.console
 export const l = console.log.bind(wc)
+// export const l = () => {} // noop for console.log shorthand
 export const cl = console.clear.bind(wc)
 export const env = {
   CURR: "LOCAL",
   // CURR: "ECA",
   // CURR: "PROD",
   LOCAL: {
-    FE_URL: "http://localhost:8080/#!/",
-    IMG_URL: "http://localhost:8080/#!/",
+    FE_URL: "http://localhost:8080/",
+    IMG_URL: "http://localhost:8080/",
     API_URL: "http://localhost/platzieren-be/backend/",
   },
   ECA: {
@@ -16,8 +17,8 @@ export const env = {
     API_URL: "http://eca.in",
   },
   PROD: {
-    FE_URL: "https://platzieren.com/#!/",
-    IMG_URL: "https://platzieren.com/#!/",
+    FE_URL: "https://platzieren.com/",
+    IMG_URL: "https://platzieren.com/",
     API_URL: "https://platzieren.com/backend/",
   }
 }

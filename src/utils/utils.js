@@ -80,7 +80,7 @@ export default class Utils {
           { id:1, v: 'OFFERS' },
         ],
         pages: [],
-        uri: 'allgemein/',
+        state: 'allgemein',
         activePage: 0
       },
       {
@@ -181,7 +181,7 @@ export default class Utils {
           { id:6, v: 'ramen', left: 485, top: 670 },
         ],
         pages: [],
-        uri: 'sushi/',
+        state: 'sushi',
         activePage: 0
       },
       {
@@ -295,7 +295,7 @@ export default class Utils {
           { id:5, v: 'Desserts', left: 870, top: 400 },
         ],
         pages: [],
-        uri: 'pizza/',
+        state: 'pizza',
         activePage: 0
       },
     ]
@@ -327,12 +327,12 @@ export default class Utils {
     }
     return randomStr
   }
-  createLink(uri){
+  createLink(state){
     const id = this.generateId(6)
     return {
       id,
-      editLink:`${this.FE_URL}${uri}l/${id}`,
-      viewLink:`${this.IMG_URL}${uri}i/${id}`
+      editLink:`${this.FE_URL}${state}/${id}`,
+      viewLink:`${this.IMG_URL}${state}/${id}/view`
     }
   }
   focus(dir, focusedEl, menu){
@@ -435,10 +435,8 @@ export default class Utils {
 
     this.post(`${this.API_URL}process.php`, {
       t: "get", d: id
-    }).then(res => {
-      if(res.result) this.def.resolve(res)
-      else alert(res.message)
     })
+    .then(res => this.def.resolve(res))
 
     return this.def.promise
   }

@@ -7,6 +7,7 @@ module.exports = {
   devtool: 'eval-cheap-module-source-map',
   entry: './src/app.js',
   devServer: {
+    historyApiFallback: true,
     disableHostCheck: true,
     port: 8080,
     open: true,
