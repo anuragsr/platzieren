@@ -9,7 +9,7 @@ export default class LoadCtrl {
     this.menuId = $stateParams.lId
 
     this.filledFields = 0
-    this.zoom = .8
+    this.zoom = 1
 
     this.menus = this.utils.menus
     this.menu = {}

@@ -7,107 +7,105 @@
     position: relative;
     &.menu-edit{ display: block; }
     &.menu-download{ display: none; }
-    .ctn-menu-outer{
-      @extend %fw;
-      .ctn-menu-inner{
-        overflow: hidden;
+    .ctn-menu-outer{ @extend %fw; }
+    .ctn-menu-inner{
+      overflow: hidden;
+    }
+    .ctn-menu-page{
+      @extend %fhw;
+      @include pa(0,0);
+      padding: 20px;
+      z-index: 0;
+      opacity: 0;
+      &.active{
+        z-index: 1;
+        opacity: 1;
       }
-      .ctn-menu-page{
-        @extend %fhw;
-        @include pa(0,0);
-        padding: 20px;
+    }
+    .ctn-menu{
+      position: relative;
+      .title-gr{
+        font-family: $ru;
+        font-size: 70px;
+        width: 250px;
+        text-align: center;
+        line-height: 1;
+        background: $tr;
+        //&:focus{ outline: none; }
+        border: none;
         z-index: 0;
-        opacity: 0;
-        &.active{
-          z-index: 1;
-          opacity: 1;
+        &.title-main{
+          font-size: 100px;
         }
       }
-      .ctn-menu{
-        position: relative;
-        .title-gr{
-          font-family: $ru;
-          font-size: 70px;
-          width: 250px;
-          text-align: center;
-          line-height: 1;
-          background: $tr;
-          //&:focus{ outline: none; }
-          border: none;
-          z-index: 0;
-          &.title-main{
-            font-size: 100px;
-          }
-        }
-        .input-gr{
-          //z-index: 1;
-          input {
-            @include plh($b);
-            font-family: $ex;
-            font-size: 16px;
-            font-weight: 700;
-            background: none;
-            border: none;
-            text-overflow: ellipsis;
-
-            &.name {
-              width: 140px;
-            }
-
-            &.desc {
-              font-size: 12px;
-              font-weight: 400;
-              position: relative;
-              top: -8px;
-            }
-
-            &.price {
-              width: 50px;
-            }
-          }
-          textarea{
-            @include plh($b);
-            font-family: $ex;
-            font-size: 16px;
-            font-weight: 700;
-            background: none;
-            border: none;
-            resize: none;
-          }
-          .veg-ind{
-            position: absolute;
-            top: 0; left: -10px;
-            img{ height: 20px; }
-          }
-        }
-        .vegan{
-          position: relative;
-          padding: 40px;
-          text-align: left;
+      .input-gr{
+        //z-index: 1;
+        input {
+          @include plh($b);
           font-family: $ex;
-          font-size: 15px;
-          img { height: 15px; margin-right: 5px; }
+          font-size: 16px;
+          font-weight: 700;
+          background: none;
+          border: none;
+          text-overflow: ellipsis;
+
+          &.name {
+            width: 140px;
+          }
+
+          &.desc {
+            font-size: 12px;
+            font-weight: 400;
+            position: relative;
+            top: -8px;
+          }
+
+          &.price {
+            width: 50px;
+          }
+        }
+        textarea{
+          @include plh($b);
+          font-family: $ex;
+          font-size: 16px;
+          font-weight: 700;
+          background: none;
+          border: none;
+          resize: none;
+        }
+        .veg-ind{
+          position: absolute;
+          top: 0; left: -10px;
+          img{ height: 20px; }
         }
       }
-      .ctn-btn{
-        @extend %fw;
-        @include media(">tab") {
-          position: absolute;
+      .vegan{
+        position: relative;
+        padding: 40px;
+        text-align: left;
+        font-family: $ex;
+        font-size: 15px;
+        img { height: 15px; margin-right: 5px; }
+      }
+    }
+    .ctn-btn{
+      @extend %fw;
+      @include media(">tab"){
+        position: absolute;
+      }
+      .pagination{
+        @include media(">tab"){
+          margin-bottom: 50px;
         }
-        .pagination{
-          @include media(">tab") {
-            margin-bottom: 100px;
-          }
-          .page-link{
-            color: $w;
-            background-color: $pr;
-            border: 1px solid $pr;
-          }
-          .active .page-link, .page-link:hover{
-            color: $pr;
-            background-color: $w;
-            border: 1px solid $w;
-          }
+        .page-link{
+          color: $w;
+          background-color: $pr;
+          border: 1px solid $pr;
+        }
+        .active .page-link, .page-link:hover{
+          color: $pr;
+          background-color: $w;
+          border: 1px solid $w;
         }
       }
     }
@@ -213,7 +211,7 @@
     }
     &.menu-coffee{
       background: $w;
-      height: 1360px;
+      height: 1205px;
       @include media("<=tab") {
         height: 800px;
       }
@@ -301,9 +299,9 @@
           }
         }
       }
-
       .ctn-btn{
-        bottom: -250px; left: 0;
+        bottom: -250px;
+        left: 0;
       }
     }
     &.menu-pizza{
@@ -369,42 +367,34 @@
         }
         .vegan{ left: 42%; }
       }
-      .ctn-clip{
-        background: url(/assets/japanese/clip.png);
-        position: absolute;
-        top: 6px;
-        left: -8px;
-        background-size: 1870px 280px;
-        background-position: 50% 0%;
-        height: 260px;
-      }
       .ctn-btn{
-        position: absolute;
         bottom: -280px; left: -340px;
       }
     }
   }
 
-  &.dark .menu-jap .ctn-menu{
-    background: url(/assets/japanese/menu-dark.jpg) no-repeat;
-    background-size: 100% 100%;
-  }
-  &.dark .menu-coffee .ctn-menu{
-    background-image: url(/assets/coffee/menu-dark2.png);
-    background-color: transparent;
-    background-repeat: repeat-y;
-    background-size: contain;
-    .title-gr{ color: $w; }
-  }
-  &.dark .menu-pizza .ctn-menu{
-    background-image: url(/assets/pizza/menu-dark.jpg);
-  }
-  &.dark .ctn-menu-bg .ctn-menu-outer .ctn-menu{
-    color: $w;
-    .input-gr{
-      input, textarea{
-        color: $w;
-        @include plh($w);
+  &.dark{
+    .menu-jap .ctn-menu{
+      background: url(/assets/japanese/menu-dark.jpg) no-repeat;
+      background-size: 100% 100%;
+    }
+    .menu-coffee .ctn-menu{
+      background-image: url(/assets/coffee/menu-dark2.png);
+      background-color: transparent;
+      background-repeat: repeat-y;
+      background-size: contain;
+      .title-gr{ color: $w; }
+    }
+    .menu-pizza .ctn-menu{
+      background-image: url(/assets/pizza/menu-dark.jpg);
+    }
+    .ctn-menu-bg .ctn-menu-outer .ctn-menu{
+      color: $w;
+      .input-gr{
+        input, textarea{
+          color: $w;
+          @include plh($w);
+        }
       }
     }
   }

@@ -49,7 +49,7 @@ angular
 .module('app', [uiRouter, 'ui.carousel', 'portal'])
 .constant('ENV', env)
 .service('utils', ['$q', '$state', '$filter', '$rootScope', '$timeout', 'ENV', Utils])
-.controller('HomeCtrl', ['$scope', '$timeout', 'utils', HomeCtrl])
+.controller('HomeCtrl', ['$scope', '$state', '$timeout', 'utils', HomeCtrl])
 .controller('LoadCtrl', ['$scope', '$stateParams', 'utils', LoadCtrl])
 .controller('ImgCtrl',  ['$scope', '$stateParams', '$timeout', 'utils', ImgCtrl])
 .controller('MenuCtrl', ['$scope', '$timeout', 'utils', MenuCtrl])
@@ -88,17 +88,23 @@ angular
   controller: 'MenuCtrl'
 })
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise("/home")
+  $urlRouterProvider.otherwise('/allgemein')
 
   // Adding states here
   $stateProvider
-  .state('home', {
-    url: '/home',
+  .state('allgemein', {
+    url: '/allgemein',
     component: 'home',
-    data : { pageTitle: 'Platzieren | Home' }
+    data : { pageTitle: 'Platzieren | Allgemein' }
+  })
+  .state('sushi', {
+    url: '/sushi',
+    component: 'home',
+    data : { pageTitle: 'Platzieren | Sushi' }
   })
   .state('load', {
-    url: '/{params:.*}/l/:lId',
+    // url: '/{params:.*}/l/:lId',
+    url: '/{params:.*}/:lId',
     component: 'load',
     data : { pageTitle: 'Platzieren | Edit Menu' }
   })

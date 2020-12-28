@@ -4,13 +4,14 @@ import $ from 'jquery'
 import { l } from '../utils/helpers'
 
 export default class HomeCtrl {
-  constructor($scope, $timeout, utils) {
+  constructor($scope, $state, $timeout, utils) {
     this.utils = utils
     this.$scope = $scope
+    this.$state = $state
 
     this.showLoader = true
     this.filledFields = 0
-    this.zoom = .8
+    this.zoom = 1
     this.idx = 0
 
     this.formData = {
@@ -31,15 +32,13 @@ export default class HomeCtrl {
     })
     $scope.$on('progress', (e, prog) => l(prog))
 
-    // this.$onInit = () => {
-    //   l("home init", document.getElementById("ctn-qr"))
-    // }
   }
   init(){
+    l(this.$state.current.name)
     const { menus } = this.utils
     this.createMenu(menus[0])
     this.createSlider()
-    this.initPaypal()
+    $(() => this.initPaypal())
   }
   initPaypal(){
     paypal.Buttons({
