@@ -144,8 +144,9 @@ button.btn-pr{
     }
     img{
       cursor: pointer;
-      height: 20px;
+      height: 15px;
       margin-bottom: 0;
+      margin-right: 5px;
     }
     &.link{
       width: 200px;
@@ -157,10 +158,6 @@ button.btn-pr{
       .text{
         overflow: hidden;
         text-overflow: ellipsis;
-      }
-      i{
-        margin-right: 10px;
-        transform: scaleX(-1);
       }
     }
   }

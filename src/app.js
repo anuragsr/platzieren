@@ -102,6 +102,11 @@ angular
     component: 'home',
     data : { pageTitle: 'Platzieren | Sushi' }
   })
+  .state('pizza', {
+    url: '/pizza',
+    component: 'home',
+    data : { pageTitle: 'Platzieren | Pizza' }
+  })
   .state('load', {
     // url: '/{params:.*}/l/:lId',
     url: '/{params:.*}/:lId',

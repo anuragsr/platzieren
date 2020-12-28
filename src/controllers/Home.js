@@ -92,7 +92,18 @@ export default class HomeCtrl {
     }
   }
   new(p){
-    if(confirm('Möchten Sie wirklich ein neues Dokument erstellen?')) this.createMenu(p)
+    if(confirm('Möchten Sie wirklich ein neues Dokument erstellen?')){
+      // this.createMenu(p)
+
+      let stateToNavigate = 'allgemein'
+      switch(p.title){
+        case 'Sushi': stateToNavigate = 'sushi'; break;
+        case 'Pizza': stateToNavigate = 'pizza'; break;
+        default: break;
+      }
+
+      this.$state.go(stateToNavigate)
+    }
   }
   createMenu(menu){
     this.showLoader = true
