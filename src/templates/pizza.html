@@ -8,18 +8,18 @@
         <div class="ctn-menu">
           <div>
             <div class="vegan">
-              <div><img src="/assets/plant 1.png" alt="" />Vegan</div>
-              <div><img src="/assets/herb 1.png" alt="" />Vegetarian</div>
+              <div><img src="assets/plant 1.png" alt="" />Vegan</div>
+              <div><img src="assets/herb 1.png" alt="" />Vegetarian</div>
             </div>
             <div class="input-gr"
                ng-repeat="gr in currPage.fields track by $index"
                ng-style="{ top: gr.pos.top + 'px', left: gr.pos.left + 'px' }"
               >
               <div class="veg-ind veg1" ng-show="gr.vegType === 'veg1'">
-                <img src="/assets/plant 1.png" alt=""/>
+                <img src="assets/plant 1.png" alt=""/>
               </div>
               <div class="veg-ind veg2" ng-show="gr.vegType === 'veg2'">
-                <img src="/assets/herb 1.png" alt=""/>
+                <img src="assets/herb 1.png" alt=""/>
               </div>
               <div class="text-left">
                 <input
@@ -79,7 +79,7 @@
         data-toggle="modal" data-target="#qrModal"
         ng-click="$ctrl.save(true)"
         >
-        <img src="/assets/s2.png" alt="">
+        <img src="assets/s2.png" alt="">
         <div>QR Code<br/>erstellen</div>
       </button>
     </div>
@@ -91,8 +91,8 @@
       <div class="ctn-menu-page">
         <div class="ctn-menu">
           <div class="vegan">
-            <div><img src="/assets/plant 1.png" alt="" />Vegan</div>
-            <div><img src="/assets/herb 1.png" alt="" />Vegetarian</div>
+            <div><img src="assets/plant 1.png" alt="" />Vegan</div>
+            <div><img src="assets/herb 1.png" alt="" />Vegetarian</div>
           </div>
           <div class="input-gr"
              ng-repeat="gr in currPage.fields track by $index"
@@ -100,10 +100,10 @@
              ng-hide="gr.name.v === ''"
             >
             <div class="veg-ind veg1" ng-show="gr.vegType === 'veg1'">
-              <img src="/assets/plant 1.png" alt=""/>
+              <img src="assets/plant 1.png" alt=""/>
             </div>
             <div class="veg-ind veg2" ng-show="gr.vegType === 'veg2'">
-              <img src="/assets/herb 1.png" alt=""/>
+              <img src="assets/herb 1.png" alt=""/>
             </div>
             <div class="text-left">
               <input

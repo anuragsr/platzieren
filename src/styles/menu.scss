@@ -116,7 +116,7 @@
 
     &.menu-jap{
       height: 1980px;
-      background: url(/assets/japanese/base.jpg);
+      background: url(assets/japanese/base.jpg);
       background-size: 1840px 1985px;
       background-position: 50% 0%;
       @include media("<=tab"){
@@ -139,7 +139,7 @@
         height: 935px;
         margin: 0 auto;
         padding: 20px;
-        background: url(/assets/japanese/menu-bg.jpg);
+        background: url(assets/japanese/menu-bg.jpg);
         background-size: 100%;
         @include media("<=tab"){
           transform: scale(1) !important;
@@ -157,7 +157,7 @@
         }
       }
       .ctn-menu{
-        background: url(/assets/japanese/menu.jpg) no-repeat;
+        background: url(assets/japanese/menu.jpg) no-repeat;
         background-size: 100% 100%;
         height: 100%;
         >div{
@@ -196,7 +196,7 @@
         }
       }
       .ctn-clip{
-        background: url(/assets/japanese/clip.png);
+        background: url(assets/japanese/clip.png);
         position: absolute;
         top: 6px;
         left: -8px;
@@ -237,7 +237,7 @@
         }
       }
       .ctn-menu{
-        background-image: url(/assets/coffee/menu.png);
+        background-image: url(assets/coffee/menu.png);
         background-color: $w;
         background-size: contain;
         height: 100%;
@@ -305,7 +305,7 @@
       }
     }
     &.menu-pizza{
-      background: url(/assets/pizza/base.jpg);
+      background: url(assets/pizza/base.jpg);
       background-size: 1840px 1405px;
       background-position: 0% 0%;
       height: 1400px;
@@ -338,7 +338,7 @@
         padding: 0;
       }
       .ctn-menu{
-        background: url(/assets/pizza/menu.jpg) no-repeat;
+        background: url(assets/pizza/menu.jpg) no-repeat;
         background-size: 100% 100%;
         height: 100%;
         >div{
@@ -375,18 +375,18 @@
 
   &.dark{
     .menu-jap .ctn-menu{
-      background: url(/assets/japanese/menu-dark.jpg) no-repeat;
+      background: url(assets/japanese/menu-dark.jpg) no-repeat;
       background-size: 100% 100%;
     }
     .menu-coffee .ctn-menu{
-      background-image: url(/assets/coffee/menu-dark2.png);
+      background-image: url(assets/coffee/menu-dark2.png);
       background-color: transparent;
       background-repeat: repeat-y;
       background-size: contain;
       .title-gr{ color: $w; }
     }
     .menu-pizza .ctn-menu{
-      background-image: url(/assets/pizza/menu-dark.jpg);
+      background-image: url(assets/pizza/menu-dark.jpg);
     }
     .ctn-menu-bg .ctn-menu-outer .ctn-menu{
       color: $w;

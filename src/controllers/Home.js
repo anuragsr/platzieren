@@ -93,7 +93,7 @@ export default class HomeCtrl {
   createSlider(){
     let slides = this.slides = []
     for (let i = 0; i < 3; i++) {
-      slides.push({ image: '/assets/sl1.png' })
+      slides.push({ image: 'assets/sl1.png' })
     }
   }
   new(p){

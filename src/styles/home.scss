@@ -103,7 +103,7 @@
         @extend %fh;
         @include pa(0, "", "", 0);
         width: 50%;
-        background: url(/assets/bg.png) no-repeat;
+        background: url(assets/bg.png) no-repeat;
         background-size: cover;
         background-position: 50% 50%;
         clip-path: polygon(0% 0%, 15% 100%, 100% 100%, 100% 0%);
@@ -119,7 +119,7 @@
         height: 90px;
         width: 90px;
         border-radius: 50%;
-        background-image: url(/assets/s2.png);
+        background-image: url(assets/s2.png);
         background-color: $pr;
         background-size: 55%;
         background-repeat: no-repeat;

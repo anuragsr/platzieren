@@ -44,6 +44,7 @@ module.exports = {
             // translates CSS into CommonJS
             loader: 'css-loader',
             options: {
+              url: false,
               sourceMap: false
             }
           },

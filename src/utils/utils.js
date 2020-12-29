@@ -17,7 +17,7 @@ export default class Utils {
     this.menus = [
       {
         title: 'Allge.',
-        img: "/assets/coffee.png",
+        img: "assets/coffee.png",
         fields: [
           {
             id:0,
@@ -85,7 +85,7 @@ export default class Utils {
       },
       {
         title: 'Sushi',
-        img: "/assets/sushi.png",
+        img: "assets/sushi.png",
         fields: [
           {
             id:0,
@@ -186,7 +186,7 @@ export default class Utils {
       },
       {
         title: 'Pizza',
-        img: "/assets/pizza.png",
+        img: "assets/pizza.png",
         fields: [
           {
             id: 0,
