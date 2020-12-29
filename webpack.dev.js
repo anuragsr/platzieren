@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   devtool: 'eval-cheap-module-source-map',
@@ -11,8 +11,8 @@ module.exports = {
     disableHostCheck: true,
     port: 8080,
     open: true,
-    contentBase: path.join(__dirname, "dist"),
-    publicPath: '/'
+    contentBase: path.join(__dirname, "build"),
+    publicPath: '/',
   },
   node: {
     fs: 'empty'
@@ -27,20 +27,14 @@ module.exports = {
           presets: ['@babel/preset-env'],
           plugins: ['@babel/plugin-proposal-object-rest-spread']
         }
-      }
-      ,
+      },
       {
         test: /\.(css)$/,
-        use: ExtractTextPlugin.extract({
-          use: [ 'css-loader' ]
-        })
-      }
-      ,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
       {
         test: /\.(scss)$/,
-        use: ExtractTextPlugin.extract({
-          use: [ 'css-loader', 'sass-loader' ]
-        })
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
         // No postcss for dev
       },      
       {
@@ -83,11 +77,14 @@ module.exports = {
       // Inject the js bundle at the end of the body of the given template
       inject: 'body',
     }),
-    new ExtractTextPlugin("styles.css"),
+    new MiniCssExtractPlugin({    
+      filename: "style.css"
+    }),
     new CopyWebpackPlugin({
       patterns: [
         {from: __dirname + '/public'}
       ]
-    })
+    }),
   ]
 };
+

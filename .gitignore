@@ -1,6 +1,6 @@
 .idea
 /node_modules
-/dist
+/build
 /extra
 /backend/*.dat
 /backend/extra

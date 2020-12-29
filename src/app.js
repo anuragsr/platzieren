@@ -98,7 +98,7 @@ angular
   controller: 'MenuCtrl'
 })
 .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
-  $urlRouterProvider.otherwise('/allgemein')
+  $urlRouterProvider.otherwise('/sushi')
   $locationProvider.html5Mode(true)
 
   // Adding states here

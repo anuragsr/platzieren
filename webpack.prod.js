@@ -5,9 +5,9 @@ const CopyWebpackPlugin = require('copy-webpack-plugin'); //installed via npm
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
 
-const buildPath = path.resolve(__dirname, 'dist');
+const buildPath = path.resolve(__dirname, 'build');
 
 module.exports = {
   // devtool: 'source-map',
@@ -29,19 +29,16 @@ module.exports = {
           presets: ['@babel/preset-env'],
           plugins: ['@babel/plugin-proposal-object-rest-spread']
         }
-      }
-      ,
+      },
       {
         test: /\.(css)$/,
-        use: ExtractTextPlugin.extract({
-          use: [ 'css-loader' ]
-        })
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.(scss|sass)$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader
+            loader: MiniCssExtractPlugin.loader,
           },
           {
             // translates CSS into CommonJS
@@ -106,6 +103,7 @@ module.exports = {
       // Inject the js bundle at the end of the body of the given template
       inject: 'body',
     }),
+    new BaseHrefWebpackPlugin({ baseHref: '/platzieren/' }),
     new CleanWebpackPlugin(buildPath),
     new CopyWebpackPlugin({
       patterns: [
@@ -115,7 +113,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'styles.[contenthash].css'
     }),
-    new ExtractTextPlugin('carousel.css'),
+    new MiniCssExtractPlugin({ filename: 'carousel.css' }),
     new OptimizeCssAssetsPlugin({
       cssProcessor: require('cssnano'),
       cssProcessorOptions: {

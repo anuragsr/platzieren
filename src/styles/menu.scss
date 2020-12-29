@@ -494,6 +494,10 @@
             color: $pr;
             img{ height: 50px; }
             div{ font-weight: 700; }
+            &:hover{
+              background-color: #f8f9fa;
+              border-color: #f8f9fa;
+            }
           }
         }
         &.veg{
