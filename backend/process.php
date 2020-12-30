@@ -6,7 +6,7 @@
   class PLMenu{
     protected $db;
     
-    function __construct($db){ $this->db = $db; }
+    function __construct($db){ $this->db = $db; }        
 
     public function addMenu($data){
 
@@ -34,6 +34,11 @@
         } 
         // Else Insert to DB
         else {
+          // Image upload
+          // if(!file_exists("../upload/".$input["id"])){
+          //   $this->makeDir("../upload/".$input["id"]);
+          // }
+
           // Add to menu table
           $this->db->save("x_platz_menu87134", array(
             "x_id"      => $id,
@@ -131,7 +136,6 @@
 
       !$err && Common::respond(Common::sendEmail($data), "Thanks for the order, our team will get in touch shortly.", true);
     }
-
   }
 
   $m = new PLMenu($db);

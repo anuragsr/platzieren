@@ -11,7 +11,11 @@
         "result" => $result
       ));
     }
-
+    
+    public static function makeDir($path, $perm = 0755){
+      return mkdir($path, $perm, true);
+    }
+    
     public static function sendEmail($data){
 
       $date = date('Y-m-d H:i:s');
