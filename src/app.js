@@ -124,7 +124,7 @@ angular
     data : { pageTitle: 'Platzieren | Edit Menu' }
   })
   .state('view', {
-    url: '/{params:.*}/view/:iId',
+    url: '/view/{params:.*}/:iId',
     component: 'view',
     data : { pageTitle: 'Platzieren | View Menu' }
   })

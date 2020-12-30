@@ -43,38 +43,27 @@ module.exports = {
           {
             // translates CSS into CommonJS
             loader: 'css-loader',
-            options: {
-              url: false,
-              sourceMap: false
-            }
+            options: { url: false, sourceMap: false }
           },
           {
             // Runs compiled CSS through postcss for vendor prefixing
             loader: 'postcss-loader',
-            options: {
-              sourceMap: false
-            }
+            options: { sourceMap: false }
           },
           {
             // compiles Sass to CSS
             loader: 'sass-loader',
-            options: {
-              sourceMap: false,
-            }
+            options: { sourceMap: false }
           }
         ]
-      }
-      ,
+      },
       {
         // Load all images as base64 encoding if they are smaller than 8192 bytes
         test: /\.(png|jpg|gif)$/,
         use: [
           {
             loader: 'url-loader',
-            options: {
-              name: '[name].[hash:20].[ext]',
-              limit: 8192
-            }
+            options: { name: '[name].[hash:20].[ext]', limit: 8192 }
           }
         ]
       }
@@ -83,9 +72,7 @@ module.exports = {
         // Load all icons
         test: /\.(eot|woff|woff2|svg|ttf|otf)([\?]?.*)$/,
         use: [
-          {
-            loader: 'file-loader',
-          }
+          { loader: 'file-loader' }
         ]
       }
       ,
@@ -107,23 +94,15 @@ module.exports = {
     new BaseHrefWebpackPlugin({ baseHref: '/platzieren/' }),
     new CleanWebpackPlugin(buildPath),
     new CopyWebpackPlugin({
-      patterns: [
-        {from: __dirname + '/public'}
-      ]
+      patterns: [{ from: __dirname + '/public' }]
     }),
-    new MiniCssExtractPlugin({
-      filename: 'styles.[contenthash].css'
-    }),
+    new MiniCssExtractPlugin({ filename: 'styles.[contenthash].css' }),
     new MiniCssExtractPlugin({ filename: 'carousel.css' }),
     new OptimizeCssAssetsPlugin({
       cssProcessor: require('cssnano'),
       cssProcessorOptions: {
-        map: {
-          inline: false,
-        },
-        discardComments: {
-          removeAll: true
-        },
+        map: { inline: false },
+        discardComments: { removeAll: true },
         discardUnused: false
       },
       canPrint: true

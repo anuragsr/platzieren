@@ -34,7 +34,7 @@ export default class LoadCtrl {
         this.menu = res.data.menu
 
         const menuData = this.utils.fl('filter', this.menus, { title: this.menu.title})[0]
-        this.viewLink = `${this.utils.IMG_URL}${menuData.state}/view/${this.menuId}`
+        this.viewLink = `${this.utils.IMG_URL}view/${menuData.state}/${this.menuId}`
         l(this.viewLink)
         this.menu.fields = menuData.fields
         this.menu.titles = menuData.titles

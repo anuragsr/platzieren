@@ -332,7 +332,7 @@ export default class Utils {
     return {
       id,
       editLink:`${this.FE_URL}${state}/${id}`,
-      viewLink:`${this.IMG_URL}${state}/${id}/view`
+      viewLink:`${this.IMG_URL}view/${state}/${id}`
     }
   }
   focus(dir, focusedEl, menu){

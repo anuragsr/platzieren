@@ -14,9 +14,7 @@ module.exports = {
     contentBase: path.join(__dirname, "build"),
     publicPath: '/',
   },
-  node: {
-    fs: 'empty'
-  },
+  node: { fs: 'empty' },
   module: {
     rules: [
       {
@@ -36,24 +34,18 @@ module.exports = {
         test: /\.(scss)$/,
         use: [
           MiniCssExtractPlugin.loader, 
-          // 'css-loader', 
           { loader: 'css-loader', options: { url: false } },
-          // {loader: 'resolve-url-loader', options:{ debug: true } },
           'sass-loader'
         ],
-        // No postcss for dev
       },      
       {
         // Load all images as base64 encoding if they are smaller than 8192 bytes
         test: /\.(png|jpg|gif)$/,
         use: [
           {
+            // On development we want to see where the file is coming from, hence we preserve the [path]
             loader: 'url-loader',
-            options: {
-              // On development we want to see where the file is coming from, hence we preserve the [path]
-              name: '[path][name].[ext]?hash=[hash:20]',
-              limit: 8192
-            }
+            options: { name: '[path][name].[ext]?hash=[hash:20]', limit: 8192 }
           }
         ]
       }
@@ -62,9 +54,7 @@ module.exports = {
         // Load all icons
         test: /\.(eot|woff|woff2|svg|ttf|otf)([\?]?.*)$/,
         use: [
-          {
-            loader: 'file-loader',
-          }
+          { loader: 'file-loader' }
         ]
       }
       ,
