@@ -1,6 +1,6 @@
-<div class="ctn-menu-bg menu-pizza menu-edit">
+<div class="ctn-menu-bg menu-pizza menu-edit" ng-style="{ transformOrigin: 'center top', transform: 'scale('+ $ctrl.zoom +')', paddingBottom: ($ctrl.zoom * 100) + 'px' }">
   <div class="ctn-menu-outer">
-    <div class="ctn-menu-inner" ng-style="{ transformOrigin: 'left center', transform: 'scale('+ $ctrl.zoom +')', paddingBottom: ($ctrl.zoom * 100) + 'px' }">
+    <div class="ctn-menu-inner">
       <div class="ctn-menu-page"
         ng-repeat="currPage in $ctrl.menu.pages track by $index"
         ng-class="{'active': $ctrl.menu.activePage === $index}"
@@ -82,6 +82,9 @@
         <img src="assets/s2.png" alt="">
         <div>QR Code<br/>erstellen</div>
       </button>
+    </div>
+    <div class="ctn-img-up">
+      <input type="file" multiple="false"/>
     </div>
   </div>
 </div>

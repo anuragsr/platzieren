@@ -66,16 +66,14 @@ module.exports = {
             options: { name: '[name].[hash:20].[ext]', limit: 8192 }
           }
         ]
-      }
-      ,
+      },
       {
         // Load all icons
         test: /\.(eot|woff|woff2|svg|ttf|otf)([\?]?.*)$/,
         use: [
           { loader: 'file-loader' }
         ]
-      }
-      ,
+      },
       {
         // HTML LOADER
         // Reference: https://github.com/webpack/raw-loader

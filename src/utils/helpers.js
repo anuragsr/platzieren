@@ -12,9 +12,9 @@ export const env = {
     API_URL: "http://localhost/platzieren-be/backend/",
   },
   ECA: {
-    FE_URL: "http://eca.in",
-    IMG_URL: "http://eca.in",
-    API_URL: "http://eca.in",
+    FE_URL: "http://eca.in/",
+    IMG_URL: "http://eca.in/",
+    API_URL: "http://eca.in/",
   },
   PROD: {
     FE_URL: "https://platzieren.com/",

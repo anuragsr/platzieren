@@ -1,6 +1,6 @@
-<div class="ctn-menu-bg menu-jap menu-edit">
+<div class="ctn-menu-bg menu-jap menu-edit" ng-style="{ transformOrigin: 'top', transform: 'scale('+ $ctrl.zoom +')', paddingBottom: ($ctrl.zoom * 100) + 'px' }">
   <div class="ctn-menu-outer">
-    <div class="ctn-menu-inner" ng-style="{ transformOrigin: 'top', transform: 'scale('+ $ctrl.zoom +')', paddingBottom: ($ctrl.zoom * 100) + 'px' }">
+    <div class="ctn-menu-inner">
       <div class="ctn-menu-page"
          ng-repeat="currPage in $ctrl.menu.pages track by $index"
          ng-class="{'active': $ctrl.menu.activePage === $index}"
@@ -34,7 +34,6 @@
               </div>
             </div>
             <textarea class="title-gr"
-
                ng-repeat="gr in currPage.titles track by $index"
                ng-style="{ top: gr.top + 'px', left: gr.left + 'px' }"
                ng-class="{ 'title-main': !!gr.main }"
@@ -84,6 +83,12 @@
         <img src="assets/s2.png" alt="">
         <div>QR Code<br/>erstellen</div>
       </button>
+    </div>
+    <div class="ctn-img-up">
+      <label for="avatar">Select logo for QR code:</label>
+      <input type="file"
+             id="avatar" name="avatar"
+             accept="image/png, image/jpeg">
     </div>
   </div>
   <div class="ctn-clip no-mobile"></div>

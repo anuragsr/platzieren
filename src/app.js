@@ -18,7 +18,7 @@ import FocusOn from './directives/FocusOn'
 // Templates
 import homeTpl from './templates/home.html'
 import loadTpl from './templates/load.html'
-import imgTpl from './templates/img.html'
+import imgTpl from './templates/view.html'
 import coffeeTpl from './templates/coffee.html'
 import japaneseTpl from './templates/japanese.html'
 import pizzaTpl from './templates/pizza.html'
@@ -98,7 +98,7 @@ angular
   controller: 'MenuCtrl'
 })
 .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
-  $urlRouterProvider.otherwise('/sushi')
+  $urlRouterProvider.otherwise('/allgemein')
   $locationProvider.html5Mode(true)
 
   // Adding states here

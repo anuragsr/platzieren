@@ -1,6 +1,6 @@
-<div class="ctn-menu-bg menu-coffee menu-edit">
+<div class="ctn-menu-bg menu-coffee menu-edit" ng-style="{ transformOrigin: 'top', transform: 'scale('+ $ctrl.zoom +')', paddingBottom: ($ctrl.zoom * 100) + 'px' }">
   <div class="ctn-menu-outer">
-    <div class="ctn-menu-inner" ng-style="{ transformOrigin: 'top', transform: 'scale('+ $ctrl.zoom +')', paddingBottom: ($ctrl.zoom * 100) + 'px' }">
+    <div class="ctn-menu-inner">
       <div class="ctn-menu-page"
          ng-repeat="currPage in $ctrl.menu.pages track by $index"
          ng-class="{'active': $ctrl.menu.activePage === $index}"
@@ -15,7 +15,7 @@
                 focus-on="{ page: $parent.$index, field: $index }"
                 ng-model="gr.name.v" placeholder="{{gr.name.p}}" />
             </div>
-            <div class="col text-left">
+            <div class="col text-left d-flex">
               &euro;&nbsp;<input class="price" type="text" ng-model="gr.price.v" placeholder="{{gr.price.p}}"/>
             </div>
           </div>
@@ -104,7 +104,7 @@
             <div class="col text-right pr-0">
               <div class="name">{{gr.name.v}}</div>
             </div>
-            <div class="col text-left">
+            <div class="col text-left d-flex">
               <div class="price">&euro;&nbsp;{{gr.price.v}}</div>
             </div>
           </div>

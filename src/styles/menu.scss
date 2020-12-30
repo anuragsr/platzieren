@@ -141,6 +141,8 @@
         padding: 20px;
         background: url(assets/japanese/menu-bg.jpg);
         background-size: 100%;
+        transform: scale(.85);
+        transform-origin: center top;
         @include media("<=tab"){
           transform: scale(1) !important;
           transform-origin: center !important;
@@ -327,6 +329,8 @@
         width: 1145px;
         height: 205mm;
         padding: 20px;
+        transform: scale(.85);
+        transform-origin: left center;
         @include media("<=tab"){
           transform: scale(1) !important;
           padding: 10px;
@@ -367,8 +371,13 @@
         }
         .vegan{ left: 42%; }
       }
-      .ctn-btn{
-        bottom: -280px; left: -340px;
+      .ctn-btn {
+        @include media("<=tab"){
+          transform: translateX(5%);
+        }
+        @include media(">tab") {
+          bottom: -280px; left: -340px;
+        }
       }
     }
   }
@@ -548,6 +557,7 @@
       }
       .ctn-menu-inner{
         margin: 40px auto;
+        transform: scale(1) !important;
       }
       input, textarea{ pointer-events: none; }
 

@@ -48,16 +48,14 @@ module.exports = {
             options: { name: '[path][name].[ext]?hash=[hash:20]', limit: 8192 }
           }
         ]
-      }
-      ,
+      },
       {
         // Load all icons
         test: /\.(eot|woff|woff2|svg|ttf|otf)([\?]?.*)$/,
         use: [
           { loader: 'file-loader' }
         ]
-      }
-      ,
+      },
       {
         // HTML LOADER
         // Reference: https://github.com/webpack/raw-loader
@@ -73,9 +71,7 @@ module.exports = {
       // Inject the js bundle at the end of the body of the given template
       inject: 'body',
     }),
-    new MiniCssExtractPlugin({    
-      filename: "style.css"
-    }),
+    new MiniCssExtractPlugin({ filename: "style.css" }),
     new CopyWebpackPlugin({
       patterns: [
         {from: __dirname + '/public'}
