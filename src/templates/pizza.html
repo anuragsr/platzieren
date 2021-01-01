@@ -43,6 +43,11 @@
       </div>
     </div>
     <div class="ctn-btn">
+      <div class="upl">
+        <label for="qr-logo">Logo for QR code:</label>
+        <img src="{{ $ctrl.menu.qrLogo }}" alt="" />
+        <input type="file" id="qr-logo" accept="image/png, image/jpeg">
+      </div>
       <nav>
         <ul class="pagination justify-content-center">
           <li class="page-item">
@@ -83,10 +88,8 @@
         <div>QR Code<br/>erstellen</div>
       </button>
     </div>
-    <div class="ctn-img-up">
-      <input type="file" multiple="false"/>
-    </div>
   </div>
+  <div class="ctn-clip no-mobile"></div>
 </div>
 <div class="ctn-menu-bg menu-pizza menu-download">
   <div class="ctn-menu-outer">

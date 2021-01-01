@@ -45,8 +45,8 @@ const bindings = {
   menu: '=', filledFields: '=',
   zoom: '=', save: '<', showLoader: '='
 }
+, clipboard = new ClipboardJS('.ctn-link .desc, .inner.link')
 
-const clipboard = new ClipboardJS('.ctn-link .desc, .inner.link')
 clipboard.on('success', function(e) {
   e.clearSelection()
   alert('In die Zwischenablage kopiert - ' + e.text)

@@ -17,7 +17,8 @@ export default class Utils {
     this.menus = [
       {
         title: 'Allge.',
-        img: "assets/coffee.png",
+        img: 'assets/coffee.png',
+        qrLogo: 'assets/qr-logo.png',
         fields: [
           {
             id:0,
@@ -85,7 +86,8 @@ export default class Utils {
       },
       {
         title: 'Sushi',
-        img: "assets/sushi.png",
+        img: 'assets/sushi.png',
+        qrLogo: 'assets/qr-logo.png',
         fields: [
           {
             id:0,
@@ -186,7 +188,8 @@ export default class Utils {
       },
       {
         title: 'Pizza',
-        img: "assets/pizza.png",
+        img: 'assets/pizza.png',
+        qrLogo: 'assets/qr-logo.png',
         fields: [
           {
             id: 0,
