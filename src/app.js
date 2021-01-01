@@ -14,6 +14,7 @@ import ImgCtrl from './controllers/Img'
 import { MenuCtrl } from './controllers/Menus'
 import { Header, Footer, Loader } from './directives/Partials'
 import FocusOn from './directives/FocusOn'
+import FileRead from './directives/FileRead'
 
 // Templates
 import homeTpl from './templates/home.html'
@@ -67,6 +68,7 @@ angular
 .directive('f', Footer)
 .directive('l', Loader)
 .directive('focusOn', ['$rootScope', FocusOn])
+.directive('fileread', FileRead)
 .component('home', {
   template: homeTpl,
   controller: 'HomeCtrl',

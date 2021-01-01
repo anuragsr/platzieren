@@ -1,6 +1,6 @@
 header{
   @extend %fw;
-  background-color: #fdfdfd;
+  background-color: $sc;
   @include media("<=tab") {
     position: relative;
   }
@@ -23,9 +23,7 @@ header{
         color: $b !important;
         display: flex;
         align-items: center;
-        img{
-          height: 60px;
-        }
+        img{ height: 60px; }
         span{
           font-size: 14px;
           padding-right: 15px;

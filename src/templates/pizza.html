@@ -46,7 +46,11 @@
       <div class="upl">
         <label for="qr-logo">Logo for QR code:</label>
         <img src="{{ $ctrl.menu.qrLogo }}" alt="" />
-        <input type="file" id="qr-logo" accept="image/png, image/jpeg">
+        <input
+          ng-model="$ctrl.menu.qrLogoFile"
+          fileread="$ctrl.menu.qrLogo"
+          type="file" id="qr-logo"
+          accept="image/png, image/jpeg" />
       </div>
       <nav>
         <ul class="pagination justify-content-center">
@@ -135,5 +139,5 @@
 </div>
 <pre class="deb-obj">
   {{ $ctrl.showLoader | json }}
-  {{ $ctrl.menu.pages | json }}
+  {{ $ctrl.menu | json }}
 </pre>

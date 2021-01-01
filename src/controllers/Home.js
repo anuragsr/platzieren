@@ -30,6 +30,7 @@ export default class HomeCtrl {
       this.focusedEl = val
     })
     $scope.$on('progress', (e, prog) => l(prog))
+    $scope.$watch()
   }
   init(){
     // l(this.$state.current.name)

@@ -19,6 +19,7 @@ export default class Utils {
         title: 'Allge.',
         img: 'assets/coffee.png',
         qrLogo: 'assets/qr-logo.png',
+        qrLogoFile: '',
         fields: [
           {
             id:0,
@@ -88,6 +89,7 @@ export default class Utils {
         title: 'Sushi',
         img: 'assets/sushi.png',
         qrLogo: 'assets/qr-logo.png',
+        qrLogoFile: '',
         fields: [
           {
             id:0,
@@ -190,6 +192,7 @@ export default class Utils {
         title: 'Pizza',
         img: 'assets/pizza.png',
         qrLogo: 'assets/qr-logo.png',
+        qrLogoFile: '',
         fields: [
           {
             id: 0,
@@ -444,9 +447,11 @@ export default class Utils {
     return this.def.promise
   }
   saveMenu(menu){
-    const { id, title, pages, isDark } = menu
+    const { id, title, pages, isDark, qrLogoFile } = menu
     , formData = { id, title, pages, isDark }
 
+    l(qrLogoFile)
+    
     const def = this.$q.defer()
     this.post(`${this.API_URL}process.php`, {
       t: "save", d: formData
