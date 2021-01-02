@@ -394,14 +394,16 @@ export default class Utils {
     })
     return filled
   }
-  createQRCode(src, content){
+  createQRCode(src, content, shouldDownload){
     l("generating new QRCode")
-    new QrCodeWithLogo({
+    const qrObj = new QrCodeWithLogo({
       content, width: 380,
       image: $("#ctn-qr")[0],
       logo: { src }
     })
-    .toImage()
+    qrObj.toImage().then(() => {
+      shouldDownload && this.$timeout(() => { qrObj.downloadImage("QRCode") }, 1000)
+    })
     .catch(err => l(err))
   }
   post(url, data, files){
@@ -446,7 +448,7 @@ export default class Utils {
     const { $q } = this
     this.def = $q.defer()
 
-    this.post(`${this.API_URL}process.php`, {
+    this.post(`${this.API_URL}backend/process.php`, {
       t: "get", d: id
     })
     .then(res => this.def.resolve(res))
@@ -455,10 +457,10 @@ export default class Utils {
   }
   saveMenu(menu){
     const { id, title, pages, isDark, qrLogo, qrLogoFile } = menu
-    , formData = { id, title, pages, isDark, qrLogo }
+    , formData = { id, title, pages, isDark, qrLogo, base: this.API_URL}
 
     const def = this.$q.defer()
-    this.post(`${this.API_URL}process.php`, {
+    this.post(`${this.API_URL}backend/process.php`, {
       t: "save", d: formData
     }, qrLogoFile)
     .then(res => def.resolve(res))

@@ -46,7 +46,7 @@
     <div class="ctn-btn">
       <div class="upl">
         <label for="qr-logo">Logo for QR code:</label>
-        <img src="{{ $ctrl.menu.qrLogo }}" alt="" />
+        <img ng-src="{{ $ctrl.menu.qrLogo }}" alt="" />
         <input
           ng-model="$ctrl.menu.qrLogoFile"
           fileread="$ctrl.menu.qrLogo"
@@ -86,10 +86,10 @@
       <button
         class="btn btn-pr btn-qr-main no-mobile"
         ng-click="$ctrl.save(true)"
-        data-toggle="modal" data-target="#qrModal"
-      >
+        data-toggle="modal" data-target="#buyModal"
+        >
         <img src="assets/s2.png" alt="">
-        <div>QR Code<br/>erstellen</div>
+        <div>QR Code<br/>herunterladen</div>
       </button>
     </div>
   </div>

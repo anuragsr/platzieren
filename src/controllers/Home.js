@@ -13,7 +13,7 @@ export default class HomeCtrl {
     this.idx = 0
 
     this.formData = {
-      sz: 'S',
+      sz: 'S', sizes: ['S', 'M', 'L'],
       f: '', l: '',
       em: '', ph: '',
       add1: '', add2: '',
@@ -23,7 +23,6 @@ export default class HomeCtrl {
     this.menus = this.utils.menus
     this.menu = {}
 
-    this.init()
     $scope.$on('elFocused', (name, val) => {
       // l(this.focusedEl, val)
       this.focusedEl = val
@@ -33,6 +32,8 @@ export default class HomeCtrl {
       // l(n, o)
       this.utils.createQRCode(n, this.viewLink)
     })
+
+    this.init()
   }
   init(){
     // l(this.$state.current.name)
@@ -182,6 +183,9 @@ export default class HomeCtrl {
       l(res)
       this.showLoader = false
       alert(res.message)
+
+      // Send for download
+      this.utils.createQRCode(this.menu.qrLogo, this.viewLink, true)
     })
   }
 }

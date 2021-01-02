@@ -1,14 +1,13 @@
 import { l } from "../utils/helpers"
 
-class MenuCtrl {
+export default class MenuCtrl {
   constructor($scope, $timeout, utils) {
     // l(this)
+    this.utils = utils
     this.$onInit = () => {
       l("init menu", this.menu.title)
       $timeout(() => this.showLoader = false, 1000)
     }
-
-    this.utils = utils
     $scope.$watch('$ctrl.menu.pages', (newVal, oldVal) => {
       // l(newVal, oldVal)
       this.filledFields = utils.getFilledFields(newVal)
@@ -22,5 +21,3 @@ class MenuCtrl {
     }
   }
 }
-
-export { MenuCtrl }

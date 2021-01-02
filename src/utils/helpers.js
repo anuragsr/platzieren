@@ -9,7 +9,7 @@ export const env = {
   LOCAL: {
     FE_URL: "http://localhost:8080/",
     IMG_URL: "http://localhost:8080/",
-    API_URL: "http://localhost/platzieren-be/backend/",
+    API_URL: "http://localhost/platzieren-be/",
   },
   ECA: {
     FE_URL: "http://eca.in/",
@@ -19,6 +19,6 @@ export const env = {
   PROD: {
     FE_URL: "https://platzieren.com/",
     IMG_URL: "https://platzieren.com/",
-    API_URL: "https://platzieren.com/backend/",
+    API_URL: "https://platzieren.com/",
   }
 }

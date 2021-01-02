@@ -367,10 +367,16 @@
                 </div>
               </div>
               <div class="form-row">
-                <div class="form-group col-md-6">
-                  Selected Size: {{ homeCtrl.formData.sz }}
+                <div class="form-group col-md-6 d-flex justify-content-center align-items-center">
+                  Size:
+                  <select
+                    class="form-control ml-4"
+                    ng-model="homeCtrl.formData.sz"
+                    ng-options="size for size in homeCtrl.formData.sizes"
+                    >
+                  </select>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6 d-flex align-items-center">
                   Net Total: 14,99 EUR
                 </div>
               </div>

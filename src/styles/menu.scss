@@ -117,6 +117,7 @@
         background: $sc;
         padding: 15px;
         border-radius: 5px;
+        margin-bottom: 25px;
         @include media(">tab"){
           margin-bottom: 50px;
         }
@@ -238,7 +239,7 @@
       background-position: 50% 0%;
       @include media("<=tab"){
         background-size: 1010px 1160px;
-        height: 780px;
+        height: 900px;
       }
       .ctn-menu-outer{
         position: absolute;

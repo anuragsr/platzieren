@@ -7,7 +7,7 @@
           <img src="assets/save-icon.png" alt=""/>
           <div>Speichem</div>
         </div>
-        <div class="s-item ctn-switch">
+        <div class="s-item no-mobile ctn-switch">
           Tag Modus
           <div class="btn-switch"
                ng-class="{'btn-switch--on':loadCtrl.menu.isDark}"
@@ -17,7 +17,7 @@
           </div>
           Nacht Modus
         </div>
-        <div class="s-item">
+        <div class="s-item no-mobile">
           <button class="btn btn-pr" ng-click="loadCtrl.openPDF()">Vorschau QR Menu</button>
         </div>
       </div>
@@ -53,7 +53,7 @@
       focused-el="loadCtrl.focusedEl"
     ></pizza>
 
-    <div class="ctn-float-box">
+    <div class="ctn-float-box no-mobile">
       <div class="inner">
         <div class="b-item perc">
           <div>{{ (loadCtrl.filledFields * 100 / loadCtrl.totalFields).toFixed(0)}}<sup>%</sup></div>
@@ -76,8 +76,8 @@
           </div>
         </div>
         <div class="b-item veg">
-          <div><img src="assets/plant 1.png" alt="" />Vegan</div>
-          <div><img src="assets/herb 1.png" alt="" />Vegetarian</div>
+          <div ng-click="loadCtrl.toggleVeg('veg1')"><img src="assets/plant 1.png" alt="" />Vegan</div>
+          <div ng-click="loadCtrl.toggleVeg('veg2')"><img src="assets/herb 1.png" alt="" />Vegetarian</div>
         </div>
         <div class="b-item qr-btn">
           <button
@@ -91,6 +91,36 @@
         </div>
       </div>
     </div>
+
+    <div class="ctn-btn no-desktop">
+      <div class="btn-item ctn-add-page" ng-click="homeCtrl.addMenuPage()">+ Seite Hinzufügen</div>
+      <div class="btn-item ctn-switch">
+        Tag Modus
+        <div class="btn-switch"
+             ng-class="{'btn-switch--on':homeCtrl.menu.isDark}"
+             ng-model="homeCtrl.menu.isDark"
+             ng-click="homeCtrl.menu.isDark = !homeCtrl.menu.isDark">
+          <div class="btn-switch-circle" ng-class="{'btn-switch-circle--on':homeCtrl.menu.isDark}"></div>
+        </div>
+        Nacht Modus
+      </div>
+      <div class="btn-item ctn-copy-link">
+        <div class="inner link" ng-click="homeCtrl.save(true)" data-clipboard-text="{{ homeCtrl.editLink }}" title="{{ homeCtrl.editLink }}">
+          <i class="fa fa-link"></i>
+          <div class="text">{{ homeCtrl.editLink }}</div>
+        </div>
+        <div class="desc">Dein Link<br/>(Klicken Sie, um zu kopieren)</div>
+      </div>
+      <button class="btn-item btn btn-pr" ng-click="homeCtrl.openPDF()">Vorschau QR Menu</button>
+      <!--<button
+        class="btn btn-pr btn-qr-main"
+        ng-click="homeCtrl.save(true)"
+        data-toggle="modal" data-target="#qrModal"
+        >
+        <img src="assets/s2.png" alt="">
+        <div>QR Code<br/>erstellen</div>
+      </button>-->
+    </div>
   </section>
   <portal>
     <div class="modal fade qr-modal" tabindex="-1" role="dialog" id="qrModal">
@@ -102,6 +132,68 @@
               Scan the QR code for a link to your created menu.<br/>
               Or click <a target="_blank" href="{{ loadCtrl.viewLink }}">here</a> to view
             </h5>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-pr" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade buy-modal" tabindex="-1" role="dialog" id="buyModal">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h5 class="mt-3">
+              Please enter your details below
+            </h5><br/>
+            <form class="text-left" name="loadCtrl.payForm">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input type="text" class="form-control" ng-model="loadCtrl.formData.f" placeholder="Vorname" required/>
+                </div>
+                <div class="form-group col-md-6">
+                  <input type="text" class="form-control" ng-model="loadCtrl.formData.l" placeholder="Nachname" required/>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input type="email" class="form-control" ng-model="loadCtrl.formData.em" placeholder="Email" required/>
+                </div>
+                <div class="form-group col-md-6">
+                  <input type="text" class="form-control" ng-model="loadCtrl.formData.ph" placeholder="Phone" required/>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" ng-model="loadCtrl.formData.add1" placeholder="Address line 1..eg. 1234 Main St" />
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" ng-model="loadCtrl.formData.add2" placeholder="Address Line 2..eg. Apartment, studio, or floor" />
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input type="text" class="form-control" ng-model="loadCtrl.formData.c" placeholder="City">
+                </div>
+                <div class="form-group col-md-6">
+                  <input type="text" class="form-control" ng-model="loadCtrl.formData.p" placeholder="Postal Code">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6 d-flex justify-content-center align-items-center">
+                  Size:
+                  <select
+                    class="form-control ml-4"
+                    ng-model="loadCtrl.formData.sz"
+                    ng-options="size for size in loadCtrl.formData.sizes"
+                  >
+                  </select>
+                </div>
+                <div class="form-group col-md-6 d-flex align-items-center">
+                  Net Total: 14,99 EUR
+                </div>
+              </div>
+              <div id="ctn-pp-btn"></div>
+            </form>
+            <!--<pre>{{ loadCtrl.payForm | json }}</pre>-->
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-sm btn-pr" data-dismiss="modal">Close</button>
