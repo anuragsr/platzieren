@@ -23,7 +23,15 @@ header{
         color: $b !important;
         display: flex;
         align-items: center;
-        img{ height: 60px; }
+        @include media("<=tab") {
+          justify-content: center;
+        }
+        img{
+          height: 60px;
+          @include media("<=tab") {
+            height: 40px;
+          }
+        }
         span{
           font-size: 14px;
           padding-right: 15px;

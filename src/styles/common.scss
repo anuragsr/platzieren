@@ -203,6 +203,8 @@ button.btn-pr{
 }
 
 .ctn-btn{
+  position: relative;
+  z-index: 1;
   padding: 5vh 0;
   font-family: $ex;
   color: $pr;
@@ -225,9 +227,8 @@ button.btn-pr{
 }
 
 .ctn-copy-link .inner.link, button.btn-item{
-  @include media("<=tab"){
-    width: 70%;
-  }
+  @include media("<=tab"){ width: 70%; }
+  @include media("<=mob"){ width: 77%; }
 }
 
 // Loader

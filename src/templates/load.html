@@ -93,33 +93,26 @@
     </div>
 
     <div class="ctn-btn no-desktop">
-      <div class="btn-item ctn-add-page" ng-click="homeCtrl.addMenuPage()">+ Seite Hinzufügen</div>
+      <div class="btn-item ctn-add-page" ng-click="loadCtrl.addMenuPage()">+ Seite Hinzufügen</div>
       <div class="btn-item ctn-switch">
         Tag Modus
         <div class="btn-switch"
-             ng-class="{'btn-switch--on':homeCtrl.menu.isDark}"
-             ng-model="homeCtrl.menu.isDark"
-             ng-click="homeCtrl.menu.isDark = !homeCtrl.menu.isDark">
-          <div class="btn-switch-circle" ng-class="{'btn-switch-circle--on':homeCtrl.menu.isDark}"></div>
+             ng-class="{'btn-switch--on':loadCtrl.menu.isDark}"
+             ng-model="loadCtrl.menu.isDark"
+             ng-click="loadCtrl.menu.isDark = !loadCtrl.menu.isDark">
+          <div class="btn-switch-circle" ng-class="{'btn-switch-circle--on':loadCtrl.menu.isDark}"></div>
         </div>
         Nacht Modus
       </div>
-      <div class="btn-item ctn-copy-link">
-        <div class="inner link" ng-click="homeCtrl.save(true)" data-clipboard-text="{{ homeCtrl.editLink }}" title="{{ homeCtrl.editLink }}">
-          <i class="fa fa-link"></i>
-          <div class="text">{{ homeCtrl.editLink }}</div>
-        </div>
-        <div class="desc">Dein Link<br/>(Klicken Sie, um zu kopieren)</div>
-      </div>
-      <button class="btn-item btn btn-pr" ng-click="homeCtrl.openPDF()">Vorschau QR Menu</button>
-      <!--<button
-        class="btn btn-pr btn-qr-main"
-        ng-click="homeCtrl.save(true)"
-        data-toggle="modal" data-target="#qrModal"
+      <button class="btn-item btn btn-pr" ng-click="loadCtrl.openPDF()">Vorschau QR Menu</button>
+      <button
+        class="btn-item btn btn-pr btn-qr-main"
+        ng-click="loadCtrl.save(true)"
+        data-toggle="modal" data-target="#buyModal"
         >
         <img src="assets/s2.png" alt="">
-        <div>QR Code<br/>erstellen</div>
-      </button>-->
+        <div>QR Code<br/>herunterladen</div>
+      </button>
     </div>
   </section>
   <portal>

@@ -198,6 +198,9 @@
             @include media("<=tab") {
               font-size: 12px;
             }
+            @include media("<=mob") {
+              width: 135px;
+            }
           }
         }
         .offers{
@@ -228,8 +231,8 @@
         }
       }
       .ctn-btn{
-        bottom: -250px;
-        left: 0;
+        @include media("<=tab") { bottom: 0; }
+        bottom: -250px; left: 0;
       }
     }
     &.menu-jap{
@@ -286,6 +289,10 @@
             transform: scale(0.57) translateX(-20px);
             transform-origin: top left;
           }
+          @include media("<=mob") {
+            transform: scale(0.52) translate(-7%, -38%);
+            transform-origin: center left;
+          }
         }
         .title-gr{
           position: absolute;
@@ -298,6 +305,9 @@
             font-family: $ex;
             font-size: 30px;
             color: $w;
+            @include media("<=mob") {
+              transform: translate(10px, -30px);
+            }
           }
         }
         .input-gr{
@@ -310,8 +320,9 @@
         }
         .vegan{
           left: 38%;
-          @include media("<=tab") {
-            left: 70%;
+          @include media("<=tab") { left: 70%; }
+          @include media("<=mob") {
+            transform: translate(10px, -30px);
           }
         }
       }
@@ -324,7 +335,7 @@
         height: 260px;
       }
       .ctn-btn{
-        //position: absolute;
+        @include media("<=tab") { bottom: 0; }
         bottom: -250px; left: 0;
       }
     }
@@ -334,9 +345,9 @@
       background-position: 0% 0%;
       height: 1400px;
       @include media("<=tab") {
-        background-size: 100% 385px;
-        background-position: 0% 0%;
-        height: 365px;
+        background-size: cover;
+        background-position: 60% 0%;
+        height: 515px;
       }
       .ctn-menu-outer{
         position: absolute;
@@ -373,12 +384,18 @@
             transform: scale(0.4) translateX(-20px);
             transform-origin: top left;
           }
+          @include media("<=mob") {
+            transform: scale(0.37) translate(-20px, 33px);
+          }
         }
         .title-gr{
           position: absolute;
           color: $t-p;
           &.title-main{
             width: 450px;
+            @include media("<=mob") {
+              transform: translate(0px, -35px);
+            }
           }
         }
         .input-gr{
@@ -391,7 +408,12 @@
           }
           .veg-ind{ left: -25px; }
         }
-        .vegan{ left: 42%; }
+        .vegan{
+          left: 42%;
+          @include media("<=mob") {
+            transform: translate(-100px, -18px);
+          }
+        }
       }
       .ctn-clip{
         background-image: url(assets/pizza/clip.png);
