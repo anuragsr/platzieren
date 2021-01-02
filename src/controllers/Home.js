@@ -1,4 +1,3 @@
-import QrCodeWithLogo from 'qrcode-with-logos'
 import $ from 'jquery'
 import { l } from '../utils/helpers'
 
@@ -30,7 +29,10 @@ export default class HomeCtrl {
       this.focusedEl = val
     })
     $scope.$on('progress', (e, prog) => l(prog))
-    $scope.$watch()
+    $scope.$watch(() => this.menu.qrLogo, (n, o) => {
+      // l(n, o)
+      this.utils.createQRCode(n, this.viewLink)
+    })
   }
   init(){
     // l(this.$state.current.name)
@@ -126,14 +128,7 @@ export default class HomeCtrl {
     this.addMenuPage()
 
     $(() => {
-      new QrCodeWithLogo({
-        content: this.viewLink,
-        width: 380,
-        image: $("#ctn-qr")[0],
-        logo: {
-          src: "assets/qr-logo.png"
-        }
-      }).toImage()
+      this.utils.createQRCode("assets/qr-logo.png", this.viewLink)
     })
   }
   addMenuPage(){
@@ -182,7 +177,7 @@ export default class HomeCtrl {
     l(this.formData, details)
 
     this.utils
-    .saveOrder( { ...this.formData, ...details })
+    .saveOrder({ ...this.formData, ...details })
     .then(res => {
       l(res)
       this.showLoader = false

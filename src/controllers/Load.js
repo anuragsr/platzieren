@@ -1,4 +1,3 @@
-import QrCodeWithLogo from 'qrcode-with-logos'
 import $ from 'jquery'
 import { l } from '../utils/helpers'
 
@@ -21,6 +20,10 @@ export default class LoadCtrl {
       this.focusedEl = val
     })
     $scope.$on('progress', (e, prog) => l(prog))
+    $scope.$watch(() => this.menu.qrLogo, (n, o) => {
+      // l(n, o)
+      this.utils.createQRCode(n, this.viewLink)
+    })
   }
   init(){
     this.utils
@@ -41,14 +44,7 @@ export default class LoadCtrl {
         this.totalFields = this.menu.pages.reduce((prev, curr) => prev + curr.fields.length, 0)
 
         $(() => {
-          new QrCodeWithLogo({
-            content: this.viewLink,
-            width: 380,
-            image: document.getElementById("ctn-qr"),
-            logo: {
-              src: "assets/qr-logo.png"
-            }
-          }).toImage()
+          this.utils.createQRCode("assets/qr-logo.png", this.viewLink)
         })
       }
     })
@@ -56,7 +52,6 @@ export default class LoadCtrl {
   addMenuPage(){
     l("add page")
     this.focusedEl = null
-    // this.menu.pages.push(angular.copy(this.menu.fields))
     this.menu.pages.push({
       fields: angular.copy(this.menu.fields),
       titles: angular.copy(this.menu.titles),

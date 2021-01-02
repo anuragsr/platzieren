@@ -1,4 +1,6 @@
-import { l } from "./helpers"
+import QrCodeWithLogo from 'qrcode-with-logos'
+import $ from 'jquery'
+import { l } from './helpers'
 
 export default class Utils {
   constructor($q, $state, $filter, $rootScope, $timeout, ENV){
@@ -392,6 +394,16 @@ export default class Utils {
     })
     return filled
   }
+  createQRCode(src, content){
+    l("generating new QRCode")
+    new QrCodeWithLogo({
+      content, width: 380,
+      image: $("#ctn-qr")[0],
+      logo: { src }
+    })
+    .toImage()
+    .catch(err => l(err))
+  }
   post(url, data, files){
     const { $q, $rootScope } = this
     this.def = $q.defer()
@@ -417,14 +429,9 @@ export default class Utils {
     const fd = new FormData(), xhr = new XMLHttpRequest()
 
     fd.append("params", angular.toJson(data))
-    if(files){
-      var paths = []
-      files.forEach(function(x){
-        fd.append("files[]", x.value)
-        paths.push(x.upPath)
-      })
-      fd.append("paths", angular.toJson(paths))
-    }
+
+    l(files)
+    files && files.length && [...files].forEach(x => fd.append("files[]", x))
 
     xhr.upload.addEventListener("progress", progress, false)
     xhr.addEventListener("load", done, false)
@@ -447,15 +454,13 @@ export default class Utils {
     return this.def.promise
   }
   saveMenu(menu){
-    const { id, title, pages, isDark, qrLogoFile } = menu
-    , formData = { id, title, pages, isDark }
+    const { id, title, pages, isDark, qrLogo, qrLogoFile } = menu
+    , formData = { id, title, pages, isDark, qrLogo }
 
-    l(qrLogoFile)
-    
     const def = this.$q.defer()
     this.post(`${this.API_URL}process.php`, {
       t: "save", d: formData
-    })
+    }, qrLogoFile)
     .then(res => def.resolve(res))
 
     return def.promise
