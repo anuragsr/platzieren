@@ -1,4 +1,7 @@
 <?php
+  // Report all PHP errors
+  error_reporting(E_ALL);
+  
   header('Access-Control-Allow-Origin: *');
   header('Access-Control-Allow-Headers: Content-Type');
   header('Access-Control-Allow-Methods: GET, POST, OPTIONS');  
@@ -12,10 +15,42 @@
       ));
     }
     
+    public static function generateRand($length = 4) {
+      $characters = '0123456789';
+      $charactersLength = strlen($characters);
+      $randomString = '';
+      for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+      }
+      return $randomString;
+    }
+
     public static function makeDir($path, $perm = 0755){
       return mkdir($path, $perm, true);
     }
     
+    public static function normalizeFiles($files = array()) {
+      $normalized_array = array();
+      foreach($files as $index => $file) {
+        if (!is_array($file['name'])) {
+          $normalized_array[$index][] = $file;
+          continue;
+        }
+        foreach($file['name'] as $idx => $name) {
+          $normalized_array[$index][$idx] = array(
+            'name' => $name,
+            'type' => $file['type'][$idx],
+            'tmp_name' => $file['tmp_name'][$idx],
+            'error' => $file['error'][$idx],
+            'size' => $file['size'][$idx]
+          );
+        }
+      }
+
+      if(array_key_exists("files", $normalized_array)) return $normalized_array["files"];
+      else return $normalized_array;
+    }
+
     public static function sendEmail($data){
 
       $date = date('Y-m-d H:i:s');
@@ -104,7 +139,10 @@
     }
   }
 
-  // Reading the input
-  // $data = $_REQUEST;
+  // // Reading the input  
+  // $params = json_decode($_REQUEST["params"], true);
+
+  // Reading the input  
   $params = json_decode($_REQUEST["params"], true);
+  $params["files"] = Common::normalizeFiles($_FILES);
 ?>
