@@ -1,7 +1,7 @@
 <?php
   // Report all PHP errors
   error_reporting(E_ALL);
-  
+
   header('Access-Control-Allow-Origin: *');
   header('Access-Control-Allow-Headers: Content-Type');
   header('Access-Control-Allow-Methods: GET, POST, OPTIONS');  
@@ -97,6 +97,7 @@
       $to = implode(", ", $GLOBALS['recipients']);
       $subject = "New Order @ Platzieren.com | ".$username;
 
+      // Edit this code for mail attachment
       $txt = "<div style='font-size: 1rem;'>";
       $txt.= "  Hallo Paul,<br/><br/>";
       $txt.= "  A new user has placed an order. Below are the order details:<br/><br/>";
@@ -118,9 +119,6 @@
         "headers" => $headers,
         "env" => $GLOBALS['env']
       );
-
-      // if($GLOBALS['env'] === "local") return $emailObj;
-      // else return mail($to, $subject, $body, $headers);
 
       if($GLOBALS['env'] === "local"){
         return $emailObj;
