@@ -2,9 +2,9 @@
   mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
   
   // Choose an env -> ["local", "eca", "prod"]
-  $env = "local";
+  // $env = "local";
   // $env = "eca";
-  // $env = "prod";
+  $env = "prod";
 
   switch($env){
     case "eca": 

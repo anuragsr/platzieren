@@ -165,9 +165,10 @@
   }
 
   $m = new PLMenu($db);
+  // Common::respond($params, "Testing data", true); break;
+
   switch ($params["t"]) {
     case 'save': $m->addMenu($params["d"], $params["files"]); break;
-    // case 'save': Common::respond($params, "Testing", true); break;
     case 'get': $m->getMenu($params["d"]); break;
     default: $m->addOrder($params["d"]); break; // 'payment details'
   }

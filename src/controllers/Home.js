@@ -31,6 +31,7 @@ export default class HomeCtrl {
     $scope.$watch(() => this.menu.qrLogo, (n, o) => {
       // l(n, o)
       this.utils.createQRCode(n, this.viewLink)
+      this.utils.qrObj.toImage().catch(err => l(err))
     })
 
     this.init()
@@ -130,6 +131,7 @@ export default class HomeCtrl {
 
     $(() => {
       this.utils.createQRCode("assets/qr-logo.png", this.viewLink)
+      this.utils.qrObj.toImage().catch(err => l(err))
     })
   }
   addMenuPage(){
@@ -178,14 +180,18 @@ export default class HomeCtrl {
     l(this.formData, details)
 
     this.utils
-    .saveOrder({ ...this.formData, ...details })
+    .saveOrder({
+      ...this.formData, ...details
+      , menuId: this.menu.id
+      , qrCodeImg: $("#ctn-qr").prop('src')
+    })
     .then(res => {
       l(res)
       this.showLoader = false
       alert(res.message)
 
       // Send for download
-      this.utils.createQRCode(this.menu.qrLogo, this.viewLink, true)
+      this.utils.qrObj.downloadImage("QRCode")
     })
   }
 }

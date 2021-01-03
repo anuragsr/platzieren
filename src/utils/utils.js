@@ -307,6 +307,7 @@ export default class Utils {
         activePage: 0
       },
     ]
+    this.qrObj = {}
   }
   isMobile(){
     if(    navigator.userAgent.match(/Android/i)
@@ -394,17 +395,13 @@ export default class Utils {
     })
     return filled
   }
-  createQRCode(src, content, shouldDownload){
+  createQRCode(src, content){
     l("generating new QRCode")
-    const qrObj = new QrCodeWithLogo({
+    this.qrObj = new QrCodeWithLogo({
       content, width: 380,
       image: $("#ctn-qr")[0],
       logo: { src }
     })
-    qrObj.toImage().then(() => {
-      shouldDownload && this.$timeout(() => { qrObj.downloadImage("QRCode") }, 1000)
-    })
-    .catch(err => l(err))
   }
   post(url, data, files){
     const { $q, $rootScope } = this
@@ -469,7 +466,7 @@ export default class Utils {
   }
   saveOrder(order){
     const def = this.$q.defer()
-    this.post(`${this.API_URL}process.php`, {
+    this.post(`${this.API_URL}backend/process.php`, {
       t: "order", d: order
     })
     .then(res => def.resolve(res))

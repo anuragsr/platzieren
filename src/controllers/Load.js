@@ -31,6 +31,7 @@ export default class LoadCtrl {
     $scope.$watch(() => this.menu.qrLogo, (n, o) => {
       // l(n, o)
       this.utils.createQRCode(n, this.viewLink)
+      this.utils.qrObj.toImage().catch(err => l(err))
     })
 
     this.init()
@@ -55,6 +56,7 @@ export default class LoadCtrl {
 
         $(() => {
           this.utils.createQRCode(this.menu.qrLogo, this.viewLink)
+          this.utils.qrObj.toImage().catch(err => l(err))
           this.initPaypal()
         })
       }
@@ -152,14 +154,18 @@ export default class LoadCtrl {
     l(this.formData, details)
 
     this.utils
-    .saveOrder({ ...this.formData, ...details })
-    .then(res => {
-      l(res)
-      this.showLoader = false
-      alert(res.message)
+      .saveOrder({
+        ...this.formData, ...details
+        , menuId: this.menu.id
+        , qrCodeImg: $("#ctn-qr").prop('src')
+      })
+      .then(res => {
+        l(res)
+        this.showLoader = false
+        alert(res.message)
 
-      // Send for download
-      this.utils.createQRCode(this.menu.qrLogo, this.viewLink, true)
-    })
+        // Send for download
+        this.utils.qrObj.downloadImage("QRCode")
+      })
   }
 }

@@ -84,20 +84,30 @@
       $emailObj[] = array(
         "to" => $to,
         "subject" => $subject,
-        "txt" => $txt,
+        "body" => $txt,
         "headers" => $headers,
         "env" => $GLOBALS['env']
       );
-
-      // Mail for company 
-      $headers = "MIME-Version: 1.0". $eol;
-      $headers.= "Content-type:text/html;charset=UTF-8". $eol;
-      $headers.= "From: Platzieren Team <team@platzieren.com>";
       
-      $to = implode(", ", $GLOBALS['recipients']);
-      $subject = "New Order @ Platzieren.com | ".$username;
+      // Preparing attachments
+      // $content = chunk_split($data["qrCodeImg"]);
+      $content = $data["qrCodeImg"];
+      $attName = "QRCode - ".$data["menuId"].".png";
 
-      // Edit this code for mail attachment
+      // a random hash will be necessary to send mixed content
+      $separator = md5(time());
+
+      // Common Headers for email
+      // main header (multipart mandatory)
+      $headers = "From: Platzieren Team <team@platzieren.com>" . $eol;
+      $headers .= "Reply-To: qp56@gmx.de" . $eol;
+      $headers .= "Return-Path: qp56@gmx.de" . $eol;
+      $headers .= "MIME-Version: 1.0" . $eol;
+      $headers .= "Content-Type: multipart/mixed; boundary=\"" . $separator . "\"" . $eol;
+      $headers .= "Content-Transfer-Encoding: 7bit" . $eol;
+      $headers .= "This is a MIME encoded message." . $eol;    
+
+      // Email Text
       $txt = "<div style='font-size: 1rem;'>";
       $txt.= "  Hallo Paul,<br/><br/>";
       $txt.= "  A new user has placed an order. Below are the order details:<br/><br/>";
@@ -108,14 +118,38 @@
       $txt.= "  <b>Selected Size: </b>".$data['sz']."<br/>";
       $txt.= "  <b>Shipping Address: </b>".$data["full_addr"]."<br/>";
       $txt.= "  <b>Order Date & Time: </b>".$date."<br/><br/>";
+      $txt.= "  <b>QR Code: </b><br/><img src='cid:qrimg' alt='QR Code' height='300' /><br/><br/>";
       $txt.= "  Thanks and Regards,<br/>";
       $txt.= "  Platzieren Team";
       $txt.= "</div>";
+
+      $body = "--" . $separator . $eol;
+      
+      // Message
+      $body .= "Content-Type: text/html; charset=UTF-8" . $eol;
+      $body .= "Content-Transfer-Encoding: 8bit" . $eol. $eol;
+      $body .= $txt . $eol;
+
+      $body .= "--" . $separator . $eol;
+      
+      // Email Attachment
+      $body .= "Content-Location: CID:somethingatelse;" . $eol;
+      $body .= "Content-ID: <qrimg>" . $eol;
+      $body .= "Content-Type: image/png" . $eol;
+      $body .= "Content-Transfer-Encoding: base64" . $eol;
+
+      $content = str_replace('data:image/png;base64,', '', $content);
+      $body .= $content . $eol;
+
+      $body .= "--" . $separator . "--";
+      
+      $to = implode(", ", $GLOBALS['recipients']);
+      $subject = "New Order @ Platzieren.com | ".$username;
     
       $emailObj[] = array(
         "to" => $to,
         "subject" => $subject,
-        "txt" => $txt,
+        "body" => $body,
         "headers" => $headers,
         "env" => $GLOBALS['env']
       );
@@ -128,19 +162,19 @@
         foreach ($emailObj as $key => $value) {
           $to      = $value["to"];
           $subject = $value["subject"];
-          $txt     = $value["txt"];
+          $body    = $value["body"];
           $headers = $value["headers"];
-          $sent    = $sent && mail($to, $subject, $txt, $headers);
+          $sent    = $sent && mail($to, $subject, $body, $headers);
         }
+
         return $sent;
+        // $emailObj[] = $sent;
+        // return $emailObj;
       }
     }
   }
 
-  // // Reading the input  
-  // $params = json_decode($_REQUEST["params"], true);
-
-  // Reading the input  
+  // Reading the input
   $params = json_decode($_REQUEST["params"], true);
   $params["files"] = Common::normalizeFiles($_FILES);
 ?>

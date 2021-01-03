@@ -37,9 +37,7 @@ module.exports = {
       {
         test: /\.(scss|sass)$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
+          MiniCssExtractPlugin.loader,
           {
             // translates CSS into CommonJS
             loader: 'css-loader',
@@ -89,13 +87,14 @@ module.exports = {
       // Inject the js bundle at the end of the body of the given template
       inject: 'body',
     }),
-    new BaseHrefWebpackPlugin({ baseHref: '/platzieren/' }),
+    // new BaseHrefWebpackPlugin({ baseHref: '/platzieren/' }),
+    new BaseHrefWebpackPlugin({ baseHref: '/' }),
     new CleanWebpackPlugin(buildPath),
     new CopyWebpackPlugin({
       patterns: [{ from: __dirname + '/public' }]
     }),
     new MiniCssExtractPlugin({ filename: 'styles.[contenthash].css' }),
-    new MiniCssExtractPlugin({ filename: 'carousel.css' }),
+    // new MiniCssExtractPlugin({ filename: 'carousel.css' }),
     new OptimizeCssAssetsPlugin({
       cssProcessor: require('cssnano'),
       cssProcessorOptions: {

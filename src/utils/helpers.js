@@ -1,11 +1,11 @@
 const wc = window.console
-export const l = console.log.bind(wc)
-// export const l = () => {} // noop for console.log shorthand
+// export const l = console.log.bind(wc)
+export const l = () => {} // noop for console.log shorthand
 export const cl = console.clear.bind(wc)
 export const env = {
-  CURR: "LOCAL",
+  // CURR: "LOCAL",
   // CURR: "ECA",
-  // CURR: "PROD",
+  CURR: "PROD",
   LOCAL: {
     FE_URL: "http://localhost:8080/",
     IMG_URL: "http://localhost:8080/",
