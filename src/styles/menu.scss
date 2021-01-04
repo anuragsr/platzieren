@@ -5,8 +5,14 @@
   .ctn-menu-bg{
     @extend %fw;
     position: relative;
+    z-index: 1;
     &.menu-edit{ display: block; }
     &.menu-download{ display: none; }
+    &.ctn-menu-bg-outer{
+      position: absolute;
+      top: 0; left:0;
+      z-index: 0;
+    }
     .ctn-menu-outer{ @extend %fw; }
     .ctn-menu-inner{
       overflow: hidden;
@@ -237,9 +243,12 @@
     }
     &.menu-jap{
       height: 1980px;
-      background-image: url(assets/japanese/base.jpg);
+      background-image: url(assets/japanese/base-inner.png);
       background-size: 1840px 1985px;
       background-position: 50% 0%;
+      &.ctn-menu-bg-outer{
+        background-image: url(assets/japanese/base-outer.jpg);
+      }
       @include media("<=tab"){
         background-size: 1010px 1160px;
         height: 900px;
@@ -340,10 +349,13 @@
       }
     }
     &.menu-pizza{
-      background-image: url(assets/pizza/base.jpg);
+      background-image: url(assets/pizza/base-inner.png);
       background-size: 1840px 1405px;
       background-position: 0% 0%;
       height: 1400px;
+      &.ctn-menu-bg-outer{
+        background-image: url(assets/pizza/base-outer.jpg);
+      }
       @include media("<=tab") {
         background-size: cover;
         background-position: 60% 0%;
@@ -417,8 +429,8 @@
       }
       .ctn-clip{
         background-image: url(assets/pizza/clip.png);
-        top: -155px;
-        left: 55px;
+        top: -160px;
+        left: 54px;
         background-size: 270px 1405px;
         background-position: 0% 0%;
         height: 1390px;
