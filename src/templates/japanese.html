@@ -43,16 +43,18 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="ctn-btn">
-      <div class="upl">
-        <label for="qr-logo">Logo for QR code:</label>
-        <img ng-src="{{ $ctrl.menu.qrLogo }}" alt="" />
+      <div class="upload">
         <input
           ng-model="$ctrl.menu.qrLogoFile"
           fileread="$ctrl.menu.qrLogo"
           type="file" id="qr-logo" />
+        <label for="qr-logo">
+          <span ng-show="$ctrl.menu.qrLogo === ''">Insert logo here</span>
+          <img ng-hide="$ctrl.menu.qrLogo === ''" ng-src="{{ $ctrl.menu.qrLogo }}" alt="" />
+        </label>
       </div>
+    </div>
+    <div class="ctn-btn">
       <nav>
         <ul class="pagination justify-content-center">
           <li class="page-item">

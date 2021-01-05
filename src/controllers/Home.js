@@ -130,7 +130,7 @@ export default class HomeCtrl {
     this.addMenuPage()
 
     $(() => {
-      this.utils.createQRCode("assets/qr-logo.png", this.viewLink)
+      this.utils.createQRCode(this.menu.qrLogo, this.viewLink)
       this.utils.qrObj.toImage().catch(err => l(err))
     })
   }

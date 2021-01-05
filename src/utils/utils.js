@@ -90,7 +90,7 @@ export default class Utils {
       {
         title: 'Sushi',
         img: 'assets/sushi.png',
-        qrLogo: 'assets/qr-logo.png',
+        qrLogo: '',
         qrLogoFile: '',
         fields: [
           {
@@ -193,7 +193,7 @@ export default class Utils {
       {
         title: 'Pizza',
         img: 'assets/pizza.png',
-        qrLogo: 'assets/qr-logo.png',
+        qrLogo: '',
         qrLogoFile: '',
         fields: [
           {
@@ -400,7 +400,7 @@ export default class Utils {
     this.qrObj = new QrCodeWithLogo({
       content, width: 380,
       image: $("#ctn-qr")[0],
-      logo: { src }
+      logo: { src: src === ''?'assets/qr-logo.png':src }
     })
   }
   post(url, data, files){
@@ -454,7 +454,10 @@ export default class Utils {
   }
   saveMenu(menu){
     const { id, title, pages, isDark, qrLogo, qrLogoFile } = menu
-    , formData = { id, title, pages, isDark, qrLogo, base: this.API_URL}
+    , formData = {
+      id, title, pages, isDark, base: this.API_URL,
+      qrLogo: qrLogo === ''?'assets/qr-logo.png':qrLogo
+    }
 
     const def = this.$q.defer()
     this.post(`${this.API_URL}backend/process.php`, {

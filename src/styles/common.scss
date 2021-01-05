@@ -202,6 +202,124 @@ button.btn-pr{
   }
 }
 
+// Floating box
+.ctn-float-box{
+  position: absolute;
+  //top: $headHeight + $subHeadHeight + 80;
+  top: 80px;
+  right: 125px;
+  background: $pr;
+  width: 225px;
+  transition: right .3s;
+  border-radius: 5px;
+  padding: 25px 15px;
+  color: $w;
+  font-family: $ex;
+  z-index: 1;
+  @include media("<=sld") {
+    right: 25px;
+  }
+  > .inner{
+    @extend %fhw;
+    @extend %j-c;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+    .bar{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 10px;
+      background: $sc;
+    }
+    .b-item{
+      @extend %fw;
+      margin: 10px 0;
+      span{ font-size: 15px; }
+      &.perc{
+        div{ position: relative; font-size: 50px; }
+        sup{
+          position: relative;
+          left: 5px; top: -20px;
+          font-size: 24px;
+        }
+      }
+      &.no-fields{
+        .num{
+          @extend %j-s-b;
+          padding: 15px 25px;
+          color: $w;
+          border-radius: 2px;
+          background-color: rgba($sc, .5);
+          margin-bottom: 10px;
+          img{
+            @extend %cp;
+            &:hover{ filter: invert(100%); }
+          }
+        }
+      }
+      &.outlined{
+        @extend %cp;
+        border-radius: 2px;
+        border: solid 1px $sc;
+        padding: 10px 5px;
+      }
+      &.hov{
+        &:hover{
+          background: $sc;
+          color: $pr;
+        }
+      }
+      &.zoom{
+        @extend %j-s-b;
+        padding: 10px 25px;
+        button{
+          @extend %j-c;
+          font-size: 24px;
+          color: $pr;
+          height: 24px;
+          padding-top: 0;
+        }
+      }
+      &.qr-btn{
+        button{
+          @extend %j-s-b;
+          color: $pr;
+          img{ height: 50px; }
+          div{ font-weight: 700; }
+          &:hover{
+            background-color: #f8f9fa;
+            border-color: #f8f9fa;
+          }
+        }
+      }
+      &.veg{
+        text-align: left;
+        div{
+          padding: 5px;
+          padding-left: 25%;
+          @extend %cp;
+          border-radius: 2px;
+          border: solid 1px $tr;
+          &:hover{ border: solid 1px $sc; }
+        }
+        img{
+          margin-right: 10px;
+          height: 22px;
+        }
+      }
+    }
+  }
+}
+
+.is-pizza .ctn-float-box{
+  @include media("<=ld") {
+    right: unset;
+    left: 25px;
+  }
+}
+
 .ctn-btn{
   position: relative;
   z-index: 1;
@@ -258,5 +376,3 @@ button.btn-pr{
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
-.deb-obj{ display: none; }

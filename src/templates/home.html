@@ -47,7 +47,11 @@
     </div>
   </section>
 
-  <section class="menu-editor" ng-class="{ 'dark': homeCtrl.menu.isDark }">
+  <section class="menu-editor"
+    ng-class="{
+      'dark': homeCtrl.menu.isDark,
+      'is-pizza': homeCtrl.menu.title === 'Pizza'
+    }">
     <coffee
       ng-if="homeCtrl.menu.title === 'Allge.'"
       menu="homeCtrl.menu"
