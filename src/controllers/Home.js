@@ -3,23 +3,18 @@ import { l } from '../utils/helpers'
 
 export default class HomeCtrl {
   constructor($scope, $state, $timeout, utils) {
-    this.utils = utils
     this.$scope = $scope
     this.$state = $state
+    this.$timeout = $timeout
+    this.utils = utils
+
+    this.idx = 0 // For menu selection on top
 
     this.showLoader = true
     this.filledFields = 0
     this.zoom = 1
-    this.idx = 0
 
-    this.formData = {
-      sz: 'S', sizes: ['S', 'M', 'L'],
-      f: '', l: '',
-      em: '', ph: '',
-      add1: '', add2: '',
-      c: '', p: ''
-    }
-
+    this.formData = this.utils.formData
     this.menus = this.utils.menus
     this.menu = {}
 
@@ -37,17 +32,21 @@ export default class HomeCtrl {
     this.init()
   }
   init(){
-    // l(this.$state.current.name)
-    // const { menus } = this.utils
-    // this.createMenu(menus[0])
+    l("Current State:", this.$state.current.name)
 
     const { menus } = this.utils
     , { name } = this.$state.current
     , menu = this.utils.fl('filter', menus, { state: name })[0]
 
     this.createMenu(menu)
-    this.createSlider()
-    $(() => this.initPaypal())
+    this.slides = this.utils.createSlider()
+    $(() => {
+      this.initPaypal()
+      $('#buyModal').on('shown.bs.modal', e => {
+        l('modal opened')
+        this.$timeout(() => { this.slides = this.utils.createSlider() }, 0)
+      })
+    })
   }
   initPaypal(){
     paypal.Buttons({
@@ -91,15 +90,13 @@ export default class HomeCtrl {
         } else alert('Something went wrong, please try again!')
       }),
       onError: err => { l('Error', err); alert('Something went wrong, please try again!') },
-      onCancel: data => l('Cancelled', data)
+      onCancel: data => {
+        l('Cancelled', data)
+        this.showLoader = false
+        this.$scope.$apply()
+      }
     })
     .render('#ctn-pp-btn')
-  }
-  createSlider(){
-    let slides = this.slides = []
-    for (let i = 0; i < 3; i++) {
-      slides.push({ image: 'assets/sl1.png' })
-    }
   }
   new(p){
     if(confirm('Möchten Sie wirklich ein neues Dokument erstellen?')){

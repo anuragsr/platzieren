@@ -34,12 +34,12 @@ import 'angular-ui-carousel/dist/ui-carousel.min.css'
 
 WebFont.load({
   google: { families: ['Exo 2:400,700', 'Open Sans:400,700', 'Ruthie:400'] }
-  , active: function() { l("Webfonts loaded") }
+  , active: function() { l("webfonts loaded") }
 })
 
 const bindings = {
-  menu: '=', filledFields: '=',
-  zoom: '=', save: '<', showLoader: '='
+  menu: '=', filledFields: '=', zoom: '=',
+  save: '<', showLoader: '='
 }
 , clipboard = new ClipboardJS('.ctn-link .desc, .inner.link')
 
@@ -56,7 +56,7 @@ angular
 .constant('ENV', env)
 .service('utils', ['$q', '$state', '$filter', '$rootScope', '$timeout', 'ENV', Utils])
 .controller('HomeCtrl', ['$scope', '$state', '$timeout', 'utils', HomeCtrl])
-.controller('LoadCtrl', ['$scope', '$state', '$stateParams', 'utils', LoadCtrl])
+.controller('LoadCtrl', ['$scope', '$state', '$stateParams', '$timeout', 'utils', LoadCtrl])
 .controller('ImgCtrl',  ['$scope', '$state', '$stateParams', '$timeout', 'utils', ImgCtrl])
 .controller('MenuCtrl', ['$scope', '$timeout', 'utils', MenuCtrl])
 .directive('h', Header)

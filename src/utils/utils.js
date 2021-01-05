@@ -307,6 +307,16 @@ export default class Utils {
         activePage: 0
       },
     ]
+    this.formData = {
+      activeStep: 0,
+      sz: 'S', sizes: ['S', 'M', 'L'],
+      f: '', l: '',
+      em: '',
+      // ph: '',
+      add1: '',
+      // add2: '',
+      c: '', p: ''
+    }
     this.qrObj = {}
   }
   isMobile(){
@@ -343,6 +353,14 @@ export default class Utils {
       editLink:`${this.FE_URL}${state}/${id}`,
       viewLink:`${this.IMG_URL}view/${state}/${id}`
     }
+  }
+  createSlider(){
+    l('create slider')
+    let slides = []
+    for (let i = 0; i < 3; i++) {
+      slides.push({ image: 'assets/sl1.png' })
+    }
+    return slides
   }
   focus(dir, focusedEl, menu){
     // l(dir, focusedEl, menu)

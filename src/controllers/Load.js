@@ -2,24 +2,18 @@ import $ from 'jquery'
 import { l } from '../utils/helpers'
 
 export default class LoadCtrl {
-  constructor($scope, $state, $stateParams, utils) {
-    // l($stateParams)
-    this.utils = utils
-    this.menuId = $stateParams.lId
+  constructor($scope, $state, $stateParams, $timeout, utils) {
     this.$scope = $scope
     this.$state = $state
+    this.menuId = $stateParams.lId
+    this.$timeout = $timeout
+    this.utils = utils
 
+    this.showLoader = true
     this.filledFields = 0
     this.zoom = 1
 
-    this.formData = {
-      sz: 'S', sizes: ['S', 'M', 'L'],
-      f: '', l: '',
-      em: '', ph: '',
-      add1: '', add2: '',
-      c: '', p: ''
-    }
-
+    this.formData = this.utils.formData
     this.menus = this.utils.menus
     this.menu = {}
 
@@ -58,6 +52,10 @@ export default class LoadCtrl {
           this.utils.createQRCode(this.menu.qrLogo, this.viewLink)
           this.utils.qrObj.toImage().catch(err => l(err))
           this.initPaypal()
+          $('#buyModal').on('shown.bs.modal', e => {
+            l('modal opened')
+            this.$timeout(() => { this.slides = this.utils.createSlider() }, 0)
+          })
         })
       }
     })
@@ -104,7 +102,11 @@ export default class LoadCtrl {
         } else alert('Something went wrong, please try again!')
       }),
       onError: err => { l('Error', err); alert('Something went wrong, please try again!') },
-      onCancel: data => l('Cancelled', data)
+      onCancel: data => {
+        l('Cancelled', data)
+        this.showLoader = false
+        this.$scope.$apply()
+      }
     })
     .render('#ctn-pp-btn')
   }
