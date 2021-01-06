@@ -50,7 +50,9 @@
   <section class="menu-editor"
     ng-class="{
       'dark': homeCtrl.menu.isDark,
-      'is-pizza': homeCtrl.menu.title === 'Pizza'
+      'is-pizza': homeCtrl.menu.title === 'Pizza',
+      'is-coffee': homeCtrl.menu.title === 'Allge.',
+      'is-jap': homeCtrl.menu.title === 'Sushi'
     }">
     <coffee
       ng-if="homeCtrl.menu.title === 'Allge.'"
@@ -132,14 +134,14 @@
         </div>
         Nacht Modus
       </div>
-      <div class="btn-item ctn-copy-link">
+      <!--<div class="btn-item ctn-copy-link">
         <div class="inner link" ng-click="homeCtrl.save(true)" data-clipboard-text="{{ homeCtrl.editLink }}" title="{{ homeCtrl.editLink }}">
           <i class="fa fa-link"></i>
           <div class="text">{{ homeCtrl.editLink }}</div>
         </div>
         <div class="desc">Dein Link<br/>(Klicken Sie, um zu kopieren)</div>
       </div>
-      <button class="btn-item btn btn-pr" ng-click="homeCtrl.openPDF()">Vorschau QR Menu</button>
+      <button class="btn-item btn btn-pr" ng-click="homeCtrl.openPDF()">Vorschau QR Menu</button>-->
       <button
         class="btn-item btn btn-pr btn-qr-main"
         ng-click="homeCtrl.save(true)"
@@ -280,15 +282,35 @@
             After that you can decide if you agree to the package and then you can conclude your contract.
           </div>
           <div class="pre-title cost">14,99 EUR</div>
+          <div class="d-flex d-md-none justify-content-between align-items-center">
+            <div class="ctn-size">
+              <div
+                ng-click="homeCtrl.formData.sz = 'S'"
+                ng-class="{'active': homeCtrl.formData.sz === 'S'}"
+              >S</div>
+              <div
+                ng-click="homeCtrl.formData.sz = 'M'"
+                ng-class="{'active': homeCtrl.formData.sz === 'M'}"
+              >M</div>
+              <div
+                ng-click="homeCtrl.formData.sz = 'L'"
+                ng-class="{'active': homeCtrl.formData.sz === 'L'}"
+              >L</div>
+            </div>
+            <button class="btn btn-pr"
+              data-toggle="modal" data-target="#buyModal"
+              ng-click="homeCtrl.formData.activeStep = 1"
+              >Jetz kaufen</button>
+          </div>
         </div>
       </div>
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid d-none d-md-block">
       <div class="row row-wt">
         <div class="col-12">
           <div class="container">
             <div class="row">
-              <div class="col-8 d-none d-md-flex"></div>
+              <div class="col-8"></div>
               <div class="col-md-4 text-left">
                 <div class="ctn-size">
                   <div
@@ -306,6 +328,7 @@
                 </div>
                 <button class="btn btn-pr"
                   data-toggle="modal" data-target="#buyModal"
+                  ng-click="homeCtrl.formData.activeStep = 1"
                   >Jetz kaufen</button>
               </div>
             </div>
@@ -382,10 +405,27 @@
                         After that you can decide if you agree to the package and then you can conclude your contract.
                       </div>
                       <div class="pre-title cost">14,99 EUR</div>
+                      <div class="d-flex d-md-none justify-content-between align-items-center">
+                        <div class="ctn-size">
+                          <div
+                            ng-click="homeCtrl.formData.sz = 'S'"
+                            ng-class="{'active': homeCtrl.formData.sz === 'S'}"
+                          >S</div>
+                          <div
+                            ng-click="homeCtrl.formData.sz = 'M'"
+                            ng-class="{'active': homeCtrl.formData.sz === 'M'}"
+                          >M</div>
+                          <div
+                            ng-click="homeCtrl.formData.sz = 'L'"
+                            ng-class="{'active': homeCtrl.formData.sz === 'L'}"
+                          >L</div>
+                        </div>
+                        <button class="btn btn-pr" ng-click="homeCtrl.formData.activeStep = 1">Jetz kaufen</button>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="container-fluid">
+                <div class="container-fluid d-none d-md-block">
                   <div class="row row-wt pt-0 pb-4">
                     <div class="col-12">
                       <div class="container">
@@ -417,7 +457,7 @@
             </div>
             <div class="step step2" ng-show="homeCtrl.formData.activeStep === 1">
               <div class="d-flex justify-content-between align-items-center">
-                <a ng-click="homeCtrl.formData.activeStep = 0" href="#">< Back</a>
+                <!--<a ng-click="homeCtrl.formData.activeStep = 0" href="#">< Back</a>-->
                 <h5 class="mb-0">Please enter your details below</h5>
               </div><hr class="mb-3"/>
               <form class="text-left" name="homeCtrl.payForm">

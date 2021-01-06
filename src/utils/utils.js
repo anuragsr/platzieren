@@ -312,9 +312,9 @@ export default class Utils {
       sz: 'S', sizes: ['S', 'M', 'L'],
       f: '', l: '',
       em: '',
-      // ph: '',
+      ph: '',
       add1: '',
-      // add2: '',
+      add2: '',
       c: '', p: ''
     }
     this.qrObj = {}

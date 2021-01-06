@@ -319,6 +319,7 @@ button.btn-pr{
     left: 25px;
   }
 }
+.is-coffee .ctn-btn.no-desktop{ margin-top: 50px; }
 
 .ctn-btn{
   position: relative;
@@ -361,7 +362,10 @@ button.btn-pr{
     font-size: 40px;
     font-weight: 700;
     margin-bottom: 5vh;
-    @include media("<=tab"){ font-size: 35px; }
+    @include media("<=tab"){
+      font-size: 35px;
+      line-height: 1.2;
+    }
   }
   .pre-title{
     font-size: 25px;
@@ -415,24 +419,27 @@ button.btn-pr{
     background: $w;
     padding-top: 35px;
     padding-bottom: 35px;
-    .ctn-size{
-      @extend %j-f-s;
-      color: $pr;
-      font-family: $ex;
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 50px;
-      div{
-        cursor: pointer;
-        padding: 10px 20px;
-        border-bottom: 5px solid transparent;
-        &:hover, &.active{
-          border-color: $pr;
-        }
+  }
+  .ctn-size{
+    @extend %j-f-s;
+    color: $pr;
+    font-family: $ex;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 50px;
+    @include media("<=tab") { margin-bottom: 10px; }
+    div{
+      cursor: pointer;
+      border-bottom: 5px solid transparent;
+      @include media("<=tab") { padding: 10px 15px; }
+      padding: 10px 20px;
+      &:hover, &.active{
+        border-color: $pr;
       }
     }
-    button{
+    &+button{
       font-size: 20px;
+      @include media("<=tab") { font-size: 14px; }
       font-weight: 700;
     }
   }

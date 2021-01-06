@@ -27,7 +27,9 @@
   <section class="menu-editor"
     ng-class="{
       'dark': loadCtrl.menu.isDark,
-      'is-pizza': loadCtrl.menu.title === 'Pizza'
+      'is-pizza': loadCtrl.menu.title === 'Pizza',
+      'is-coffee': loadCtrl.menu.title === 'Allge.',
+      'is-jap': loadCtrl.menu.title === 'Sushi'
     }">
     <coffee
       ng-if="loadCtrl.menu.title === 'Allge.'"
@@ -108,7 +110,7 @@
         </div>
         Nacht Modus
       </div>
-      <button class="btn-item btn btn-pr" ng-click="loadCtrl.openPDF()">Vorschau QR Menu</button>
+      <!--<button class="btn-item btn btn-pr" ng-click="loadCtrl.openPDF()">Vorschau QR Menu</button>-->
       <button
         class="btn-item btn btn-pr btn-qr-main"
         ng-click="loadCtrl.save(true)"
@@ -221,7 +223,7 @@
             </div>
             <div class="step step2" ng-show="loadCtrl.formData.activeStep === 1">
               <div class="d-flex justify-content-between align-items-center">
-                <a ng-click="loadCtrl.formData.activeStep = 0" href="#">< Back</a>
+                <!--<a ng-click="loadCtrl.formData.activeStep = 0" href="#">< Back</a>-->
                 <h5 class="mb-0">Please enter your details below</h5>
               </div><hr class="mb-3"/>
               <form class="text-left" name="loadCtrl.payForm">

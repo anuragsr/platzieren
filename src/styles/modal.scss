@@ -14,15 +14,25 @@
     max-width: fit-content;
     .step1{
       margin: -1rem;
-      width: 900px;
+      @include media(">tab") { width: 900px; }
     }
     .section-carousel{
       padding-top: 1vh;
-      .ctn-carousel .ui-carousel{
-        height: 350px;
-        left: 10%;
-        .carousel-item .ctn-inner{
+      .container{
+        @include media("<=tab") { padding: 1vh 3vh; }
+      }
+      .ctn-carousel{
+        @include media("<=tab") { height: 300px; }
+        .ui-carousel{
           height: 350px;
+          left: 10%;
+          @include media("<=tab") {
+            height: 250px; left: 0;
+          }
+          .carousel-item .ctn-inner{
+            height: 350px;
+            @include media("<=tab") { height: 250px; }
+          }
         }
       }
       .cost{

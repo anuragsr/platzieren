@@ -46,6 +46,10 @@ export default class HomeCtrl {
         l('modal opened')
         this.$timeout(() => { this.slides = this.utils.createSlider() }, 0)
       })
+      $('#buyModal').on('hidden.bs.modal', e => {
+        l('modal closed')
+        this.formData.activeStep = 0
+      })
     })
   }
   initPaypal(){

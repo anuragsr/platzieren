@@ -94,7 +94,6 @@ module.exports = {
       patterns: [{ from: __dirname + '/public' }]
     }),
     new MiniCssExtractPlugin({ filename: 'styles.[contenthash].css' }),
-    // new MiniCssExtractPlugin({ filename: 'carousel.css' }),
     new OptimizeCssAssetsPlugin({
       cssProcessor: require('cssnano'),
       cssProcessorOptions: {
