@@ -43,15 +43,17 @@
         </div>
       </div>
       <div class="upload">
-            <input
-                    ng-model="$ctrl.menu.qrLogoFile"
-                    fileread="$ctrl.menu.qrLogo"
-                    type="file" id="qr-logo" />
-            <label for="qr-logo">
-                <span ng-show="$ctrl.menu.qrLogo === ''">Insert logo here</span>
-                <img ng-hide="$ctrl.menu.qrLogo === ''" ng-src="{{ $ctrl.menu.qrLogo }}" alt="" />
-            </label>
-        </div>
+        <input
+                ng-model="$ctrl.menu.qrLogoFile"
+                fileread="$ctrl.menu.qrLogo"
+                type="file" id="qr-logo" />
+        <label for="qr-logo" ng-style="{
+          backgroundColor: $ctrl.menu.qrLogo === ''?'#fff':'transparent'
+        }">
+          <span ng-show="$ctrl.menu.qrLogo === ''">Insert logo here</span>
+          <img ng-hide="$ctrl.menu.qrLogo === ''" ng-src="{{ $ctrl.menu.qrLogo }}" alt="" />
+        </label>
+      </div>
     </div>
     <div class="ctn-btn">
       <nav>
