@@ -3,7 +3,7 @@
   <section class="sub-header">
     <div class="container">
       <div class="inner">
-        <div class="s-item box ctn-save" ng-click="homeCtrl.save()">
+        <div class="s-item box ctn-save" ng-click="homeCtrl.save()" data-clipboard-text="{{ homeCtrl.editLink }}">
           <img src="assets/save-icon.png" alt=""/>
           <div>Speichem</div>
         </div>
@@ -261,13 +261,13 @@
 
               <carousel-prev>
                 <button class="carousel-btn">
-                  <img src="assets/sl-l.png" alt="">
+                  <img src="assets/slider/sl-l.png" alt="">
                 </button>
               </carousel-prev>
 
               <carousel-next>
                 <button class="carousel-btn">
-                  <img src="assets/sl-r.png" alt="">
+                  <img src="assets/slider/sl-r.png" alt="">
                 </button>
               </carousel-next>
 

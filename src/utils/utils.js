@@ -354,12 +354,35 @@ export default class Utils {
       viewLink:`${this.IMG_URL}view/${state}/${id}`
     }
   }
-  createSlider(){
-    l('create slider')
-    let slides = []
-    for (let i = 0; i < 3; i++) {
-      slides.push({ image: 'assets/sl1.png' })
+  createSlider(type){
+    l('create slider:', type)
+    let slides
+    switch(type){
+      case 'S':
+        slides = [
+          { image: 'assets/slider/s/1.png' },
+          { image: 'assets/slider/s/2.png' },
+          { image: 'assets/slider/s/3.png' }
+        ]
+        break;
+      case 'M':
+        slides = [
+          { image: 'assets/slider/m/1.png' },
+          { image: 'assets/slider/m/2.png' },
+          { image: 'assets/slider/m/3.png' }
+        ]
+        break;
+      default:
+        slides = [
+          { image: 'assets/slider/l/1.png' },
+          { image: 'assets/slider/l/2.png' },
+          { image: 'assets/slider/l/3.png' }
+        ]
+        break;
     }
+    // for (let i = 0; i < 3; i++) {
+    //   slides.push({ image: 'assets/sl1.png' })
+    // }
     return slides
   }
   focus(dir, focusedEl, menu){

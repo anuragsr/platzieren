@@ -28,6 +28,9 @@ export default class HomeCtrl {
       this.utils.createQRCode(n, this.viewLink)
       this.utils.qrObj.toImage().catch(err => l(err))
     })
+    $scope.$watch(() => this.formData.sz, (n, o) => {
+      this.$timeout(() => { this.slides = this.utils.createSlider(n) }, 0)
+    })
 
     this.init()
   }
@@ -39,12 +42,13 @@ export default class HomeCtrl {
     , menu = this.utils.fl('filter', menus, { state: name })[0]
 
     this.createMenu(menu)
-    this.slides = this.utils.createSlider()
+    this.slides = this.utils.createSlider(this.formData.sz)
+
     $(() => {
       this.initPaypal()
       $('#buyModal').on('shown.bs.modal', e => {
         l('modal opened')
-        this.$timeout(() => { this.slides = this.utils.createSlider() }, 0)
+        this.$timeout(() => { this.slides = this.utils.createSlider(this.formData.sz) }, 0)
       })
       $('#buyModal').on('hidden.bs.modal', e => {
         l('modal closed')
@@ -165,6 +169,7 @@ export default class HomeCtrl {
       l(res)
       this.showLoader = false
       if(!isAuto) alert(res.message)
+      if(this.utils.isMobile()) alert('Link in die Zwischenablage kopiert')
     })
   }
   openPDF(){

@@ -1,7 +1,6 @@
 .menu-editor{
   position: relative;
   z-index: 0;
-
   .ctn-menu-bg{
     @extend %fw;
     position: relative;
@@ -489,7 +488,6 @@
       }
     }
   }
-
   &.dark{
     .menu-jap .ctn-menu{
       background: url(assets/japanese/menu-dark.jpg) no-repeat;
@@ -515,32 +513,21 @@
       }
     }
   }
+
   .deb-obj{
-    background: black;
+    background: $b;
     position: fixed;
     left: 0;
     bottom: 0;
     text-align: left;
     height: 500px;
     width: 350px;
-    color: #fff;
+    color: $w;
   }
   .deb-obj{ display: none; }
 }
 
 .ctn-img {
-  //.btn-dl{
-  //  @extend %j-c;
-  //  margin: 20px auto;
-  //  height: unset;
-  //  font-family: $ex;
-  //  font-weight: 700;
-  //  img{
-  //    filter: invert(100%);
-  //    height: 20px;
-  //    margin-right: 15px;
-  //  }
-  //}
   .menu-editor{
      @extend %no-select;
     .ctn-menu-bg{
@@ -589,5 +576,13 @@
       background: none;
     }
     .upload{ display: none; }
+    .foot-text{
+      font-family: $os;
+      color: $w;
+      font-size: 24px;
+      padding: 20px;
+      padding-top: 0;
+      div{ font-weight: 700; }
+    }
   }
 }

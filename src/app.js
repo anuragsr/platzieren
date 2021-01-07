@@ -10,7 +10,7 @@ import './utils/portal'
 // Controllers & Directives
 import HomeCtrl from './controllers/Home'
 import LoadCtrl from './controllers/Load'
-import ImgCtrl from './controllers/Img'
+import ImgCtrl from './controllers/View'
 import MenuCtrl from './controllers/Menus'
 import { Header, Footer, Loader } from './directives/Partials'
 import FocusOn from './directives/FocusOn'
@@ -41,11 +41,13 @@ const bindings = {
   menu: '=', filledFields: '=', zoom: '=',
   save: '<', showLoader: '='
 }
-, clipboard = new ClipboardJS('.ctn-link .desc, .inner.link')
+, clipboard = new ClipboardJS('.ctn-save, .inner.link')
 
 clipboard.on('success', function(e) {
+  // l(e)
   e.clearSelection()
-  alert('In die Zwischenablage kopiert - ' + e.text)
+  if (!e.trigger.classList.contains("ctn-save"))
+    alert('In die Zwischenablage kopiert - ' + e.text)
 })
 clipboard.on('error', function(e) {
   alert('Beim Kopieren ist ein Fehler aufgetreten, bitte manuell kopieren.')
