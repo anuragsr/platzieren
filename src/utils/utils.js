@@ -346,12 +346,15 @@ export default class Utils {
     }
     return randomStr
   }
+  getViewLink(url, state, id){
+    return `${url}view/${state}/${id}`
+  }
   createLink(state){
     const id = this.generateId(6)
     return {
       id,
       editLink:`${this.FE_URL}${state}/${id}`,
-      viewLink:`${this.IMG_URL}view/${state}/${id}`
+      viewLink: this.getViewLink(this.IMG_URL, state, id)
     }
   }
   createSlider(type){

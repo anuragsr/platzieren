@@ -1,5 +1,5 @@
 <div class="ctn-menu-bg ctn-menu-bg-outer menu-pizza"></div>
-<div class="ctn-menu-bg menu-pizza menu-edit" ng-style="{ transformOrigin: 'center top', transform: 'scale('+ $ctrl.zoom +')', paddingBottom: ($ctrl.zoom * 100) + 'px' }">
+<div class="ctn-menu-bg menu-pizza menu-edit" ng-style="{ transformOrigin: 'left top', transform: 'scale('+ $ctrl.zoom +')', paddingBottom: ($ctrl.zoom * 100) + 'px' }">
   <div class="ctn-menu-outer">
     <div class="ctn-menu-inner">
       <div class="ctn-menu-page"
@@ -48,7 +48,8 @@
                 fileread="$ctrl.menu.qrLogo"
                 type="file" id="qr-logo" />
         <label for="qr-logo" ng-style="{
-          backgroundColor: $ctrl.menu.qrLogo === ''?'#fff':'transparent'
+          backgroundColor: $ctrl.menu.qrLogo === '' ? '#fff':'transparent',
+          backgroundImage: $ctrl.menu.qrLogo === '' ? 'url(assets/up-bg.png)':'none'
         }">
           <span ng-show="$ctrl.menu.qrLogo === ''">Insert logo here</span>
           <img ng-hide="$ctrl.menu.qrLogo === ''" ng-src="{{ $ctrl.menu.qrLogo }}" alt="" />

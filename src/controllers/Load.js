@@ -43,9 +43,10 @@ export default class LoadCtrl {
       }
       else {
         this.menu = res.data.menu
+        if(this.menu.title === 'Pizza') this.zoom = .8
 
         const menuData = this.utils.fl('filter', this.menus, { title: this.menu.title})[0]
-        this.viewLink = `${this.utils.IMG_URL}view/${menuData.state}/${this.menuId}`
+        this.viewLink = this.utils.getViewLink(this.utils.IMG_URL, menuData.state, this.menuId)
         l(this.viewLink)
         this.menu.fields = menuData.fields
         this.menu.titles = menuData.titles

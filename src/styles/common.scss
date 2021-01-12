@@ -313,12 +313,12 @@ button.btn-pr{
   }
 }
 
-.is-pizza .ctn-float-box{
-  @include media("<=ld") {
-    right: unset;
-    left: 25px;
-  }
-}
+//.is-pizza .ctn-float-box{
+//  @include media("<=ld") {
+//    right: unset;
+//    left: 25px;
+//  }
+//}
 .is-coffee .ctn-btn.no-desktop{ margin-top: 50px; }
 
 .ctn-btn{

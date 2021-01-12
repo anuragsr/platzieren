@@ -132,6 +132,8 @@ export default class HomeCtrl {
     this.menu = angular.copy(menu)
     this.menu.id = linkData.id
     this.menu.isDark = false
+    if(this.menu.title === 'Pizza') this.zoom = .8
+
     this.addMenuPage()
 
     $(() => {

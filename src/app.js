@@ -97,7 +97,18 @@ angular
   controller: 'MenuCtrl'
 })
 .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
-  $urlRouterProvider.otherwise('/allgemein')
+  $urlRouterProvider
+  .rule(function($injector, $location) {
+    const path = $location.path()
+    , hasTrailingSlash = path[path.length-1] === '/'
+
+    if(hasTrailingSlash) {
+      //if last charcter is a slash, return the same url without the slash
+      return path.substr(0, path.length - 1)
+    }
+  })
+  .otherwise('/allgemein')
+
   $locationProvider.html5Mode(true)
 
   // Adding states here
@@ -124,6 +135,7 @@ angular
   })
   .state('view', {
     url: '/view/{params:.*}/:iId',
+    // url: '/view/{params:.*}/:iId/{slashes:.*}',
     component: 'view',
     data : { pageTitle: 'Platzieren | View Menu' }
   })
