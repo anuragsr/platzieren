@@ -135,7 +135,6 @@ angular
   })
   .state('view', {
     url: '/view/{params:.*}/:iId',
-    // url: '/view/{params:.*}/:iId/{slashes:.*}',
     component: 'view',
     data : { pageTitle: 'Platzieren | View Menu' }
   })

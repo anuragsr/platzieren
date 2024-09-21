@@ -334,9 +334,7 @@ export default class Utils {
       return false
     }
   }
-  fl(fil, arr, condition){
-    return this.$filter(fil)(arr, condition)
-  }
+  fl(fil, arr, condition){ return this.$filter(fil)(arr, condition) }
   generateId(length){
     let chars = 'M30Z1xA0Nu5Pn8Yo2pXqB5Rly9Gz3vWOj1Hm46IeCfgSrTs7Q9aJb8F6DcE7d2twkUhKiL4V'
     , charLength = chars.length
@@ -346,9 +344,7 @@ export default class Utils {
     }
     return randomStr
   }
-  getViewLink(url, state, id){
-    return `${url}view/${state}/${id}`
-  }
+  getViewLink(url, state, id){ return `${url}view/${state}/${id}` }
   createLink(state){
     const id = this.generateId(6)
     return {
