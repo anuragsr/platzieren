@@ -107,7 +107,7 @@ angular
       return path.substr(0, path.length - 1)
     }
   })
-  .otherwise('/allgemein')
+  .otherwise('/sushi')
 
   $locationProvider.html5Mode(true)
 

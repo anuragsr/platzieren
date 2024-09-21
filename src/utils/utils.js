@@ -16,77 +16,7 @@ export default class Utils {
     this.IMG_URL = envObj.IMG_URL
     this.API_URL = envObj.API_URL
 
-    this.menus = [
-      {
-        title: 'Allge.',
-        img: 'assets/coffee.png',
-        qrLogo: 'assets/qr-logo.png',
-        qrLogoFile: '',
-        fields: [
-          {
-            id:0,
-            name: { p: 'AMERICANO', v: '' },
-            price: { p: '2,99', v: '' },
-          },
-          {
-            id:1,
-            name: { p: 'CAPPUCCINO', v: '' },
-            price: { p: '2,99', v: '' },
-          },
-          {
-            id:2,
-            name: { p: 'LATTE', v: '' },
-            price: { p: '2,99', v: '' },
-          },
-          {
-            id:3,
-            name: { p: 'MOCHA', v: '' },
-            price: { p: '2,99', v: '' },
-          },
-          {
-            id:4,
-            name: { p: 'ESPRESSO', v: '' },
-            price: { p: '2,99', v: '' },
-          },
-          {
-            id:5,
-            name: { p: 'TEA', v: '' },
-            price: { p: '2,99', v: '' },
-          },
-          {
-            id:6,
-            name: { p: 'HERBAL TEA', v: '' },
-            price: { p: '2,99', v: '' },
-          },
-          {
-            id:7,
-            name: { p: 'WATER', v: '' },
-            price: { p: '2,99', v: '' },
-          },
-          {
-            id:8,
-            name: { p: 'SCONE WITH HAM & CHEESE', v: '' },
-            price: { p: '2,99', v: '' },
-          },
-          {
-            id:9,
-            name: { p: 'AMERICANO WITH HAM, BUTTER & CHEESE', v: '' },
-            price: { p: '2,99', v: '' },
-          },
-          {
-            id:10,
-            name: { p: 'AMERICANO WITH HAM,BUTTER & CHEESE', v: '' },
-            price: { p: '2,99', v: '' },
-          },
-        ],
-        titles: [
-          { id:0, v: 'COFFEE MENU' },
-          { id:1, v: 'OFFERS' },
-        ],
-        pages: [],
-        state: 'allgemein',
-        activePage: 0
-      },
+    this.menus = [      
       {
         title: 'Sushi',
         img: 'assets/sushi.png',
@@ -304,6 +234,76 @@ export default class Utils {
         ],
         pages: [],
         state: 'pizza',
+        activePage: 0
+      },
+      {
+        title: 'Allge.',
+        img: 'assets/coffee.png',
+        qrLogo: 'assets/qr-logo.png',
+        qrLogoFile: '',
+        fields: [
+          {
+            id:0,
+            name: { p: 'AMERICANO', v: '' },
+            price: { p: '2,99', v: '' },
+          },
+          {
+            id:1,
+            name: { p: 'CAPPUCCINO', v: '' },
+            price: { p: '2,99', v: '' },
+          },
+          {
+            id:2,
+            name: { p: 'LATTE', v: '' },
+            price: { p: '2,99', v: '' },
+          },
+          {
+            id:3,
+            name: { p: 'MOCHA', v: '' },
+            price: { p: '2,99', v: '' },
+          },
+          {
+            id:4,
+            name: { p: 'ESPRESSO', v: '' },
+            price: { p: '2,99', v: '' },
+          },
+          {
+            id:5,
+            name: { p: 'TEA', v: '' },
+            price: { p: '2,99', v: '' },
+          },
+          {
+            id:6,
+            name: { p: 'HERBAL TEA', v: '' },
+            price: { p: '2,99', v: '' },
+          },
+          {
+            id:7,
+            name: { p: 'WATER', v: '' },
+            price: { p: '2,99', v: '' },
+          },
+          {
+            id:8,
+            name: { p: 'SCONE WITH HAM & CHEESE', v: '' },
+            price: { p: '2,99', v: '' },
+          },
+          {
+            id:9,
+            name: { p: 'AMERICANO WITH HAM, BUTTER & CHEESE', v: '' },
+            price: { p: '2,99', v: '' },
+          },
+          {
+            id:10,
+            name: { p: 'AMERICANO WITH HAM,BUTTER & CHEESE', v: '' },
+            price: { p: '2,99', v: '' },
+          },
+        ],
+        titles: [
+          { id:0, v: 'COFFEE MENU' },
+          { id:1, v: 'OFFERS' },
+        ],
+        pages: [],
+        state: 'allgemein',
         activePage: 0
       },
     ]
